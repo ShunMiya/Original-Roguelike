@@ -5,7 +5,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
-    private float distance = 1.0f;
 
     private Vector3 move;
     private Vector3 targetPos;
@@ -18,17 +17,28 @@ public class Player : MonoBehaviour
     {
         move.x = Input.GetAxisRaw("Horizontal");
         move.z = Input.GetAxisRaw("Vertical");
-        if (move != Vector3.zero && transform.position == targetPos)
+
+        if(Input.GetKey(KeyCode.C))
         {
-            targetPos += new Vector3(move.x, 0, move.z) * distance;
+            if(move.x != 0 && move.z != 0)
+            {
+                if (move != Vector3.zero && transform.position == targetPos)
+                {
+                    targetPos += new Vector3(move.x, 0, move.z);
+                }
+            }
+        }
+        else
+        {
+            if (move != Vector3.zero && transform.position == targetPos)
+            {
+                targetPos += new Vector3(move.x, 0, move.z);
+            }
         }
 
         transform.LookAt(targetPos);
 
-        Move(targetPos);
-    }
-    private void Move(Vector3 targetPos)
-    {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
+
     }
 }
