@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 5.0f;
+    [SerializeField] public AttackCheck attack;
 
     private Vector3 move;
     private Vector3 targetPos;
+    private bool isAttack = false;
 
     private void Start()
     {
@@ -15,6 +17,8 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        isAttack = attack.IsAttack();
+
         move.x = Input.GetAxisRaw("Horizontal");
         move.z = Input.GetAxisRaw("Vertical");
 
@@ -40,5 +44,14 @@ public class Player : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
+
+        if(Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("Attack");
+            if(isAttack)
+            {
+                Debug.Log("Enemy Damage");
+            }
+        }
     }
 }
