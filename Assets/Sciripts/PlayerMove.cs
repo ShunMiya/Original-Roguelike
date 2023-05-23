@@ -51,7 +51,10 @@ namespace PlayerMovement
                     targetPos = transform.position;
                 }
             }
-                
+            else
+            {
+                MoveAction();
+            }
         }
 
         public void MoveAction()
