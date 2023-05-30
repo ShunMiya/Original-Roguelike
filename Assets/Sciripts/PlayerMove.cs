@@ -2,71 +2,108 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using MovePointChecker;
+using PlayerFrontChecker;
 
 namespace PlayerMovement
 {
     public class PlayerMove : MonoBehaviour
     {
         private MovePointCheck movePointCheck;
+        private PlayerFrontCheck playerFrontCheck;
 
         [SerializeField] private float speed = 5.0f;
         float gridSize = GameRule.GridSize;
         private Vector3 move;
         private Vector3 targetPos;
+        private bool ismoving = false;
 
         private void Start()
         {
             movePointCheck = GetComponent<MovePointCheck>();
+            playerFrontCheck = GetComponentInChildren<PlayerFrontCheck>();
             targetPos = transform.position;
         }
 
-        public void MoveStance(float movex , float movez)
+        public void MoveStance(float movex, float movez)
         {
-            if (!FlagControl.PlayerActionFlagControl.IsPlayerAction)
+            switch (Input.GetKey(KeyCode.C))
             {
-                if (Input.GetKey(KeyCode.C) && movex != 0.0f && movez != 0.0f)
-                {
-                    move = new Vector3(movex * gridSize, 0, movez * gridSize);
-                    if (targetPos == transform.position)
+                case true:
+                    if (movex != 0.0f && movez != Mathf.Epsilon)
                     {
-                        targetPos += move;
-                    }
-                }
-                else if (!Input.GetKey(KeyCode.C))
-                {
-                    move = new Vector3(movex * gridSize, 0, movez * gridSize);
-                    if (targetPos == transform.position)
-                    {
-                        targetPos += move;
-                    }
-                }
+                        move = new Vector3(movex * gridSize, 0, movez * gridSize);
+                        if (targetPos == transform.position) //仮置き。PlayerActiveで行動停止付けれたらいらなくなる。
+                        {
+                            targetPos += move;
+                        }
 
-                transform.LookAt(targetPos);
-                if (movePointCheck.MovePossible(targetPos, gridSize))
-                {
-                    MoveAction();
-                }
-                else
-                {
-                    targetPos = transform.position;
-                }
+                    } break;
+                case false:
+                    move = new Vector3(movex * gridSize, 0, movez * gridSize);
+                    if (targetPos == transform.position) //仮置き。PlayerActiveで行動停止付けれたらいらなくなる。
+                    {
+                        targetPos += move;
+                    } break;
             }
-            else
+
+ /*           if ((Input.GetKey(KeyCode.C) && movex != 0.0f && movez != Mathf.Epsilon) || !Input.GetKey(KeyCode.C))
+            {
+                move = new Vector3(movex * gridSize, 0, movez * gridSize);
+                if (targetPos == transform.position) //仮置き。PlayerActiveで行動停止付けれたらいらなくなる。
+                {
+                    targetPos += move;
+                }
+            }*/
+
+            transform.LookAt(targetPos);
+
+//            if (movePointCheck.MovePossible(targetPos, gridSize))
+
+            switch(ismoving)
+            {
+                case true:
+                    {
+                        MoveAction();
+                        break;
+                    }
+                case false:
+                    {
+                        if(!playerFrontCheck.IsMoveFailCheck())
+                        {
+                            MoveAction();
+                        }
+                        else
+                        {
+                            targetPos = transform.position;
+                        }
+                        break;
+                    }
+            }
+
+/*            if ((!playerFrontCheck.IsMoveFailCheck() && ismoving == false) || ismoving == true)
             {
                 MoveAction();
             }
+            else
+            {
+                targetPos = transform.position;
+            }*/
         }
 
         public void MoveAction()
         {
-            FlagControl.PlayerActionFlagControl.SetPlayerAction(true);
-
+            ismoving = true;
             transform.position = Vector3.MoveTowards(transform.position, targetPos, speed * Time.deltaTime);
 
             if(transform.position == targetPos)
             {
-                FlagControl.PlayerActionFlagControl.SetPlayerAction(false);
+                ismoving = false;
             }
+        }
+
+        public bool IsMoving()
+        {
+            return ismoving;
         }
     }
 }
