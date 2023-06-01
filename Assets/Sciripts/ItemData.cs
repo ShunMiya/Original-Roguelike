@@ -20,10 +20,10 @@ namespace ItemSystem
         public string ItemName { get { return _itemName; } }
 
         [SerializeField] private ItemType _itemType;
-        public ItemType itemType { get { return _itemType; } }
+        public ItemType ItemType { get { return _itemType; } }
 
-        [SerializeField] private string _MaxStack;
-        public string maxStack { get { return _MaxStack; } }
+        [SerializeField] private string _maxStack;
+        public string MaxStack { get { return _maxStack; } }
 
     }
 }

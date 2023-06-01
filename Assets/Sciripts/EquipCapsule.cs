@@ -6,13 +6,18 @@ namespace ItemSystem
 {
     public class EquipCapsule : MonoBehaviour
     {
-        [SerializeField] private ItemData itemData;
+        [SerializeField] private string itemId;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                Debug.Log(itemData.ItemName + "‚ðŽæ“¾");
+                PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
+                ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
+
+                playerInventory.AddItem(itemData);
+
+//                Debug.Log(itemData.ItemName + "‚ðŽæ“¾");
 
                 Destroy(gameObject);
             }

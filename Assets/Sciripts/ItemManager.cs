@@ -8,8 +8,21 @@ namespace ItemSystem
     {
         [SerializeField] private ItemDataBase itemDataBase;
 
+        private static ItemManager _instance;
+        public static ItemManager Instance { get { return _instance; } }
+
         private void Awake()
         {
+            if (_instance == null)
+            {
+                _instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+                return;
+            }
+
             itemDataBase = Resources.Load<ItemDataBase>("ItemDataBase");
         }
 
@@ -25,16 +38,17 @@ namespace ItemSystem
             return null;
         }
 
-        // Start is called before the first frame update
-        void Start()
+        public string GetItemNameById(string itemId)
         {
-
+            foreach(ItemData itemData in itemDataBase.GetItemLists())
+            {
+                if(itemData.Id == itemId)
+                {
+                    return itemData.ItemName;
+                }
+            }
+            return "Unknown";
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
