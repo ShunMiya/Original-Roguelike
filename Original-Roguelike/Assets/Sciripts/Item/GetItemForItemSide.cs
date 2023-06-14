@@ -13,11 +13,8 @@ namespace ItemSystem
             if (other.CompareTag("Player"))
             {
                 PlayerGetItem playerGetItem = other.GetComponent<PlayerGetItem>();
-                ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
 
-                playerGetItem.GetItem(itemData);
-
-//                Debug.Log(itemData.ItemName + "‚ðŽæ“¾");
+                playerGetItem.GetItem(itemId);
 
                 Destroy(gameObject);
             }

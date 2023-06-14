@@ -8,11 +8,13 @@ namespace ItemSystem
     [CreateAssetMenu(menuName = "ScriptableObject/PlayerInventoryDB")]
     public class PlayerInventoryDataBase : ScriptableObject
     {
-        private Dictionary<string, int> inventory = new Dictionary<string, int>();
+        public Dictionary<string, int> inventory = new Dictionary<string, int>();
 
-        public void AddItem(ItemData itemData)
+        public void AddItem(string itemId)
         {
-            if (inventory.ContainsKey(itemData.Id))
+            ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
+
+            if (/*itemData.ItemType == ItemType.UseItem &&*/ inventory.ContainsKey(itemData.Id))
             {
                 inventory[itemData.Id]++;
             }
@@ -22,13 +24,13 @@ namespace ItemSystem
             }
             Debug.Log(itemData.ItemName + "を取得");
 
-            //デバッグシステム
+            /*デバッグシステム
             Debug.Log("所持アイテム一覧");
             foreach (KeyValuePair<string, int> item in inventory)
             {
                 string itemName = ItemManager.Instance.GetItemNameById(item.Key);
                 Debug.Log(itemName + ": " + item.Value);
-            }
+            }*/
         }
     }
 }
