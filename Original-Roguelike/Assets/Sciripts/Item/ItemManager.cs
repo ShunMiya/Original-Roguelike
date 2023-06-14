@@ -22,8 +22,6 @@ namespace ItemSystem
                 Destroy(gameObject);
                 return;
             }
-
-            itemDataBase = Resources.Load<ItemDataBase>("ItemDataBase");
         }
 
         public ItemData GetItemDataById(string itemId)

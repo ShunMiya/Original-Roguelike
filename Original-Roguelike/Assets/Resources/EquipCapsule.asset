@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: EquipCapsule
   m_EditorClassIdentifier: 
   _id: 1
+  prefab: {fileID: 7440321705794138948, guid: 88f50ec5b8382824eb397ea7eb71ddcc, type: 3}
   _itemName: EquipCapsule
   _itemType: 1
-  _MaxStack: 1
+  _maxStack: 1
+  _desciption: "\u7E26\u9577\u306E\u653B\u6483"

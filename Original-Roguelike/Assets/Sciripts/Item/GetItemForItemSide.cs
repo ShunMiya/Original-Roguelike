@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ItemSystem
 {
-    public class EquipCapsule : MonoBehaviour
+    public class GetItemForItemSide : MonoBehaviour
     {
         [SerializeField] private string itemId;
 
@@ -12,10 +12,10 @@ namespace ItemSystem
         {
             if (other.CompareTag("Player"))
             {
-                PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
+                PlayerGetItem playerGetItem = other.GetComponent<PlayerGetItem>();
                 ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
 
-                playerInventory.AddItem(itemData);
+                playerGetItem.GetItem(itemData);
 
 //                Debug.Log(itemData.ItemName + "‚ðŽæ“¾");
 
@@ -23,5 +23,4 @@ namespace ItemSystem
             }
         }
     }
-
 }

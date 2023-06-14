@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: HealPixel
   m_EditorClassIdentifier: 
   _id: 0
+  prefab: {fileID: 3161872203314884576, guid: 6895dc0c751f59b40a08e3be9e8821b7, type: 3}
   _itemName: HealPixel
   _itemType: 0
-  _MaxStack: 10
+  _maxStack: 2
+  _desciption: "\u4F53\u529B\u3092\u56DE\u5FA9\u3059\u308B"

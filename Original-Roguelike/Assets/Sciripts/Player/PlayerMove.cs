@@ -11,7 +11,7 @@ namespace PlayerMovement
         private MovePointCheck movePointCheck;
         private PlayerFrontCheck playerFrontCheck;
 
-        [SerializeField] private float speed = 5.0f;
+        [SerializeField] private float speed;
         float gridSize = GameRule.GridSize;
         private Vector3 move;
         private Vector3 targetPos;

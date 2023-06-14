@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: EquipCylinder
   m_EditorClassIdentifier: 
   _id: 2
+  prefab: {fileID: 7230765816080837193, guid: 78ceac971156ee445a65c1ee4d50c0c7, type: 3}
   _itemName: EquipCylinder
   _itemType: 1
-  _MaxStack: 1
+  _maxStack: 1
+  _desciption: "\u6A2A\u9577\u306E\u653B\u6483"

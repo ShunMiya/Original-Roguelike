@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace ItemSystem
 {
-    public class PlayerInventory : MonoBehaviour
+
+    [CreateAssetMenu(menuName = "ScriptableObject/PlayerInventoryDB")]
+    public class PlayerInventoryDataBase : ScriptableObject
     {
         private Dictionary<string, int> inventory = new Dictionary<string, int>();
 
