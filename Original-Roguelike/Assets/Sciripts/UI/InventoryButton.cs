@@ -26,13 +26,9 @@ namespace ItemSystem
         {
             ClearButtons();
 
-            var sortedInventory = playerInventory.inventory.OrderBy(x => x.Key);
-            foreach (var item in sortedInventory)
+            var sortedInventory = playerInventory.inventory.OrderBy(x => x.Id);
+            foreach (var itemData in sortedInventory)
             {
-                string itemId = item.Key;
-                int itemCount = item.Value;
-
-                ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
                 string itemName = itemData.ItemName;
 
                 Button button = Instantiate(buttonPrefab, buttonContainer);
@@ -41,7 +37,7 @@ namespace ItemSystem
 
                 if (itemData.ItemType == ItemType.UseItem)
                 {
-                    buttonText.text = FormatItemText(itemName, itemCount);
+                    buttonText.text = FormatItemText(itemName, ((UseItemData)itemData).ItemStack);
                 }
                 else
                 {
@@ -59,15 +55,15 @@ namespace ItemSystem
             }
         }
 
-        private string FormatItemText(string itemName, int itemCount)
+        private string FormatItemText(string itemName, int itemStack)
         {
-            string itemText = $"{itemName}Å~{itemCount}";
+            string itemText = $"{itemName}Å~{itemStack}";
             int spacesToAdd = totalTextLength - itemText.Length;
 
             if (spacesToAdd > 0)
             {
                 string spaceText = new string(' ', spacesToAdd);
-                itemText = $"{itemName}{spaceText}Å~{itemCount}";
+                itemText = $"{itemName}{spaceText}Å~{itemStack}";
             }
 
             return itemText;

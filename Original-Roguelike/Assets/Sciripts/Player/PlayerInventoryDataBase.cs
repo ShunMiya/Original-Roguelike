@@ -8,29 +8,31 @@ namespace ItemSystem
     [CreateAssetMenu(menuName = "ScriptableObject/PlayerInventoryDB")]
     public class PlayerInventoryDataBase : ScriptableObject
     {
-        public Dictionary<string, int> inventory = new Dictionary<string, int>();
+        public List<ItemData> inventory = new List<ItemData>();
 
         public void AddItem(string itemId)
         {
             ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
 
-            if (/*itemData.ItemType == ItemType.UseItem &&*/ inventory.ContainsKey(itemData.Id))
+            ItemData existingItem = inventory.Find(item => item.Id == itemId);
+
+            if (existingItem != null)
             {
-                inventory[itemData.Id]++;
+                existingItem.ItemStack += itemData.ItemStack;
             }
             else
             {
-                inventory.Add(itemData.Id, 1);
+                inventory.Add(itemData);
             }
+
             Debug.Log(itemData.ItemName + "を取得");
 
-            /*デバッグシステム
+            //デバッグシステム
             Debug.Log("所持アイテム一覧");
-            foreach (KeyValuePair<string, int> item in inventory)
+            foreach (ItemData item in inventory)
             {
-                string itemName = ItemManager.Instance.GetItemNameById(item.Key);
-                Debug.Log(itemName + ": " + item.Value);
-            }*/
+                Debug.Log(itemData.ItemName + "×" + itemData.ItemStack);
+            }
         }
     }
 }

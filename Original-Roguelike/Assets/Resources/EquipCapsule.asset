@@ -9,12 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8d685cb70f71f4a8df41b9b5387dd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d5967ecdc4f8c94db96509bfde41b0a, type: 3}
   m_Name: EquipCapsule
   m_EditorClassIdentifier: 
-  _id: 1
-  prefab: {fileID: 7440321705794138948, guid: 88f50ec5b8382824eb397ea7eb71ddcc, type: 3}
-  _itemName: EquipCapsule
+  _id: 101
+  prefab: {fileID: 5638285833425248005, guid: 88f50ec5b8382824eb397ea7eb71ddcc, type: 3}
+  _itemName: kapsule
   _itemType: 1
-  _maxStack: 1
-  _desciption: "\u7E26\u9577\u306E\u653B\u6483"
+  _desciption: 'Weapon kapsule
+
+    Attack Bonus +1
+
+    Attack Distance +1'
+  _AttackBonus: 1
+  _WeaponRange: 0
+  _WeaponDistance: 1
