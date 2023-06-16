@@ -7,6 +7,7 @@ namespace ItemSystem
     public class GetItemForItemSide : MonoBehaviour
     {
         [SerializeField] private string itemId;
+        [SerializeField] private int itemStack;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -14,7 +15,7 @@ namespace ItemSystem
             {
                 PlayerGetItem playerGetItem = other.GetComponent<PlayerGetItem>();
 
-                playerGetItem.GetItem(itemId);
+                playerGetItem.GetItem(itemId , itemStack);
 
                 Destroy(gameObject);
             }

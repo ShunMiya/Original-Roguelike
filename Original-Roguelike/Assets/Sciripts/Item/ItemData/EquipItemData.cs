@@ -9,12 +9,12 @@ namespace ItemSystem
     public class EquipItemData : ItemData
     {
         [SerializeField] private float _AttackBonus;
-        public new float AttackBonus { get { return _AttackBonus; } }
+        public float AttackBonus { get { return _AttackBonus; } }
 
         [SerializeField] private float _WeaponRange;
-        public new float WeaponRange { get { return _WeaponRange; } }
+        public float WeaponRange { get { return _WeaponRange; } }
 
         [SerializeField] private float _WeaponDistance;
-        public new float WeaponDistance { get { return _WeaponDistance; } }
+        public float WeaponDistance { get { return _WeaponDistance; } }
     }
 }

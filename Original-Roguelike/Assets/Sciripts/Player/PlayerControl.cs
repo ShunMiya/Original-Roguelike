@@ -35,6 +35,10 @@ public class PlayerControl : MonoBehaviour
             attackMotion.AttackStance();
         }
 
+/*        if(Input.GetKey(KeyCode.X))
+        {
+            GamePause();
+        }*/
 
     }
 }

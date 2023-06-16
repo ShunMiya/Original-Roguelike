@@ -31,7 +31,15 @@ namespace ItemSystem
             {
                 if(itemData.Id == itemId)
                 {
-                    return itemData;
+                    switch(itemData.ItemType)
+                    {
+                        case ItemType.UseItem:
+                            UseItemData useItemData = itemData as UseItemData;
+                            return useItemData;
+                        case ItemType.EquipItem:
+                            EquipItemData equipItemData = itemData as EquipItemData;
+                            return equipItemData;
+                    }
                 }
             }
             return null;

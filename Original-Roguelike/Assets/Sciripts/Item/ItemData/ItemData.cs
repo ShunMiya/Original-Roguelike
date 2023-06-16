@@ -27,16 +27,5 @@ namespace ItemSystem
         [TextArea(5, 20)]
         [SerializeField] private string _desciption;
         public string Desciption { get { return _desciption; } }
-
-        public int ItemStack { get; set; }
-        public int MaxStack { get; }
-        public float HealValue { get; }
-
-
-        public int AttackBonus { get; }
-
-        public int WeaponRange { get; }
-
-        public int WeaponDistance { get; }
     }
 }
