@@ -16,7 +16,7 @@ namespace ItemSystem
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.X)) //‰¼’u‚«
+            if(Input.GetKeyDown(KeyCode.C)) //‰¼’u‚«
             {
                 SetButton();
             }

@@ -21,7 +21,7 @@ namespace ItemSystem
                 case 0:
                     UseItemData useItemData = itemData as UseItemData;
                     List<UseItemData> existingItems = inventory
-                                .FindAll(item => item.Id == itemId && item is UseItemData)
+                                .FindAll(item => item.Id == itemId && item)
                                 .Cast<UseItemData>()
                                 .ToList();
 
@@ -46,13 +46,6 @@ namespace ItemSystem
             }
 
             Debug.Log(itemData.ItemName + "(" +itemStack + ")" +  "を取得");
-
-            //デバッグシステム
- /*           Debug.Log("所持アイテム一覧");
-            foreach (ItemData item in inventory)
-            {
-                Debug.Log(item.ItemName + "×" + item.ItemStack);
-            }*/
         }
     }
 }

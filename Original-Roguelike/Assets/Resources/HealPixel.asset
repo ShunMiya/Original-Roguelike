@@ -19,6 +19,6 @@ MonoBehaviour:
   _desciption: 'UseItem HealPixel
 
     HealLife +1'
-  ItemStack: 4
+  ItemStack: 1
   _MaxStack: 5
   _HealValue: 1

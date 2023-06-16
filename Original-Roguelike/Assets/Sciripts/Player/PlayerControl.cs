@@ -25,6 +25,8 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Mathf.Approximately(Time.timeScale, 0f)) return;
+        
         movex = Input.GetAxisRaw("Horizontal");
         movez = Input.GetAxisRaw("Vertical");
 
@@ -34,11 +36,6 @@ public class PlayerControl : MonoBehaviour
         {
             attackMotion.AttackStance();
         }
-
-/*        if(Input.GetKey(KeyCode.X))
-        {
-            GamePause();
-        }*/
 
     }
 }
