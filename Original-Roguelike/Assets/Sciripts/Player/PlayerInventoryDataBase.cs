@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TreeEditor;
 using UnityEngine;
 
@@ -19,27 +20,25 @@ namespace ItemSystem
             {
                 case 0:
                     UseItemData useItemData = itemData as UseItemData;
-                    UseItemData existingItem = inventory.Find(item => item.Id == itemId) as UseItemData;
+                    List<UseItemData> existingItems = inventory
+                                .FindAll(item => item.Id == itemId && item is UseItemData)
+                                .Cast<UseItemData>()
+                                .ToList();
 
-                    if(existingItem != null)
+                    foreach (UseItemData existingItem in existingItems)
                     {
                         int totalStack = existingItem.ItemStack + itemStack;
+
                         if (totalStack <= useItemData.MaxStack)
                         {
                             existingItem.ItemStack = totalStack;
-                        }
-                        else
-                        {
-                            UseItemData useitemData = Instantiate(useItemData);
-                            useitemData.ItemStack = itemStack;
-                            inventory.Add(useitemData);
+                            Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "‚ðŽæ“¾");
+                            return;
                         }
                     }
-                    else
-                    {
-                        useItemData.ItemStack = itemStack;
-                        inventory.Add(useItemData);
-                    }
+                    UseItemData newItem = Instantiate(useItemData);
+                    newItem.ItemStack = itemStack;
+                    inventory.Add(newItem);
                     break;
                 default:
                     inventory.Add(itemData);
