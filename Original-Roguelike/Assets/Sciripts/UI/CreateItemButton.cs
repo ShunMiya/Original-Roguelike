@@ -1,16 +1,21 @@
 using ItemSystem;
 using System.Linq;
 using TMPro;
+using UISystem;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace ItemSystem
 {
-    public class InventoryButton : MonoBehaviour
+    public class CreateItemButton : MonoBehaviour
     {
         public PlayerInventoryDataBase playerInventory;
         public Button buttonPrefab;
         public Transform buttonContainer;
+        [SerializeField] private TextMeshProUGUI informationText;
+        [SerializeField] private PlayerUseItem playerUseItem;
+
+
 
         [SerializeField] private int totalTextLength = 20;
 
@@ -22,7 +27,7 @@ namespace ItemSystem
             }
         }
 
-        private void SetButton()
+        public void SetButton()
         {
             ClearButtons();
 
@@ -32,6 +37,10 @@ namespace ItemSystem
                 string itemName = itemData.ItemName;
 
                 Button button = Instantiate(buttonPrefab, buttonContainer);
+                ItemButton itemButton = button.GetComponent<ItemButton>();
+                itemButton.itemData = itemData;
+                itemButton.informationText = informationText;
+                itemButton.playerUseItem = playerUseItem;
 
                 TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 

@@ -3,72 +3,78 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
-public class InventorySceneButton : MonoBehaviour
+namespace UISystem
 {
-    //　インフォメーションテキストに表示する文字列
-    [SerializeField]
-    private string informationString;
-    //　インフォメーションテキスト
-    [SerializeField]
-    private Text informationText;
-    //　自身の親のCanvasGroup
-    private CanvasGroup canvasGroup;
-    //　前の画面に戻るボタン
-    private GameObject returnButton;
-
-    void Start()
+    public class InventorySceneButton : MonoBehaviour
     {
-        canvasGroup = GetComponentInParent<CanvasGroup>();
-        returnButton = transform.parent.Find("Exit").gameObject;
-    }
+        //　インフォメーションテキストに表示する文字列
+        [SerializeField] private string informationString;
+        //　インフォメーションテキスト
+        [SerializeField] private TextMeshProUGUI informationText;
+        //　自身の親のCanvasGroup
+        private CanvasGroup canvasGroup;
+        //　前の画面に戻るボタン
+        private GameObject returnButton;
 
-    void OnEnable()
-    {
-        //　装備アイテム選択中にステータス画面を抜けた時にボタンが無効化したままの場合もあるので立ち上げ時に有効化する
-        GetComponent<Button>().interactable = true;
-    }
+        [SerializeField] private GameObject InventoryUI;
 
-    //　ボタンの上にマウスが入った時、またはキー操作で移動してきた時
-    public void OnSelected()
-    {
-        if (canvasGroup == null || canvasGroup.interactable)
+        void Start()
         {
-            //　イベントシステムのフォーカスが他のゲームオブジェクトにある時このゲームオブジェクトにフォーカス
-            if (EventSystem.current.currentSelectedGameObject != gameObject)
+            canvasGroup = GetComponentInParent<CanvasGroup>();
+            returnButton = transform.parent.Find("BackGameButton").gameObject;
+        }
+
+        void OnEnable()
+        {
+            //　装備アイテム選択中にステータス画面を抜けた時にボタンが無効化したままの場合もあるので立ち上げ時に有効化する
+            GetComponent<Button>().interactable = true;
+        }
+
+        //　ボタンの上にマウスが入った時、またはキー操作で移動してきた時
+        public void OnSelected()
+        {
+            if (canvasGroup == null || canvasGroup.interactable)
             {
-                EventSystem.current.SetSelectedGameObject(gameObject);
+                //　イベントシステムのフォーカスが他のゲームオブジェクトにある時このゲームオブジェクトにフォーカス
+                if (EventSystem.current.currentSelectedGameObject != gameObject)
+                {
+                    EventSystem.current.SetSelectedGameObject(gameObject);
+                }
+                informationText.text = informationString;
             }
-            informationText.text = informationString;
         }
-    }
-    //　ボタンから移動したら情報を削除
-    public void OnDeselected()
-    {
-        informationText.text = "";
-    }
-
-    //　ステータスウインドウを非アクティブにする
-    public void DisableWindow()
-    {
-        if (canvasGroup == null || canvasGroup.interactable)
+        //　ボタンから移動したら情報を削除
+        public void OnDeselected()
         {
-            //　ウインドウを非アクティブにする
-            transform.root.gameObject.SetActive(false);
+            informationText.text = "";
         }
-    }
 
- /*   //　他の画面を表示する
-    public void WindowOnOff(GameObject window)
-    {
-        if (canvasGroup == null || canvasGroup.interactable)
+        //　ステータスウインドウを非アクティブにする
+        public void DisableWindow()
         {
-            Camera.main.GetComponent<OperationStatusWindow>().ChangeWindow(window);
+            if (canvasGroup == null || canvasGroup.interactable)
+            {
+                //　ウインドウを非アクティブにする
+                Transform backgroundTransform = transform.root.Find("BackGround");
+                GameObject backgroundObject = backgroundTransform.gameObject;
+                backgroundObject.SetActive(false);
+            }
         }
-    }*/
-    //　前の画面に戻るボタンを選択状態にする
-    public void SelectReturnButton()
-    {
-        EventSystem.current.SetSelectedGameObject(returnButton);
+
+        //　他の画面を表示する
+        public void WindowOnOff(GameObject window)
+        {
+            if (canvasGroup == null || canvasGroup.interactable)
+            {
+                InventoryUI.GetComponent<PauseSystem>().ChangeWindow(window);
+            }
+        }
+        //　前の画面に戻るボタンを選択状態にする
+        public void SelectReturnButton()
+        {
+            EventSystem.current.SetSelectedGameObject(returnButton);
+        }
     }
 }
