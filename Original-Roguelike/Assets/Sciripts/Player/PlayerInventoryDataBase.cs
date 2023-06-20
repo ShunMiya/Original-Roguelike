@@ -38,10 +38,12 @@ namespace ItemSystem
                     }
                     UseItemData newItem = Instantiate(useItemData);
                     newItem.ItemStack = itemStack;
+                    Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "‚ðŽæ“¾");
                     inventory.Add(newItem);
                     break;
                 default:
                     inventory.Add(itemData);
+                    Debug.Log(itemData.ItemName + "‚ðŽæ“¾");
                     break;
             }
         }

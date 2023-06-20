@@ -9,7 +9,7 @@ namespace ItemSystem
         public PlayerInventoryDataBase playerInventory;
 
 
-        public void UseItem(ItemData itemData)
+        public ItemData UseItem(ItemData itemData)
         {
             switch (itemData.ItemType)
             {
@@ -20,6 +20,7 @@ namespace ItemSystem
                         int itemStack = useItemData.ItemStack;
 
                         playerInventory.RemoveItem(itemId, itemStack);
+                        itemData = useItemData as ItemData;
                     }
                     break;
                 default:
@@ -28,6 +29,7 @@ namespace ItemSystem
                     playerInventory.RemoveItem(ItemId, 0);
                     break;
             }
+            return itemData;
         }
 
     }

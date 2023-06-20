@@ -5,15 +5,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEditor.PackageManager.UI;
+using UnityEngine.UIElements;
 
 namespace UISystem
 {
     public class ItemButton : MonoBehaviour
     {
-        //　インフォメーションテキスト
         public TextMeshProUGUI informationText;
         public ItemData itemData;
-        //　自身の親のCanvasGroup
         private CanvasGroup canvasGroup;
         public PlayerUseItem playerUseItem;
         private CreateItemButton createItemButton;
@@ -26,12 +26,10 @@ namespace UISystem
 
         }
 
-        //　ボタンの上にマウスが入った時、またはキー操作で移動してきた時
         public void OnSelected()
         {
             if (canvasGroup == null || canvasGroup.interactable)
             {
-                //　イベントシステムのフォーカスが他のゲームオブジェクトにある時このゲームオブジェクトにフォーカス
                 if (EventSystem.current.currentSelectedGameObject != gameObject)
                 {
                     EventSystem.current.SetSelectedGameObject(gameObject);
@@ -40,7 +38,6 @@ namespace UISystem
                 informationText.text = desciption;
             }
         }
-        //　ボタンから移動したら情報を削除
         public void OnDeselected()
         {
             informationText.text = "";
@@ -48,8 +45,20 @@ namespace UISystem
 
         public void UseItem()
         {
-            playerUseItem.UseItem(itemData);
-            createItemButton.SetButton();
+            itemData = playerUseItem.UseItem(itemData);
+
+            switch (itemData.ItemType)
+            {
+                case 0:
+                    if(((UseItemData)itemData).ItemStack == 0) Destroy(this.gameObject);
+
+                        createItemButton.SetButtonTextAfterUseItem(this.gameObject);
+  
+                    break;
+                default:
+                    Destroy(this.gameObject); 
+                    break;
+            }
         }
     }
 }

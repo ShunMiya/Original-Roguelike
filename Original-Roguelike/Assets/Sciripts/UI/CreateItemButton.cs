@@ -3,14 +3,16 @@ using System.Linq;
 using TMPro;
 using UISystem;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace ItemSystem
 {
     public class CreateItemButton : MonoBehaviour
     {
         public PlayerInventoryDataBase playerInventory;
-        public Button buttonPrefab;
+        public ItemButton buttonPrefab;
         public Transform buttonContainer;
         [SerializeField] private TextMeshProUGUI informationText;
         [SerializeField] private PlayerUseItem playerUseItem;
@@ -21,7 +23,7 @@ namespace ItemSystem
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.C)) //仮置き
+            if (Input.GetKeyDown(KeyCode.C)) //仮置き
             {
                 SetButton();
             }
@@ -36,7 +38,7 @@ namespace ItemSystem
             {
                 string itemName = itemData.ItemName;
 
-                Button button = Instantiate(buttonPrefab, buttonContainer);
+                ItemButton button = Instantiate(buttonPrefab, buttonContainer);
                 ItemButton itemButton = button.GetComponent<ItemButton>();
                 itemButton.itemData = itemData;
                 itemButton.informationText = informationText;
@@ -57,8 +59,8 @@ namespace ItemSystem
 
         private void ClearButtons()
         {
-            Button[] existingButtons = buttonContainer.GetComponentsInChildren<Button>();
-            foreach (Button button in existingButtons)
+            ItemButton[] existingButtons = buttonContainer.GetComponentsInChildren<ItemButton>();
+            foreach (ItemButton button in existingButtons)
             {
                 Destroy(button.gameObject);
             }
@@ -77,5 +79,154 @@ namespace ItemSystem
 
             return itemText;
         }
+
+        public void SetButtonTextAfterUseItem(GameObject buttonObject)
+        {
+            ItemButton itemButton = buttonObject.GetComponent<ItemButton>();
+            ItemData itemData = itemButton.itemData;
+            string itemName = itemData.ItemName;
+            TextMeshProUGUI buttonText = buttonObject.GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = FormatItemText(itemName, ((UseItemData)itemData).ItemStack);
+        }
+        #region dead specification
+        public void SetButtonAfterUseItem(ItemData AfteritemData)
+        {
+            SetButton();
+            ItemButton[] existingButtons = buttonContainer.GetComponentsInChildren<ItemButton>();
+            Debug.Log("Aに到達");
+            switch (AfteritemData.ItemType)
+            {
+                case 0:
+                    {
+                        UseItemData afteruseItemData = AfteritemData as UseItemData;
+
+                        foreach (ItemButton button in existingButtons)
+                        {
+                            Debug.Log("B1に到達");
+                            ItemButton itemButton = button.GetComponent<ItemButton>();
+                            UseItemData buttonUseItemData = itemButton.itemData as UseItemData;
+                            Debug.Log(buttonUseItemData.Id + "と" + afteruseItemData.Id);
+                            Debug.Log(buttonUseItemData.ItemStack + "と" + afteruseItemData.ItemStack);
+                            if (buttonUseItemData.Id == afteruseItemData.Id &&
+                            buttonUseItemData.ItemStack == afteruseItemData.ItemStack)
+                            {
+                                Debug.Log("到達");
+                                EventSystem.current.SetSelectedGameObject(itemButton.gameObject);
+                                return;
+                            }
+                        }
+                        Debug.Log("B2に到達");
+
+                        foreach (ItemButton button in existingButtons)
+                        {
+                            ItemButton itemButton = button.GetComponent<ItemButton>();
+
+                            if (itemButton.itemData == AfteritemData)
+                            {
+                                EventSystem.current.SetSelectedGameObject(itemButton.gameObject);
+                                return;
+                            }
+                        }
+                        Debug.Log("B3に到達");
+
+                        ItemButton nextButton = null;
+                        int nextId = int.MaxValue;
+                        foreach (ItemButton button in existingButtons)
+                        {
+                            ItemButton itemButton = button.GetComponent<ItemButton>();
+
+                            if (int.Parse(itemButton.itemData.Id) > int.Parse(AfteritemData.Id) && int.Parse(itemButton.itemData.Id) < nextId)
+                            {
+                                nextButton = itemButton;
+                                nextId = int.Parse(itemButton.itemData.Id);
+                            }
+                        }
+                        if (nextButton != null)
+                        {
+                            EventSystem.current.SetSelectedGameObject(nextButton.gameObject);
+                            return;
+                        }
+                        Debug.Log("B4に到達");
+
+                        ItemButton maxIdButton = null;
+                        int maxId = int.MinValue;
+                        foreach (ItemButton button in existingButtons)
+                        {
+                            ItemButton itemButton = button.GetComponent<ItemButton>();
+
+                            if (int.Parse(itemButton.itemData.Id) > maxId)
+                            {
+                                maxIdButton = itemButton;
+                                maxId = int.Parse(itemButton.itemData.Id);
+                            }
+                        }
+                        if (maxIdButton != null)
+                        {
+                            EventSystem.current.SetSelectedGameObject(maxIdButton.gameObject);
+                            return;
+                        }
+                        break;
+                    }
+
+
+                default:
+                    {
+                        Debug.Log("C1に到達");
+
+                        foreach (ItemButton button in existingButtons)
+                        {
+                            ItemButton itemButton = button.GetComponent<ItemButton>();
+
+                            if (itemButton.itemData.Id == AfteritemData.Id)
+                            {
+                                Debug.Log("到達");
+                                EventSystem.current.SetSelectedGameObject(itemButton.gameObject);
+                                return;
+                            }
+                            continue;
+                        }
+                        Debug.Log("C2に到達");
+
+                        ItemButton nextButton = null;
+                        int nextId = int.MaxValue;
+                        foreach (ItemButton button in existingButtons)
+                        {
+                            ItemButton itemButton = button.GetComponent<ItemButton>();
+
+                            if (int.Parse(itemButton.itemData.Id) > int.Parse(AfteritemData.Id) && int.Parse(itemButton.itemData.Id) < nextId)
+                            {
+                                nextButton = itemButton;
+                                nextId = int.Parse(itemButton.itemData.Id);
+                            }
+                        }
+                        if (nextButton != null)
+                        {
+                            EventSystem.current.SetSelectedGameObject(nextButton.gameObject);
+                            return;
+                        }
+                        Debug.Log("C3に到達");
+
+                        ItemButton maxIdButton = null;
+                        int maxId = int.MinValue;
+                        foreach (ItemButton button in existingButtons)
+                        {
+                            ItemButton itemButton = button.GetComponent<ItemButton>();
+
+                            if (int.Parse(itemButton.itemData.Id) > maxId)
+                            {
+                                maxIdButton = itemButton;
+                                maxId = int.Parse(itemButton.itemData.Id);
+                            }
+                        }
+                        if (maxIdButton != null)
+                        {
+                            EventSystem.current.SetSelectedGameObject(maxIdButton.gameObject);
+                            return;
+                        }
+                        break;
+                    }
+            }
+        }
+        #endregion
     }
 }
