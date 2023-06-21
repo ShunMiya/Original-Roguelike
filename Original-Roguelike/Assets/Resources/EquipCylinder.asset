@@ -9,10 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab8d685cb70f71f4a8df41b9b5387dd7, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d5967ecdc4f8c94db96509bfde41b0a, type: 3}
   m_Name: EquipCylinder
   m_EditorClassIdentifier: 
-  _id: 2
-  _itemName: EquipCylinder
+  _id: 102
+  prefab: {fileID: 953700188437577565, guid: 78ceac971156ee445a65c1ee4d50c0c7, type: 3}
+  _itemName: Cylinder
   _itemType: 1
-  _MaxStack: 1
+  _desciption: "Weapon Cylinder   Attack Bonus +1\n                              
+    Attack Range +1"
+  _AttackBonus: 1
+  _WeaponRange: 1
+  _WeaponDistance: 0

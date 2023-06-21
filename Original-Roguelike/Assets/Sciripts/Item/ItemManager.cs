@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,8 +23,6 @@ namespace ItemSystem
                 Destroy(gameObject);
                 return;
             }
-
-            itemDataBase = Resources.Load<ItemDataBase>("ItemDataBase");
         }
 
         public ItemData GetItemDataById(string itemId)
@@ -32,7 +31,15 @@ namespace ItemSystem
             {
                 if(itemData.Id == itemId)
                 {
-                    return itemData;
+                    switch(itemData.ItemType)
+                    {
+                        case ItemType.UseItem:
+                            UseItemData useItemData = itemData as UseItemData;
+                            return useItemData;
+                        case ItemType.EquipItem:
+                            EquipItemData equipItemData = itemData as EquipItemData;
+                            return equipItemData;
+                    }
                 }
             }
             return null;
@@ -49,6 +56,5 @@ namespace ItemSystem
             }
             return "Unknown";
         }
-
     }
 }

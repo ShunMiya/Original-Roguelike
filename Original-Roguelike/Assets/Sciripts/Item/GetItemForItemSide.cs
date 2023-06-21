@@ -4,24 +4,21 @@ using UnityEngine;
 
 namespace ItemSystem
 {
-    public class EquipCapsule : MonoBehaviour
+    public class GetItemForItemSide : MonoBehaviour
     {
         [SerializeField] private string itemId;
+        [SerializeField] private int itemStack;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
-                ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
+                PlayerGetItem playerGetItem = other.GetComponent<PlayerGetItem>();
 
-                playerInventory.AddItem(itemData);
-
-//                Debug.Log(itemData.ItemName + "‚ðŽæ“¾");
+                playerGetItem.GetItem(itemId , itemStack);
 
                 Destroy(gameObject);
             }
         }
     }
-
 }
