@@ -51,14 +51,14 @@ namespace UISystem
                     Debug.Log("ID" + itemData.Id + "‚ÅStack" + ((UseItemData)itemData).ItemStack + "‚ð‘I‘ð");
                     int remainingStack = playerUseItem.UseItem(itemData);
                     Debug.Log("ID" + itemData.Id + "‚ÅStack" + remainingStack + "‚É•Ï‰»");
-
-                        createItemButton.SetButtonTextAfterUseItem(itemData.Id, remainingStack);
+                    
+                    createItemButton.SetButtonTextAfterUseItem(itemData.Id, remainingStack);
   
                     break;
                 default:
                     playerUseItem.UseItem(itemData);
 
-                    Destroy(this.gameObject);
+                    createItemButton.SelectButtonChangeForDestruction(this);
                     break;
             }
         }

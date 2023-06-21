@@ -16,9 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 3161872203314884576, guid: 6895dc0c751f59b40a08e3be9e8821b7, type: 3}
   _itemName: HealPixel
   _itemType: 0
-  _desciption: 'UseItem HealPixel
-
-    HealLife +1'
+  _desciption: UseItem HealPixel   HealLife +1
   ItemStack: 1
   _MaxStack: 5
   _HealValue: 1

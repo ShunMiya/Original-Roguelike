@@ -16,11 +16,8 @@ MonoBehaviour:
   prefab: {fileID: 5638285833425248005, guid: 88f50ec5b8382824eb397ea7eb71ddcc, type: 3}
   _itemName: kapsule
   _itemType: 1
-  _desciption: 'Weapon kapsule
-
-    Attack Bonus +1
-
-    Attack Distance +1'
+  _desciption: "Weapon kapsule   Attack Bonus +1\n                              Attack
+    Distance +1"
   _AttackBonus: 1
   _WeaponRange: 0
   _WeaponDistance: 1

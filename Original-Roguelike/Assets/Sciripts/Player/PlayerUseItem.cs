@@ -20,6 +20,8 @@ namespace ItemSystem
                         string itemId = useItemData.Id;
                         itemStack = useItemData.ItemStack;
 
+                        //アイテムの効果処理。
+
                         itemStack =playerInventory.RemoveItem(itemId, itemStack);
                     }
                     break;

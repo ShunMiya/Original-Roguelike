@@ -16,6 +16,7 @@ namespace ItemSystem
         public Transform buttonContainer;
         [SerializeField] private TextMeshProUGUI informationText;
         [SerializeField] private PlayerUseItem playerUseItem;
+        [SerializeField] private GameObject MenuButton;
 
 
 
@@ -88,11 +89,7 @@ namespace ItemSystem
             foreach (ItemButton button in existingButtons)
             {
                 ItemButton existingButton = button.GetComponent<ItemButton>();
-                if (itemStack == 0)
-                {
-                    Destroy(button.gameObject);
-                    return;
-                }
+
                 if (existingButton.itemData.Id == itemId && ((UseItemData)existingButton.itemData).ItemStack == itemStack)
                 {
                     Debug.Log("”­Œ©");
@@ -103,9 +100,53 @@ namespace ItemSystem
 
                     EventSystem eventSystem = EventSystem.current;
                     eventSystem.SetSelectedGameObject(existingButton.gameObject);
+
+                    if (itemStack == 0) SelectButtonChangeForDestruction(existingButton);
                 }
             }
             Debug.Log("”­Œ©Ž¸”s");
+        }
+
+        public void SelectButtonChangeForDestruction(ItemButton button)
+        {
+            ItemButton[] existingButtons = buttonContainer.GetComponentsInChildren<ItemButton>();
+            EventSystem eventSystem = EventSystem.current;
+
+            if (existingButtons.Length > 1)
+            {
+                GameObject currentSelectedObject = eventSystem.currentSelectedGameObject;
+
+                GameObject nextSelectedObject = null;
+                for (int i = 0; i < existingButtons.Length; i++)
+                {
+                    if (existingButtons[i].gameObject == currentSelectedObject)
+                    {
+                        if (i < existingButtons.Length - 1)
+                        {
+                            nextSelectedObject = existingButtons[i + 1].gameObject;
+                        }
+                        else
+                        {
+                            nextSelectedObject = existingButtons[i - 1].gameObject;
+                        }
+                        break;
+                    }
+                }
+
+                if (nextSelectedObject == null)
+                {
+                    nextSelectedObject = existingButtons[existingButtons.Length - 1].gameObject;
+                }
+                eventSystem.SetSelectedGameObject(nextSelectedObject);
+            }
+            else
+            {
+                EventSystem.current.SetSelectedGameObject(MenuButton);
+            }
+
+            Destroy(button.gameObject);
+            return;
+
         }
     }
     #region dead specification
