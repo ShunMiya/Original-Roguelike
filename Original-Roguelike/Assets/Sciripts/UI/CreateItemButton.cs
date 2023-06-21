@@ -1,13 +1,11 @@
-using ItemSystem;
 using System.Linq;
 using TMPro;
-using UISystem;
+using ItemSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
-namespace ItemSystem
+namespace UISystem
 {
     public class CreateItemButton : MonoBehaviour
     {
@@ -18,9 +16,7 @@ namespace ItemSystem
         [SerializeField] private PlayerUseItem playerUseItem;
         [SerializeField] private GameObject MenuButton;
 
-
-
-        [SerializeField] private int totalTextLength = 20;
+        [SerializeField] private int totalTextLength;
 
         private void Update()
         {

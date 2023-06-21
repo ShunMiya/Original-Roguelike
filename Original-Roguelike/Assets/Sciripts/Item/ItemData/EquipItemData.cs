@@ -5,11 +5,25 @@ using UnityEngine;
 
 namespace ItemSystem
 {
+    public enum EquipType
+    {
+        OneHandedWeapon = 0,
+        TwoHandedWeapon = 1,
+        Armor = 2,
+    }
+
+
     [CreateAssetMenu(fileName = "NewEquipItemData", menuName = "ScriptableObject/ItemData/EquipItem")]
     public class EquipItemData : ItemData
     {
+        [SerializeField] private EquipType _EquipType;
+        public EquipType EquipType { get { return _EquipType; } }
+
         [SerializeField] private float _AttackBonus;
         public float AttackBonus { get { return _AttackBonus; } }
+
+        [SerializeField] private float _DefenseBonus;
+        public float DefenseBonus { get { return _DefenseBonus; } }
 
         [SerializeField] private float _WeaponRange;
         public float WeaponRange { get { return _WeaponRange; } }

@@ -5,8 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-using UnityEditor.PackageManager.UI;
-using UnityEngine.UIElements;
 
 namespace UISystem
 {
@@ -17,13 +15,14 @@ namespace UISystem
         private CanvasGroup canvasGroup;
         public PlayerUseItem playerUseItem;
         private CreateItemButton createItemButton;
+        private EquipmentItem equipmentItem;
 
 
         void Start()
         {
             canvasGroup = GetComponentInParent<CanvasGroup>();
             createItemButton = GetComponentInParent<CreateItemButton>();
-
+            equipmentItem = transform.parent.parent.GetComponentInChildren<EquipmentItem>();
         }
 
         public void OnSelected()
@@ -61,6 +60,11 @@ namespace UISystem
                     createItemButton.SelectButtonChangeForDestruction(this);
                     break;
             }
+        }
+
+        public void EquipItem()
+        {
+            equipmentItem.EquipItem(itemData);
         }
     }
 }

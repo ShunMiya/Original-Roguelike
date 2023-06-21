@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d5967ecdc4f8c94db96509bfde41b0a, type: 3}
-  m_Name: EquipCylinder
+  m_Name: EquipShield
   m_EditorClassIdentifier: 
-  _id: 102
-  prefab: {fileID: 953700188437577565, guid: 78ceac971156ee445a65c1ee4d50c0c7, type: 3}
-  _itemName: Cylinder
+  _id: 103
+  prefab: {fileID: 6855997128254217901, guid: d66a9404c6f73244d813b000d76915dc, type: 3}
+  _itemName: Shield
   _itemType: 1
-  _desciption: "Weapon Cylinder   Attack Bonus +1\n                              
-    Attack Range +1"
-  _EquipType: 1
-  _AttackBonus: 1
-  _DefenseBonus: 0
-  _WeaponRange: 1
+  _desciption: Armor Shield   Defense Bonus +1
+  _EquipType: 2
+  _AttackBonus: 0
+  _DefenseBonus: 1
+  _WeaponRange: 0
   _WeaponDistance: 0
