@@ -48,7 +48,7 @@ namespace ItemSystem
             }
         }
 
-        public void RemoveItem(string itemId , int itemStack)
+        public int RemoveItem(string itemId , int itemStack)
         {
             ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
 
@@ -56,12 +56,10 @@ namespace ItemSystem
             {
                 case 0:
                     UseItemData useItemData = itemData as UseItemData;
-                    List<UseItemData> existingItems = inventory
-                        .FindAll(item => item.Id == itemId && (item as UseItemData).ItemStack == itemStack)
-                        .Cast<UseItemData>()
-                        .ToList();
+                    UseItemData existingItem = inventory
+    .Find(item => item.Id == itemId && (item as UseItemData).ItemStack == itemStack) as UseItemData;
 
-                    foreach (UseItemData existingItem in existingItems)
+                    if (existingItem != null)
                     {
                         int remainingStack = existingItem.ItemStack - 1;
 
@@ -69,7 +67,7 @@ namespace ItemSystem
                         {
                             existingItem.ItemStack = remainingStack;
                             Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "Çè¡îÔ");
-                            return;
+                            return remainingStack;
                         }
                         else if (remainingStack == 0)
                         {
@@ -77,7 +75,7 @@ namespace ItemSystem
                             inventory.Remove(existingItem);
                             Destroy(existingItem);
                             Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "ÇégÇ¢êÿÇ¡ÇΩ");
-                            return;
+                            return remainingStack;
                         }
                         else
                         {
@@ -97,6 +95,7 @@ namespace ItemSystem
                     }
                     break;
             }
+            return 0;
         }
     }
 }

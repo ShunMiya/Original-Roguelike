@@ -9,18 +9,18 @@ namespace ItemSystem
         public PlayerInventoryDataBase playerInventory;
 
 
-        public ItemData UseItem(ItemData itemData)
+        public int UseItem(ItemData itemData)
         {
+            int itemStack = 0;
             switch (itemData.ItemType)
             {
                 case 0:
                     if (itemData is UseItemData useItemData)
                     {
                         string itemId = useItemData.Id;
-                        int itemStack = useItemData.ItemStack;
+                        itemStack = useItemData.ItemStack;
 
-                        playerInventory.RemoveItem(itemId, itemStack);
-                        itemData = useItemData as ItemData;
+                        itemStack =playerInventory.RemoveItem(itemId, itemStack);
                     }
                     break;
                 default:
@@ -29,7 +29,7 @@ namespace ItemSystem
                     playerInventory.RemoveItem(ItemId, 0);
                     break;
             }
-            return itemData;
+            return itemStack;
         }
 
     }

@@ -80,16 +80,36 @@ namespace ItemSystem
             return itemText;
         }
 
-        public void SetButtonTextAfterUseItem(GameObject buttonObject)
+        public void SetButtonTextAfterUseItem(string itemId ,int itemStack)
         {
-            ItemButton itemButton = buttonObject.GetComponent<ItemButton>();
-            ItemData itemData = itemButton.itemData;
-            string itemName = itemData.ItemName;
-            TextMeshProUGUI buttonText = buttonObject.GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = FormatItemText(itemName, ((UseItemData)itemData).ItemStack);
+            Debug.Log("ID" +itemId + "Ç≈Stack" +itemStack + "ÇíTÇ∑");
+
+            ItemButton[] existingButtons = buttonContainer.GetComponentsInChildren<ItemButton>();
+            foreach (ItemButton button in existingButtons)
+            {
+                ItemButton existingButton = button.GetComponent<ItemButton>();
+                if (itemStack == 0)
+                {
+                    Destroy(button.gameObject);
+                    return;
+                }
+                if (existingButton.itemData.Id == itemId && ((UseItemData)existingButton.itemData).ItemStack == itemStack)
+                {
+                    Debug.Log("î≠å©");
+                    string itemName = existingButton.itemData.ItemName;
+                    TextMeshProUGUI buttonText = existingButton.GetComponentInChildren<TextMeshProUGUI>();
+                    buttonText.text = FormatItemText(itemName,itemStack);
+                    Debug.Log("èëÇ´ä∑Ç¶äÆóπ");
+
+                    EventSystem eventSystem = EventSystem.current;
+                    eventSystem.SetSelectedGameObject(existingButton.gameObject);
+                }
+            }
+            Debug.Log("î≠å©é∏îs");
         }
-        #region dead specification
-        public void SetButtonAfterUseItem(ItemData AfteritemData)
+    }
+    #region dead specification
+/*public void SetButtonAfterUseItem(ItemData AfteritemData)
         {
             SetButton();
             ItemButton[] existingButtons = buttonContainer.GetComponentsInChildren<ItemButton>();
@@ -226,7 +246,6 @@ namespace ItemSystem
                         break;
                     }
             }
-        }
+        }*/
         #endregion
-    }
 }

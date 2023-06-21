@@ -2028,7 +2028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
-  buttonPrefab: {fileID: 2632176645480741674, guid: 784eceb1514aeaf498adebb175f6c09a, type: 3}
+  buttonPrefab: {fileID: 2618152521724754249, guid: 784eceb1514aeaf498adebb175f6c09a, type: 3}
   buttonContainer: {fileID: 914169299}
   informationText: {fileID: 114874062}
   playerUseItem: {fileID: 2146079526}

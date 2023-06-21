@@ -45,18 +45,20 @@ namespace UISystem
 
         public void UseItem()
         {
-            itemData = playerUseItem.UseItem(itemData);
-
             switch (itemData.ItemType)
             {
                 case 0:
-                    if(((UseItemData)itemData).ItemStack == 0) Destroy(this.gameObject);
+                    Debug.Log("ID" + itemData.Id + "‚ÅStack" + ((UseItemData)itemData).ItemStack + "‚ð‘I‘ð");
+                    int remainingStack = playerUseItem.UseItem(itemData);
+                    Debug.Log("ID" + itemData.Id + "‚ÅStack" + remainingStack + "‚É•Ï‰»");
 
-                        createItemButton.SetButtonTextAfterUseItem(this.gameObject);
+                        createItemButton.SetButtonTextAfterUseItem(itemData.Id, remainingStack);
   
                     break;
                 default:
-                    Destroy(this.gameObject); 
+                    playerUseItem.UseItem(itemData);
+
+                    Destroy(this.gameObject);
                     break;
             }
         }
