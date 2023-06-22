@@ -51,7 +51,7 @@ namespace UISystem
                     int remainingStack = playerUseItem.UseItem(itemData);
                     Debug.Log("ID" + itemData.Id + "‚ÅStack" + remainingStack + "‚É•Ï‰»");
                     
-                    createItemButton.SetButtonTextAfterUseItem(itemData.Id, remainingStack);
+                    createItemButton.SetButtonAfterUseItem(itemData.Id, remainingStack);
   
                     break;
                 default:

@@ -33,7 +33,7 @@ namespace UISystem
                     break;
                 case (EquipType)2:
                     RightEquip = itemData;
-                    if (((EquipItemData)LeftEquip).EquipType == (EquipType)1) LeftEquip = null;
+                    if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType == (EquipType)1) LeftEquip = null;
                     break;
             }
             SetButtonData();

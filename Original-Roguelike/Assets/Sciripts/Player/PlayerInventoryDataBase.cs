@@ -54,7 +54,7 @@ namespace ItemSystem
             switch (itemData.ItemType)
             {
                 case 0:
-                    UseItemData useItemData = itemData as UseItemData;
+//                    UseItemData useItemData = itemData as UseItemData;
                     UseItemData existingItem = inventory
     .Find(item => item.Id == itemId && (item as UseItemData).ItemStack == itemStack) as UseItemData;
 

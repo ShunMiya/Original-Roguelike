@@ -60,7 +60,7 @@ namespace UISystem
 
         public void unequip()
         {
-            GetComponentInParent<EquipmentItem>().UnequipItem(itemData);
+            if(itemData != null)GetComponentInParent<EquipmentItem>().UnequipItem(itemData);
             itemData = null;
             informationText.text = "";
             buttonText.text = "";

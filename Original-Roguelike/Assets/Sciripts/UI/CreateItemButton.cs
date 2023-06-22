@@ -18,14 +18,6 @@ namespace UISystem
 
         [SerializeField] private int totalTextLength;
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.C)) //仮置き
-            {
-                SetButton();
-            }
-        }
-
         public void SetButton()
         {
             ClearButtons();
@@ -77,7 +69,7 @@ namespace UISystem
             return itemText;
         }
 
-        public void SetButtonTextAfterUseItem(string itemId ,int itemStack)
+        public void SetButtonAfterUseItem(string itemId ,int itemStack)
         {
             Debug.Log("ID" +itemId + "でStack" +itemStack + "を探す");
 
@@ -139,150 +131,8 @@ namespace UISystem
             {
                 EventSystem.current.SetSelectedGameObject(MenuButton);
             }
-
             Destroy(button.gameObject);
             return;
-
         }
     }
-    #region dead specification
-/*public void SetButtonAfterUseItem(ItemData AfteritemData)
-        {
-            SetButton();
-            ItemButton[] existingButtons = buttonContainer.GetComponentsInChildren<ItemButton>();
-            Debug.Log("Aに到達");
-            switch (AfteritemData.ItemType)
-            {
-                case 0:
-                    {
-                        UseItemData afteruseItemData = AfteritemData as UseItemData;
-
-                        foreach (ItemButton button in existingButtons)
-                        {
-                            Debug.Log("B1に到達");
-                            ItemButton itemButton = button.GetComponent<ItemButton>();
-                            UseItemData buttonUseItemData = itemButton.itemData as UseItemData;
-                            Debug.Log(buttonUseItemData.Id + "と" + afteruseItemData.Id);
-                            Debug.Log(buttonUseItemData.ItemStack + "と" + afteruseItemData.ItemStack);
-                            if (buttonUseItemData.Id == afteruseItemData.Id &&
-                            buttonUseItemData.ItemStack == afteruseItemData.ItemStack)
-                            {
-                                Debug.Log("到達");
-                                EventSystem.current.SetSelectedGameObject(itemButton.gameObject);
-                                return;
-                            }
-                        }
-                        Debug.Log("B2に到達");
-
-                        foreach (ItemButton button in existingButtons)
-                        {
-                            ItemButton itemButton = button.GetComponent<ItemButton>();
-
-                            if (itemButton.itemData == AfteritemData)
-                            {
-                                EventSystem.current.SetSelectedGameObject(itemButton.gameObject);
-                                return;
-                            }
-                        }
-                        Debug.Log("B3に到達");
-
-                        ItemButton nextButton = null;
-                        int nextId = int.MaxValue;
-                        foreach (ItemButton button in existingButtons)
-                        {
-                            ItemButton itemButton = button.GetComponent<ItemButton>();
-
-                            if (int.Parse(itemButton.itemData.Id) > int.Parse(AfteritemData.Id) && int.Parse(itemButton.itemData.Id) < nextId)
-                            {
-                                nextButton = itemButton;
-                                nextId = int.Parse(itemButton.itemData.Id);
-                            }
-                        }
-                        if (nextButton != null)
-                        {
-                            EventSystem.current.SetSelectedGameObject(nextButton.gameObject);
-                            return;
-                        }
-                        Debug.Log("B4に到達");
-
-                        ItemButton maxIdButton = null;
-                        int maxId = int.MinValue;
-                        foreach (ItemButton button in existingButtons)
-                        {
-                            ItemButton itemButton = button.GetComponent<ItemButton>();
-
-                            if (int.Parse(itemButton.itemData.Id) > maxId)
-                            {
-                                maxIdButton = itemButton;
-                                maxId = int.Parse(itemButton.itemData.Id);
-                            }
-                        }
-                        if (maxIdButton != null)
-                        {
-                            EventSystem.current.SetSelectedGameObject(maxIdButton.gameObject);
-                            return;
-                        }
-                        break;
-                    }
-
-
-                default:
-                    {
-                        Debug.Log("C1に到達");
-
-                        foreach (ItemButton button in existingButtons)
-                        {
-                            ItemButton itemButton = button.GetComponent<ItemButton>();
-
-                            if (itemButton.itemData.Id == AfteritemData.Id)
-                            {
-                                Debug.Log("到達");
-                                EventSystem.current.SetSelectedGameObject(itemButton.gameObject);
-                                return;
-                            }
-                            continue;
-                        }
-                        Debug.Log("C2に到達");
-
-                        ItemButton nextButton = null;
-                        int nextId = int.MaxValue;
-                        foreach (ItemButton button in existingButtons)
-                        {
-                            ItemButton itemButton = button.GetComponent<ItemButton>();
-
-                            if (int.Parse(itemButton.itemData.Id) > int.Parse(AfteritemData.Id) && int.Parse(itemButton.itemData.Id) < nextId)
-                            {
-                                nextButton = itemButton;
-                                nextId = int.Parse(itemButton.itemData.Id);
-                            }
-                        }
-                        if (nextButton != null)
-                        {
-                            EventSystem.current.SetSelectedGameObject(nextButton.gameObject);
-                            return;
-                        }
-                        Debug.Log("C3に到達");
-
-                        ItemButton maxIdButton = null;
-                        int maxId = int.MinValue;
-                        foreach (ItemButton button in existingButtons)
-                        {
-                            ItemButton itemButton = button.GetComponent<ItemButton>();
-
-                            if (int.Parse(itemButton.itemData.Id) > maxId)
-                            {
-                                maxIdButton = itemButton;
-                                maxId = int.Parse(itemButton.itemData.Id);
-                            }
-                        }
-                        if (maxIdButton != null)
-                        {
-                            EventSystem.current.SetSelectedGameObject(maxIdButton.gameObject);
-                            return;
-                        }
-                        break;
-                    }
-            }
-        }*/
-        #endregion
 }
