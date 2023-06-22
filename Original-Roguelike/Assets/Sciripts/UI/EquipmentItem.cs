@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ItemSystem;
+using TMPro;
 
 namespace UISystem
 {
     public class EquipmentItem : MonoBehaviour
     {
         public PlayerInventoryDataBase playerInventory;
+        [SerializeField] private TextMeshProUGUI BonusText;
 
         public ItemData RightEquip;
         public ItemData LeftEquip;
@@ -35,6 +37,7 @@ namespace UISystem
                     break;
             }
             SetButtonData();
+            SetBonusText();
         }
 
         public void UnequipItem(ItemData itemData)
@@ -42,13 +45,12 @@ namespace UISystem
             if (RightEquip == itemData)
             {
                 RightEquip = null;
-                return;
             }
             if (LeftEquip == itemData)
             {
                 LeftEquip = null;
-                return;
             }
+            SetBonusText(); 
         }
 
         public void SetButtonData()
@@ -59,5 +61,24 @@ namespace UISystem
             EquipmentItemButton rightButton = transform.Find("RightHandButton").GetComponent<EquipmentItemButton>();
             rightButton.SetEquip(RightEquip);
         }
+
+        public void SetBonusText()
+        {
+            EquipItemData rightequip = RightEquip as EquipItemData;
+            EquipItemData leftequip = LeftEquip as EquipItemData;
+            float addAttack = (rightequip != null ? rightequip.AttackBonus : 0) + (leftequip != null ? leftequip.AttackBonus : 0);
+            float addDefence = (rightequip != null ? rightequip.DefenseBonus : 0) + (leftequip != null ? leftequip.DefenseBonus : 0);
+            float RangeBonus = (rightequip != null ? rightequip.WeaponRange : 0) + (leftequip != null ? leftequip.WeaponRange : 0);
+            float DistanceBonus = (rightequip != null ? rightequip.WeaponDistance : 0) + (leftequip != null ? leftequip.WeaponDistance : 0);
+
+
+            string output = "Attack Bonus\t"+addAttack+"\n" +
+                            "Defense Bonus\t"+addDefence+"\n" +
+                            "Range Bonus\t"+RangeBonus+"\n" +
+                            "Distance Bonus\t"+DistanceBonus;
+
+            BonusText.text = (output);
+        }
+
     }
 }
