@@ -37,31 +37,27 @@ namespace UISystem
             SetButtonData();
         }
 
-        private void UnequipItemForRight(ItemData itemData)
+        public void UnequipItem(ItemData itemData)
         {
             if (RightEquip == itemData)
             {
-                RightEquip = null; // ‘•”õ‚ğŠO‚·
-                Debug.Log("‘•”õ‚ğ‰ğœ‚µ‚Ü‚µ‚½: " + itemData.ItemName);
+                RightEquip = null;
+                return;
             }
-        }
-
-        private void UnequipItemForLeft(ItemData itemData)
-        {
             if (LeftEquip == itemData)
             {
-                LeftEquip = null; // ‘•”õ‚ğŠO‚·
-                Debug.Log("‘•”õ‚ğ‰ğœ‚µ‚Ü‚µ‚½: " + itemData.ItemName);
+                LeftEquip = null;
+                return;
             }
         }
 
         public void SetButtonData()
         {
-            ItemButton rightButton = transform.Find("RightHandButton").GetComponent<ItemButton>();
-            rightButton.itemData = RightEquip;
-
-            ItemButton leftButton = transform.Find("LeftHandButton").GetComponent<ItemButton>();
-            leftButton.itemData = LeftEquip;
+            EquipmentItemButton leftButton = transform.Find("LeftHandButton").GetComponent<EquipmentItemButton>();
+            leftButton.SetEquip(LeftEquip);
+            
+            EquipmentItemButton rightButton = transform.Find("RightHandButton").GetComponent<EquipmentItemButton>();
+            rightButton.SetEquip(RightEquip);
         }
     }
 }

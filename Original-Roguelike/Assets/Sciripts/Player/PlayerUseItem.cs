@@ -29,6 +29,8 @@ namespace ItemSystem
                     string ItemId = itemData.Id;
 
                     playerInventory.RemoveItem(ItemId, 0);
+
+                    //‘•”õ‰ğœü‚è‚Ìˆ—
                     break;
             }
             return itemStack;
