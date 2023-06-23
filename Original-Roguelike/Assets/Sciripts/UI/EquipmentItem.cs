@@ -20,20 +20,30 @@ namespace UISystem
             switch (itemData.EquipType)
             {
                 case 0:
-/*                    if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType != (EquipType)1)
+                    /*if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType != (EquipType)1)
                     {
                         RightEquip = itemData;
                         break;
                     }*/
+                    if(LeftEquip != null) ((EquipItemData)LeftEquip).Equipped = false;
+                    ((EquipItemData)itemData).Equipped = true;
                     LeftEquip = itemData;
                     break;
                 case (EquipType)1:
+                    if (LeftEquip != null) ((EquipItemData)LeftEquip).Equipped = false;
+                    ((EquipItemData)itemData).Equipped = true;
                     LeftEquip = itemData;
+                    if(RightEquip != null) ((EquipItemData)RightEquip).Equipped = false;
                     RightEquip = null;
                     break;
                 case (EquipType)2:
+                    ((EquipItemData)itemData).Equipped = true;
                     RightEquip = itemData;
-                    if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType == (EquipType)1) LeftEquip = null;
+                    if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType == (EquipType)1)
+                    {
+                        ((EquipItemData)LeftEquip).Equipped = false;
+                        LeftEquip = null;
+                    }
                     break;
             }
             SetButtonData();
@@ -44,10 +54,12 @@ namespace UISystem
         {
             if (RightEquip == itemData)
             {
+                ((EquipItemData)RightEquip).Equipped = false;
                 RightEquip = null;
             }
             if (LeftEquip == itemData)
             {
+                ((EquipItemData)LeftEquip).Equipped = false;
                 LeftEquip = null;
             }
             SetBonusText(); 

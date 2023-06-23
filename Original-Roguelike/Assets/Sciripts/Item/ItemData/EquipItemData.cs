@@ -19,6 +19,8 @@ namespace ItemSystem
         [SerializeField] private EquipType _EquipType;
         public EquipType EquipType { get { return _EquipType; } }
 
+        public bool Equipped;
+
         [SerializeField] private float _AttackBonus;
         public float AttackBonus { get { return _AttackBonus; } }
 

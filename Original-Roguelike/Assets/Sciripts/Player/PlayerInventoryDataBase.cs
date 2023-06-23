@@ -41,8 +41,9 @@ namespace ItemSystem
                     inventory.Add(newItem);
                     break;
                 default:
-                    inventory.Add(itemData);
-                    Debug.Log(itemData.ItemName + "‚ðŽæ“¾");
+                    ItemData newEquipItem = Instantiate(itemData);
+                    inventory.Add(newEquipItem);
+                    Debug.Log(newEquipItem.ItemName + "‚ðŽæ“¾");
                     break;
             }
         }
