@@ -15,7 +15,7 @@ namespace ItemSystem
 
         public void InitializeFromPlayerStatus(PlayerStatus playerStatus)
         {
-            Debug.Log(inventorySize + "Ç"+playerStatus.inventorySize + "Ç…ïœçX");
+            Debug.Log("inventorySize"+inventorySize + "Ç"+playerStatus.inventorySize + "Ç…ïœçX");
             inventorySize = playerStatus.inventorySize;
         }
 
@@ -39,7 +39,7 @@ namespace ItemSystem
                         if (totalStack <= useItemData.MaxStack)
                         {
                             existingItem.ItemStack = totalStack;
-                            Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "ÇéÊìæ");
+                            Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "Ç…ëùâ¡");
                             return true;
                         }
                     }
@@ -67,7 +67,7 @@ namespace ItemSystem
             {
                 case 0:
                     UseItemData existingItem = inventory
-    .Find(item => item.Id == itemId && (item as UseItemData).ItemStack == itemStack) as UseItemData;
+                    .Find(item => item.Id == itemId && (item as UseItemData).ItemStack == itemStack) as UseItemData;
 
                     if (existingItem != null)
                     {
