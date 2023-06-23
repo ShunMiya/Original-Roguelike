@@ -12,34 +12,28 @@ namespace UISystem
         public PlayerInventoryDataBase playerInventory;
         public TextMeshProUGUI informationText;
         public ItemData itemData;
-        private CanvasGroup canvasGroup;
         private TextMeshProUGUI buttonText;
 
 
         // Start is called before the first frame update
         void Start()
         {
-            canvasGroup = GetComponentInParent<CanvasGroup>();
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
 
         }
 
         public void OnSelected()
         {
-            if (canvasGroup == null || canvasGroup.interactable)
+            if (EventSystem.current.currentSelectedGameObject != gameObject)
             {
-                if (EventSystem.current.currentSelectedGameObject != gameObject)
-                {
-                    EventSystem.current.SetSelectedGameObject(gameObject);
-                }
-                if (itemData == null)
-                {
-                    informationText.text = "";
-                    return;
-                }
-                informationText.text = "UnEquip " + itemData.ItemName;
-
+                EventSystem.current.SetSelectedGameObject(gameObject);
             }
+            if (itemData == null)
+            {
+                informationText.text = "";
+                return;
+            }
+            informationText.text = "UnEquip " + itemData.ItemName;
         }
         public void OnDeselected()
         {

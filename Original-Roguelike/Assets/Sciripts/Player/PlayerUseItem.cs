@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UISystem;
 using UnityEngine;
 
 namespace ItemSystem
@@ -7,7 +8,11 @@ namespace ItemSystem
     public class PlayerUseItem : MonoBehaviour
     {
         public PlayerInventoryDataBase playerInventory;
-
+//        EquipmentItem equipmentItem = GameObject.Find("EquipArea").GetComponent<EquipmentItem>();
+        private void Start()
+        {
+//            equipmentItem.GetComponent<EquipmentItem>();
+        }
 
         public int UseItem(ItemData itemData)
         {
@@ -27,10 +32,11 @@ namespace ItemSystem
                     break;
                 default:
                     string ItemId = itemData.Id;
+                    //‘•”õ‰ğœü‚è‚Ìˆ—
 
+                    //if (((EquipItemData)itemData).Equipped == true) equipmentItem.UnequipItem(itemData);// NonActive
                     playerInventory.RemoveItem(ItemId, 0);
 
-                    //‘•”õ‰ğœü‚è‚Ìˆ—
                     break;
             }
             return itemStack;

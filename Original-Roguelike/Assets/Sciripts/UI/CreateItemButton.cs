@@ -69,6 +69,7 @@ namespace UISystem
             return itemText;
         }
 
+
         public void SetButtonAfterUseItem(string itemId ,int itemStack)
         {
             Debug.Log("ID" +itemId + "‚ÅStack" +itemStack + "‚ð’T‚·");

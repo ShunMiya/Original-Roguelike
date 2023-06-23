@@ -12,7 +12,6 @@ namespace UISystem
     {
         public TextMeshProUGUI informationText;
         public ItemData itemData;
-        private CanvasGroup canvasGroup;
         public PlayerUseItem playerUseItem;
         private CreateItemButton createItemButton;
         private EquipmentItem equipmentItem;
@@ -20,22 +19,18 @@ namespace UISystem
 
         void Start()
         {
-            canvasGroup = GetComponentInParent<CanvasGroup>();
             createItemButton = GetComponentInParent<CreateItemButton>();
             equipmentItem = transform.parent.parent.GetComponentInChildren<EquipmentItem>();
         }
 
         public void OnSelected()
         {
-            if (canvasGroup == null || canvasGroup.interactable)
+            if (EventSystem.current.currentSelectedGameObject != gameObject)
             {
-                if (EventSystem.current.currentSelectedGameObject != gameObject)
-                {
-                    EventSystem.current.SetSelectedGameObject(gameObject);
-                }
-                string desciption = itemData.Desciption;
-                informationText.text = desciption;
+                EventSystem.current.SetSelectedGameObject(gameObject);
             }
+            string desciption = itemData.Desciption;
+            informationText.text = desciption;
         }
         public void OnDeselected()
         {

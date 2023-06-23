@@ -1,3 +1,4 @@
+using PlayerStatusList;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,15 @@ namespace ItemSystem
     public class PlayerInventoryDataBase : ScriptableObject
     {
         public List<ItemData> inventory = new List<ItemData>();
+        public int inventorySize;
 
-        public void AddItem(string itemId , int itemStack)
+        public void InitializeFromPlayerStatus(PlayerStatus playerStatus)
+        {
+            Debug.Log(inventorySize + "‚ð"+playerStatus.inventorySize + "‚É•ÏX");
+            inventorySize = playerStatus.inventorySize;
+        }
+
+        public bool AddItem(string itemId , int itemStack)
         {
             ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
 
@@ -32,20 +40,23 @@ namespace ItemSystem
                         {
                             existingItem.ItemStack = totalStack;
                             Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "‚ðŽæ“¾");
-                            return;
+                            return true;
                         }
                     }
+                    if (inventory.Count == inventorySize) return false;
                     UseItemData newItem = Instantiate(useItemData);
                     newItem.ItemStack = itemStack;
                     Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "‚ðŽæ“¾");
                     inventory.Add(newItem);
                     break;
                 default:
+                    if (inventory.Count == inventorySize) return false;
                     ItemData newEquipItem = Instantiate(itemData);
                     inventory.Add(newEquipItem);
                     Debug.Log(newEquipItem.ItemName + "‚ðŽæ“¾");
                     break;
             }
+            return true;
         }
 
         public int RemoveItem(string itemId , int itemStack)
@@ -55,7 +66,6 @@ namespace ItemSystem
             switch (itemData.ItemType)
             {
                 case 0:
-//                    UseItemData useItemData = itemData as UseItemData;
                     UseItemData existingItem = inventory
     .Find(item => item.Id == itemId && (item as UseItemData).ItemStack == itemStack) as UseItemData;
 

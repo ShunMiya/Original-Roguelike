@@ -9,9 +9,11 @@ namespace ItemSystem
     {
         public PlayerInventoryDataBase playerInventory;
 
-        public void GetItem(string itemId , int itemStack)
+        public bool GetItem(string itemId , int itemStack)
         {
-            playerInventory.AddItem(itemId , itemStack);
+            bool ItemGet =playerInventory.AddItem(itemId , itemStack);
+
+            return ItemGet;
         }
 
     }

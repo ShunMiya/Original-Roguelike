@@ -8,6 +8,7 @@ namespace ItemSystem
     {
         [SerializeField] private string itemId;
         [SerializeField] private int itemStack;
+        [SerializeField] private PlayerInventoryDataBase inventoryData;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -15,9 +16,11 @@ namespace ItemSystem
             {
                 PlayerGetItem playerGetItem = other.GetComponent<PlayerGetItem>();
 
-                playerGetItem.GetItem(itemId , itemStack);
+                bool ItemGet =playerGetItem.GetItem(itemId , itemStack);
 
-                Destroy(gameObject);
+                if (ItemGet == false) Debug.Log("éùÇøï®Ç™Ç¢Ç¡ÇœÇ¢ÇæÇÊÅI");
+
+                if(ItemGet == true) Destroy(gameObject);
             }
         }
     }

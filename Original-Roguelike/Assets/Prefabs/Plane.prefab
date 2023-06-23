@@ -113,3 +113,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 103
   itemStack: 0
+  inventoryData: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
