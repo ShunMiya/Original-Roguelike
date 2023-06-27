@@ -11,7 +11,7 @@ namespace UISystem
     {
         public PlayerInventoryDataBase playerInventory;
         public TextMeshProUGUI informationText;
-        public ItemData itemData;
+        public IItemData itemData;
         private TextMeshProUGUI buttonText;
 
 
@@ -40,7 +40,7 @@ namespace UISystem
             informationText.text = "";
         }
 
-        public void SetEquip(ItemData iitemData)
+        public void SetEquip(IItemData iitemData)
         {
             if (iitemData == null)
             {

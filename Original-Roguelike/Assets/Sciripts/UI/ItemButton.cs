@@ -11,7 +11,7 @@ namespace UISystem
     public class ItemButton : MonoBehaviour
     {
         public TextMeshProUGUI informationText;
-        public ItemData itemData;
+        public IItemData itemData;
         public PlayerUseItem playerUseItem;
         private CreateItemButton createItemButton;
         private EquipmentItem equipmentItem;
@@ -42,7 +42,7 @@ namespace UISystem
             switch (itemData.ItemType)
             {
                 case 0:
-                    Debug.Log("ID" + itemData.Id + "‚ÅStack" + ((UseItemData)itemData).ItemStack + "‚ð‘I‘ð");
+                    Debug.Log("ID" + itemData.Id + "‚ÅStack" + ((Consumable)itemData).ItemStock + "‚ð‘I‘ð");
                     int remainingStack = playerUseItem.UseItem(itemData);
                     Debug.Log("ID" + itemData.Id + "‚ÅStack" + remainingStack + "‚É•Ï‰»");
                     

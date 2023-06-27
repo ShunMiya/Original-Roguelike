@@ -4,11 +4,6 @@ using UnityEngine;
 
 namespace ItemSystem
 {
-    public enum ItemType
-    {
-        UseItem = 0,
-        EquipItem = 1,
-    }
 
     public abstract class ItemData : ScriptableObject
     {

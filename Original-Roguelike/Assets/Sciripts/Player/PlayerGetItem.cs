@@ -9,7 +9,7 @@ namespace ItemSystem
     {
         public PlayerInventoryDataBase playerInventory;
 
-        public bool GetItem(string itemId , int itemStack)
+        public bool GetItem(int itemId , int itemStack)
         {
             bool ItemGet =playerInventory.AddItem(itemId , itemStack);
 

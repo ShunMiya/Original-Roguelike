@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace ItemSystem
 {
@@ -10,8 +11,8 @@ namespace ItemSystem
     [CreateAssetMenu(menuName = "ScriptableObject/PlayerInventoryDB")]
     public class PlayerInventoryDataBase : ScriptableObject
     {
-        public List<ItemData> inventory = new List<ItemData>();
-        public int inventorySize;
+        public List<IItemData> inventory = new List<IItemData>();
+        int inventorySize;
 
         public void InitializeFromPlayerStatus(PlayerStatus playerStatus)
         {
@@ -19,14 +20,16 @@ namespace ItemSystem
             inventorySize = playerStatus.inventorySize;
         }
 
-        public bool AddItem(string itemId , int itemStack)
+        public bool AddItem(int itemId , int num)
         {
-            ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
-
+            IItemData itemData = IItemDataBase.GetItemById(itemId);
+            bool GetItem = false;
             switch(itemData.ItemType)
             {
                 case 0:
-                    UseItemData useItemData = itemData as UseItemData;
+                    GetItem = AddConsumableItem(itemData,num);
+                    break;
+                    /*UseItemData useItemData = itemData as UseItemData;
                     List<UseItemData> existingItems = inventory
                                 .FindAll(item => item.Id == itemId && item)
                                 .Cast<UseItemData>()
@@ -48,25 +51,67 @@ namespace ItemSystem
                     newItem.ItemStack = itemStack;
                     Debug.Log(itemData.ItemName + "(" + itemStack + ")" + "‚ðŽæ“¾");
                     inventory.Add(newItem);
-                    break;
+                    break;*/
                 default:
-                    if (inventory.Count == inventorySize) return false;
+                    GetItem = AddEquipment(itemData);
+                    break;
+                    /*if (inventory.Count == inventorySize) return false;
                     ItemData newEquipItem = Instantiate(itemData);
                     inventory.Add(newEquipItem);
                     Debug.Log(newEquipItem.ItemName + "‚ðŽæ“¾");
-                    break;
+                    break;*/
             }
+            return GetItem;
+        }
+
+        public bool AddConsumableItem(IItemData itemData,int num)
+        {
+            Consumable consumable = itemData as Consumable;
+            List<Consumable> existingItems = inventory
+                        .FindAll(item => item.Id == consumable.Id && item is Consumable)
+                        .Cast<Consumable>()
+                        .ToList();
+
+            foreach (Consumable existingItem in existingItems)
+            {
+                int totalStack = existingItem.ItemStock + num;
+
+                if (totalStack <= existingItem.MaxStock)
+                {
+                    existingItem.ItemStock = totalStack;
+                    Debug.Log(existingItem.ItemName + "(" + num + ")" + "‚É‘‰Á");
+                    return true;
+                }
+            }
+            if (inventory.Count == inventorySize) return false;
+            Consumable newItem = Instantiate(consumable);
+            newItem.ItemStock = num;
+            Debug.Log(newItem.ItemName + "(" + num + ")" + "‚ðŽæ“¾");
+            inventory.Add(newItem);
             return true;
         }
 
-        public int RemoveItem(string itemId , int itemStack)
+        public bool AddEquipment(IItemData itemData)
         {
-            ItemData itemData = ItemManager.Instance.GetItemDataById(itemId);
+            if (inventory.Count == inventorySize) return false;
+            Equipment equipment = itemData as Equipment;
+            Equipment newEquipItem = Instantiate(equipment);
+            inventory.Add(newEquipItem);
+            Debug.Log(newEquipItem.ItemName + "‚ðŽæ“¾");
+            return true;
+        }
+
+        public int RemoveItem(int itemId , int itemStock)
+        {
+            IItemData itemData = IItemDataBase.GetItemById(itemId);
+            int Stock = 0;
 
             switch (itemData.ItemType)
             {
                 case 0:
-                    UseItemData existingItem = inventory
+                    Stock = RemoveConsumable(itemData, itemStock);
+                    break;
+                    /*UseItemData existingItem = inventory
                     .Find(item => item.Id == itemId && (item as UseItemData).ItemStack == itemStack) as UseItemData;
 
                     if (existingItem != null)
@@ -94,16 +139,64 @@ namespace ItemSystem
                             Destroy(existingItem);
                         }
                     }
-                    break;
+                    break;*/
                 default:
-                    ItemData existingEquipItem = inventory.Find(item => item.Id == itemId);
+                    Stock = RemoveEquipment(itemData);
+                    break;
+                    /*ItemData existingEquipItem = inventory.Find(item => item.Id == itemId);
 
                     if (existingEquipItem != null)
                     {
                         inventory.Remove(existingEquipItem);
                         Debug.Log(itemData.ItemName + "‚ðŽÌ‚Ä‚½");
                     }
-                    break;
+                    break;*/
+            }
+            return Stock;
+        }
+
+        public int RemoveConsumable(IItemData itemData,int num)
+        {
+            Consumable existingItem = inventory
+                    .Find(item => item.Id == itemData.Id && (item as Consumable).ItemStock == num) as Consumable;
+
+            if (existingItem != null)
+            {
+                int remainingStack = existingItem.ItemStock - 1;
+
+                if (remainingStack > 0)
+                {
+                    existingItem.ItemStock = remainingStack;
+                    Debug.Log(itemData.ItemName + "(" + num + ")" + "‚ðÁ”ï");
+                    return remainingStack;
+                }
+                else if (remainingStack == 0)
+                {
+                    existingItem.ItemStock = remainingStack;
+                    inventory.Remove(existingItem);
+                    Destroy(existingItem);
+                    Debug.Log(itemData.ItemName + "(" + num + ")" + "‚ðŽg‚¢Ø‚Á‚½");
+                    return remainingStack;
+                }
+                else
+                {
+                    num -= existingItem.ItemStock;
+                    inventory.Remove(existingItem);
+                    Destroy(existingItem);
+                }
+            }
+            return 0;
+        }
+
+        public int RemoveEquipment(IItemData itemData)
+        {
+            Equipment existingEquipItem = inventory
+                    .Find(item => item.Id == itemData.Id)as Equipment;
+
+            if (existingEquipItem != null)
+            {
+                inventory.Remove(existingEquipItem);
+                Debug.Log(itemData.ItemName + "‚ðŽÌ‚Ä‚½");
             }
             return 0;
         }

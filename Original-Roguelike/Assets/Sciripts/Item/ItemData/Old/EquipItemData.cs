@@ -5,14 +5,6 @@ using UnityEngine;
 
 namespace ItemSystem
 {
-    public enum EquipType
-    {
-        OneHandedWeapon = 0,
-        TwoHandedWeapon = 1,
-        Armor = 2,
-    }
-
-
     [CreateAssetMenu(fileName = "NewEquipItemData", menuName = "ScriptableObject/ItemData/EquipItem")]
     public class EquipItemData : ItemData
     {

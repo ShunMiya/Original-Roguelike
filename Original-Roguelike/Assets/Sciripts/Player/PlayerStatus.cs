@@ -13,8 +13,8 @@ namespace PlayerStatusList
         private AttackMotion attackMotion;
 
         public int inventorySize;
-        public ItemData RightEquip;
-        public ItemData LeftEquip;
+        public IItemData RightEquip;
+        public IItemData LeftEquip;
 
         public PlayerInventoryDataBase inventoryData;
 

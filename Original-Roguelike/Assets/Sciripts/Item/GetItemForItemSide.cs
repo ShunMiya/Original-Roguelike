@@ -6,8 +6,8 @@ namespace ItemSystem
 {
     public class GetItemForItemSide : MonoBehaviour
     {
-        [SerializeField] private string itemId;
-        [SerializeField] private int itemStack;
+        [SerializeField] private int itemId;
+        [SerializeField] private int itemStock;
         [SerializeField] private PlayerInventoryDataBase inventoryData;
 
         private void OnTriggerEnter(Collider other)
@@ -16,7 +16,7 @@ namespace ItemSystem
             {
                 PlayerGetItem playerGetItem = other.GetComponent<PlayerGetItem>();
 
-                bool ItemGet =playerGetItem.GetItem(itemId , itemStack);
+                bool ItemGet =playerGetItem.GetItem(itemId , itemStock);
 
                 if (ItemGet == false) Debug.Log("éùÇøï®Ç™Ç¢Ç¡ÇœÇ¢ÇæÇÊÅI");
 

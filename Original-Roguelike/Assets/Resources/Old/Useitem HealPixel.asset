@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70dbfde5eab158e47b7f9f92fb32e5a3, type: 3}
-  m_Name: HealPixel
+  m_Script: {fileID: 11500000, guid: 35ee54008417c3749b2ae7e3d8427482, type: 3}
+  m_Name: Useitem HealPixel
   m_EditorClassIdentifier: 
-  _id: 1
-  _prefab: {fileID: 3161872203314884576, guid: 6895dc0c751f59b40a08e3be9e8821b7, type: 3}
+  _id: 001
+  prefab: {fileID: 3161872203314884576, guid: 6895dc0c751f59b40a08e3be9e8821b7, type: 3}
   _itemName: HealPixel
   _itemType: 0
   _desciption: UseItem HealPixel   HealLife +1
-  ItemStock: 1
-  _maxStock: 5
-  _healValue: 1
+  ItemStack: 1
+  _MaxStack: 5
+  _HealValue: 1

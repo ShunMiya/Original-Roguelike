@@ -14,24 +14,24 @@ namespace ItemSystem
 //            equipmentItem.GetComponent<EquipmentItem>();
         }
 
-        public int UseItem(ItemData itemData)
+        public int UseItem(IItemData itemData)
         {
-            int itemStack = 0;
+            int itemStock = 0;
             switch (itemData.ItemType)
             {
                 case 0:
-                    if (itemData is UseItemData useItemData)
+                    if (itemData is Consumable consumable)
                     {
-                        string itemId = useItemData.Id;
-                        itemStack = useItemData.ItemStack;
+                        int itemId = consumable.Id;
+                        itemStock = consumable.ItemStock;
 
                         //アイテムの効果処理。RemoveItemも内部に記載。
 
-                        itemStack =playerInventory.RemoveItem(itemId, itemStack);
+                        itemStock =playerInventory.RemoveItem(itemId, itemStock);
                     }
                     break;
                 default:
-                    string ItemId = itemData.Id;
+                    int ItemId = itemData.Id;
                     //装備解除周りの処理
 
                     //if (((EquipItemData)itemData).Equipped == true) equipmentItem.UnequipItem(itemData);// NonActive
@@ -39,7 +39,7 @@ namespace ItemSystem
 
                     break;
             }
-            return itemStack;
+            return itemStock;
         }
 
     }

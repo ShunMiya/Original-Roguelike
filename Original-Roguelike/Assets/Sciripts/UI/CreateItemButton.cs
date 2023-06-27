@@ -37,7 +37,7 @@ namespace UISystem
 
                 if (itemData.ItemType == ItemType.UseItem)
                 {
-                    buttonText.text = FormatItemText(itemName, ((UseItemData)itemData).ItemStack);
+                    buttonText.text = FormatItemText(itemName, ((Consumable)itemData).ItemStock);
                 }
                 else
                 {
@@ -70,27 +70,28 @@ namespace UISystem
         }
 
 
-        public void SetButtonAfterUseItem(string itemId ,int itemStack)
+        public void SetButtonAfterUseItem(int itemId ,int itemStock)
         {
-            Debug.Log("ID" +itemId + "Ç≈Stack" +itemStack + "ÇíTÇ∑");
+            Debug.Log("ID" +itemId + "Ç≈Stack" +itemStock + "ÇíTÇ∑");
 
             ItemButton[] existingButtons = buttonContainer.GetComponentsInChildren<ItemButton>();
             foreach (ItemButton button in existingButtons)
             {
                 ItemButton existingButton = button.GetComponent<ItemButton>();
 
-                if (existingButton.itemData.Id == itemId && ((UseItemData)existingButton.itemData).ItemStack == itemStack)
+                if (existingButton.itemData.Id == itemId && ((Consumable)existingButton.itemData).ItemStock == itemStock)
                 {
                     Debug.Log("î≠å©");
                     string itemName = existingButton.itemData.ItemName;
                     TextMeshProUGUI buttonText = existingButton.GetComponentInChildren<TextMeshProUGUI>();
-                    buttonText.text = FormatItemText(itemName,itemStack);
+                    buttonText.text = FormatItemText(itemName,itemStock);
                     Debug.Log("èëÇ´ä∑Ç¶äÆóπ");
 
                     EventSystem eventSystem = EventSystem.current;
                     eventSystem.SetSelectedGameObject(existingButton.gameObject);
 
-                    if (itemStack == 0) SelectButtonChangeForDestruction(existingButton);
+                    if (itemStock == 0) SelectButtonChangeForDestruction(existingButton);
+                    return;
                 }
             }
             Debug.Log("î≠å©é∏îs");

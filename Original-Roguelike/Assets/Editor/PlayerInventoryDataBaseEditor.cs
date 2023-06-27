@@ -1,4 +1,4 @@
-using ItemSystem;
+/*using ItemSystem;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,4 +20,4 @@ public class PlayerInventoryDataBaseEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
-}
+}*/
