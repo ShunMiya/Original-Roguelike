@@ -13,20 +13,19 @@ namespace UISystem
         public PlayerInventoryDataBase playerInventory;
         [SerializeField] private TextMeshProUGUI BonusText;
 
-//        public ItemData RightEquip;
-//        public ItemData LeftEquip;　　改修予定
-
         public void EquipItem(IItemData ITemData)
         {
-            Equipment itemData = ITemData as Equipment;
+            playerStatus.EquipItem(ITemData);
+            #region 移行前
+            /*Equipment itemData = ITemData as Equipment;
             switch (itemData.EquipType)
             {
                 case 0:
-                    /*if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType != (EquipType)1)
+                    if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType != (EquipType)1)
                     {
                         RightEquip = itemData;
                         break;
-                    }*/
+                    }
                     if(playerStatus.LeftEquip != null) ((Equipment)playerStatus.LeftEquip).Equipped = false;
                     ((Equipment)itemData).Equipped = true;
                     playerStatus.LeftEquip = itemData;
@@ -47,23 +46,27 @@ namespace UISystem
                         playerStatus.LeftEquip = null;
                     }
                     break;
-            }
+            }*/
+            #endregion
             SetButtonData();
             SetBonusText();
         }
 
         public void UnequipItem(IItemData itemData)
         {
-            if (playerStatus.RightEquip == itemData)
+            playerStatus.UnequipItem(itemData);
+            #region 移行前
+            /*if (playerStatus.RightEquip == itemData as Equipment)
             {
                 ((Equipment)playerStatus.RightEquip).Equipped = false;
                 playerStatus.RightEquip = null;
             }
-            if (playerStatus.LeftEquip == itemData)
+            if (playerStatus.LeftEquip == itemData as Equipment)
             {
                 ((Equipment)playerStatus.LeftEquip).Equipped = false;
                 playerStatus.LeftEquip = null;
-            }
+            }*/
+            #endregion
             SetBonusText(); 
         }
 

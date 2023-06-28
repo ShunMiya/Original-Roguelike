@@ -1,23 +1,41 @@
-/*using ItemSystem;
-using UnityEditor;
+/*using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(PlayerInventoryDataBase))]
-public class PlayerInventoryDataBaseEditor : Editor
+namespace ItemSystem
 {
-    private SerializedProperty inventoryProperty;
-
-    private void OnEnable()
+    [CustomEditor(typeof(PlayerInventoryDataBase))]
+    public class PlayerInventoryDataBaseEditor : Editor
     {
-        inventoryProperty = serializedObject.FindProperty("inventory");
-    }
+        private SerializedProperty inventoryProperty;
 
-    public override void OnInspectorGUI()
-    {
-        serializedObject.Update();
+        private void OnEnable()
+        {
+            inventoryProperty = serializedObject.FindProperty(nameof(PlayerInventoryDataBase.inventory));
+            if (inventoryProperty == null) Debug.Log("参照できてないよう");
+        }
 
-        EditorGUILayout.PropertyField(inventoryProperty, true);
+        public override void OnInspectorGUI()
+        {
+            serializedObject.Update();
 
-        serializedObject.ApplyModifiedProperties();
+            // NullReferenceExceptionの発生箇所より前に、serializedObjectの更新を行う
+
+            EditorGUILayout.PropertyField(inventoryProperty, true);
+
+            if (inventoryProperty.isExpanded)
+            {
+                EditorGUI.indentLevel++;
+
+                for (int i = 0; i < inventoryProperty.arraySize; i++)
+                {
+                    SerializedProperty itemProperty = inventoryProperty.GetArrayElementAtIndex(i);
+                    EditorGUILayout.PropertyField(itemProperty, true);
+                }
+
+                EditorGUI.indentLevel--;
+            }
+
+            serializedObject.ApplyModifiedProperties();
+        }
     }
 }*/

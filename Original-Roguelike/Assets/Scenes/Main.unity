@@ -1437,6 +1437,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 598544800}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+          m_MethodName: SetButtonData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 15
     callback:
       m_PersistentCalls:
@@ -1468,6 +1480,18 @@ MonoBehaviour:
         - m_Target: {fileID: 598544800}
           m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
           m_MethodName: SetBonusText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 598544800}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+          m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4618,7 +4642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
-  buttonPrefab: {fileID: 1679119351690167917, guid: df81ac6b3f4d84b4382d7e672ebcb7ed, type: 3}
+  buttonPrefab: {fileID: 484703032809670837, guid: df81ac6b3f4d84b4382d7e672ebcb7ed, type: 3}
   buttonContainer: {fileID: 1855197761}
   informationText: {fileID: 309204107}
   playerUseItem: {fileID: 2146079526}
@@ -6390,6 +6414,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 598544800}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+          m_MethodName: SetButtonData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 15
     callback:
       m_PersistentCalls:
@@ -6421,6 +6457,18 @@ MonoBehaviour:
         - m_Target: {fileID: 598544800}
           m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
           m_MethodName: SetBonusText
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 598544800}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+          m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8518,6 +8566,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2146079525, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
+      propertyPath: playerStatus
+      value: 
+      objectReference: {fileID: 2146079530}
     - target: {fileID: 1055756020914893475, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
       propertyPath: inventoryData
       value: 

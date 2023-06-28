@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6881682895510997136}
   - component: {fileID: 1184972188763221667}
   - component: {fileID: 7025630185740775062}
-  - component: {fileID: 1679119351690167917}
+  - component: {fileID: 484703032809670837}
   - component: {fileID: 4116935330282407742}
   m_Layer: 5
   m_Name: EquipButton
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1679119351690167917
+--- !u!114 &484703032809670837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,8 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   informationText: {fileID: 0}
-  itemData: {fileID: 0}
-  playerUseItem: {fileID: 0}
+  playerUseItem: {fileID: 2146079525, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
 --- !u!114 &4116935330282407742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +155,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1679119351690167917}
+        - m_Target: {fileID: 484703032809670837}
           m_TargetAssemblyTypeName: UISystem.ItemButton, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
@@ -172,7 +171,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1679119351690167917}
+        - m_Target: {fileID: 484703032809670837}
           m_TargetAssemblyTypeName: UISystem.ItemButton, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
@@ -200,7 +199,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1679119351690167917}
+        - m_Target: {fileID: 484703032809670837}
           m_TargetAssemblyTypeName: UISystem.ItemButton, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
@@ -216,7 +215,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1679119351690167917}
+        - m_Target: {fileID: 484703032809670837}
           m_TargetAssemblyTypeName: UISystem.ItemButton, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
@@ -232,7 +231,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1679119351690167917}
+        - m_Target: {fileID: 484703032809670837}
           m_TargetAssemblyTypeName: UISystem.ItemButton, Assembly-CSharp
           m_MethodName: EquipItem
           m_Mode: 1
@@ -248,7 +247,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1679119351690167917}
+        - m_Target: {fileID: 484703032809670837}
           m_TargetAssemblyTypeName: UISystem.ItemButton, Assembly-CSharp
           m_MethodName: EquipItem
           m_Mode: 1

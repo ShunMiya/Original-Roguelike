@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UISystem;
 using UnityEngine;
+using PlayerStatusList;
 
 namespace ItemSystem
 {
     public class PlayerUseItem : MonoBehaviour
     {
         public PlayerInventoryDataBase playerInventory;
-//        EquipmentItem equipmentItem = GameObject.Find("EquipArea").GetComponent<EquipmentItem>();
+        public PlayerStatus playerStatus;
+
         private void Start()
         {
-//            equipmentItem.GetComponent<EquipmentItem>();
+            playerStatus = GetComponent<PlayerStatus>();
         }
 
         public int UseItem(IItemData itemData)
@@ -32,9 +34,10 @@ namespace ItemSystem
                     break;
                 default:
                     int ItemId = itemData.Id;
-                    //‘•”õ‰ğœü‚è‚Ìˆ—
 
-                    //if (((EquipItemData)itemData).Equipped == true) equipmentItem.UnequipItem(itemData);// NonActive
+                    //‘•”õ‰ğœˆ—
+                    if (((Equipment)itemData).Equipped == true) playerStatus.UnequipItem(itemData);
+
                     playerInventory.RemoveItem(ItemId, 0);
 
                     break;

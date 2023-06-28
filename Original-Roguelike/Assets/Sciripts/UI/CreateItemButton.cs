@@ -91,10 +91,8 @@ namespace UISystem
                     eventSystem.SetSelectedGameObject(existingButton.gameObject);
 
                     if (itemStock == 0) SelectButtonChangeForDestruction(existingButton);
-                    return;
                 }
             }
-            Debug.Log("”­Œ©Ž¸”s");
         }
 
         public void SelectButtonChangeForDestruction(ItemButton button)

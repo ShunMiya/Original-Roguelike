@@ -13,8 +13,8 @@ namespace PlayerStatusList
         private AttackMotion attackMotion;
 
         public int inventorySize;
-        public IItemData RightEquip;
-        public IItemData LeftEquip;
+        public Equipment RightEquip;
+        public Equipment LeftEquip;
 
         public PlayerInventoryDataBase inventoryData;
 
@@ -32,6 +32,56 @@ namespace PlayerStatusList
         {
             inventoryData.InitializeFromPlayerStatus(this);
         }
+
+        public void EquipItem(IItemData ITemData)
+        {
+            Equipment itemData = ITemData as Equipment;
+            switch (itemData.EquipType)
+            {
+                case 0:
+                    /*if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType != (EquipType)1)
+                    {
+                        RightEquip = itemData;
+                        break;
+                    }*/
+                    if (LeftEquip != null) ((Equipment)LeftEquip).Equipped = false;
+                    ((Equipment)itemData).Equipped = true;
+                    LeftEquip = itemData;
+                    break;
+                case (EquipType)1:
+                    if (LeftEquip != null) ((Equipment)LeftEquip).Equipped = false;
+                    ((Equipment)itemData).Equipped = true;
+                    LeftEquip = itemData;
+                    if (RightEquip != null) ((Equipment)RightEquip).Equipped = false;
+                    RightEquip = null;
+                    break;
+                case (EquipType)2:
+                    ((Equipment)itemData).Equipped = true;
+                    RightEquip = itemData;
+                    if (LeftEquip != null && ((Equipment)LeftEquip).EquipType == (EquipType)1)
+                    {
+                        ((Equipment)LeftEquip).Equipped = false;
+                        LeftEquip = null;
+                    }
+                    break;
+            }
+        }
+        public void UnequipItem(IItemData itemData)
+        {
+            if (RightEquip == itemData as Equipment)
+            {
+                ((Equipment)RightEquip).Equipped = false;
+                RightEquip = null;
+                return;
+            }
+            if (LeftEquip == itemData as Equipment)
+            {
+                ((Equipment)LeftEquip).Equipped = false;
+                LeftEquip = null;
+                return;
+            }
+        }
+
 
         public bool IsPlayerActive()
         {
