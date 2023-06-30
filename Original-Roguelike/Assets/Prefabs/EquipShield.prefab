@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2099814181636505248}
   - component: {fileID: 8389289609044839700}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: EquipShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
