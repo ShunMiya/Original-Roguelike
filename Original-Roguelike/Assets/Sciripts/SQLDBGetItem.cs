@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using UnityEditor.Search;
 using UnityEngine;
 
@@ -9,43 +10,59 @@ namespace ItemSystem
     public class SQLDBGetItem : MonoBehaviour
     {
         [SerializeField] private int itemId;
-        [SerializeField] private int num2;
+        [SerializeField] private int num;
+        private int iid;
+        private SqliteDatabase sqlDB;
+
+        private void Start()
+        {
+            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "ItemDataBase.db");
+            string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "ItemDataBase.db");
+
+            if (File.Exists(copiedDatabasePath))
+            {
+                File.Delete(copiedDatabasePath);
+            }
+
+            File.Copy(originalDatabasePath, copiedDatabasePath);
+            iid = 0;
+
+            string dataPath = Application.persistentDataPath;
+            Debug.Log("Data Path: " + dataPath);
+
+            sqlDB = new SqliteDatabase(copiedDatabasePath);
+        }
 
         private void OnTriggerEnter(Collider other)
         {
             string query;
             if (other.CompareTag("Player"))
             {
-                SqliteDatabase sqlDB = new SqliteDatabase("ItemDataBase.db");
                 query = "SELECT * FROM Consumable WHERE Id = " + itemId;
                 DataTable consumableData = sqlDB.ExecuteQuery(query);
 
-                // Equipmentテーブルからアイテムを取得するクエリを実行
                 query = "SELECT * FROM Equipment WHERE Id = " + itemId;
                 DataTable equipmentData = sqlDB.ExecuteQuery(query);
-
 
                 if (consumableData.Rows.Count > 0)
                 {
                     int id;
                     string name = "";
                     int itemStock;
-                    foreach(DataRow row in consumableData.Rows)
+                    foreach (DataRow row in consumableData.Rows)
                     {
                         id = (int)row["Id"];
                         name = (string)row["ItemName"];
                         itemStock = (int)row["ItemStock"];
-                        Debug.Log("ID:" + id + "name:" + name + "のItemStock" + itemStock + "を" + num2 + "に変更");
+                        Debug.Log("ID:" + id + " name:" + name + "のItemStock" + itemStock + "を" + num + "に変更");
                     }
-                    // Consumableテーブルからデータを取得した場合の処理
-                    // consumableDataを利用して必要な処理を行う
-                    // 例: consumableData.Rows[0]["ColumnName"] で列の値にアクセスするなど
+
                 }
                 else if (equipmentData.Rows.Count > 0)
                 {
-                    int id;
+                    int id = 0;
                     string name = "";
-                    int EquipType;
+                    int EquipType = 0;
                     string Desciption = "";
                     foreach (DataRow dr in equipmentData.Rows)
                     {
@@ -53,19 +70,16 @@ namespace ItemSystem
                         name = (string)dr["ItemName"];
                         EquipType = (int)dr["EquipType"];
                         Desciption = (string)dr["Desciption"];
-                        Debug.Log("Id" + id + "name:" + name + " EquipType:" + EquipType + "Desciption" + Desciption);
+                        Debug.Log("Id" + id + " name:" + name + " EquipType:" + EquipType + " Desciption" + Desciption);
                     }
 
-
-                    SqliteDatabase inventoryDataBase = new SqliteDatabase("InventoryDataBase.db");
-                    string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + equipmentData.Rows[0]["Id"] + "', '" + equipmentData.Rows[0]["ItemName"] + "', " + num2 + ")";
-                    inventoryDataBase.ExecuteNonQuery(insertQuery);
+                    string insertQuery = "INSERT INTO Inventory (IID, Id, ItemName, Num) VALUES (" + iid + ", '" + equipmentData.Rows[0]["Id"] + "', '" + equipmentData.Rows[0]["ItemName"] + "', " + num + ")";
+                    sqlDB.ExecuteNonQuery(insertQuery);
+                    iid += 1;
                 }
                 else
                 {
                     Debug.Log("Null");
-                    // アイテムが見つからなかった場合の処理
-                    // エラーメッセージの表示など適切な処理を行う
                 }
             }
         }

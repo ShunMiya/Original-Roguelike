@@ -4152,7 +4152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemId: 101
-  num2: 2
+  num2: 1
 --- !u!65 &1551594637
 BoxCollider:
   m_ObjectHideFlags: 0
