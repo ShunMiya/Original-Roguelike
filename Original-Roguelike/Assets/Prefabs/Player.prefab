@@ -195,6 +195,7 @@ GameObject:
   - component: {fileID: 1055756020914893475}
   - component: {fileID: 2146079524}
   - component: {fileID: 2146079525}
+  - component: {fileID: 9047782774757487611}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -360,6 +361,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySize: 5
+  RightEquip: {fileID: 0}
+  LeftEquip: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
   PlayerActive: 0
 --- !u!114 &2146079524
@@ -388,3 +391,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
+  playerStatus: {fileID: 1055756020914893475}
+--- !u!114 &9047782774757487611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7708753307408855650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8287c514cd720744aba9a7a642ebeb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

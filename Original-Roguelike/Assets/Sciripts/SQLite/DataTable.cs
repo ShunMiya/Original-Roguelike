@@ -27,6 +27,11 @@ public class DataRow : Dictionary<string, object>
             }
         }
     }
+
+    public static implicit operator int(DataRow v)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class DataTable

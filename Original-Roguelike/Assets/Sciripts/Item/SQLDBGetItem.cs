@@ -11,33 +11,21 @@ namespace ItemSystem
     {
         [SerializeField] private int itemId;
         [SerializeField] private int num;
-        private int iid;
-        private SqliteDatabase sqlDB;
-
-        private void Start()
-        {
-            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "ItemDataBase.db");
-            string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "ItemDataBase.db");
-
-            if (File.Exists(copiedDatabasePath))
-            {
-                File.Delete(copiedDatabasePath);
-            }
-
-            File.Copy(originalDatabasePath, copiedDatabasePath);
-            iid = 0;
-
-            string dataPath = Application.persistentDataPath;
-            Debug.Log("Data Path: " + dataPath);
-
-            sqlDB = new SqliteDatabase(copiedDatabasePath);
-        }
 
         private void OnTriggerEnter(Collider other)
         {
-            string query;
             if (other.CompareTag("Player"))
             {
+                SQLDBPlayerInventory SQLplayerInventory = other.GetComponent<SQLDBPlayerInventory>();
+
+                bool ItemGet = SQLplayerInventory.AddItem(itemId, num);
+
+                if (ItemGet == false) Debug.Log("éùÇøï®Ç™Ç¢Ç¡ÇœÇ¢ÇæÇÊÅI");
+
+                if (ItemGet == true) Destroy(gameObject);
+
+                /*string query;
+ 
                 query = "SELECT * FROM Consumable WHERE Id = " + itemId;
                 DataTable consumableData = sqlDB.ExecuteQuery(query);
 
@@ -73,14 +61,13 @@ namespace ItemSystem
                         Debug.Log("Id" + id + " name:" + name + " EquipType:" + EquipType + " Desciption" + Desciption);
                     }
 
-                    string insertQuery = "INSERT INTO Inventory (IID, Id, ItemName, Num) VALUES (" + iid + ", '" + equipmentData.Rows[0]["Id"] + "', '" + equipmentData.Rows[0]["ItemName"] + "', " + num + ")";
+                    string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + equipmentData.Rows[0]["Id"] + "', '" + equipmentData.Rows[0]["ItemName"] + "', " + num + ")";
                     sqlDB.ExecuteNonQuery(insertQuery);
-                    iid += 1;
                 }
                 else
                 {
                     Debug.Log("Null");
-                }
+                }*/
             }
         }
     }

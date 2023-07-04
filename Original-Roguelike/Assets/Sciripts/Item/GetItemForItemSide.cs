@@ -8,7 +8,6 @@ namespace ItemSystem
     {
         [SerializeField] private int itemId;
         [SerializeField] private int itemStock;
-        [SerializeField] private PlayerInventoryDataBase inventoryData;
 
         private void OnTriggerEnter(Collider other)
         {

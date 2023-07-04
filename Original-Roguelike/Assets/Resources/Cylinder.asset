@@ -16,11 +16,11 @@ MonoBehaviour:
   _prefab: {fileID: 953700188437577565, guid: 78ceac971156ee445a65c1ee4d50c0c7, type: 3}
   _itemName: Cylinder
   _itemType: 1
-  _desciption: "Weapon Cylinder   Attack Bonus +2\n                              
+  _desciption: "Weapon Cylinder   Attack Bonus +3\n                              
     Attack Range +1"
   _equipType: 1
   Equipped: 0
-  _attackBonus: 2
+  _attackBonus: 3
   _defenseBonus: 0
   _weaponRange: 1
   _weaponDistance: 0
