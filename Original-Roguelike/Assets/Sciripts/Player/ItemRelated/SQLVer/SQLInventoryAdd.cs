@@ -1,66 +1,57 @@
-using PlayerStatusList;
 using System;
-using System.Data;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
-using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 
-namespace ItemSystem
+namespace ItemSystemSQL.Inventory
 {
-    public class SQLDBPlayerInventory : MonoBehaviour
+    public class SQLInventoryAdd : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
         string query;
         private string copiedDatabasePath;
-        int inventorySize = 5;
+        int inventorySize;
         int itemCount;
 
         public void Awake()
         {
-            copiedDatabasePath = Path.Combine(Application.persistentDataPath, "ItemDataBase.db");
+            copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
+            sqlDB = new SqliteDatabase(copiedDatabasePath);
+        }
+
+        public void InitializeFromPlayerStatus(int inventorysize)
+        {
+            Debug.Log("SQLinventorySize" + inventorySize + "を" + inventorysize + "に変更");
+            inventorySize = inventorysize;
         }
 
         public bool AddItem(int itemId, int num)
         {
-            sqlDB = new SqliteDatabase(copiedDatabasePath);
-
+            if (sqlDB == null) Debug.Log("sqlDBがnullだよ！");
             itemCount = InventoryCount();
 
-            query = "SELECT * FROM Consumable WHERE Id = " + itemId;
-            DataTable consumableData = sqlDB.ExecuteQuery(query);
-
-            query = "SELECT * FROM Equipment WHERE Id = " + itemId;
-            DataTable equipmentData = sqlDB.ExecuteQuery(query);
+            ConsumableData consumableItem = ItemDataCache.GetConsumable(itemId);
+            EquipmentData equipmentItem = ItemDataCache.GetEquipment(itemId);
 
             bool GetItem = false;
-            if (consumableData.Rows.Count > 0)
+            if (consumableItem != null)
             {
-                GetItem = AddConsumable(itemId, num);
+                GetItem = AddConsumable(itemId, num, consumableItem);
                 return GetItem;
             }
-            else if (equipmentData.Rows.Count > 0)
+            else if (equipmentItem != null)
             {
-                GetItem = AddEquipment(equipmentData);
+                GetItem = AddEquipment(itemId, equipmentItem);
                 return GetItem;
             }
             return GetItem;
         }
 
 
-        public bool AddConsumable(int itemId,int num)
+        public bool AddConsumable(int itemId,int num, ConsumableData consumableItem)
         {
-            /*string query = "SELECT * FROM Inventory WHERE Id = " + consumableData.Rows[0]["Id"];
-            DataTable itemsData = sqlDB.ExecuteQuery(query);
-            int itemId = Convert.ToInt32(consumableData.Rows[0]["Id"]);*/
-
             string query = "SELECT * FROM Inventory WHERE Id = " + itemId;
             DataTable itemsData = sqlDB.ExecuteQuery(query);
 
-            Debug.Log(itemId+"でキャッシュ捜索");
-            ConsumableData consumableItem = ItemDataCache.GetConsumable(itemId);
             Debug.Log("Idが" + consumableItem.Id + " MaxStockが" + consumableItem.MaxStock + "　名前が" + consumableItem.ItemName+" 回復値が"+consumableItem.HealValue);
 
             foreach (DataRow row in itemsData.Rows)
@@ -72,20 +63,25 @@ namespace ItemSystem
                 {
                     string updateQuery = "UPDATE Inventory SET Num = " + totalStock + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(updateQuery);
-                    Debug.Log("加算完了");
+                    Debug.Log(totalStock+"に加算完了");
                     return true;
                 }
             }
             if (itemCount == inventorySize) return false;
             string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + consumableItem.Id + "', '" + consumableItem.ItemName + "', " + num + ")";
+            Debug.Log(consumableItem.ItemName + "をStock" + num + "で入手");
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }
 
-        public bool AddEquipment(DataTable equipmentData)
+        public bool AddEquipment(int itemId, EquipmentData equipmentItem)
         {
             if (itemCount == inventorySize) return false;
-            string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + equipmentData.Rows[0]["Id"] + "', '" + equipmentData.Rows[0]["ItemName"] + "', " + 1 + ")";
+
+            Debug.Log("Idが" + equipmentItem.Id + "　名前が" + equipmentItem.ItemName);
+
+            string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + equipmentItem.Id + "', '"+ equipmentItem.ItemName + "', " + 1 + ")";
+            Debug.Log(equipmentItem.ItemName+"を入手");
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }
@@ -99,6 +95,5 @@ namespace ItemSystem
             Debug.Log(itemCount);
             return itemCount;
         }
-
     }
 }

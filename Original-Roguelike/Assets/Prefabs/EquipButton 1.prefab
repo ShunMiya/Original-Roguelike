@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 484703032809670837}
   - component: {fileID: 4116935330282407742}
   m_Layer: 5
-  m_Name: EquipButton
+  m_Name: EquipButton 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

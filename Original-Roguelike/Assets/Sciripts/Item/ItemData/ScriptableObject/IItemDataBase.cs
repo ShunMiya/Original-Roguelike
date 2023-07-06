@@ -9,14 +9,13 @@ namespace ItemSystem
         [SerializeField] private List<Consumable> consumables = new List<Consumable>();
         [SerializeField] private List<Equipment> equipments = new List<Equipment>();
 
-        public static IReadOnlyList<Consumable> Consumables => instance.consumables;
-        public static IReadOnlyList<Equipment> Equipments => instance.equipments;
-
         private static IItemDataBase instance;
         private void OnEnable()
         {
             instance = this;
         }
+        public static IReadOnlyList<Consumable> Consumables => instance.consumables;
+        public static IReadOnlyList<Equipment> Equipments => instance.equipments;
 
         public static IItemData GetItemById(int id)
         {
@@ -35,7 +34,6 @@ namespace ItemSystem
                     return item;
                 }
             }
-
             return null;
         }
 

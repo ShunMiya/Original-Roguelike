@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using static UnityEditor.Progress;
 
-namespace ItemSystem
+namespace ItemSystemSQL
 {
     public static class ItemDataCache
     {
@@ -16,6 +16,16 @@ namespace ItemSystem
             consumableCache = new Dictionary<int, ConsumableData>();
         }
 
+        public static IItemDataInventory GetIItemData(int itemId)
+        {
+            IItemDataInventory consumableItem = ItemDataCache.GetConsumable(itemId);
+            IItemDataInventory equipmentItem = ItemDataCache.GetEquipment(itemId);
+
+            if (consumableItem != null)return consumableItem;
+            if (equipmentItem != null) return equipmentItem;
+            return null;
+        }
+
         public static void CacheEquipment(DataTable equipmentTable)
         {
             foreach (DataRow row in equipmentTable.Rows)
@@ -24,7 +34,7 @@ namespace ItemSystem
                 equipmentData.Id = Convert.ToInt32(row["Id"]);
                 equipmentData.PrefabName = row["PrefabName"].ToString();
                 equipmentData.ItemName = row["ItemName"].ToString();
-                equipmentData.ItemType = row["ItemType"].ToString();
+                equipmentData.ItemType = Convert.ToInt32(row["ItemType"]);
                 equipmentData.Description = row["Description"].ToString();
                 equipmentData.EquipType = Convert.ToInt32(row["EquipType"]);
                 equipmentData.Equipped = Convert.ToInt32(row["Equipped"]);
@@ -57,7 +67,7 @@ namespace ItemSystem
                 consumableData.Id = Convert.ToInt32(row["Id"]);
                 consumableData.PrefabName = row["PrefabName"].ToString();
                 consumableData.ItemName = row["ItemName"].ToString();
-                consumableData.ItemType = row["ItemType"].ToString();
+                consumableData.ItemType = Convert.ToInt32(row["ItemType"]);
                 consumableData.Description = row["Description"].ToString();
                 consumableData.ItemStock = Convert.ToInt32(row["ItemStock"]);
                 consumableData.MaxStock = Convert.ToInt32(row["MaxStock"]);

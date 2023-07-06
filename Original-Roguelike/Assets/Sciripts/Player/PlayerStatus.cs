@@ -4,6 +4,7 @@ using UnityEngine;
 using PlayerMovement;
 using Combat.AttackMotion;
 using ItemSystem;
+using ItemSystemSQL.Inventory;
 
 namespace PlayerStatusList
 {
@@ -17,6 +18,7 @@ namespace PlayerStatusList
         public Equipment LeftEquip;
 
         public PlayerInventoryDataBase inventoryData;
+        private SQLInventoryAdd SQLInventory;
 
         public bool PlayerActive = false; //移動、攻撃、アイテムの使用(装備の着脱含)
 
@@ -24,13 +26,15 @@ namespace PlayerStatusList
         {
             playerMove = GetComponent<PlayerMove>();
             attackMotion = GetComponent<AttackMotion>();
+            SQLInventory = GetComponent<SQLInventoryAdd>();
 
             inventorySizeUpDate();
         }
 
         public void inventorySizeUpDate()
         {
-            inventoryData.InitializeFromPlayerStatus(this);
+            inventoryData.InitializeFromPlayerStatus(inventorySize);
+            SQLInventory.InitializeFromPlayerStatus(inventorySize);
         }
 
         public void EquipItem(IItemData ITemData)

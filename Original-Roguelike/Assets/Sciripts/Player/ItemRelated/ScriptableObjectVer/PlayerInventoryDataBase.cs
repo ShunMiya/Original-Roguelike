@@ -13,15 +13,17 @@ namespace ItemSystem
         public List<IItemData> inventory = new List<IItemData>();
         int inventorySize;
 
-        public void InitializeFromPlayerStatus(PlayerStatus playerStatus)
+        public void InitializeFromPlayerStatus(int inventorysize)
         {
-            Debug.Log("inventorySize"+inventorySize + "‚ğ"+playerStatus.inventorySize + "‚É•ÏX");
-            inventorySize = playerStatus.inventorySize;
+            Debug.Log("ListinventorySize"+inventorySize + "‚ğ"+inventorysize + "‚É•ÏX");
+            inventorySize = inventorysize;
         }
 
         public bool AddItem(int itemId , int num)
         {
+            Debug.Log("Inventory“’…");
             IItemData itemData = IItemDataBase.GetItemById(itemId);
+            Debug.Log("itemData’Šo");
             bool GetItem = false;
             switch(itemData.ItemType)
             {

@@ -1,16 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-namespace ItemSystem
+namespace ItemSystemSQL.Inventory
 {
     public class SQLDBInitialization : MonoBehaviour
     {
         private void Awake()
         {
-            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "ItemDataBase.db");
-            string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "ItemDataBase.db");
+            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath,"InventoryDataBase.db");
+            string copiedDatabasePath = Path.Combine(Application.persistentDataPath,"InventoryDataBase.db");
 
             if (File.Exists(copiedDatabasePath))
             {

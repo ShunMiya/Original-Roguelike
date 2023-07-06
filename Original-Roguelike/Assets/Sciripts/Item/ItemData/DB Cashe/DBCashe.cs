@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEditor.Search;
 using UnityEngine;
 
-namespace ItemSystem
+namespace ItemSystemSQL
 {
     public class DBCashe : MonoBehaviour
     {
@@ -11,7 +12,8 @@ namespace ItemSystem
 
         private void Awake()
         {
-            sqlDB = new SqliteDatabase("ItemDataBase.db");
+            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "ItemDataBase.db");
+            sqlDB = new SqliteDatabase(originalDatabasePath);
             string query = "SELECT * FROM Equipment";
             DataTable equipmentData = sqlDB.ExecuteQuery(query);
             ItemDataCache.CacheEquipment(equipmentData);
