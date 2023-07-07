@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ItemSystem
 {
     public class GetItemForItemSide : MonoBehaviour
     {
-        [SerializeField] private string itemId;
-        [SerializeField] private int itemStack;
+        [SerializeField] private int itemId;
+        [SerializeField] private int itemStock;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -15,9 +13,11 @@ namespace ItemSystem
             {
                 PlayerGetItem playerGetItem = other.GetComponent<PlayerGetItem>();
 
-                playerGetItem.GetItem(itemId , itemStack);
+                bool ItemGet =playerGetItem.GetItem(itemId , itemStock);
 
-                Destroy(gameObject);
+                if (ItemGet == false) Debug.Log("éùÇøï®Ç™Ç¢Ç¡ÇœÇ¢ÇæÇÊÅI");
+
+                if(ItemGet == true) Destroy(gameObject);
             }
         }
     }

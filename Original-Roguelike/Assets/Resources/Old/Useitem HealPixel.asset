@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35ee54008417c3749b2ae7e3d8427482, type: 3}
+  m_Name: Useitem HealPixel
+  m_EditorClassIdentifier: 
+  _id: 001
+  prefab: {fileID: 3161872203314884576, guid: 6895dc0c751f59b40a08e3be9e8821b7, type: 3}
+  _itemName: HealPixel
+  _itemType: 0
+  _desciption: UseItem HealPixel   HealLife +1
+  ItemStack: 1
+  _MaxStack: 5
+  _HealValue: 1

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using PlayerMovement;
 using Combat.AttackMotion;
@@ -9,7 +7,6 @@ public class PlayerControl : MonoBehaviour
 {
     private PlayerMove playerMove;
     private AttackMotion attackMotion;
-    private PlayerStatus playerStatus;
 
     float movex;
     float movez;
@@ -19,7 +16,6 @@ public class PlayerControl : MonoBehaviour
     {
         playerMove = GetComponent<PlayerMove>();
         attackMotion = GetComponent<AttackMotion>();
-        playerStatus = GetComponent<PlayerStatus>();
     }
 
     // Update is called once per frame

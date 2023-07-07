@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d5967ecdc4f8c94db96509bfde41b0a, type: 3}
+  m_Name: EquipShield
+  m_EditorClassIdentifier: 
+  _id: 103
+  prefab: {fileID: 6855997128254217901, guid: d66a9404c6f73244d813b000d76915dc, type: 3}
+  _itemName: Shield
+  _itemType: 1
+  _desciption: Armor Shield   Defense Bonus +1
+  _EquipType: 2
+  _AttackBonus: 0
+  _DefenseBonus: 1
+  _WeaponRange: 0
+  _WeaponDistance: 0
