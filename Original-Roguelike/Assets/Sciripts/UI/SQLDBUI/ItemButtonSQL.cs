@@ -48,7 +48,6 @@ namespace UISystem
                 case 0:
                     Debug.Log("ID" + itemData.Id + "‚ÅStack" +itemStock+ "‚ð‘I‘ð");
                     int remainingStock = playerUseItemSQL.UseItem(row,0);
-                    Debug.Log("ID" + itemData.Id + "‚ÅStack" + remainingStock + "‚É•Ï‰»");
                     row["Num"] = remainingStock;
 
                     if (remainingStock == 0) createItemButton.SelectButtonChangeForDestruction(this);

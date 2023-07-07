@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using UnityEngine;
 
 namespace ItemSystemSQL.Inventory
@@ -20,7 +19,6 @@ namespace ItemSystemSQL.Inventory
             {
                 string databasePath = SQLDBInitialization.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
-                Debug.Log("çƒìxéÊìæ");
             }
             int remainingStock = 0;
             switch (ItemType)
@@ -46,7 +44,7 @@ namespace ItemSystemSQL.Inventory
                 string updateQuery = "UPDATE Inventory SET Num = " + remainingStock + " WHERE IID = " + row["IID"];
                 sqlDB.ExecuteNonQuery(updateQuery);
 
-                Debug.Log(row["IID"] + "ÇÃStockÇ(" + remainingStock + ")Ç…å∏è≠");
+                Debug.Log("IID"+row["IID"] + "ÇÃStockÇ(" + remainingStock + ")Ç…å∏è≠");
                 return remainingStock;
             }
             else if (remainingStock == 0)

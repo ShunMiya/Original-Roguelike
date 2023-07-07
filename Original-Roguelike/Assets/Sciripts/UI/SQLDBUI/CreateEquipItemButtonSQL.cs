@@ -1,8 +1,8 @@
 using TMPro;
 using UnityEngine;
-using System.IO;
 using System;
 using ItemSystemSQL;
+using ItemSystemSQL.Inventory;
 
 namespace UISystem
 {
@@ -14,21 +14,22 @@ namespace UISystem
 
         private SqliteDatabase sqlDB;
         string query;
-        private string copiedDatabasePath;
 
         [SerializeField] private int totalTextLength;
 
         public void Start()
         {
-            copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
-            sqlDB = new SqliteDatabase(copiedDatabasePath);
+            string databasePath = SQLDBInitialization.GetDatabasePath();
+            sqlDB = new SqliteDatabase(databasePath);
         }
 
         public void SetButton()
         {
-            copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
-            sqlDB = new SqliteDatabase(copiedDatabasePath);
-
+            if(sqlDB == null)
+            {
+                string databasePath = SQLDBInitialization.GetDatabasePath();
+                sqlDB = new SqliteDatabase(databasePath);
+            }
             ClearButtons();
 
             query = "SELECT * FROM Inventory ORDER BY Id ASC";

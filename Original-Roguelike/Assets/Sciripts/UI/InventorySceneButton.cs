@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 
@@ -36,9 +35,6 @@ namespace UISystem
         public void DisableWindow()
         {
             backgroundObject.SetActive(false);
-//            Transform backgroundTransform = transform.parent.parent.parent.Find("BackGround");
-//            GameObject backgroundObject = backgroundTransform.gameObject;
-//            backgroundObject.SetActive(false);
         }
 
         public void WindowOnOff(GameObject window)

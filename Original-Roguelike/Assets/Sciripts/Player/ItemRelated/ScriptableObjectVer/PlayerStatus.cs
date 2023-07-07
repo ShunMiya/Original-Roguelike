@@ -2,7 +2,6 @@ using UnityEngine;
 using PlayerMovement;
 using Combat.AttackMotion;
 using ItemSystem;
-using ItemSystemSQL.Inventory;
 
 namespace PlayerStatusList
 {

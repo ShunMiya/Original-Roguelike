@@ -3,7 +3,6 @@ using TMPro;
 using ItemSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace UISystem
 {

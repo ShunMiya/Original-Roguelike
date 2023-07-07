@@ -21,7 +21,6 @@ namespace ItemSystemSQL.Inventory
 
             databasePath = copiedDatabasePath;
 
-            Debug.Log("DB‚ğ‰Šú‰»");
             string dataPath = Application.persistentDataPath;
             Debug.Log("Data Path: " + dataPath);
         }

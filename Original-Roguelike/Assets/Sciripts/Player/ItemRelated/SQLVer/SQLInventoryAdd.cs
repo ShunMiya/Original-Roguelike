@@ -85,7 +85,6 @@ namespace ItemSystemSQL.Inventory
             DataTable result = sqlDB.ExecuteQuery(query);
             object value = result.Rows[0]["TotalCount"];
             itemCount = Convert.ToInt32(value);
-            Debug.Log(itemCount);
             return itemCount;
         }
     }

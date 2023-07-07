@@ -57,15 +57,5 @@ namespace ItemSystem
 
             return null;
         }
-
-        /*        public static IItemData GetItemByIndex(int index)
-                {
-                    if (index >= 0 && index < ItemLists.Count)
-                    {
-                        return ItemLists[index];
-                    }
-
-                    return null;
-                }*/
     }
 }

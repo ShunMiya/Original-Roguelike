@@ -1,23 +1,21 @@
 using UnityEngine;
 using TMPro;
-using PlayerStatusList;
 using ItemSystemSQL;
 using System;
-using System.IO;
+using ItemSystemSQL.Inventory;
 
 namespace UISystem
 {
     public class EquipmentItemSQL : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
-        private string copiedDatabasePath;
 
         [SerializeField] private TextMeshProUGUI BonusText;
 
         public void Awake()
         {
-            copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
-            sqlDB = new SqliteDatabase(copiedDatabasePath);
+            string databasePath = SQLDBInitialization.GetDatabasePath();
+            sqlDB = new SqliteDatabase(databasePath);
         }
 
         public void EquipItem(DataRow row)
