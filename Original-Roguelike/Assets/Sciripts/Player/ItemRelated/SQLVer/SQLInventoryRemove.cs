@@ -51,7 +51,7 @@ namespace ItemSystemSQL.Inventory
             {
                 string deleteQuery = "DELETE FROM Inventory WHERE IID = " + row["IID"];
                 sqlDB.ExecuteNonQuery(deleteQuery);
-                Debug.Log(row["IID"] + "のアイテムを使い切った");
+                Debug.Log("IID"+row["IID"] + "のアイテムを使い切った");
                 return remainingStock;
             }
             return 0;
@@ -61,7 +61,7 @@ namespace ItemSystemSQL.Inventory
         {
             string deleteQuery = "DELETE FROM Inventory WHERE IID = " + row["IID"];
             sqlDB.ExecuteNonQuery(deleteQuery);
-            Debug.Log(row["IID"] + "のアイテムを捨てた");
+            Debug.Log("IID"+row["IID"] + "のアイテムを捨てた");
 
             return 0;
         }
