@@ -12,13 +12,13 @@ namespace UISystem
         public DataRow row;
         public PlayerUseItemSQL playerUseItemSQL;
         private CreateItemButtonSQL createItemButton;
-        private EquipmentItem equipmentItem;
+        private EquipmentItemSQL equipmentItemSQL;
 
 
         void Start()
         {
             createItemButton = GetComponentInParent<CreateItemButtonSQL>();
-            equipmentItem = transform.parent.parent.GetComponentInChildren<EquipmentItem>();
+            equipmentItemSQL = transform.parent.parent.GetComponentInChildren<EquipmentItemSQL>();
         }
 
         public void OnSelected()
@@ -51,6 +51,8 @@ namespace UISystem
                     Debug.Log("ID" + itemData.Id + "‚ÅStack" + remainingStock + "‚É•Ï‰»");
                     row["Num"] = remainingStock;
 
+                    if (remainingStock == 0) createItemButton.SelectButtonChangeForDestruction(this);
+
                     createItemButton.SetButtonTextAfterUse(this);
 
                     break;
@@ -65,7 +67,7 @@ namespace UISystem
 
         public void EquipItem()
         {
-//            equipmentItem.EquipItem(itemData);
+            equipmentItemSQL.EquipItem(row);
         }
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -13,10 +11,13 @@ namespace UISystem
         [SerializeField] private TextMeshProUGUI informationText;
         private GameObject returnButton;
         [SerializeField] private GameObject InventoryUI;
+        private GameObject backgroundObject;
+
 
         void Start()
         {
             returnButton = transform.parent.Find("BackGameButton").gameObject;
+            backgroundObject = InventoryUI.transform.Find("BackGround").gameObject;
         }
 
         public void OnSelected()
@@ -34,9 +35,10 @@ namespace UISystem
 
         public void DisableWindow()
         {
-            Transform backgroundTransform = transform.root.Find("BackGround");
-            GameObject backgroundObject = backgroundTransform.gameObject;
             backgroundObject.SetActive(false);
+//            Transform backgroundTransform = transform.parent.parent.parent.Find("BackGround");
+//            GameObject backgroundObject = backgroundTransform.gameObject;
+//            backgroundObject.SetActive(false);
         }
 
         public void WindowOnOff(GameObject window)

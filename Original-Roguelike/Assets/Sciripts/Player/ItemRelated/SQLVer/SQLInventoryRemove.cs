@@ -7,29 +7,28 @@ namespace ItemSystemSQL.Inventory
     public class SQLInventoryRemove : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
-        private string copiedDatabasePath;
 
-        public void Awake()
+        public void Start()
         {
-            Debug.Log("RemoveAwake呼び出し");
-            copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
-            sqlDB = new SqliteDatabase(copiedDatabasePath);
+            string databasePath = SQLDBInitialization.GetDatabasePath();
+            sqlDB = new SqliteDatabase(databasePath);
         }
 
         public int RemoveItem(DataRow row,int ItemType)
         {
-            if (sqlDB == null) Awake();
-
-            Debug.Log("到着");
+            if(sqlDB == null)
+            {
+                string databasePath = SQLDBInitialization.GetDatabasePath();
+                sqlDB = new SqliteDatabase(databasePath);
+                Debug.Log("再度取得");
+            }
             int remainingStock = 0;
             switch (ItemType)
             {
                 case 0:
-                    Debug.Log("Consumable減少処理開始");
                     remainingStock = RemoveConsumable(row);
                     break;
-                default:
-                    Debug.Log("Equipment減少処理開始");
+                case 1:
                     remainingStock = RemoveEquipment(row);
                     break;
             }
@@ -40,22 +39,22 @@ namespace ItemSystemSQL.Inventory
         {
             int itemStock = Convert.ToInt32(row["Num"]);
             
-            int remainingStack = itemStock - 1;
+            int remainingStock = itemStock - 1;
             
-            if (remainingStack > 0)
+            if (remainingStock > 0)
             {
-                string updateQuery = "UPDATE Inventory SET Num = " + remainingStack + " WHERE IID = " + row["IID"];
+                string updateQuery = "UPDATE Inventory SET Num = " + remainingStock + " WHERE IID = " + row["IID"];
                 sqlDB.ExecuteNonQuery(updateQuery);
 
-                Debug.Log(row["IID"] + "のStockを(" + remainingStack + ")に減少");
-                return remainingStack;
+                Debug.Log(row["IID"] + "のStockを(" + remainingStock + ")に減少");
+                return remainingStock;
             }
-            else if (remainingStack == 0)
+            else if (remainingStock == 0)
             {
                 string deleteQuery = "DELETE FROM Inventory WHERE IID = " + row["IID"];
                 sqlDB.ExecuteNonQuery(deleteQuery);
                 Debug.Log(row["IID"] + "のアイテムを使い切った");
-                return remainingStack;
+                return remainingStock;
             }
             return 0;
         }

@@ -827,7 +827,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &231882876
 GameObject:
@@ -1906,7 +1906,7 @@ Transform:
   m_Children:
   - {fileID: 771773652}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &427384845 stripped
 Transform:
@@ -2439,7 +2439,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1001 &707779561
 PrefabInstance:
@@ -3419,13 +3419,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
   m_LocalPosition: {x: 0, y: 7, z: -4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 721296553}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2021226002}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &963194229
@@ -3461,6 +3461,41 @@ MonoBehaviour:
     _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
     _objectReferences:
     - {fileID: 11400000, guid: 55e07277d7176fe4abd508ffe5dc44ea, type: 2}
+--- !u!1 &993325772
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993325773}
+  m_Layer: 0
+  m_Name: DBSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993325773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993325772}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1116650730}
+  - {fileID: 7708753308069684058}
+  - {fileID: 1223094919}
+  - {fileID: 930217362343150349}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1081911840
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3522,6 +3557,126 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec83dcd22959c34f99182583b868aa2, type: 3}
+--- !u!1 &1116650725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1116650730}
+  - component: {fileID: 1116650729}
+  - component: {fileID: 1116650728}
+  - component: {fileID: 1116650727}
+  - component: {fileID: 1116650726}
+  m_Layer: 0
+  m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1116650726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116650725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2fe5546f775c47d2820aa5e8a715f53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+    _objectReferences:
+    - {fileID: 11400000, guid: 55e07277d7176fe4abd508ffe5dc44ea, type: 2}
+--- !u!114 &1116650727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116650725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"Target","value":{"$content":0,"$type":"UnityEngine.Object"},"typeHandle":{"Identification":"UnityEngine.GameObject,
+      UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+    _objectReferences:
+    - {fileID: 7708753308069684054}
+--- !u!81 &1116650728
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116650725}
+  m_Enabled: 1
+--- !u!20 &1116650729
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116650725}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: -1
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!4 &1116650730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116650725}
+  m_LocalRotation: {x: 0.5, y: -0, z: -0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 7, z: -4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1204377535}
+  m_Father: {fileID: 993325773}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1 &1122302358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3633,6 +3788,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3161872203314884580, guid: 6895dc0c751f59b40a08e3be9e8821b7, type: 3}
   m_PrefabInstance: {fileID: 1454445036}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1204377534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1204377535}
+  - component: {fileID: 1204377537}
+  - component: {fileID: 1204377536}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1204377535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204377534}
+  m_LocalRotation: {x: -0.5, y: -0, z: -0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: -0.03589821, z: 8.062178}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1116650730}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1204377536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204377534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1204377537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204377534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Scene","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
 --- !u!1 &1223094918
 GameObject:
   m_ObjectHideFlags: 0
@@ -3658,7 +3873,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223094918}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3673,8 +3888,8 @@ Transform:
   - {fileID: 1240895360}
   - {fileID: 1962915239}
   - {fileID: 704326512}
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 993325773}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1223094921
 MonoBehaviour:
@@ -3819,7 +4034,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3614113160609081, guid: 9ec83dcd22959c34f99182583b868aa2, type: 3}
       propertyPath: num
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3614113160609086, guid: 9ec83dcd22959c34f99182583b868aa2, type: 3}
       propertyPath: m_Name
@@ -4969,7 +5184,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849449816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4984,8 +5199,8 @@ Transform:
   - {fileID: 427384845}
   - {fileID: 1713754941}
   - {fileID: 4794465821525559357}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 2021226002}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855197760
 GameObject:
@@ -5102,7 +5317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
-  buttonPrefab: {fileID: 0}
+  buttonPrefab: {fileID: 484703032809670837, guid: a76dc74a0b31cd74c8691ad31020a350, type: 3}
   buttonContainer: {fileID: 1855197761}
   informationText: {fileID: 309204107}
   playerUseItem: {fileID: 2146079526}
@@ -5359,8 +5574,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2012146850}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 2021226002}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5550,6 +5765,41 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012146849}
   m_CullTransparentMesh: 1
+--- !u!1 &2021226001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2021226002}
+  m_Layer: 0
+  m_Name: ScriptableObjectSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2021226002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021226001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 963194228}
+  - {fileID: 2146079514}
+  - {fileID: 1849449817}
+  - {fileID: 1949011345}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2101365885 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3161872203314884580, guid: 6895dc0c751f59b40a08e3be9e8821b7, type: 3}
@@ -6053,6 +6303,67 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec83dcd22959c34f99182583b868aa2, type: 3}
+--- !u!1001 &788153076627691020
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 993325773}
+    m_Modifications:
+    - target: {fileID: 788153078074856462, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: equipmentItemSQL
+      value: 
+      objectReference: {fileID: 930217363072868100}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920602464858813786, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: m_Name
+      value: Player-SQLDB
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
 --- !u!114 &930217361440651012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7020,24 +7331,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930217362184133852}
   m_CullTransparentMesh: 1
---- !u!114 &930217362184133849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930217362184133852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11dbdc7aeddc01742b92924fb1372dd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInventory: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
-  buttonPrefab: {fileID: 0}
-  buttonContainer: {fileID: 930217362184133853}
-  informationText: {fileID: 930217362774874647}
-  playerUseItem: {fileID: 0}
-  totalTextLength: 20
 --- !u!1 &930217362184133852
 GameObject:
   m_ObjectHideFlags: 0
@@ -7050,7 +7343,7 @@ GameObject:
   - component: {fileID: 930217362184133848}
   - component: {fileID: 930217362184133855}
   - component: {fileID: 930217362184133854}
-  - component: {fileID: 930217362184133849}
+  - component: {fileID: 930217362184133856}
   m_Layer: 5
   m_Name: ItemArea
   m_TagString: Untagged
@@ -7132,6 +7425,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &930217362184133856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930217362184133852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c7fcb053df95441a26e5bce46cbd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 4460590975337456279, guid: df81ac6b3f4d84b4382d7e672ebcb7ed, type: 3}
+  buttonContainer: {fileID: 930217362184133853}
+  informationText: {fileID: 930217362774874647}
+  totalTextLength: 20
 --- !u!1 &930217362308854849
 GameObject:
   m_ObjectHideFlags: 0
@@ -7322,8 +7631,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 930217362330231358}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Father: {fileID: 993325773}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -8198,7 +8507,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 930217362564420573}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -8214,7 +8523,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 930217362564420573}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -8230,7 +8539,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 930217362564420573}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: unequip
           m_Mode: 1
           m_Arguments:
@@ -8246,7 +8555,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 930217362564420573}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: unequip
           m_Mode: 1
           m_Arguments:
@@ -8262,7 +8571,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 930217362564420573}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -8290,7 +8599,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 930217362564420573}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -8310,10 +8619,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 930217362564420519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69896e4353f958e49ae3eb8c6c2d041d, type: 3}
+  m_Script: {fileID: 11500000, guid: d09d6d784d4a85643b741f08b19001cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInventory: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
   informationText: {fileID: 930217362774874647}
 --- !u!1 &930217362583328848
 GameObject:
@@ -9204,8 +9512,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217362184133849}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217362184133856}
+          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -9216,8 +9524,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+        - m_Target: {fileID: 930217363072868100}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -9228,8 +9536,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+        - m_Target: {fileID: 930217363072868100}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -9256,8 +9564,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217362184133849}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217362184133856}
+          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -9268,8 +9576,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+        - m_Target: {fileID: 930217363072868100}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -9280,8 +9588,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+        - m_Target: {fileID: 930217363072868100}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -9347,7 +9655,7 @@ GameObject:
   - component: {fileID: 930217363072868097}
   - component: {fileID: 930217363072868099}
   - component: {fileID: 930217363072868098}
-  - component: {fileID: 930217363072868156}
+  - component: {fileID: 930217363072868100}
   m_Layer: 5
   m_Name: EquipArea
   m_TagString: Untagged
@@ -9418,7 +9726,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 930217363072868096}
   m_CullTransparentMesh: 1
---- !u!114 &930217363072868156
+--- !u!114 &930217363072868100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9427,11 +9735,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 930217363072868096}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cf2287add5a40543b13205fb69f379f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f5f750c7d5040748a7344a40da36a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStatus: {fileID: 0}
-  playerInventory: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
   BonusText: {fileID: 930217363198930621}
 --- !u!224 &930217363105149464
 RectTransform:
@@ -9762,7 +10068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonPrefab: {fileID: -3857659980002422907, guid: a6e658531fe03794c98cca15d8a20a26, type: 3}
   buttonContainer: {fileID: 930217363378000719}
-  informationText: {fileID: 0}
+  informationText: {fileID: 930217362583328850}
   MenuButton: {fileID: 5080055508850834081}
   totalTextLength: 50
 --- !u!222 &930217363437123288
@@ -9790,8 +10096,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 930217363437123290}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217363437123296}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -9806,8 +10112,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 930217363437123290}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217363437123296}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -9822,8 +10128,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 930217363437123290}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217363437123296}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: unequip
           m_Mode: 1
           m_Arguments:
@@ -9838,8 +10144,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 930217363437123290}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217363437123296}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: unequip
           m_Mode: 1
           m_Arguments:
@@ -9854,8 +10160,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 930217363437123290}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217363437123296}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -9882,8 +10188,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363437123290}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217363437123296}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -9894,20 +10200,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &930217363437123290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930217363437123292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69896e4353f958e49ae3eb8c6c2d041d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerInventory: {fileID: 11400000, guid: 1e1a8ed7cdf449a489f56dc7ab371e3d, type: 2}
-  informationText: {fileID: 930217362774874647}
 --- !u!1 &930217363437123292
 GameObject:
   m_ObjectHideFlags: 0
@@ -9920,7 +10212,7 @@ GameObject:
   - component: {fileID: 930217363437123288}
   - component: {fileID: 930217363437123295}
   - component: {fileID: 930217363437123294}
-  - component: {fileID: 930217363437123290}
+  - component: {fileID: 930217363437123296}
   - component: {fileID: 930217363437123289}
   m_Layer: 5
   m_Name: RightHandButton
@@ -10024,6 +10316,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &930217363437123296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930217363437123292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09d6d784d4a85643b741f08b19001cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationText: {fileID: 930217362774874647}
 --- !u!1001 &953700188995775504
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10238,7 +10543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4229734052183258409, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4229734052183258409, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10813,7 +11118,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217362184133849}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UISystem.CreateEquipItemButton, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
@@ -10825,7 +11130,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
@@ -10853,7 +11158,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217362184133849}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UISystem.CreateEquipItemButton, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
@@ -10865,7 +11170,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
@@ -12450,8 +12755,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217362184133849}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217362184133856}
+          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -12462,8 +12767,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+        - m_Target: {fileID: 930217363072868100}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -12474,8 +12779,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+        - m_Target: {fileID: 930217363072868100}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -12502,8 +12807,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217362184133849}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButton, Assembly-CSharp
+        - m_Target: {fileID: 930217362184133856}
+          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -12514,8 +12819,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+        - m_Target: {fileID: 930217363072868100}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -12526,8 +12831,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 930217363072868156}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItem, Assembly-CSharp
+        - m_Target: {fileID: 930217363072868100}
+          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -15965,15 +16270,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2021226002}
     m_Modifications:
     - target: {fileID: 7708753307408855650, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player-ScriptableObject
       objectReference: {fileID: 0}
     - target: {fileID: 7708753307408855662, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7708753307408855662, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15993,7 +16298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7708753307408855662, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7708753307408855662, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -16001,7 +16306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7708753307408855662, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7708753307408855662, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16017,3 +16322,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5c068bc3ed7af44293d57fe469cffb6, type: 3}
+--- !u!1 &7708753308069684054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6920602464858813786, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+  m_PrefabInstance: {fileID: 788153076627691020}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7708753308069684058 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+  m_PrefabInstance: {fileID: 788153076627691020}
+  m_PrefabAsset: {fileID: 0}

@@ -1,11 +1,7 @@
-using System.Linq;
 using TMPro;
-using ItemSystem;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using System.IO;
-using static UnityEditor.Progress;
 using System;
 using ItemSystemSQL;
 
@@ -27,11 +23,11 @@ namespace UISystem
         public void Awake()
         {
             copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
+            sqlDB = new SqliteDatabase(copiedDatabasePath);
         }
 
         public void SetButton()
         {
-            sqlDB = new SqliteDatabase(copiedDatabasePath);
             ClearButtons();
 
             query = "SELECT * FROM Inventory ORDER BY Id ASC";
@@ -40,12 +36,12 @@ namespace UISystem
             foreach (DataRow row in InventoryData.Rows)
             {
                 int itemId = Convert.ToInt32(row["Id"]);
-                int itemStock = Convert.ToInt32(row["Num"]);
                 ConsumableData consumableItem = ItemDataCache.GetConsumable(itemId);
                 EquipmentData equipmentItem = ItemDataCache.GetEquipment(itemId);
 
                 if (consumableItem != null)
                 {
+                    int itemStock = Convert.ToInt32(row["Num"]);
                     ItemButtonSQL button = Instantiate(buttonPrefab, buttonContainer);
                     ItemButtonSQL itemButton = button.GetComponent<ItemButtonSQL>();
                     itemButton.row = row;
@@ -99,8 +95,7 @@ namespace UISystem
             TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
             buttonText.text = FormatItemText(itemName, ItemStock);
             Debug.Log("èëÇ´ä∑Ç¶äÆóπ");
-
-            if (ItemStock == 0) SelectButtonChangeForDestruction(button);
+//ï€åØ            if (ItemStock == 0) SelectButtonChangeForDestruction(button);
         }
 
         public void SelectButtonChangeForDestruction(ItemButtonSQL button)

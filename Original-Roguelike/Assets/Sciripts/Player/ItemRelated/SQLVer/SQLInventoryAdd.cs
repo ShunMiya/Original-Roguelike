@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using UnityEngine;
 
 namespace ItemSystemSQL.Inventory
@@ -8,14 +7,13 @@ namespace ItemSystemSQL.Inventory
     {
         private SqliteDatabase sqlDB;
         string query;
-        private string copiedDatabasePath;
         int inventorySize;
         int itemCount;
 
-        public void Awake()
+        public void Start()
         {
-            copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
-            sqlDB = new SqliteDatabase(copiedDatabasePath);
+            string databasePath = SQLDBInitialization.GetDatabasePath();
+            sqlDB = new SqliteDatabase(databasePath);
         }
 
         public void InitializeFromPlayerStatus(int inventorysize)
@@ -26,7 +24,6 @@ namespace ItemSystemSQL.Inventory
 
         public bool AddItem(int itemId, int num)
         {
-            if (sqlDB == null) Debug.Log("sqlDBがnullだよ！");
             itemCount = InventoryCount();
 
             ConsumableData consumableItem = ItemDataCache.GetConsumable(itemId);
@@ -52,8 +49,6 @@ namespace ItemSystemSQL.Inventory
             string query = "SELECT * FROM Inventory WHERE Id = " + itemId;
             DataTable itemsData = sqlDB.ExecuteQuery(query);
 
-            Debug.Log("Idが" + consumableItem.Id + " MaxStockが" + consumableItem.MaxStock + "　名前が" + consumableItem.ItemName+" 回復値が"+consumableItem.HealValue);
-
             foreach (DataRow row in itemsData.Rows)
             {
                 int currentNum = Convert.ToInt32(row["Num"]);
@@ -77,8 +72,6 @@ namespace ItemSystemSQL.Inventory
         public bool AddEquipment(int itemId, EquipmentData equipmentItem)
         {
             if (itemCount == inventorySize) return false;
-
-            Debug.Log("Idが" + equipmentItem.Id + "　名前が" + equipmentItem.ItemName);
 
             string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + equipmentItem.Id + "', '"+ equipmentItem.ItemName + "', " + 1 + ")";
             Debug.Log(equipmentItem.ItemName+"を入手");

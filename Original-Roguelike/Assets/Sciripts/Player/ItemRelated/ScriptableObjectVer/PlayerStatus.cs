@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using PlayerMovement;
 using Combat.AttackMotion;
@@ -18,7 +16,6 @@ namespace PlayerStatusList
         public Equipment LeftEquip;
 
         public PlayerInventoryDataBase inventoryData;
-        private SQLInventoryAdd SQLInventory;
 
         public bool PlayerActive = false; //移動、攻撃、アイテムの使用(装備の着脱含)
 
@@ -26,7 +23,6 @@ namespace PlayerStatusList
         {
             playerMove = GetComponent<PlayerMove>();
             attackMotion = GetComponent<AttackMotion>();
-            SQLInventory = GetComponent<SQLInventoryAdd>();
 
             inventorySizeUpDate();
         }
@@ -34,7 +30,6 @@ namespace PlayerStatusList
         public void inventorySizeUpDate()
         {
             inventoryData.InitializeFromPlayerStatus(inventorySize);
-            SQLInventory.InitializeFromPlayerStatus(inventorySize);
         }
 
         public void EquipItem(IItemData ITemData)
@@ -43,11 +38,6 @@ namespace PlayerStatusList
             switch (itemData.EquipType)
             {
                 case 0:
-                    /*if (LeftEquip != null && ((EquipItemData)LeftEquip).EquipType != (EquipType)1)
-                    {
-                        RightEquip = itemData;
-                        break;
-                    }*/
                     if (LeftEquip != null) ((Equipment)LeftEquip).Equipped = false;
                     ((Equipment)itemData).Equipped = true;
                     LeftEquip = itemData;
@@ -85,7 +75,6 @@ namespace PlayerStatusList
                 return;
             }
         }
-
 
         public bool IsPlayerActive()
         {

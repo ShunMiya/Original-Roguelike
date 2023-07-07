@@ -5,10 +5,12 @@ namespace ItemSystemSQL.Inventory
 {
     public class SQLDBInitialization : MonoBehaviour
     {
+        public static string databasePath;
+
         private void Awake()
         {
-            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath,"InventoryDataBase.db");
-            string copiedDatabasePath = Path.Combine(Application.persistentDataPath,"InventoryDataBase.db");
+            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "InventoryDataBase.db");
+            string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
 
             if (File.Exists(copiedDatabasePath))
             {
@@ -17,9 +19,16 @@ namespace ItemSystemSQL.Inventory
 
             File.Copy(originalDatabasePath, copiedDatabasePath);
 
+            databasePath = copiedDatabasePath;
+
             Debug.Log("DBÇèâä˙âª");
             string dataPath = Application.persistentDataPath;
             Debug.Log("Data Path: " + dataPath);
+        }
+
+        public static string GetDatabasePath()
+        {
+            return databasePath;
         }
     }
 }
