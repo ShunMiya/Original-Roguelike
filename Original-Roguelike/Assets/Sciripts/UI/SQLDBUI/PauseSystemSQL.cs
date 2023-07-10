@@ -12,7 +12,7 @@ namespace UISystem
         // Update is called once per frame
         public void Update()
         {
-            if (Input.GetKeyDown("c"))
+            if (Input.GetKeyDown("x"))
             {
                 pauseUI.SetActive(!pauseUI.activeSelf);
                 ChangeWindow(windowLists[0]);

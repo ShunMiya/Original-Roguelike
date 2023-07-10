@@ -6,6 +6,7 @@ namespace Combat.AttackMotion
 {
     public class AttackMotion : MonoBehaviour
     {
+        [SerializeField]private int damage;
         private string EnemyTag = "Enemy";
         float gridSize = GameRule.GridSize;
 
@@ -20,7 +21,7 @@ namespace Combat.AttackMotion
             Debug.Log("Attack!");
             if (playerFrontCheck.IsAttackHitCheck())
             {
-                Debug.Log("EnemyDamage");
+                playerFrontCheck.Attacked(damage);
             }
 /*            if (EnemyStay())
             {

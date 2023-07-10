@@ -28,7 +28,7 @@ namespace UISystem
                 EventSystem.current.SetSelectedGameObject(gameObject);
             }
             int itemId = Convert.ToInt32(row["Id"]);
-            IItemDataInventory itemData = ItemDataCache.GetIItemData(itemId);
+            IItemData itemData = ItemDataCache.GetIItemData(itemId);
             string description = itemData.Description;
             informationText.text = description;
         }
@@ -41,7 +41,7 @@ namespace UISystem
         {
             int itemId = Convert.ToInt32(row["Id"]);
             int itemStock = Convert.ToInt32(row["Num"]);
-            IItemDataInventory itemData = ItemDataCache.GetIItemData(itemId);
+            IItemData itemData = ItemDataCache.GetIItemData(itemId);
 
             switch (itemData.ItemType)
             {

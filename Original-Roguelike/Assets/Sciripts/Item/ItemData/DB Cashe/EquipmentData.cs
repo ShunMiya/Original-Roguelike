@@ -1,6 +1,6 @@
 namespace ItemSystemSQL
 {
-    public interface IItemDataInventory
+    public interface IItemData
     {
         int Id { get; }
         string PrefabName { get; }
@@ -9,7 +9,7 @@ namespace ItemSystemSQL
         string Description { get; }
     }
 
-    public class EquipmentData : IItemDataInventory
+    public class EquipmentData : IItemData
     {
         public int Id { get; set; }
         public string PrefabName { get; set; }

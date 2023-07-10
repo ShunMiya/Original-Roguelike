@@ -1,23 +1,25 @@
+using ItemSystem;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ItemSystemSQL
 {
     public static class ItemDataCache
     {
-        private static Dictionary<int, EquipmentData> equipmentCache;
-        private static Dictionary<int, ConsumableData> consumableCache;
+        private static Dictionary<int, IItemData> equipmentCache;
+        private static Dictionary<int, IItemData> consumableCache;
 
         static ItemDataCache()
         {
-            equipmentCache = new Dictionary<int, EquipmentData>();
-            consumableCache = new Dictionary<int, ConsumableData>();
+            equipmentCache = new Dictionary<int, IItemData>();
+            consumableCache = new Dictionary<int, IItemData>();
         }
 
-        public static IItemDataInventory GetIItemData(int itemId)
+        public static IItemData GetIItemData(int itemId)
         {
-            IItemDataInventory consumableItem = ItemDataCache.GetConsumable(itemId);
-            IItemDataInventory equipmentItem = ItemDataCache.GetEquipment(itemId);
+            IItemData consumableItem = ItemDataCache.GetConsumable(itemId);
+            IItemData equipmentItem = ItemDataCache.GetEquipment(itemId);
 
             if (consumableItem != null)return consumableItem;
             if (equipmentItem != null) return equipmentItem;
@@ -46,9 +48,9 @@ namespace ItemSystemSQL
 
         public static EquipmentData GetEquipment(int itemId)
         {
-            if (equipmentCache.TryGetValue(itemId, out EquipmentData equipmentData))
+            if (equipmentCache.TryGetValue(itemId, out IItemData equipmentData))
             {
-                return equipmentData;
+                return equipmentData as EquipmentData;
             }
             else
             {
@@ -75,14 +77,30 @@ namespace ItemSystemSQL
 
         public static ConsumableData GetConsumable(int itemId)
         {
-            if (consumableCache.TryGetValue(itemId, out ConsumableData consumableData))
+            if (consumableCache.TryGetValue(itemId, out IItemData consumableData))
             {
-                return consumableData;
+                return consumableData as ConsumableData;
             }
             else
             {
                 return null;
             }
+        }
+
+        public static IItemData GetRandomItem(bool isEquipment)
+        {
+            Dictionary<int, IItemData> selectedCache;
+            if (isEquipment)
+            {
+                selectedCache = equipmentCache;
+            }
+            else
+            {
+                selectedCache = consumableCache;
+            }
+            int randomIndex = UnityEngine.Random.Range(0, selectedCache.Count);
+            IItemData randomItem = selectedCache.ElementAt(randomIndex).Value;
+            return randomItem;
         }
     }
 }

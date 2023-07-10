@@ -1,6 +1,6 @@
 namespace ItemSystemSQL
 {
-    public class ConsumableData : IItemDataInventory
+    public class ConsumableData : IItemData
     {
         public int Id { get; set; }
         public string PrefabName { get; set; }

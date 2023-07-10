@@ -6,7 +6,7 @@ namespace ItemSystemSQL
     public class SQLDBGetItem : MonoBehaviour
     {
         [SerializeField] private int itemId;
-        [SerializeField] private int num;
+        public int num;
 
         private void OnTriggerEnter(Collider other)
         {

@@ -1,9 +1,11 @@
 using UnityEngine;
+using Enemy;
 
 namespace PlayerFrontChecker
 {
     public class PlayerFrontCheck : MonoBehaviour
     {
+        public Collider Enemycollider;
         public bool isMoveFail = false;
         public bool isAttackHit = false;
 
@@ -16,6 +18,7 @@ namespace PlayerFrontChecker
 
             if (collider.gameObject.CompareTag("Enemy"))
             {
+                Enemycollider = collider;
                 isAttackHit = true;
             }
         }
@@ -29,8 +32,16 @@ namespace PlayerFrontChecker
 
             if (collider.gameObject.CompareTag("Enemy"))
             {
+                Enemycollider = null;
                 isAttackHit = false;
             }
+        }
+
+        public void EnemyDestroy()
+        {
+            Enemycollider = null;
+            isAttackHit = false;
+            isMoveFail = false;
         }
 
         public bool IsMoveFailCheck()
@@ -41,6 +52,13 @@ namespace PlayerFrontChecker
         public bool IsAttackHitCheck()
         {
             return isAttackHit;
+        }
+
+        public void Attacked(int damage)
+        {
+            EnemyStatus enemyStatus = Enemycollider.GetComponent<EnemyStatus>();
+
+            enemyStatus.TakeDamage(damage);
         }
     }
 }
