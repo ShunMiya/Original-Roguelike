@@ -42,11 +42,6 @@ namespace UISystem
             InventoryUI.GetComponent<PauseSystem>().ChangeWindow(window);
         }
 
-        public void WindowOnOffSQL(GameObject window)
-        {
-            InventoryUI.GetComponent<PauseSystemSQL>().ChangeWindow(window);
-        }
-
         public void SelectReturnButton()
         {
             EventSystem.current.SetSelectedGameObject(returnButton);
