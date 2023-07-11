@@ -36,12 +36,6 @@ namespace UISystem
         {
             backgroundObject.SetActive(false);
         }
-
-        public void WindowOnOff(GameObject window)
-        {
-            InventoryUI.GetComponent<PauseSystem>().ChangeWindow(window);
-        }
-
         public void WindowOnOffSQL(GameObject window)
         {
             InventoryUI.GetComponent<PauseSystemSQL>().ChangeWindow(window);

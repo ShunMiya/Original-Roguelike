@@ -4,6 +4,7 @@ namespace ItemSystemSQL
 {
     public class ItemFactory : MonoBehaviour
     {
+        [SerializeField] private GameObject itemSQLDB;
         public void ItemCreate(Vector3 position)
         {
             // ランダムにどちらのキャッシュを選択するかを決定
@@ -15,6 +16,7 @@ namespace ItemSystemSQL
 
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
             GameObject spawnedItem = GameObject.Instantiate(prefab, position, Quaternion.identity);
+            spawnedItem.transform.parent = itemSQLDB.transform;
 
             int randomNum = UnityEngine.Random.Range(1, 6);
             spawnedItem.GetComponent<SQLDBGetItem>().num = randomNum;
