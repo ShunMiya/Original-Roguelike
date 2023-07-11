@@ -29,8 +29,7 @@ namespace UISystem
             }
             int itemId = Convert.ToInt32(row["Id"]);
             IItemData itemData = ItemDataCache.GetIItemData(itemId);
-            string description = itemData.Description;
-            informationText.text = description;
+            informationText.text = itemData.Description;
         }
         public void OnDeselected()
         {
@@ -55,7 +54,7 @@ namespace UISystem
                     createItemButton.SetButtonTextAfterUse(this);
 
                     break;
-                default:
+                case 1:
                     playerUseItemSQL.UseItem(row,1);
 
                     createItemButton.SelectButtonChangeForDestruction(this);

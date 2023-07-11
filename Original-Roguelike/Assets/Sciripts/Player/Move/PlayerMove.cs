@@ -44,15 +44,6 @@ namespace PlayerMovement
                     } break;
             }
 
- /*           if ((Input.GetKey(KeyCode.C) && movex != 0.0f && movez != Mathf.Epsilon) || !Input.GetKey(KeyCode.C))
-            {
-                move = new Vector3(movex * gridSize, 0, movez * gridSize);
-                if (targetPos == transform.position) //仮置き。PlayerActiveで行動停止付けれたらいらなくなる。
-                {
-                    targetPos += move;
-                }
-            }*/
-
             transform.LookAt(targetPos);
 
 //            if (movePointCheck.MovePossible(targetPos, gridSize))
@@ -66,6 +57,8 @@ namespace PlayerMovement
                     }
                 case false:
                     {
+                        //OnTriggerを発動させたい
+
                         if(!playerFrontCheck.IsMoveFailCheck())
                         {
                             MoveAction();
@@ -77,15 +70,6 @@ namespace PlayerMovement
                         break;
                     }
             }
-
-/*            if ((!playerFrontCheck.IsMoveFailCheck() && ismoving == false) || ismoving == true)
-            {
-                MoveAction();
-            }
-            else
-            {
-                targetPos = transform.position;
-            }*/
         }
 
         public void MoveAction()

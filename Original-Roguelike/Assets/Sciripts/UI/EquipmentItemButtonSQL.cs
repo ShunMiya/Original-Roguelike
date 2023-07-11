@@ -10,9 +10,7 @@ namespace UISystem
         private TextMeshProUGUI buttonText;
         public DataRow row;
 
-
-        // Start is called before the first frame update
-        void Awake()
+        void Start()
         {
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
 

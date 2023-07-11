@@ -40,19 +40,11 @@ namespace UISystem
                     sqlDB.ExecuteNonQuery(equipQuery);
                     break;
                 case 1:
-                    checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped = 1";
-                    LeftEquipped = sqlDB.ExecuteQuery(checkEquippedQuery);
-                    if (LeftEquipped.Rows.Count > 0)
+                    checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped IN (1, 2)";
+                    DataTable Equipped = sqlDB.ExecuteQuery(checkEquippedQuery);
+                    foreach (DataRow equippedRow in Equipped.Rows)
                     {
-                        int equippedIID = Convert.ToInt32(LeftEquipped.Rows[0]["IID"]);
-                        string unequipQuery = "UPDATE Inventory SET Equipped = 0 WHERE IID = " + equippedIID;
-                        sqlDB.ExecuteNonQuery(unequipQuery);
-                    }
-                    checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped = 2";
-                    DataTable RightEquipped = sqlDB.ExecuteQuery(checkEquippedQuery);
-                    if (RightEquipped.Rows.Count > 0)
-                    {
-                        int equippedIID = Convert.ToInt32(RightEquipped.Rows[0]["IID"]);
+                        int equippedIID = Convert.ToInt32(equippedRow["IID"]);
                         string unequipQuery = "UPDATE Inventory SET Equipped = 0 WHERE IID = " + equippedIID;
                         sqlDB.ExecuteNonQuery(unequipQuery);
                     }
@@ -76,7 +68,7 @@ namespace UISystem
                         }
                     }
                     checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped = 2";
-                    RightEquipped = sqlDB.ExecuteQuery(checkEquippedQuery);
+                    DataTable RightEquipped = sqlDB.ExecuteQuery(checkEquippedQuery);
                     if (RightEquipped.Rows.Count > 0)
                     {
                         int equippedIID = Convert.ToInt32(RightEquipped.Rows[0]["IID"]);

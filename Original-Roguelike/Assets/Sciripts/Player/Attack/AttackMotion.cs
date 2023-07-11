@@ -7,9 +7,7 @@ namespace Combat.AttackMotion
     public class AttackMotion : MonoBehaviour
     {
         [SerializeField]private int damage;
-        private string EnemyTag = "Enemy";
-        float gridSize = GameRule.GridSize;
-
+        bool isAttacking = false;
         private PlayerFrontCheck playerFrontCheck;
 
         private void Start()
@@ -18,43 +16,18 @@ namespace Combat.AttackMotion
         }
         public void AttackStance()
         {
+            isAttacking = true;
             Debug.Log("Attack!");
             if (playerFrontCheck.IsAttackHitCheck())
             {
                 playerFrontCheck.Attacked(damage);
             }
-/*            if (EnemyStay())
-            {
-                Debug.Log("EnemyDamage");
-            }*/
+            isAttacking = false;
         }
 
         public bool IsAttacking()
         {
-            return false;
-        }
-
-        private bool EnemyStay()
-        {
-            // プレイヤーの位置と向きを取得
-            Vector3 playerPosition = transform.position;
-            Quaternion playerRotation = transform.rotation;
-
-            // プレイヤーの正面にある領域を計算
-            Vector3 playerFrontPosition = playerPosition + playerRotation * Vector3.forward * gridSize;
-            Vector3 boxSize = new Vector3(gridSize / 4f, gridSize / 4f, gridSize / 4f);
-
-            // プレイヤーの正面にオブジェクトが存在するか判定
-            Collider[] colliders = Physics.OverlapBox(playerFrontPosition, boxSize, playerRotation);
-            foreach (Collider collider in colliders)
-            {
-                if (collider.CompareTag(EnemyTag))
-                {
-                    return true; // EnemyTagのオブジェクトが存在する
-                }
-            }
-
-            return false; // EnemyTagのオブジェクトが存在しない
+            return isAttacking;
         }
     }
 }

@@ -89,14 +89,9 @@ namespace ItemSystemSQL
         public static IItemData GetRandomItem(bool isEquipment)
         {
             Dictionary<int, IItemData> selectedCache;
-            if (isEquipment)
-            {
-                selectedCache = equipmentCache;
-            }
-            else
-            {
-                selectedCache = consumableCache;
-            }
+
+            selectedCache = isEquipment ? equipmentCache : consumableCache;
+
             int randomIndex = UnityEngine.Random.Range(0, selectedCache.Count);
             IItemData randomItem = selectedCache.ElementAt(randomIndex).Value;
             return randomItem;

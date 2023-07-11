@@ -6,7 +6,6 @@ namespace ItemSystemSQL.Inventory
     public class SQLInventoryAdd : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
-        string query;
         int inventorySize;
         int itemCount;
 
@@ -81,7 +80,7 @@ namespace ItemSystemSQL.Inventory
 
         public int InventoryCount()
         {
-            query = "SELECT COUNT(*) AS TotalCount FROM Inventory";
+            string query = "SELECT COUNT(*) AS TotalCount FROM Inventory";
             DataTable result = sqlDB.ExecuteQuery(query);
             object value = result.Rows[0]["TotalCount"];
             itemCount = Convert.ToInt32(value);

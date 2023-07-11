@@ -11,14 +11,12 @@ public class PlayerControl : MonoBehaviour
     float movex;
     float movez;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerMove = GetComponent<PlayerMove>();
         attackMotion = GetComponent<AttackMotion>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Mathf.Approximately(Time.timeScale, 0f)) return;

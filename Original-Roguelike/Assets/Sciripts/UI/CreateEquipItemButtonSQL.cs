@@ -11,11 +11,9 @@ namespace UISystem
         public ItemButtonSQL buttonPrefab;
         public Transform buttonContainer;
         [SerializeField] private TextMeshProUGUI informationText;
+        [SerializeField] private int totalTextLength;
 
         private SqliteDatabase sqlDB;
-        string query;
-
-        [SerializeField] private int totalTextLength;
 
         public void Start()
         {
@@ -32,7 +30,7 @@ namespace UISystem
             }
             ClearButtons();
 
-            query = "SELECT * FROM Inventory ORDER BY Id ASC";
+            string query = "SELECT * FROM Inventory ORDER BY Id ASC";
             DataTable InventoryData = sqlDB.ExecuteQuery(query);
 
             foreach (DataRow row in InventoryData.Rows)

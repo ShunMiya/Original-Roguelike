@@ -15,13 +15,9 @@ namespace Enemy
             currentHP -= damage;
             Debug.Log(damage + "のダメージを与えた。敵残りHP" + currentHP);
 
-            if (currentHP <= 0)
+            if (currentHP <= 0 && EnemyDefeated != null)
             {
-                // HPが0以下になった場合、EnemyDefeatedイベントを発火させる
-                if (EnemyDefeated != null)
-                {
-                    EnemyDefeated();
-                }
+                EnemyDefeated();
             }
         }
     }

@@ -12,7 +12,6 @@ namespace UISystem
         [SerializeField] private GameObject InventoryUI;
         private GameObject backgroundObject;
 
-
         void Start()
         {
             returnButton = transform.parent.Find("BackGameButton").gameObject;
