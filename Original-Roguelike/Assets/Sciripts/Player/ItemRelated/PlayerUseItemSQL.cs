@@ -1,15 +1,13 @@
 using UnityEngine;
 using PlayerStatusList;
 using ItemSystemSQL.Inventory;
-using System;
-using UISystem;
 
 namespace ItemSystemSQL
 {
     public class PlayerUseItemSQL : MonoBehaviour
     {
         [SerializeField]private SQLInventoryRemove SQLinventoryremove;
-        [SerializeField]private EquipmentItemSQL equipmentItemSQL;
+        public PlayerStatusSQL playerStatusSQL;
 
         public int UseItem(DataRow row,int ItemType)
         {
@@ -26,11 +24,11 @@ namespace ItemSystemSQL
                 case 1:
 
                     remainingStock = SQLinventoryremove.RemoveItem(row, 1);
+                    playerStatusSQL.WeaponStatusPlus(); //UnknowError,BonusNotUpdated
 
                     break;
             }
             return remainingStock;
         }
-
     }
 }

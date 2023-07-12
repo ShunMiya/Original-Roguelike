@@ -1,5 +1,4 @@
 using UnityEngine;
-using ItemSystemSQL;
 
 namespace Enemy
 {
@@ -8,9 +7,9 @@ namespace Enemy
         public delegate void EnemyDefeatedEventHandler();
         public event EnemyDefeatedEventHandler EnemyDefeated;
 
-        [SerializeField]private int currentHP;
+        [SerializeField]private float currentHP;
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             currentHP -= damage;
             Debug.Log(damage + "のダメージを与えた。敵残りHP" + currentHP);

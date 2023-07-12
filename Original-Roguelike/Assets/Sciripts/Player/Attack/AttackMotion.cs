@@ -1,14 +1,14 @@
 using UnityEngine;
 using PlayerFrontChecker;
-
+using PlayerStatusList;
 
 namespace Combat.AttackMotion
 {
     public class AttackMotion : MonoBehaviour
     {
-        [SerializeField]private int damage;
         bool isAttacking = false;
         private PlayerFrontCheck playerFrontCheck;
+        public PlayerStatusSQL playerStatusSQL;
 
         private void Start()
         {
@@ -20,7 +20,8 @@ namespace Combat.AttackMotion
             Debug.Log("Attack!");
             if (playerFrontCheck.IsAttackHitCheck())
             {
-                playerFrontCheck.Attacked(damage);
+                playerStatusSQL.WeaponStatusPlus();//UseItemErrorCare
+                playerFrontCheck.Attacked(playerStatusSQL.Attack);
             }
             isAttacking = false;
         }

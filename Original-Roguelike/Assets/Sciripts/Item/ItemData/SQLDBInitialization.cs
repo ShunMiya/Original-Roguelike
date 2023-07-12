@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using System;
 
 namespace ItemSystemSQL.Inventory
 {
@@ -23,7 +24,22 @@ namespace ItemSystemSQL.Inventory
 
             if (!File.Exists(copiedDatabasePath))
             {
-                File.Copy(originalDatabasePath, copiedDatabasePath);
+                try
+                {
+                    File.Copy(originalDatabasePath, copiedDatabasePath);
+                }
+                catch (FileNotFoundException e)
+                {
+                    Debug.LogError("ファイルが見つかりません: " + e.Message);
+                }
+                catch (DirectoryNotFoundException e)
+                {
+                    Debug.LogError("コピー先のディレクトリが見つかりません: " + e.Message);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Unknown Error: " + e.Message);
+                }
             }
 
             databasePath = copiedDatabasePath;

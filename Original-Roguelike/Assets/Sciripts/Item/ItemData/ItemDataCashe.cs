@@ -20,9 +20,7 @@ namespace ItemSystemSQL
             IItemData consumableItem = ItemDataCache.GetConsumable(itemId);
             IItemData equipmentItem = ItemDataCache.GetEquipment(itemId);
 
-            if (consumableItem != null)return consumableItem;
-            if (equipmentItem != null) return equipmentItem;
-            return null;
+            return consumableItem != null ? consumableItem : equipmentItem;
         }
 
         public static void CacheEquipment(DataTable equipmentTable)
@@ -47,14 +45,7 @@ namespace ItemSystemSQL
 
         public static EquipmentData GetEquipment(int itemId)
         {
-            if (equipmentCache.TryGetValue(itemId, out IItemData equipmentData))
-            {
-                return equipmentData as EquipmentData;
-            }
-            else
-            {
-                return null;
-            }
+            return equipmentCache.TryGetValue(itemId, out IItemData equipmentData) ? equipmentData as EquipmentData : null;
         }
 
         public static void CacheConsumable(DataTable consumableTable)
@@ -76,14 +67,7 @@ namespace ItemSystemSQL
 
         public static ConsumableData GetConsumable(int itemId)
         {
-            if (consumableCache.TryGetValue(itemId, out IItemData consumableData))
-            {
-                return consumableData as ConsumableData;
-            }
-            else
-            {
-                return null;
-            }
+            return consumableCache.TryGetValue(itemId, out IItemData consumableData) ? consumableData as ConsumableData : null;
         }
 
         public static IItemData GetRandomItem(bool isEquipment)

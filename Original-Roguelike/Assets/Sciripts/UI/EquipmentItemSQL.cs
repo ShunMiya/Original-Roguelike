@@ -3,6 +3,7 @@ using TMPro;
 using ItemSystemSQL;
 using System;
 using ItemSystemSQL.Inventory;
+using PlayerStatusList;
 
 namespace UISystem
 {
@@ -11,6 +12,7 @@ namespace UISystem
         private SqliteDatabase sqlDB;
 
         [SerializeField] private TextMeshProUGUI BonusText;
+        public PlayerStatusSQL playerStatusSQL;
 
         public void Awake()
         {
@@ -83,6 +85,7 @@ namespace UISystem
 
             SetButtonData();
             SetBonusText();
+            playerStatusSQL.WeaponStatusPlus();
         }
 
         public void UnequipItem(DataRow row)
@@ -92,6 +95,7 @@ namespace UISystem
             sqlDB.ExecuteNonQuery(unequipQuery);
 
             SetBonusText();
+            playerStatusSQL.WeaponStatusPlus();
         }
 
         public void SetButtonData()
@@ -138,6 +142,5 @@ namespace UISystem
 
             BonusText.text = (output);
         }
-
     }
 }

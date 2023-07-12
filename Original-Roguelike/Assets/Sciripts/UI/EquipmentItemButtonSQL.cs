@@ -10,7 +10,7 @@ namespace UISystem
         private TextMeshProUGUI buttonText;
         public DataRow row;
 
-        void Start()
+        void Awake()
         {
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
 

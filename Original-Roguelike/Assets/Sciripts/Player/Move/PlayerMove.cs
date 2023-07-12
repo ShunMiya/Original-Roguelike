@@ -1,6 +1,7 @@
 using UnityEngine;
 using MovePointChecker;
 using PlayerFrontChecker;
+using System.Collections;
 
 namespace PlayerMovement
 {
@@ -46,8 +47,6 @@ namespace PlayerMovement
 
             transform.LookAt(targetPos);
 
-//            if (movePointCheck.MovePossible(targetPos, gridSize))
-
             switch(ismoving)
             {
                 case true:
@@ -58,8 +57,9 @@ namespace PlayerMovement
                 case false:
                     {
                         //OnTrigger‚ð”­“®‚³‚¹‚½‚¢
-
+                        Debug.Log("targetPos ="+targetPos.x+targetPos.z);
                         if(!playerFrontCheck.IsMoveFailCheck())
+                        //if (movePointCheck.MovePossible(targetPos, gridSize))
                         {
                             MoveAction();
                         }

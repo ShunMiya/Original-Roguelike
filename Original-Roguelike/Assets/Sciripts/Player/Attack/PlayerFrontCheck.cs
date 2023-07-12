@@ -6,8 +6,8 @@ namespace PlayerFrontChecker
     public class PlayerFrontCheck : MonoBehaviour
     {
         public Collider Enemycollider;
-        public bool isMoveFail = false;
-        public bool isAttackHit = false;
+        public bool isMoveFail;
+        public bool isAttackHit;
 
         private void OnTriggerEnter(Collider collider)
         {
@@ -46,6 +46,7 @@ namespace PlayerFrontChecker
 
         public bool IsMoveFailCheck()
         {
+            Debug.Log("FrontPos =" +transform.position.x+transform.position.z);
             return isMoveFail;
         }
 
@@ -54,7 +55,7 @@ namespace PlayerFrontChecker
             return isAttackHit;
         }
 
-        public void Attacked(int damage)
+        public void Attacked(float damage)
         {
             EnemyStatus enemyStatus = Enemycollider.GetComponent<EnemyStatus>();
 
