@@ -11,11 +11,13 @@ namespace UISystem
         private GameObject returnButton;
         [SerializeField] private GameObject InventoryUI;
         private GameObject backgroundObject;
+        private GameObject SystemText;
 
         void Start()
         {
             returnButton = transform.parent.Find("BackGameButton").gameObject;
             backgroundObject = InventoryUI.transform.Find("BackGround").gameObject;
+            SystemText = InventoryUI.transform.Find("SystemText").gameObject;
         }
 
         public void OnSelected()
@@ -34,6 +36,7 @@ namespace UISystem
         public void DisableWindow()
         {
             backgroundObject.SetActive(false);
+            SystemText.SetActive(true);
         }
         public void WindowOnOffSQL(GameObject window)
         {

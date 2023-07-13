@@ -7,14 +7,23 @@ namespace UISystem
     {
 
         [SerializeField] private GameObject pauseUI;
+        [SerializeField] private GameObject Systemtext;
         [SerializeField] private GameObject[] windowLists;
 
+        private SystemText systemTextCompo;
+
+        private void Start()
+        {
+            systemTextCompo = Systemtext.GetComponent<SystemText>();
+        }
         // Update is called once per frame
         public void Update()
         {
             if (Input.GetKeyDown("x"))
             {
                 pauseUI.SetActive(!pauseUI.activeSelf);
+                systemTextCompo.TextSet("");
+                Systemtext.SetActive(!Systemtext.activeSelf);
                 ChangeWindow(windowLists[0]);
             }
 

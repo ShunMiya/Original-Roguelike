@@ -16,8 +16,7 @@ namespace ItemSystemSQL
 
                 bool ItemGet = SQLplayerInventory.AddItem(itemId, num);
 
-                if (ItemGet == false) Debug.Log("‚¿•¨‚ª‚¢‚Á‚Ï‚¢‚¾‚æI");
-
+                if (ItemGet == false)Debug.Log("‚¿•¨‚ª‚¢‚Á‚Ï‚¢‚¾‚æI");
                 if (ItemGet == true) Destroy(gameObject);
             }
         }

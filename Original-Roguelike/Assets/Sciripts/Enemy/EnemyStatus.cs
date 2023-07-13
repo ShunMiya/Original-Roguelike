@@ -1,3 +1,4 @@
+using UISystem;
 using UnityEngine;
 
 namespace Enemy
@@ -6,13 +7,14 @@ namespace Enemy
     {
         public delegate void EnemyDefeatedEventHandler();
         public event EnemyDefeatedEventHandler EnemyDefeated;
+        public SystemText systemText;
 
         [SerializeField]private float currentHP;
 
         public void TakeDamage(float damage)
         {
             currentHP -= damage;
-            Debug.Log(damage + "のダメージを与えた。敵残りHP" + currentHP);
+            systemText.TextSet(damage + "Damage! currentHP:" + currentHP);
 
             if (currentHP <= 0 && EnemyDefeated != null)
             {

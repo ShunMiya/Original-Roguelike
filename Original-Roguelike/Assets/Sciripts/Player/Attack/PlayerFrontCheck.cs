@@ -6,16 +6,10 @@ namespace PlayerFrontChecker
     public class PlayerFrontCheck : MonoBehaviour
     {
         public Collider Enemycollider;
-        public bool isMoveFail;
         public bool isAttackHit;
 
         private void OnTriggerEnter(Collider collider)
         {
-            if (collider.gameObject.CompareTag("Wall") || collider.gameObject.CompareTag("Enemy"))
-            {
-                isMoveFail = true;
-            }
-
             if (collider.gameObject.CompareTag("Enemy"))
             {
                 Enemycollider = collider;
@@ -25,11 +19,6 @@ namespace PlayerFrontChecker
 
         private void OnTriggerExit(Collider collider)
         {
-            if (collider.gameObject.CompareTag("Wall") || collider.gameObject.CompareTag("Enemy"))
-            {
-                isMoveFail = false;
-            }
-
             if (collider.gameObject.CompareTag("Enemy"))
             {
                 Enemycollider = null;
@@ -41,13 +30,6 @@ namespace PlayerFrontChecker
         {
             Enemycollider = null;
             isAttackHit = false;
-            isMoveFail = false;
-        }
-
-        public bool IsMoveFailCheck()
-        {
-            Debug.Log("FrontPos =" +transform.position.x+transform.position.z);
-            return isMoveFail;
         }
 
         public bool IsAttackHitCheck()

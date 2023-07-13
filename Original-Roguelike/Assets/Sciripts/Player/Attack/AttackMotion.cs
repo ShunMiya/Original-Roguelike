@@ -1,6 +1,7 @@
 using UnityEngine;
 using PlayerFrontChecker;
 using PlayerStatusList;
+using UISystem;
 
 namespace Combat.AttackMotion
 {
@@ -9,6 +10,7 @@ namespace Combat.AttackMotion
         bool isAttacking = false;
         private PlayerFrontCheck playerFrontCheck;
         public PlayerStatusSQL playerStatusSQL;
+        public SystemText systemText;
 
         private void Start()
         {
@@ -17,7 +19,7 @@ namespace Combat.AttackMotion
         public void AttackStance()
         {
             isAttacking = true;
-            Debug.Log("Attack!");
+            systemText.TextSet("Attack!");
             if (playerFrontCheck.IsAttackHitCheck())
             {
                 playerStatusSQL.WeaponStatusPlus();//UseItemErrorCare

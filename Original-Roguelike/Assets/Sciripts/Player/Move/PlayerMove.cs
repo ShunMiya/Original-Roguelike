@@ -1,15 +1,9 @@
 using UnityEngine;
-using MovePointChecker;
-using PlayerFrontChecker;
-using System.Collections;
 
 namespace PlayerMovement
 {
     public class PlayerMove : MonoBehaviour
     {
-        private MovePointCheck movePointCheck;
-        private PlayerFrontCheck playerFrontCheck;
-
         [SerializeField] private float speed;
         float gridSize = GameRule.GridSize;
         private Vector3 move;
@@ -18,8 +12,6 @@ namespace PlayerMovement
 
         private void Start()
         {
-            movePointCheck = GetComponent<MovePointCheck>();
-            playerFrontCheck = GetComponentInChildren<PlayerFrontCheck>();
             targetPos = transform.position;
         }
 
@@ -28,7 +20,7 @@ namespace PlayerMovement
             switch (Input.GetKey(KeyCode.C))
             {
                 case true:
-                    if (movex != 0.0f && movez != Mathf.Epsilon)
+                    if (movex != 0.0f && movez != 0.0f)
                     {
                         move = new Vector3(movex * gridSize, 0, movez * gridSize);
                         if (targetPos == transform.position) //仮置き。PlayerActiveで行動停止付けれたらいらなくなる。
@@ -47,6 +39,7 @@ namespace PlayerMovement
 
             transform.LookAt(targetPos);
 
+            if (targetPos == transform.position) return;
             switch(ismoving)
             {
                 case true:
@@ -56,18 +49,16 @@ namespace PlayerMovement
                     }
                 case false:
                     {
-                        //OnTriggerを発動させたい
-                        Debug.Log("targetPos ="+targetPos.x+targetPos.z);
-                        if(!playerFrontCheck.IsMoveFailCheck())
-                        //if (movePointCheck.MovePossible(targetPos, gridSize))
+                        if(MovePointChecker())
                         {
                             MoveAction();
+                            break;
                         }
                         else
                         {
                             targetPos = transform.position;
+                            break;
                         }
-                        break;
                     }
             }
         }
@@ -86,6 +77,23 @@ namespace PlayerMovement
         public bool IsMoving()
         {
             return ismoving;
+        }
+
+        public bool MovePointChecker()
+        {
+            RaycastHit hit;
+            Vector3 direction = targetPos - transform.position;
+            float distance = direction.magnitude + 0.5f;
+
+            if (Physics.Raycast(transform.position, direction.normalized, out hit, distance))
+            {
+                string tag = hit.collider.gameObject.tag;
+                if (hit.collider.gameObject.CompareTag("Wall") || hit.collider.gameObject.CompareTag("Enemy"))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

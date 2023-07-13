@@ -1,4 +1,5 @@
 using System;
+using UISystem;
 using UnityEngine;
 
 namespace ItemSystemSQL.Inventory
@@ -6,6 +7,7 @@ namespace ItemSystemSQL.Inventory
     public class SQLInventoryAdd : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
+        public SystemText systemText;
         int inventorySize;
         int itemCount;
 
@@ -57,23 +59,31 @@ namespace ItemSystemSQL.Inventory
                 {
                     string updateQuery = "UPDATE Inventory SET Num = " + totalStock + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(updateQuery);
+                    systemText.TextSet(consumableItem.ItemName + ":Stock" + num + " Get!");
                     Debug.Log(totalStock+"‚É‰ÁŽZŠ®—¹");
                     return true;
                 }
             }
-            if (itemCount == inventorySize) return false;
+            if (itemCount == inventorySize)
+            {
+                systemText.TextSet("Inventory Max!");
+                return false;
+            }
             string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + consumableItem.Id + "', '" + consumableItem.ItemName + "', " + num + ")";
-            Debug.Log(consumableItem.ItemName + "‚ðStock" + num + "‚Å“üŽè");
+            systemText.TextSet(consumableItem.ItemName + ":Stock" + num + " Get!");
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }
 
         public bool AddEquipment(int itemId, EquipmentData equipmentItem)
         {
-            if (itemCount == inventorySize) return false;
-
+            if (itemCount == inventorySize)
+            {
+                systemText.TextSet("Inventory Max!");
+                return false;
+            }
             string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + equipmentItem.Id + "', '"+ equipmentItem.ItemName + "', " + 1 + ")";
-            Debug.Log(equipmentItem.ItemName+"‚ð“üŽè");
+            systemText.TextSet(equipmentItem.ItemName + " Get!");
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }

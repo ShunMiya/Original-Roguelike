@@ -1,3 +1,4 @@
+using UISystem;
 using UnityEngine;
 
 namespace ItemSystemSQL
@@ -5,6 +6,8 @@ namespace ItemSystemSQL
     public class ItemFactory : MonoBehaviour
     {
         [SerializeField] private GameObject itemSQLDB;
+        public SystemText systemText;
+
         public void ItemCreate(Vector3 position)
         {
             bool chooseEquipItem = Random.value < 0.3f;
@@ -21,6 +24,7 @@ namespace ItemSystemSQL
             //インターフェースにNum上限持たせるかいっそ全てのアイテムのNumの上限を揃えるほうがいいのでは？
             int randomNum = NumSet();
             spawnedItem.GetComponent<SQLDBGetItem>().num = randomNum;
+            systemText.TextSet(prefabName + " Drop!");
             Debug.Log(prefabName+"のNum"+ randomNum + "がドロップ");
         }
 
