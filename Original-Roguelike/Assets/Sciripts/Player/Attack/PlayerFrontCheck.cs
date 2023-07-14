@@ -1,5 +1,7 @@
 using UnityEngine;
 using Enemy;
+using ItemSystemSQL.Inventory;
+using System;
 
 namespace PlayerFrontChecker
 {
@@ -7,6 +9,13 @@ namespace PlayerFrontChecker
     {
         public Collider Enemycollider;
         public bool isAttackHit;
+        private SqliteDatabase sqlDB;
+
+        public void Start()
+        {
+            string databasePath = SQLDBInitialization.GetDatabasePath();
+            sqlDB = new SqliteDatabase(databasePath);
+        }
 
         private void OnTriggerEnter(Collider collider)
         {
@@ -32,16 +41,16 @@ namespace PlayerFrontChecker
             isAttackHit = false;
         }
 
-        public bool IsAttackHitCheck()
+        public void Attacked()
         {
-            return isAttackHit;
-        }
+            if (!isAttackHit) return;
 
-        public void Attacked(float damage)
-        {
             EnemyStatus enemyStatus = Enemycollider.GetComponent<EnemyStatus>();
-
-            enemyStatus.TakeDamage(damage);
+            string query = "SELECT Attack FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable Data = sqlDB.ExecuteQuery(query);
+            int attack = Convert.ToInt32(Data[0]["Attack"]);
+            
+            enemyStatus.TakeDamage(attack);
         }
     }
 }

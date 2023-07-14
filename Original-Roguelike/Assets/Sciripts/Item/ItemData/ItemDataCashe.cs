@@ -34,10 +34,10 @@ namespace ItemSystemSQL
                 equipmentData.ItemType = Convert.ToInt32(row["ItemType"]);
                 equipmentData.Description = row["Description"].ToString();
                 equipmentData.EquipType = Convert.ToInt32(row["EquipType"]);
-                equipmentData.AttackBonus = Convert.ToSingle(row["AttackBonus"]);
-                equipmentData.DefenseBonus = Convert.ToSingle(row["DefenseBonus"]);
-                equipmentData.WeaponRange = Convert.ToSingle(row["WeaponRange"]);
-                equipmentData.WeaponDistance = Convert.ToSingle(row["WeaponDistance"]);
+                equipmentData.AttackBonus = Convert.ToInt32(row["AttackBonus"]);
+                equipmentData.DefenseBonus = Convert.ToInt32(row["DefenseBonus"]);
+                equipmentData.WeaponRange = Convert.ToInt32(row["WeaponRange"]);
+                equipmentData.WeaponDistance = Convert.ToInt32(row["WeaponDistance"]);
 
                 equipmentCache[equipmentData.Id] = equipmentData;
             }
@@ -59,7 +59,7 @@ namespace ItemSystemSQL
                 consumableData.ItemType = Convert.ToInt32(row["ItemType"]);
                 consumableData.Description = row["Description"].ToString();
                 consumableData.MaxStock = Convert.ToInt32(row["MaxStock"]);
-                consumableData.HealValue = Convert.ToSingle(row["HealValue"]);
+                consumableData.HealValue = Convert.ToInt32(row["HealValue"]);
 
                 consumableCache[consumableData.Id] = consumableData;
             }

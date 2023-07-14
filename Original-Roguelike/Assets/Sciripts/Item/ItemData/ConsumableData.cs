@@ -8,6 +8,6 @@ namespace ItemSystemSQL
         public int ItemType { get; set; }
         public string Description { get; set; }
         public int MaxStock { get; set; }
-        public float HealValue { get; set; }
+        public int HealValue { get; set; }
     }
 }

@@ -17,9 +17,9 @@ namespace ItemSystemSQL
         public int ItemType { get; set; }
         public string Description { get; set; }
         public int EquipType { get; set; }
-        public float AttackBonus { get; set; }
-        public float DefenseBonus { get; set; }
-        public float WeaponRange { get; set; }
-        public float WeaponDistance { get; set; }
+        public int AttackBonus { get; set; }
+        public int DefenseBonus { get; set; }
+        public int WeaponRange { get; set; }
+        public int WeaponDistance { get; set; }
     }
 }

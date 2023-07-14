@@ -21,6 +21,9 @@ namespace ItemSystemSQL.Inventory
         {
             Debug.Log("SQLinventorySize" + inventorySize + "Ç" + inventorysize + "Ç…ïœçX");
             inventorySize = inventorysize;
+            string updateQuery = "UPDATE PlayerStatus SET InventorySize = " + inventorysize + " WHERE PlayerID = 1;";
+            sqlDB.ExecuteNonQuery(updateQuery);
+
         }
 
         public bool AddItem(int itemId, int num)
