@@ -10,8 +10,8 @@ namespace ItemSystemSQL.Inventory
 
         private void Awake()
         {
-            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "InventoryDataBase.db");
-            string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "InventoryDataBase.db");
+            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "PlayerDataBase.db");
+            string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "PlayerDataBase.db");
 
             #region 起動時DBをリセットしたい場合。
             /*

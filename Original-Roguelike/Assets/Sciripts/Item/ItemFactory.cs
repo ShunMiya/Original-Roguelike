@@ -24,7 +24,7 @@ namespace ItemSystemSQL
             //インターフェースにNum上限持たせるかいっそ全てのアイテムのNumの上限を揃えるほうがいいのでは？
             int randomNum = NumSet();
             spawnedItem.GetComponent<SQLDBGetItem>().num = randomNum;
-            systemText.TextSet(prefabName + " Drop!");
+            systemText.TextSet(randomItem.ItemName + " Drop!");
             Debug.Log(prefabName+"のNum"+ randomNum + "がドロップ");
         }
 

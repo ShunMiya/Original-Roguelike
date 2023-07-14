@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
 {
     private PlayerMove playerMove;
     private AttackMotion attackMotion;
+    private PlayerStatusSQL playerStatusSQL;
 
     float movex;
     float movez;
@@ -15,21 +16,24 @@ public class PlayerControl : MonoBehaviour
     {
         playerMove = GetComponent<PlayerMove>();
         attackMotion = GetComponent<AttackMotion>();
+        playerStatusSQL = GetComponent<PlayerStatusSQL>();
     }
 
     void Update()
     {
         if (Mathf.Approximately(Time.timeScale, 0f)) return;
-        
-        movex = Input.GetAxisRaw("Horizontal");
-        movez = Input.GetAxisRaw("Vertical");
-
-        playerMove.MoveStance(movex, movez);
-
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (!playerStatusSQL.IsPlayerActive())
         {
-            attackMotion.AttackStance();
+            movex = Input.GetAxisRaw("Horizontal");
+            movez = Input.GetAxisRaw("Vertical");
+
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                attackMotion.AttackStance();
+            }
+
         }
 
+        playerMove.MoveStance(movex, movez);
     }
 }

@@ -1,3 +1,4 @@
+using PlayerStatusList;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,6 +6,7 @@ namespace UISystem
 {
     public class PauseSystemSQL : MonoBehaviour
     {
+        [SerializeField]private PlayerStatusSQL playerStatusSQL;
 
         [SerializeField] private GameObject pauseUI;
         [SerializeField] private GameObject Systemtext;
@@ -19,6 +21,8 @@ namespace UISystem
         // Update is called once per frame
         public void Update()
         {
+            if (playerStatusSQL.IsPlayerActive()) return;
+
             if (Input.GetKeyDown("x"))
             {
                 pauseUI.SetActive(!pauseUI.activeSelf);

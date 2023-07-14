@@ -9,10 +9,8 @@ namespace Enemy
 
         public void DropItem()
         {
-            // エネミーが撃破された位置
             Vector3 dropPosition = transform.position;
 
-            // アイテムの生成と配置
             itemFactory.ItemCreate(dropPosition);
         }
 

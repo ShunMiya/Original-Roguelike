@@ -16,8 +16,8 @@ namespace PlayerStatusList
 
         [SerializeField] private int STR;
         [SerializeField] private int VIT;
-        public float Attack;
-        public float Defense;
+        [HideInInspector]public float Attack;
+        [HideInInspector]public float Defense;
         [HideInInspector]public float Range;
         [HideInInspector]public float Distance;
         private SqliteDatabase sqlDB;
@@ -43,6 +43,7 @@ namespace PlayerStatusList
 
         public bool IsPlayerActive()
         {
+            PlayerActive = playerMove.IsMoving() || attackMotion.IsAttacking();
             return playerMove.IsMoving() || attackMotion.IsAttacking();
         }
 
@@ -70,7 +71,6 @@ namespace PlayerStatusList
             Defense = VIT + addDefense;
             Range = 1 + RangeBonus;
             Distance = 1 + DistanceBonus;
-            Debug.Log("Attack" + Attack);
         }
     }
 }
