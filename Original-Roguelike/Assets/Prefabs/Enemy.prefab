@@ -101,7 +101,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.2, y: 1.2, z: 1.2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4229734052183258410
 Rigidbody:
@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9e0f1a60d4ce4439d0d0f3198b1eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+  player: {fileID: 0}
 --- !u!114 &1256055057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,7 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 905945b15a9b3eb4baf903a96054d3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHP: 10
+  systemText: {fileID: 0}
+  currentHP: 4
 --- !u!114 &1256055056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +192,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1e7ed87930ece46b6e434e6c70f627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemFactory: {fileID: 0}

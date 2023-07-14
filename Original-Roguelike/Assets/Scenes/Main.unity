@@ -5934,17 +5934,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 139634516}
     - target: {fileID: 1256055057, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
-      propertyPath: currentHP
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1256055057, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
       propertyPath: systemText
       value: 
       objectReference: {fileID: 530194068}
-    - target: {fileID: 1416421851, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4229734052183258405, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
       propertyPath: m_Name
       value: Enemy
