@@ -24,7 +24,7 @@ namespace ItemSystemSQL
                 case 1:
 
                     remainingStock = SQLinventoryremove.RemoveItem(row, 1);
-                    playerStatusSQL.WeaponStatusPlus(); //UnknowError,BonusNotUpdated
+                    playerStatusSQL.WeaponStatusPlus();
 
                     break;
             }

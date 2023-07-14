@@ -320,8 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deaef5b3f1781434db4a4e8655ec81ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStatusSQL: {fileID: 646244235830617569}
-  systemText: {fileID: 2526602305489632644, guid: e62abc444d1db874d8ecc5ff9bced73d, type: 3}
+  systemText: {fileID: 0}
 --- !u!114 &646244235830617569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -334,13 +333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438757c2af88c66418d33448eecf0ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventorySize: 5
-  STR: 1
-  VIT: 1
-  Attack: 1
-  Defense: 1
-  Range: 1
-  Distance: 1
   SQLInventory: {fileID: 3043557690202376211}
   PlayerActive: 0
 --- !u!114 &788153078074856462
@@ -369,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8287c514cd720744aba9a7a642ebeb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  systemText: {fileID: 2526602305489632644, guid: e62abc444d1db874d8ecc5ff9bced73d, type: 3}
+  systemText: {fileID: 0}
 --- !u!114 &7243208637622125284
 MonoBehaviour:
   m_ObjectHideFlags: 0

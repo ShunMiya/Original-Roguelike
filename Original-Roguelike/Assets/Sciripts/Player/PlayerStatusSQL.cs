@@ -12,8 +12,6 @@ namespace PlayerStatusList
         private PlayerMove playerMove;
         private AttackMotion attackMotion;
 
-        public int inventorySize;
-
         private SqliteDatabase sqlDB;
 
         [SerializeField] private SQLInventoryAdd SQLInventory;
@@ -24,14 +22,20 @@ namespace PlayerStatusList
         {
             playerMove = GetComponent<PlayerMove>();
             attackMotion = GetComponent<AttackMotion>();
+            string databasePath = SQLDBInitialization.GetDatabasePath();
+            sqlDB = new SqliteDatabase(databasePath);
 
-            inventorySizeUpDate();
+            inventorySizeLoad();
             WeaponStatusPlus();
         }
 
-        public void inventorySizeUpDate()
+        public void inventorySizeLoad()
         {
-            SQLInventory.InitializeFromPlayerStatus(inventorySize);
+            string query = "SELECT InventorySize FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable Data = sqlDB.ExecuteQuery(query);
+            int Size = Convert.ToInt32(Data[0]["InventorySize"]);
+
+            SQLInventory.inventorySizeSet(Size);
         }
 
         public bool IsPlayerActive()
