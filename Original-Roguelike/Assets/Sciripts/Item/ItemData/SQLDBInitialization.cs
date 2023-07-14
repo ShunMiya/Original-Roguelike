@@ -13,13 +13,13 @@ namespace ItemSystemSQL.Inventory
             string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "PlayerDataBase.db");
             string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "PlayerDataBase.db");
 
-            #region 起動時DBをリセットしたい場合。
-            /*
+            #region 起動時DBをリセット。インベントリ、ステータス初期化
+            
             if (File.Exists(copiedDatabasePath))
             {
                 File.Delete(copiedDatabasePath);
             }
-            */
+            
             #endregion
 
             if (!File.Exists(copiedDatabasePath))
