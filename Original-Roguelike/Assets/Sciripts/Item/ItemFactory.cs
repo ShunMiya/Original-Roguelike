@@ -6,7 +6,12 @@ namespace ItemSystemSQL
     public class ItemFactory : MonoBehaviour
     {
         [SerializeField] private GameObject itemSQLDB;
-        public SystemText systemText;
+        private SystemText systemText;
+
+        private void Start()
+        {
+            systemText = FindObjectOfType<SystemText>();
+        }
 
         public void ItemCreate(Vector3 position)
         {

@@ -7,7 +7,7 @@ namespace ItemSystemSQL.Inventory
     public class SQLInventoryAdd : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
-        public SystemText systemText;
+        private SystemText systemText;
         int inventorySize;
         int itemCount;
 
@@ -15,6 +15,7 @@ namespace ItemSystemSQL.Inventory
         {
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
+            systemText = FindObjectOfType<SystemText>();
         }
 
         public void inventorySizeSet(int inventorysize)

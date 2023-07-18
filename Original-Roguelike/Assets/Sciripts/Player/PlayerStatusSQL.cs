@@ -5,7 +5,6 @@ using ItemSystemSQL.Inventory;
 using ItemSystemSQL;
 using System;
 using Enemy;
-using UISystem;
 
 namespace PlayerStatusList
 {
@@ -14,11 +13,9 @@ namespace PlayerStatusList
         private PlayerMove playerMove;
         private AttackMotion attackMotion;
         [SerializeField]private EnemyTurnStart enemyturn;
-
+        private SQLInventoryAdd SQLInventory;
         private SqliteDatabase sqlDB;
 
-        [SerializeField] private SQLInventoryAdd SQLInventory;
-        public SystemText systemText;
 
         public bool PlayerActive = false; //移動、攻撃、アイテムの使用(装備の着脱含)
 
@@ -26,6 +23,7 @@ namespace PlayerStatusList
         {
             playerMove = GetComponent<PlayerMove>();
             attackMotion = GetComponent<AttackMotion>();
+            SQLInventory = GetComponent<SQLInventoryAdd>();
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
 
@@ -84,30 +82,6 @@ namespace PlayerStatusList
             sqlDB.ExecuteNonQuery(updateStatusQuery);
             updateStatusQuery = "UPDATE PlayerStatus SET AttackDistance = " + 1 + " + " + DistanceBonus + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
-        }
-
-        public void TakeDamage(int damage)
-        {
-            if (sqlDB == null)
-            {
-                string databasePath = SQLDBInitialization.GetDatabasePath();
-                sqlDB = new SqliteDatabase(databasePath);
-            }
-
-            string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHP = (SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 1) - " + damage + " WHERE PlayerID = 1;";
-            sqlDB.ExecuteNonQuery(updateStatusQuery);
-
-            string query = "SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 1;";
-            DataTable Data = sqlDB.ExecuteQuery(query);
-            int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
-            if (CurrentHP <= 0)
-            {
-                systemText.TextSet("Player Dead!");
-            }
-            else if (CurrentHP > 0)
-            {
-                systemText.TextSet("PlayerDamage!HP:" + CurrentHP);
-            }
         }
     }
 }

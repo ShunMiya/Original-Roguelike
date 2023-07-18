@@ -41,9 +41,9 @@ namespace Enemy
 
         public void Attacked()
         {
-            PlayerStatusSQL playerStatus = Playercollider.GetComponent<PlayerStatusSQL>();
+            PlayerHP playerHP = Playercollider.GetComponent<PlayerHP>();
             EnemyData enemy = EnemyDataCashe.GetEnemyData(enemyStatus.EnemyID);
-            playerStatus.TakeDamage(enemy.Attack);
+            playerHP.TakeDamage(enemy.Attack);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace UISystem
             textMeshPro1.text = text;
 
 
-            displayCoroutine = StartCoroutine(DisplayTextForSeconds(1f));
+            displayCoroutine = StartCoroutine(DisplayTextForSeconds(2f));
         }
 
         private IEnumerator DisplayTextForSeconds(float duration)

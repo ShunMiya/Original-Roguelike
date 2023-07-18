@@ -7,11 +7,15 @@ namespace Enemy
     {
         public delegate void EnemyDefeatedEventHandler();
         public event EnemyDefeatedEventHandler EnemyDefeated;
-        public SystemText systemText;
+        private SystemText systemText;
 
         [SerializeField] private float currentHP;
         public int EnemyID;
 
+        private void Start()
+        {
+            systemText = FindObjectOfType<SystemText>();
+        }
         public void TakeDamage(float damage)
         {
             currentHP -= damage;

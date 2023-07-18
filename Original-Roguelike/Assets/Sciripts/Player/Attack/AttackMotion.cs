@@ -10,12 +10,13 @@ namespace Combat.AttackMotion
         bool isAttacking = false;
         private PlayerFrontCheck playerFrontCheck;
         private PlayerStatusSQL playerStatusSQL;
-        public SystemText systemText;
+        private SystemText systemText;
 
         private void Start()
         {
             playerFrontCheck = GetComponentInChildren<PlayerFrontCheck>();
             playerStatusSQL = GetComponent<PlayerStatusSQL>();
+            systemText = FindObjectOfType<SystemText>();
         }
         public void AttackStance()
         {

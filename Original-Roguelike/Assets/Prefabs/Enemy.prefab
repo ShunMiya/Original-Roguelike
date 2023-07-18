@@ -180,7 +180,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 905945b15a9b3eb4baf903a96054d3d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  systemText: {fileID: 0}
   currentHP: 4
   EnemyID: 1
 --- !u!114 &1256055056
@@ -195,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1e7ed87930ece46b6e434e6c70f627, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemFactory: {fileID: 0}
+  itemFactory: {fileID: 3291900459276231989, guid: 5819fb9d3cb08fe44b1d1e95de563dc4, type: 3}
 --- !u!114 &8056637228897821124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,4 +267,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Playercollider: {fileID: 0}
   isAttackHit: 0
-  systemText: {fileID: 0}
