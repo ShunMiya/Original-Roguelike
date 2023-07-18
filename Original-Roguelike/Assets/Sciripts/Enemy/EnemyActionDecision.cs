@@ -1,4 +1,3 @@
-using PlayerFrontChecker;
 using UnityEngine;
 
 namespace Enemy

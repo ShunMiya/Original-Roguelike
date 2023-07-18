@@ -1,8 +1,5 @@
-using ItemSystemSQL.Inventory;
-using System;
 using UnityEngine;
 using PlayerStatusList;
-using UISystem;
 
 namespace Enemy
 {
@@ -10,14 +7,12 @@ namespace Enemy
     {
         public Collider Playercollider;
         public bool isAttackHit;
-        private SqliteDatabase sqlDB;
-        public SystemText systemText;
+        private EnemyStatus enemyStatus;
 
 
         public void Start()
         {
-            string databasePath = SQLDBInitialization.GetDatabasePath();
-            sqlDB = new SqliteDatabase(databasePath);
+            enemyStatus = GetComponentInParent<EnemyStatus>();
         }
 
         private void OnTriggerEnter(Collider collider)
@@ -46,14 +41,9 @@ namespace Enemy
 
         public void Attacked()
         {
-            PlayerStatusSQL enemyStatus = Playercollider.GetComponent<PlayerStatusSQL>();
-            systemText.TextSet("Player Damage!");
-
-            /*string query = "SELECT Attack FROM PlayerStatus WHERE PlayerID = 1;";
-            DataTable Data = sqlDB.ExecuteQuery(query);
-            int attack = Convert.ToInt32(Data[0]["Attack"]);
-
-            enemyStatus.TakeDamage(attack);*/
+            PlayerStatusSQL playerStatus = Playercollider.GetComponent<PlayerStatusSQL>();
+            EnemyData enemy = EnemyDataCashe.GetEnemyData(enemyStatus.EnemyID);
+            playerStatus.TakeDamage(enemy.Attack);
         }
     }
 }

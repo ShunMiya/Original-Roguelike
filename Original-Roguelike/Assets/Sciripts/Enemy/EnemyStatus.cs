@@ -10,12 +10,12 @@ namespace Enemy
         public SystemText systemText;
 
         [SerializeField] private float currentHP;
-        [SerializeField] private int EnemyID;
+        public int EnemyID;
 
         public void TakeDamage(float damage)
         {
             currentHP -= damage;
-            systemText.TextSet(damage + "Damage! currentHP:" + currentHP);
+            systemText.TextSet(damage + "Damage! HP:" + currentHP);
 
             if (currentHP <= 0 && EnemyDefeated != null)
             {
