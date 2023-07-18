@@ -6411,6 +6411,10 @@ PrefabInstance:
       propertyPath: enemyturn
       value: 
       objectReference: {fileID: 692046220}
+    - target: {fileID: 1351873721549254333, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: informationText
+      value: 
+      objectReference: {fileID: 930217362583328850}
     - target: {fileID: 6920602464858813782, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
       propertyPath: m_RootOrder
       value: 5

@@ -19,7 +19,7 @@ namespace Enemy
         public void TakeDamage(float damage)
         {
             currentHP -= damage;
-            systemText.TextSet(damage + "Damage! HP:" + currentHP);
+            systemText.TextSet("Enemy"+damage+"Damage! HP:" + currentHP);
 
             if (currentHP <= 0 && EnemyDefeated != null)
             {

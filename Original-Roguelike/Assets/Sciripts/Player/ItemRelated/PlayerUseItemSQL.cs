@@ -1,6 +1,8 @@
 using UnityEngine;
 using PlayerStatusList;
 using ItemSystemSQL.Inventory;
+using System;
+using static UnityEditor.Progress;
 
 namespace ItemSystemSQL
 {
@@ -8,6 +10,7 @@ namespace ItemSystemSQL
     {
         [SerializeField]private SQLInventoryRemove SQLinventoryremove;
         public PlayerStatusSQL playerStatusSQL;
+        [SerializeField]private PlayerHP playerHP;
 
         public int UseItem(DataRow row,int ItemType)
         {
@@ -15,9 +18,16 @@ namespace ItemSystemSQL
             switch (ItemType)
             {
                 case 0:
+                    int Id = Convert.ToInt32(row["Id"]);
+                    ConsumableData itemData = ItemDataCache.GetConsumable(Id);
+                    bool ItemUse = playerHP.HealHP(itemData.HealValue);
 
-                    //アイテムの効果処理。RemoveItemも内部に記載。
-
+                    if(ItemUse == false)
+                    {
+                        int itemStock = Convert.ToInt32(row["Num"]);
+                        remainingStock = itemStock;
+                        break;
+                    }
                     remainingStock = SQLinventoryremove.RemoveItem(row, 0);
 
                     break;
