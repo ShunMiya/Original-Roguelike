@@ -2,6 +2,7 @@ using ItemSystemSQL.Inventory;
 using System;
 using UnityEngine;
 using PlayerStatusList;
+using UISystem;
 
 namespace Enemy
 {
@@ -10,6 +11,8 @@ namespace Enemy
         public Collider Playercollider;
         public bool isAttackHit;
         private SqliteDatabase sqlDB;
+        public SystemText systemText;
+
 
         public void Start()
         {
@@ -44,7 +47,8 @@ namespace Enemy
         public void Attacked()
         {
             PlayerStatusSQL enemyStatus = Playercollider.GetComponent<PlayerStatusSQL>();
-            Debug.Log("çUåÇÇµÇΩ");
+            systemText.TextSet("Player Damage!");
+
             /*string query = "SELECT Attack FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
             int attack = Convert.ToInt32(Data[0]["Attack"]);

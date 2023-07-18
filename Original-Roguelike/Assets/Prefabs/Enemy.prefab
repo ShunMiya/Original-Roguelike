@@ -268,3 +268,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Playercollider: {fileID: 0}
   isAttackHit: 0
+  systemText: {fileID: 0}

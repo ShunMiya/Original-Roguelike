@@ -6,25 +6,30 @@ namespace UISystem
 {
     public class SystemText : MonoBehaviour
     {
-        public TextMeshProUGUI textMeshPro;
+        public TextMeshProUGUI textMeshPro1;
+        public TextMeshProUGUI textMeshPro2;
+        public TextMeshProUGUI textMeshPro3;
         private Coroutine displayCoroutine;
 
         public void TextSet(string text)
         {
             if (!gameObject.activeSelf) return;
-            if (displayCoroutine != null)
-            {
-                StopCoroutine(displayCoroutine);
-            }
+            if (displayCoroutine != null) StopCoroutine(displayCoroutine);
 
-            textMeshPro.text = text;
+            textMeshPro3.text = textMeshPro2.text;
+            textMeshPro2.text = textMeshPro1.text;
+            textMeshPro1.text = text;
+
+
             displayCoroutine = StartCoroutine(DisplayTextForSeconds(1f));
         }
 
         private IEnumerator DisplayTextForSeconds(float duration)
         {
             yield return new WaitForSeconds(duration);
-            textMeshPro.text = string.Empty;
+            textMeshPro1.text = "";
+            textMeshPro2.text = "";
+            textMeshPro3.text = "";
             displayCoroutine = null;
         }
     }
