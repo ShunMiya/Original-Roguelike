@@ -249,6 +249,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 139634516}
     - target: {fileID: 1256055057, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
+      propertyPath: EnemyID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256055057, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
       propertyPath: currentHP
       value: 4
       objectReference: {fileID: 0}
@@ -440,6 +444,10 @@ PrefabInstance:
       propertyPath: itemFactory
       value: 
       objectReference: {fileID: 139634516}
+    - target: {fileID: 1256055057, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
+      propertyPath: EnemyID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1256055057, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
       propertyPath: currentHP
       value: 4
@@ -1154,6 +1162,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 940546565}
+  - component: {fileID: 940546568}
+  - component: {fileID: 940546566}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1180,6 +1190,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &940546566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940546564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ebd080cb78d7074991fc25fa3b890d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyObjects: []
+--- !u!114 &940546568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 940546564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61df6f51df894674fa4ba233e75a989a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1116650725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,6 +1542,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 139634516}
     - target: {fileID: 1256055057, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
+      propertyPath: EnemyID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1256055057, guid: 889a3a6d0290b3f429f0710f7d15d4e0, type: 3}
       propertyPath: currentHP
       value: 4
       objectReference: {fileID: 0}
@@ -1711,6 +1750,10 @@ PrefabInstance:
       propertyPath: systemText
       value: 
       objectReference: {fileID: 530194068}
+    - target: {fileID: 646244235830617569, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
+      propertyPath: enemyturn
+      value: 
+      objectReference: {fileID: 940546566}
     - target: {fileID: 3043557690202376211, guid: 7b79c8c9fee921644872996c9a27effd, type: 3}
       propertyPath: systemText
       value: 

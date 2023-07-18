@@ -6,6 +6,7 @@ namespace Enemy
     public class EnemyDestroy : MonoBehaviour
     {
         [SerializeField]private ItemFactory itemFactory;
+        private EnemyTurnStart enemyTurnStart;
 
         public void DropItem()
         {
@@ -16,6 +17,9 @@ namespace Enemy
 
         public void Destroy()
         {
+            enemyTurnStart = GetComponentInParent<EnemyTurnStart>();
+
+            enemyTurnStart.RemoveEnemy(gameObject);
             Destroy(gameObject);
         }
     }

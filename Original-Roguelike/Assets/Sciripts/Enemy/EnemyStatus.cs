@@ -9,7 +9,8 @@ namespace Enemy
         public event EnemyDefeatedEventHandler EnemyDefeated;
         public SystemText systemText;
 
-        [SerializeField]private float currentHP;
+        [SerializeField] private float currentHP;
+        [SerializeField] private int EnemyID;
 
         public void TakeDamage(float damage)
         {

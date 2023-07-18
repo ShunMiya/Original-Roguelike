@@ -4,6 +4,7 @@ using Combat.AttackMotion;
 using ItemSystemSQL.Inventory;
 using ItemSystemSQL;
 using System;
+using Enemy;
 
 namespace PlayerStatusList
 {
@@ -11,6 +12,7 @@ namespace PlayerStatusList
     {
         private PlayerMove playerMove;
         private AttackMotion attackMotion;
+        [SerializeField]private EnemyTurnStart enemyturn;
 
         private SqliteDatabase sqlDB;
 
@@ -40,7 +42,11 @@ namespace PlayerStatusList
 
         public bool IsPlayerActive()
         {
+            bool previousActive = PlayerActive;
             PlayerActive = playerMove.IsMoving() || attackMotion.IsAttacking();
+
+            if(previousActive && !PlayerActive) enemyturn.EnemyTurn();
+
             return playerMove.IsMoving() || attackMotion.IsAttacking();
         }
 
