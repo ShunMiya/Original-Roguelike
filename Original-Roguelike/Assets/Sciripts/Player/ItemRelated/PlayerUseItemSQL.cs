@@ -2,7 +2,6 @@ using UnityEngine;
 using PlayerStatusList;
 using ItemSystemSQL.Inventory;
 using System;
-using static UnityEditor.Progress;
 
 namespace ItemSystemSQL
 {
