@@ -1,6 +1,5 @@
 using ItemSystemSQL.Inventory;
 using System;
-using TMPro;
 using UISystem;
 using UnityEngine;
 
@@ -10,7 +9,6 @@ namespace PlayerStatusList
     {
         private SqliteDatabase sqlDB;
         private SystemText systemText;
-        public TextMeshProUGUI informationText;
 
         private void Start()
         {
@@ -42,6 +40,7 @@ namespace PlayerStatusList
             if (newHP <= 0)
             {
                 systemText.TextSet("Player Dead!");
+                Destroy(gameObject);//Tentative NullErrorAppears
             }
             else if (newHP > 0)
             {
@@ -56,6 +55,7 @@ namespace PlayerStatusList
                 string databasePath = SQLDBInitialization.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
+            if (systemText == null) systemText = FindObjectOfType<SystemText>();
             string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
             int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
@@ -64,14 +64,14 @@ namespace PlayerStatusList
             int HealHP = CurrentHP + Heal;
             if (HealHP > MaxHP)
             {
-                Debug.Log("MaxHP");
+                systemText.TextSet("MaxHP!");
                 return false;
             }
 
             string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHP = " + HealHP + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
 
-            Debug.Log("Player" + Heal + "Heal! HP:" + HealHP);
+            systemText.TextSet("Player" + Heal + "Heal! HP:" + HealHP);
 
             return true;
         }

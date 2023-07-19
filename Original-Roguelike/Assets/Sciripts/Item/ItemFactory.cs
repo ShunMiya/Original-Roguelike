@@ -8,7 +8,7 @@ namespace ItemSystemSQL
         private SystemText systemText;
         private GameObject parent;
 
-        private void Start()
+        private void Awake()
         {
             systemText = FindObjectOfType<SystemText>();
             parent = GameObject.Find("ItemBox");
@@ -31,7 +31,6 @@ namespace ItemSystemSQL
             int randomNum = NumSet();
             spawnedItem.GetComponent<SQLDBGetItem>().num = randomNum;
             if(systemText == null) systemText = FindObjectOfType<SystemText>();
-            systemText.TextSet(randomItem.ItemName + " Drop!");
             Debug.Log(prefabName+"ÇÃNum"+ randomNum + "Ç™ÉhÉçÉbÉv");
         }
 

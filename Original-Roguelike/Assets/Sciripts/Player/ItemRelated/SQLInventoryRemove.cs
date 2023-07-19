@@ -1,16 +1,20 @@
 using System;
+using UISystem;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace ItemSystemSQL.Inventory
 {
     public class SQLInventoryRemove : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
+        private SystemText systemText;
 
         public void Start()
         {
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
+            systemText = FindObjectOfType<SystemText>();
         }
 
         public int RemoveItem(DataRow row,int ItemType)
@@ -61,7 +65,10 @@ namespace ItemSystemSQL.Inventory
         {
             string deleteQuery = "DELETE FROM Inventory WHERE IID = " + row["IID"];
             sqlDB.ExecuteNonQuery(deleteQuery);
-            Debug.Log("IID"+row["IID"] + "‚ÌƒAƒCƒeƒ€‚ðŽÌ‚Ä‚½");
+
+            if (systemText == null) systemText = FindObjectOfType<SystemText>();
+            EquipmentData equipmentItem = ItemDataCache.GetEquipment(Convert.ToInt32(row["Id"]));
+            systemText.TextSet(equipmentItem.ItemName + " Destruction");
 
             return 0;
         }

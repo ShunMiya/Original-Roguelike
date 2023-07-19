@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Collections;
 
 namespace Enemy
 {
@@ -10,6 +10,13 @@ namespace Enemy
 
         private void Start()
         {
+            StartCoroutine(EnemySet());
+        }
+
+        private IEnumerator EnemySet()
+        {
+            yield return new WaitForSeconds(0.5f);
+
             enemyObjects.Clear();
             foreach (Transform child in transform)
             {

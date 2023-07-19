@@ -26,10 +26,10 @@ namespace UISystem
             if (Input.GetKeyDown("x"))
             {
                 pauseUI.SetActive(!pauseUI.activeSelf);
-                systemTextCompo.TextSet("");
-                systemTextCompo.TextSet("");
-                systemTextCompo.TextSet("");
-                Systemtext.SetActive(!Systemtext.activeSelf);
+                //systemTextCompo.TextSet("");
+                //systemTextCompo.TextSet("");
+                //systemTextCompo.TextSet("");
+                //Systemtext.SetActive(!Systemtext.activeSelf);
                 ChangeWindow(windowLists[0]);
             }
 

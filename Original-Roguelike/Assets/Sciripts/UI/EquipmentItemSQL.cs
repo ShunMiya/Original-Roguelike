@@ -10,6 +10,7 @@ namespace UISystem
     public class EquipmentItemSQL : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
+        private SystemText systemText;
 
         [SerializeField] private TextMeshProUGUI BonusText;
         public PlayerStatusSQL playerStatusSQL;
@@ -18,10 +19,12 @@ namespace UISystem
         {
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
+            systemText = FindObjectOfType<SystemText>();
         }
 
         public void EquipItem(DataRow row)
         {
+            if (systemText == null) systemText = FindObjectOfType<SystemText>();
             int IID = Convert.ToInt32(row["IID"]);
             int itemId = Convert.ToInt32(row["Id"]);
             EquipmentData equipmentItem = ItemDataCache.GetEquipment(itemId);
@@ -40,6 +43,7 @@ namespace UISystem
 
                     string equipQuery = "UPDATE Inventory SET Equipped = " + 1 + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(equipQuery);
+                    systemText.TextSet(equipmentItem.ItemName + " Equip!");
                     break;
                 case 1:
                     checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped IN (1, 2)";
@@ -53,6 +57,7 @@ namespace UISystem
 
                     equipQuery = "UPDATE Inventory SET Equipped = " + 1 + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(equipQuery);
+                    systemText.TextSet(equipmentItem.ItemName + " Equip!");
                     break;
                 case 2:
                     checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped = 1";
@@ -80,6 +85,7 @@ namespace UISystem
 
                     equipQuery = "UPDATE Inventory SET Equipped = " + 2 + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(equipQuery);
+                    systemText.TextSet(equipmentItem.ItemName + " Equip!");
                     break;
             }
 
@@ -90,6 +96,8 @@ namespace UISystem
 
         public void UnequipItem(DataRow row)
         {
+            if (systemText == null) systemText = FindObjectOfType<SystemText>();
+
             int IID = Convert.ToInt32(row["IID"]);
             string unequipQuery = "UPDATE Inventory SET Equipped = 0 WHERE IID = " + IID;
             sqlDB.ExecuteNonQuery(unequipQuery);
