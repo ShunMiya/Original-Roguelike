@@ -5,12 +5,13 @@ namespace ItemSystemSQL
 {
     public class ItemFactory : MonoBehaviour
     {
-        [SerializeField] private GameObject itemSQLDB;
         private SystemText systemText;
+        private GameObject parent;
 
         private void Start()
         {
             systemText = FindObjectOfType<SystemText>();
+            parent = GameObject.Find("ItemBox");
         }
 
         public void ItemCreate(Vector3 position)
@@ -22,13 +23,14 @@ namespace ItemSystemSQL
             string prefabPath = "Prefabs/" + prefabName;
 
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
-            GameObject spawnedItem = GameObject.Instantiate(prefab, position, Quaternion.identity);
-            spawnedItem.transform.parent = itemSQLDB.transform;
+            if(parent == null) parent = GameObject.Find("ItemBox");
+            GameObject spawnedItem = Instantiate(prefab, position, Quaternion.identity, parent.transform);
 
             //randomItemのIdからCashe捜索してItem情報判別してNumの上限を判断する…なんてことやるなら
             //インターフェースにNum上限持たせるかいっそ全てのアイテムのNumの上限を揃えるほうがいいのでは？
             int randomNum = NumSet();
             spawnedItem.GetComponent<SQLDBGetItem>().num = randomNum;
+            if(systemText == null) systemText = FindObjectOfType<SystemText>();
             systemText.TextSet(randomItem.ItemName + " Drop!");
             Debug.Log(prefabName+"のNum"+ randomNum + "がドロップ");
         }

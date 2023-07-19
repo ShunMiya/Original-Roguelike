@@ -1,15 +1,17 @@
+using ItemSystemSQL;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Enemy
 {
     public static class EnemyDataCashe
     {
-        private static Dictionary<int, EnemyData> enemyCashe;
+        private static Dictionary<int, EnemyData> enemyCache;
 
         static EnemyDataCashe()
         {
-            enemyCashe = new Dictionary<int, EnemyData> ();
+            enemyCache = new Dictionary<int, EnemyData> ();
         }
 
         public static void CasheEnemy(DataTable enemyTable)
@@ -24,14 +26,20 @@ namespace Enemy
                 enemyData.Defense = Convert.ToInt32(row["Defense"]);
                 enemyData.Speed = Convert.ToInt32(row["Speed"]);
 
-                enemyCashe[enemyData.EnemyID] = enemyData;
+                enemyCache[enemyData.EnemyID] = enemyData;
             }
         }
 
         public static EnemyData GetEnemyData(int EnemyID)
         {
-            return enemyCashe.TryGetValue(EnemyID, out EnemyData enemyData) ? enemyData : null;
+            return enemyCache.TryGetValue(EnemyID, out EnemyData enemyData) ? enemyData : null;
+        }
+
+        public static EnemyData GetRandomEnemy()
+        {
+            int randomIndex = UnityEngine.Random.Range(0, enemyCache.Count);
+            EnemyData randomEnemy = enemyCache.ElementAt(randomIndex).Value;
+            return randomEnemy;
         }
     }
-
 }

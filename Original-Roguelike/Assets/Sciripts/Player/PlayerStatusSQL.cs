@@ -12,7 +12,7 @@ namespace PlayerStatusList
     {
         private PlayerMove playerMove;
         private AttackMotion attackMotion;
-        [SerializeField]private EnemyTurnStart enemyturn;
+        private EnemyTurnStart enemyturn;
         private SQLInventoryAdd SQLInventory;
         private SqliteDatabase sqlDB;
 
@@ -24,6 +24,8 @@ namespace PlayerStatusList
             playerMove = GetComponent<PlayerMove>();
             attackMotion = GetComponent<AttackMotion>();
             SQLInventory = GetComponent<SQLInventoryAdd>();
+            enemyturn = FindObjectOfType<EnemyTurnStart>();
+
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
 

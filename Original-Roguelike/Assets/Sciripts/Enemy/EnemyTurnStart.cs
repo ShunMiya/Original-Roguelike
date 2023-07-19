@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 namespace Enemy
 {
@@ -12,7 +13,7 @@ namespace Enemy
             enemyObjects.Clear();
             foreach (Transform child in transform)
             {
-                enemyObjects.Add(child.gameObject);
+                if (child.CompareTag("Enemy")) enemyObjects.Add(child.gameObject);
             }
         }
 
@@ -28,16 +29,13 @@ namespace Enemy
         {
             if (!enemyObjects.Contains(enemy))
             {
-                enemyObjects.Add(enemy);
+                if (CompareTag("Enemy")) enemyObjects.Add(enemy);
             }
         }
 
         public void RemoveEnemy(GameObject enemy)
         {
-            if (enemyObjects.Contains(enemy))
-            {
-                enemyObjects.Remove(enemy);
-            }
+            if (enemyObjects.Contains(enemy)) enemyObjects.Remove(enemy);
         }
     }
 }

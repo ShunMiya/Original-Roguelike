@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438757c2af88c66418d33448eecf0ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyturn: {fileID: 0}
+  enemyturn: {fileID: 6101497600772428147, guid: 6ba1c0963ce203e4fb0990fdff5b6b6d, type: 3}
   PlayerActive: 0
 --- !u!114 &788153078074856462
 MonoBehaviour:
