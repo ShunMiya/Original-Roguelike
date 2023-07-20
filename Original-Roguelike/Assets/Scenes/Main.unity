@@ -7645,6 +7645,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.23020387
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 0.10820866
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7793545300859325566, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9219361069676476733, guid: 1b7b0248937216a45a55c90b0d49a578, type: 3}
       propertyPath: m_Name
       value: GameEnd
