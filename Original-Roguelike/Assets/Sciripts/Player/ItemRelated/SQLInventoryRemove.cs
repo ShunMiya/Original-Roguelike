@@ -1,7 +1,6 @@
 using System;
 using UISystem;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace ItemSystemSQL.Inventory
 {

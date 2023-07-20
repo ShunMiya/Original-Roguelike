@@ -40,11 +40,12 @@ namespace PlayerStatusList
             if (newHP <= 0)
             {
                 systemText.TextSet("Player Dead!");
-                Destroy(gameObject);//Tentative NullErrorAppears
+                gameObject.SetActive(false);
+
             }
             else if (newHP > 0)
             {
-                systemText.TextSet("Player"+damage+"Damage! HP:" + newHP);
+                systemText.TextSet("Player"+ reducedDamage + "Damage! HP:" + newHP);
             }
         }
 

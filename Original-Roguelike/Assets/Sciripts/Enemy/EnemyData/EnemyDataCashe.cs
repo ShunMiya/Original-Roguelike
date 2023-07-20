@@ -37,7 +37,7 @@ namespace Enemy
 
         public static EnemyData GetRandomEnemy()
         {
-            int randomIndex = UnityEngine.Random.Range(0, enemyCache.Count);
+            int randomIndex = UnityEngine.Random.Range(0, enemyCache.Count-1);
             EnemyData randomEnemy = enemyCache.ElementAt(randomIndex).Value;
             return randomEnemy;
         }

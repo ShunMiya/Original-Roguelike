@@ -12,7 +12,9 @@ namespace Enemy
             string prefabPath = "Prefabs/" + prefabName;
 
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
-            Instantiate(prefab, position, Quaternion.identity, parent);
+            GameObject spawnedItem = Instantiate(prefab, position, Quaternion.identity, parent);
+
+            spawnedItem.GetComponent<EnemyStatus>().currentHP = randomEnemy.MaxHP;
         }
     }
 }
