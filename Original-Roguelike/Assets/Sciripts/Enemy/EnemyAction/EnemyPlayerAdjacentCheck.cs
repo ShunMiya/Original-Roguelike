@@ -42,7 +42,7 @@ namespace Enemy
         public void Attacked()
         {
             PlayerHP playerHP = Playercollider.GetComponent<PlayerHP>();
-            EnemyData enemy = EnemyDataCashe.GetEnemyData(enemyStatus.EnemyID);
+            EnemyData enemy = EnemyDataCache.GetEnemyData(enemyStatus.EnemyID);
             playerHP.TakeDamage(enemy.Attack);
         }
     }

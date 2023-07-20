@@ -26,8 +26,6 @@ namespace ItemSystemSQL
             if(parent == null) parent = GameObject.Find("ItemBox");
             GameObject spawnedItem = Instantiate(prefab, position, Quaternion.identity, parent.transform);
 
-            //randomItemのIdからCashe捜索してItem情報判別してNumの上限を判断する…なんてことやるなら
-            //インターフェースにNum上限持たせるかいっそ全てのアイテムのNumの上限を揃えるほうがいいのでは？
             int randomNum = NumSet();
             spawnedItem.GetComponent<SQLDBGetItem>().num = randomNum;
             if(systemText == null) systemText = FindObjectOfType<SystemText>();

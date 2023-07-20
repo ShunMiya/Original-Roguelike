@@ -21,6 +21,8 @@ public class PlayerControl : MonoBehaviour
 
     void Update()
     {
+        movex = 0;
+        movez = 0;
         if (Mathf.Approximately(Time.timeScale, 0f)) return;
         if (!playerStatusSQL.IsPlayerActive())
         {

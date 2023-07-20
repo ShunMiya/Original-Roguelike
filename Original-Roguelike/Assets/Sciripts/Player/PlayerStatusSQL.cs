@@ -5,6 +5,7 @@ using ItemSystemSQL.Inventory;
 using ItemSystemSQL;
 using System;
 using Enemy;
+using GameEndSystem;
 
 namespace PlayerStatusList
 {
@@ -15,6 +16,8 @@ namespace PlayerStatusList
         private EnemyTurnStart enemyturn;
         private SQLInventoryAdd SQLInventory;
         private SqliteDatabase sqlDB;
+        private GameClear gameClear;
+        private GameOver gameOver;
 
 
         public bool PlayerActive = false; //移動、攻撃、アイテムの使用(装備の着脱含)
@@ -25,6 +28,8 @@ namespace PlayerStatusList
             attackMotion = GetComponent<AttackMotion>();
             SQLInventory = GetComponent<SQLInventoryAdd>();
             enemyturn = FindObjectOfType<EnemyTurnStart>();
+            gameClear = FindObjectOfType<GameClear>();
+            gameOver = FindObjectOfType<GameOver>();
 
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
@@ -45,11 +50,12 @@ namespace PlayerStatusList
         public bool IsPlayerActive()
         {
             bool previousActive = PlayerActive;
-            PlayerActive = playerMove.IsMoving() || attackMotion.IsAttacking();
+            PlayerActive = playerMove.IsMoving() || attackMotion.IsAttacking()
+                || gameClear.IsGameClear() || gameOver.IsGameOver();
 
             if(previousActive && !PlayerActive) enemyturn.EnemyTurn();
 
-            return playerMove.IsMoving() || attackMotion.IsAttacking();
+            return PlayerActive;
         }
 
         public void WeaponStatusPlus()

@@ -23,18 +23,13 @@ namespace PlayerMovement
                     if (movex != 0.0f && movez != 0.0f)
                     {
                         move = new Vector3(movex * gridSize, 0, movez * gridSize);
-                        if (targetPos == transform.position) //仮置き。PlayerActiveで行動停止付けれたらいらなくなる。
-                        {
                             targetPos += move;
-                        }
 
                     } break;
                 case false:
                     move = new Vector3(movex * gridSize, 0, movez * gridSize);
-                    if (targetPos == transform.position) //仮置き。PlayerActiveで行動停止付けれたらいらなくなる。
-                    {
                         targetPos += move;
-                    } break;
+                    break;
             }
 
             transform.LookAt(targetPos);

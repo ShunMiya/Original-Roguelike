@@ -6,7 +6,7 @@ namespace Enemy
     {
         public void EnemyCreate(Vector3 position, Transform parent)
         {
-            EnemyData randomEnemy = EnemyDataCashe.GetRandomEnemy();
+            EnemyData randomEnemy = EnemyDataCache.GetRandomEnemy();
 
             string prefabName = randomEnemy.PrefabName;
             string prefabPath = "Prefabs/" + prefabName;
