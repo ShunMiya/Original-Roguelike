@@ -19,5 +19,10 @@ namespace UISystem
         {
             Application.Quit();
         }
+
+        public void RetryButtonClick()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }

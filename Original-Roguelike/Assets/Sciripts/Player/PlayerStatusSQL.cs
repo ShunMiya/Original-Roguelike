@@ -15,6 +15,7 @@ namespace PlayerStatusList
         private AttackMotion attackMotion;
         private EnemyTurnStart enemyturn;
         private SQLInventoryAdd SQLInventory;
+        private PlayerHP playerHP;
         private SqliteDatabase sqlDB;
         private GameClear gameClear;
         private GameOver gameOver;
@@ -27,6 +28,7 @@ namespace PlayerStatusList
             playerMove = GetComponent<PlayerMove>();
             attackMotion = GetComponent<AttackMotion>();
             SQLInventory = GetComponent<SQLInventoryAdd>();
+            playerHP = GetComponent<PlayerHP>();
             enemyturn = FindObjectOfType<EnemyTurnStart>();
             gameClear = FindObjectOfType<GameClear>();
             gameOver = FindObjectOfType<GameOver>();
@@ -53,9 +55,34 @@ namespace PlayerStatusList
             PlayerActive = playerMove.IsMoving() || attackMotion.IsAttacking()
                 || gameClear.IsGameClear() || gameOver.IsGameOver();
 
-            if(previousActive && !PlayerActive) enemyturn.EnemyTurn();
-
+            if (previousActive && !PlayerActive)
+            {
+                HungryUpdate();
+                enemyturn.EnemyTurn();
+            }
             return PlayerActive;
+        }
+
+        public void HungryUpdate()
+        {
+            if (sqlDB == null)
+            {
+                string databasePath = SQLDBInitialization.GetDatabasePath();
+                sqlDB = new SqliteDatabase(databasePath);
+            }
+            string query = "SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable Data = sqlDB.ExecuteQuery(query);
+            int CurrentHungy = Convert.ToInt32(Data[0]["CurrentHungry"]);
+
+            if(CurrentHungy > 0)
+            {
+                string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHungry = (SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 1) - " + 1 + " WHERE PlayerID = 1;";
+                sqlDB.ExecuteNonQuery(updateStatusQuery);
+            }
+            else
+            {
+                playerHP.TakeDamage(1);
+            }
         }
 
         public void WeaponStatusPlus()
