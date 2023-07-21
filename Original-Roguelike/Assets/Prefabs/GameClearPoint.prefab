@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8085598346564695378}
   - component: {fileID: 8085598346564695379}
   - component: {fileID: 8085598346564695376}
-  - component: {fileID: 8085598346564695377}
   m_Layer: 0
   m_Name: GameClearPoint
   m_TagString: Untagged
@@ -60,18 +59,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameClear: 0
-  GameClearUI: {fileID: 1784403551424728123, guid: 203c81072bb31344cab5f17899193d02, type: 3}
---- !u!114 &8085598346564695377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8085598346564695372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6eb333adc7d95c4d8e89c7984991eaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGameOver: 0
-  GameOverUI: {fileID: 5728596040575412875, guid: f115058d201ffa64c819a51384f3f888, type: 3}
+  GameClearUI: {fileID: 0}

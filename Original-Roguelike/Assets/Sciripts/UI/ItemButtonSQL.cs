@@ -19,6 +19,7 @@ namespace UISystem
         {
             createItemButton = GetComponentInParent<CreateItemButtonSQL>();
             equipmentItemSQL = transform.parent.parent.GetComponentInChildren<EquipmentItemSQL>();
+            playerUseItemSQL = FindObjectOfType<PlayerUseItemSQL>();
         }
 
         public void OnSelected()

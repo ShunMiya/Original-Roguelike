@@ -17,6 +17,7 @@ namespace UISystem
         private void Start()
         {
             systemTextCompo = Systemtext.GetComponent<SystemText>();
+            playerStatusSQL = FindObjectOfType<PlayerStatusSQL>();
         }
         // Update is called once per frame
         public void Update()

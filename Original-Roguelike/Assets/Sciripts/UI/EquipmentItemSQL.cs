@@ -20,6 +20,7 @@ namespace UISystem
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
             systemText = FindObjectOfType<SystemText>();
+            playerStatusSQL = FindObjectOfType<PlayerStatusSQL>();
         }
 
         public void EquipItem(DataRow row)
