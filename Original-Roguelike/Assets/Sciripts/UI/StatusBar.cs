@@ -41,13 +41,15 @@ public class StatusBar : MonoBehaviour
     public void UpdateHPText(DataTable Data)
     {
         int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
-        HPText.text = "HP:" + CurrentHP;
+        int MaxHP = Convert.ToInt32(Data[0]["MaxHP"]);
+        HPText.text = "HP:" + CurrentHP+"/"+MaxHP;
     }
 
     public void UpdateHungryText(DataTable Data)
     {
         int CurrentHungry = Convert.ToInt32(Data[0]["CurrentHungry"]);
-        HungryText.text = "Hungry:" + CurrentHungry;
+        int MaxHungry = Convert.ToInt32(Data[0]["MaxHungry"]);
+        HungryText.text = "Hungry:" + CurrentHungry+"/"+MaxHungry;
     }
 
     public void UpdateAttackText(DataTable Data)

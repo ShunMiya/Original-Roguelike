@@ -796,7 +796,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 68, y: -0.00013155}
+  m_AnchoredPosition: {x: 150, y: -0.00013155}
   m_SizeDelta: {x: 200, y: 40.566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &358645115
@@ -1259,7 +1259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 269, y: -0.00013155}
+  m_AnchoredPosition: {x: 340, y: -0.00013155}
   m_SizeDelta: {x: 236.8372, y: 40.566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &516507765
@@ -1774,8 +1774,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -259, y: -0.00013155}
-  m_SizeDelta: {x: 200, y: 40.566}
+  m_AnchoredPosition: {x: -204, y: -0.00013155}
+  m_SizeDelta: {x: 222.1818, y: 40.566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &674341565
 MonoBehaviour:
@@ -1797,7 +1797,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hungry:50
+  m_text: Hungry:50/50
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2179,7 +2179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -76, y: -0.00013155}
+  m_AnchoredPosition: {x: 10, y: -0.00013155}
   m_SizeDelta: {x: 200, y: 40.566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &719218522
@@ -4125,7 +4125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HP:10
+  m_text: HP:10/10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

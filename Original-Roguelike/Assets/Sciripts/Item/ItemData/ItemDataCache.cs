@@ -58,6 +58,7 @@ namespace ItemSystemSQL
                 consumableData.ItemName = row["ItemName"].ToString();
                 consumableData.ItemType = Convert.ToInt32(row["ItemType"]);
                 consumableData.Description = row["Description"].ToString();
+                consumableData.ConsumableType = Convert.ToInt32(row["ConsumableType"]);
                 consumableData.MaxStock = Convert.ToInt32(row["MaxStock"]);
                 consumableData.HealValue = Convert.ToInt32(row["HealValue"]);
 

@@ -10,6 +10,8 @@ namespace ItemSystemSQL
         [SerializeField]private SQLInventoryRemove SQLinventoryremove;
         public PlayerStatusSQL playerStatusSQL;
         [SerializeField]private PlayerHP playerHP;
+        [SerializeField]private PlayerHungry playerHungry;
+        bool ItemUse;
 
         public int UseItem(DataRow row,int ItemType)
         {
@@ -17,9 +19,7 @@ namespace ItemSystemSQL
             switch (ItemType)
             {
                 case 0:
-                    int Id = Convert.ToInt32(row["Id"]);
-                    ConsumableData itemData = ItemDataCache.GetConsumable(Id);
-                    bool ItemUse = playerHP.HealHP(itemData.HealValue);
+                    ItemUse = ConsumableUse(row);
 
                     if(ItemUse == false)
                     {
@@ -38,6 +38,22 @@ namespace ItemSystemSQL
                     break;
             }
             return remainingStock;
+        }
+
+        public bool ConsumableUse(DataRow row)
+        {
+            int Id = Convert.ToInt32(row["Id"]);
+            ConsumableData itemData = ItemDataCache.GetConsumable(Id);
+            switch (itemData.ConsumableType)
+            {
+                case 1:
+                    ItemUse = playerHP.HealHP(itemData.HealValue);
+                    break;
+                case 2:
+                    ItemUse = playerHungry.HealHungry(itemData.HealValue);
+                    break;
+            }
+            return ItemUse;
         }
     }
 }
