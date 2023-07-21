@@ -4,26 +4,30 @@ namespace GameEndSystem
 {
     public class GameEnd : MonoBehaviour
     {
-        public bool isGameOver;
-        public bool isGameClear;
+        public bool isGameStop;
         [SerializeField] private GameObject GameOverUI;
         [SerializeField] private GameObject GameClearUI;
+        [SerializeField] private GameObject StageClearUI;
 
         public void GameOverPerformance()
         {
-            isGameOver = true;
+            isGameStop = true;
             GameOverUI.SetActive(true);
         }
 
         public void GameClearPerformance()
         {
-            isGameClear = true;
+            isGameStop = true;
             GameClearUI.SetActive(true);
         }
 
-        public bool IsGameOver()
-        { return isGameOver; }
-        public bool IsGameClear()
-        { return isGameClear; }
+        public void StageClearPerformance()
+        {
+            isGameStop = true;
+            StageClearUI.SetActive(true);
+        }
+
+        public bool IsGameStop()
+        { return isGameStop; }
     }
 }

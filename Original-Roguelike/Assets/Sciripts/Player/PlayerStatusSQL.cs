@@ -51,7 +51,7 @@ namespace PlayerStatusList
         {
             bool previousActive = PlayerActive;
             PlayerActive = playerMove.IsMoving() || attackMotion.IsAttacking()
-                || gameEnd.IsGameClear() || gameEnd.IsGameOver();
+                           || gameEnd.IsGameStop();
 
             if (previousActive && !PlayerActive)
             {
