@@ -6,7 +6,7 @@ namespace UISystem
 {
     public class PauseSystemSQL : MonoBehaviour
     {
-        [SerializeField]private PlayerStatusSQL playerStatusSQL;
+        private PlayerStatusSQL playerStatusSQL;
 
         [SerializeField] private GameObject pauseUI;
         [SerializeField] private GameObject Systemtext;
