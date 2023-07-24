@@ -1,4 +1,6 @@
 using ItemSystemSQL.Inventory;
+using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +27,8 @@ namespace UISystem
 
         public void RetryButtonClick()
         {
+            SQLDBInitialization.PlayerDataInitialization();
+
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 

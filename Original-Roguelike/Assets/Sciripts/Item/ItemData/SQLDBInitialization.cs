@@ -52,5 +52,30 @@ namespace ItemSystemSQL.Inventory
         {
             return databasePath;
         }
+
+        public static void PlayerDataInitialization()
+        {
+            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "PlayerDataBase.db");
+            string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "PlayerDataBase.db");
+            
+            File.Delete(copiedDatabasePath);
+            
+            try
+            {
+                File.Copy(originalDatabasePath, copiedDatabasePath);
+            }
+            catch (FileNotFoundException e)
+            {
+                Debug.LogError("ファイルが見つかりません: " + e.Message);
+            }
+            catch (DirectoryNotFoundException e)
+            {
+                Debug.LogError("コピー先のディレクトリが見つかりません: " + e.Message);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("Unknown Error: " + e.Message);
+            }
+        }
     }
 }
