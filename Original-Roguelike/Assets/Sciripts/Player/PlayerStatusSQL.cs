@@ -17,8 +17,7 @@ namespace PlayerStatusList
         private SQLInventoryAdd SQLInventory;
         private PlayerHungry playerHungry;
         private SqliteDatabase sqlDB;
-        private GameClear gameClear;
-        private GameOver gameOver;
+        private GameEnd gameEnd;
 
 
         public bool PlayerActive = false; //移動、攻撃、アイテムの使用(装備の着脱含)
@@ -30,8 +29,7 @@ namespace PlayerStatusList
             SQLInventory = GetComponent<SQLInventoryAdd>();
             playerHungry = GetComponent<PlayerHungry>();
             enemyturn = FindObjectOfType<EnemyTurnStart>();
-            gameClear = FindObjectOfType<GameClear>();
-            gameOver = FindObjectOfType<GameOver>();
+            gameEnd = FindObjectOfType<GameEnd>();
 
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
@@ -53,7 +51,7 @@ namespace PlayerStatusList
         {
             bool previousActive = PlayerActive;
             PlayerActive = playerMove.IsMoving() || attackMotion.IsAttacking()
-                || gameClear.IsGameClear() || gameOver.IsGameOver();
+                           || gameEnd.IsGameStop();
 
             if (previousActive && !PlayerActive)
             {

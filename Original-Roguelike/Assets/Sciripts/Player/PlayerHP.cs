@@ -10,12 +10,12 @@ namespace PlayerStatusList
     {
         private SqliteDatabase sqlDB;
         private SystemText systemText;
-        private GameOver gameOver;
+        private GameEnd gameEnd;
 
         private void Start()
         {
             systemText = FindObjectOfType<SystemText>();
-            gameOver = FindObjectOfType<GameOver>();
+            gameEnd = FindObjectOfType<GameEnd>();
         }
         public void TakeDamage(int damage)
         {
@@ -43,7 +43,7 @@ namespace PlayerStatusList
             if (newHP <= 0)
             {
                 systemText.TextSet("Player Dead!");
-                gameOver.GameOverPerformance();
+                gameEnd.GameOverPerformance();
                 gameObject.SetActive(false);
 
             }

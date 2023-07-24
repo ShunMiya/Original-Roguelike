@@ -58,5 +58,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58bb2734811081c41bc0754d2b5c1826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGameClear: 0
-  GameClearUI: {fileID: 0}
