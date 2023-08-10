@@ -29,7 +29,7 @@ public class PlayerControl : MonoBehaviour
             movex = Input.GetAxisRaw("Horizontal");
             movez = Input.GetAxisRaw("Vertical");
 
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z)/*||Input.GetButtonDown("Circle")*/)
             {
                 attackMotion.AttackStance();
             }

@@ -23,12 +23,12 @@ namespace PlayerMovement
                     if (movex != 0.0f && movez != 0.0f)
                     {
                         move = new Vector3(movex * gridSize, 0, movez * gridSize);
-                            targetPos += move;
+                        targetPos += move;
 
                     } break;
                 case false:
                     move = new Vector3(movex * gridSize, 0, movez * gridSize);
-                        targetPos += move;
+                    targetPos += move;
                     break;
             }
 
