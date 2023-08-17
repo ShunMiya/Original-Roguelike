@@ -92,6 +92,10 @@ namespace Field
             {
                 Destroy(effects.GetChild(i).gameObject);
             }
+            for (int i = 0; i < enemies.transform.childCount; i++)
+            {
+                Destroy(enemies.transform.GetChild(i).gameObject);
+            }
         }
 
         /**

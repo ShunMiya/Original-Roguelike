@@ -12,7 +12,6 @@ namespace TurnSystem
         public MoveObjects MO;
         public EnemyObjects EO;
 
-        // Start is called before the first frame update
         void Start()
         {
             StartCoroutine(GameLoop());
@@ -42,7 +41,6 @@ namespace TurnSystem
             {
                 TurnNext = PC.PlayerInput();
 
-                // “Á’è‚Ì“ü—Í‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğŠm”F‚·‚éˆ—
                 if (TurnNext)
                 {
                     break;
