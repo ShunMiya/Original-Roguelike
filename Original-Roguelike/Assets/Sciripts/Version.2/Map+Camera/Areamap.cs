@@ -95,7 +95,7 @@ namespace Field
         }
 
         /**
-        * 指定の座標が壁かどうかをチェック
+        * 指定の座標が移動可能かどうかをチェック
         */
         public bool IsCollide(int xgrid, int zgrid)
         {

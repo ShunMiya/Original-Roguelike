@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using PlayerV2;
 using MoveSystem;
+using Enemy;
 
 namespace TurnSystem
 {
@@ -9,6 +10,7 @@ namespace TurnSystem
     {
         public PlayerControlV2 PC;
         public MoveObjects MO;
+        public EnemyObjects EO;
 
         // Start is called before the first frame update
         void Start()
@@ -21,6 +23,8 @@ namespace TurnSystem
             while (true) // ÉQÅ[ÉÄÉãÅ[ÉvÇñ≥å¿Ç…ë±ÇØÇÈ
             {
                 yield return StartCoroutine(PlayerInputSet());
+
+                EO.EnemiesActionSets();
 
                 yield return StartCoroutine(MO.MoveAllObjects());
 
