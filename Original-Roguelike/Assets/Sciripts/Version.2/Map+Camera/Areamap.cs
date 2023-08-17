@@ -1,3 +1,4 @@
+using MoveSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ namespace Field
         public GameObject wall;
         public GameObject line;
 
+        public MoveAction playerMovement;
+        public GameObject enemies;
+
         private Array2D map;
         private static float onetile = GameRule.GridSize;
         private static float floorSize = 10.0f / onetile;
@@ -20,12 +24,24 @@ namespace Field
         public void Create(Array2D mapdata)
         {
             map = mapdata;
+
+            ShowFloor();
+            ShowWall();
+            ShowGridEffects();
+        }
+
+        private void ShowFloor()
+        {
             float floorw = map.width / floorSize;
             float floorh = map.height / floorSize;
             floor.transform.localScale = new Vector3(floorw, 1, floorh);
             float floorx = (map.width - 1) / 2.0f * onetile;
             float floorz = (map.height - 1) / 2.0f * onetile;
             floor.transform.position = new Vector3(floorx, (float)-0.5, floorz);
+        }
+
+        private void ShowWall()
+        {
             for (int z = 0; z < map.height; z++)
             {
                 for (int x = 0; x < map.width; x++)
@@ -41,7 +57,7 @@ namespace Field
                     }
                 }
             }
-            ShowGridEffects();
+
         }
 
         private void ShowGridEffects()
@@ -83,7 +99,15 @@ namespace Field
         */
         public bool IsCollide(int xgrid, int zgrid)
         {
-            return map.Get(xgrid, zgrid) != 0;
+            if (map.Get(xgrid, zgrid) != 0) return true;
+            if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
+                return true;
+            foreach (var enemyMovement in enemies.GetComponentsInChildren<MoveAction>())
+            {
+                if (xgrid == enemyMovement.newGrid.x && zgrid == enemyMovement.newGrid.z)
+                    return true;
+            }
+            return false;
         }
     }
 

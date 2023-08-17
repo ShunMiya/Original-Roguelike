@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Xml.Linq;
-using PlayerV2;
+using MoveSystem;
 
 namespace Field
 {
@@ -10,7 +10,7 @@ namespace Field
         public Areamap field;
 
         // 以下のパラメーターを宣言
-        public PlayerMoveV2 player;
+        public MoveAction player;
 
         // Start is called before the first frame update
         void Start()
