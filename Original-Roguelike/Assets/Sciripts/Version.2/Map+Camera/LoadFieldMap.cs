@@ -9,10 +9,10 @@ namespace Field
         public string mapName;
         public Areamap field;
 
-        // 以下のパラメーターを宣言
+        public GameObject enemies;
+
         public MoveAction player;
 
-        // Start is called before the first frame update
         void Start()
         {
             field.Reset();
@@ -61,18 +61,22 @@ namespace Field
                         case "3":
                             foreach (var obj in objgp.Elements("object"))
                             {
-                                switch (obj.Attribute("name").Value)
+                                int x = int.Parse(obj.Attribute("x").Value);
+                                int z = int.Parse(obj.Attribute("y").Value);
+                                int pw = int.Parse(obj.Attribute("width").Value);
+                                int ph = int.Parse(obj.Attribute("height").Value);
+                                string name = obj.Attribute("name").Value;
+                                if(name == "Player")
                                 {
-                                    case "Player":
-                                        int x = int.Parse(obj.Attribute("x").Value);
-                                        int z = int.Parse(obj.Attribute("y").Value);
-                                        int pw = int.Parse(obj.Attribute("width").Value);
-                                        int ph = int.Parse(obj.Attribute("height").Value);
-
-                                        player.SetPosition(x / pw, ToMirrorZ(z / ph, h));
-                                        break;
+                                    player.SetPosition(x / pw, ToMirrorZ(z / ph, h));
+                                    continue;
                                 }
-                                break;
+                                if(name.Contains("Enemy"))
+                                {
+                                    GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+                                    GameObject enemy = Instantiate(enemyObj, enemies.transform);
+                                    enemy.GetComponent<MoveAction>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
+                                }
                             }
                             break;
                     }

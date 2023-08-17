@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using PlayerV2;
 using MoveSystem;
+using Enemy;
 
 namespace TurnSystem
 {
@@ -9,8 +10,8 @@ namespace TurnSystem
     {
         public PlayerControlV2 PC;
         public MoveObjects MO;
+        public EnemyObjects EO;
 
-        // Start is called before the first frame update
         void Start()
         {
             StartCoroutine(GameLoop());
@@ -21,6 +22,8 @@ namespace TurnSystem
             while (true) // ゲームループを無限に続ける
             {
                 yield return StartCoroutine(PlayerInputSet());
+
+                EO.EnemiesActionSets();
 
                 yield return StartCoroutine(MO.MoveAllObjects());
 
@@ -38,7 +41,6 @@ namespace TurnSystem
             {
                 TurnNext = PC.PlayerInput();
 
-                // 特定の入力があるかどうかを確認する処理
                 if (TurnNext)
                 {
                     break;

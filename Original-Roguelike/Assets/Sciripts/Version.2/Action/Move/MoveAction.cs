@@ -14,7 +14,6 @@ namespace MoveSystem
 
         public float maxPerFrame = 1.67f;
         private float complementFrame;
-        private int currentFrame = 0;
 
         private void Start ()
         {
@@ -48,11 +47,9 @@ namespace MoveSystem
             float pz1 = CoordinateTransformation.ToWorldZ(grid.z);
             float px2 = CoordinateTransformation.ToWorldX(newGrid.x);
             float pz2 = CoordinateTransformation.ToWorldZ(newGrid.z);
-            currentFrame = 0;
 
-            while(currentFrame <= complementFrame)
+            for (int currentFrame = 0; currentFrame <= complementFrame; currentFrame++)
             {
-                currentFrame += 1;
                 float t = (float)currentFrame / complementFrame;
                 float newX = px1 + (px2 - px1) * t;
                 float newZ = pz1 + (pz2 - pz1) * t;

@@ -92,10 +92,14 @@ namespace Field
             {
                 Destroy(effects.GetChild(i).gameObject);
             }
+            for (int i = 0; i < enemies.transform.childCount; i++)
+            {
+                Destroy(enemies.transform.GetChild(i).gameObject);
+            }
         }
 
         /**
-        * 指定の座標が壁かどうかをチェック
+        * 指定の座標が移動可能かどうかをチェック
         */
         public bool IsCollide(int xgrid, int zgrid)
         {

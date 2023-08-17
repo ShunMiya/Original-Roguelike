@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="3">
- <tileset firstgid="1" source="Test-Tile.tsx"/>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="6">
+ <tileset firstgid="1" source="../../../../../Downloads/Test-Tile.tsx"/>
  <layer id="1" name="TileLayer" width="30" height="20">
   <data encoding="csv">
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
@@ -27,5 +27,8 @@
  </layer>
  <objectgroup id="3" name="ObjectLayer">
   <object id="2" name="Player" x="96" y="96" width="31" height="31"/>
+  <object id="3" name="Enemy1" x="225" y="68" width="31" height="31"/>
+  <object id="4" name="Enemy1" x="196" y="221" width="31" height="31"/>
+  <object id="5" name="Enemy1" x="63" y="193" width="31" height="31"/>
  </objectgroup>
 </map>
