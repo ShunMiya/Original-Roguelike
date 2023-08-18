@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -204, y: -0.00013155}
-  m_SizeDelta: {x: 222.1818, y: 40.566}
+  m_AnchoredPosition: {x: -268, y: 0}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &19213492
 MonoBehaviour:
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 67180458}
   - component: {fileID: 67180457}
   - component: {fileID: 67180456}
-  - component: {fileID: 67180455}
+  - component: {fileID: 67180459}
   m_Layer: 5
   m_Name: EquipArea
   m_TagString: Untagged
@@ -443,20 +443,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &67180455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 67180454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5f750c7d5040748a7344a40da36a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BonusText: {fileID: 1720537373}
-  playerStatusSQL: {fileID: 0}
 --- !u!114 &67180456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,6 +506,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0.328125, y: 0.9980469}
   m_SizeDelta: {x: 0.6500001, y: 0.7180023}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &67180459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67180454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3424335a94ef784b896811f7d54f439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BonusText: {fileID: 1720537373}
+  playerStatusV2: {fileID: 436213515}
 --- !u!1 &67947615
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,8 +585,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -802,7 +802,7 @@ GameObject:
   - component: {fileID: 98720146}
   - component: {fileID: 98720145}
   - component: {fileID: 98720144}
-  - component: {fileID: 98720143}
+  - component: {fileID: 98720148}
   m_Layer: 5
   m_Name: GameEnd
   m_TagString: Untagged
@@ -810,22 +810,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &98720143
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 98720142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1a755b7488307c49918be19c93c304b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGameStop: 0
-  GameOverUI: {fileID: 1469801075}
-  GameClearUI: {fileID: 1625498292}
-  StageClearUI: {fileID: 1931834491}
 --- !u!114 &98720144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -910,6 +894,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &98720148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98720142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ebf7b272b265e4c9789e933bc2b8fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameOverUI: {fileID: 1469801075}
+  GameClearUI: {fileID: 1625498292}
+  StageClearUI: {fileID: 1931834491}
 --- !u!1 &117293241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,8 +1332,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 340, y: -0.00013155}
-  m_SizeDelta: {x: 236.8372, y: 40.566}
+  m_AnchoredPosition: {x: 484, y: 0}
+  m_SizeDelta: {x: 290, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &191209489
 MonoBehaviour:
@@ -1383,8 +1382,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1444,7 +1443,7 @@ GameObject:
   - component: {fileID: 204703776}
   - component: {fileID: 204703779}
   - component: {fileID: 204703778}
-  - component: {fileID: 204703777}
+  - component: {fileID: 204703780}
   m_Layer: 5
   m_Name: StatusBar
   m_TagString: Untagged
@@ -1474,26 +1473,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 250}
-  m_SizeDelta: {x: 0, y: -500}
+  m_AnchoredPosition: {x: 0, y: 330}
+  m_SizeDelta: {x: 0, y: -660}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &204703777
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 204703775}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebc93fad841c1de47b2c3d52243afb81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HPText: {fileID: 661033283}
-  HungryText: {fileID: 19213492}
-  AttackText: {fileID: 327135951}
-  DefenseText: {fileID: 740355027}
-  InventoryText: {fileID: 191209489}
 --- !u!114 &204703778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1532,6 +1514,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204703775}
   m_CullTransparentMesh: 1
+--- !u!114 &204703780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204703775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec027b75a1627747bf0b9e60190617c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPText: {fileID: 661033283}
+  HungryText: {fileID: 19213492}
+  AttackText: {fileID: 327135951}
+  DefenseText: {fileID: 740355027}
+  InventoryText: {fileID: 191209489}
 --- !u!1 &270770722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,7 +1543,7 @@ GameObject:
   - component: {fileID: 270770728}
   - component: {fileID: 270770727}
   - component: {fileID: 270770726}
-  - component: {fileID: 270770725}
+  - component: {fileID: 270770729}
   - component: {fileID: 270770724}
   m_Layer: 5
   m_Name: BackGameButton
@@ -1571,8 +1570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 783.33325, y: -30.742172}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 1050, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &270770724
 MonoBehaviour:
@@ -1591,8 +1590,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 270770725}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 270770729}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -1607,8 +1606,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 270770725}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 270770729}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -1623,8 +1622,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 270770725}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 270770729}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -1639,8 +1638,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 270770725}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 270770729}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -1667,8 +1666,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 270770725}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 270770729}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -1679,21 +1678,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &270770725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 270770722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: BackGame
-  informationText: {fileID: 67947616}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &270770726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1776,6 +1760,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270770722}
   m_CullTransparentMesh: 1
+--- !u!114 &270770729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270770722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: BackGame
+  informationText: {fileID: 67947616}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &279378074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2081,8 +2080,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10, y: -0.00013155}
-  m_SizeDelta: {x: 200, y: 40.566}
+  m_AnchoredPosition: {x: -15, y: 0}
+  m_SizeDelta: {x: 205, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &327135951
 MonoBehaviour:
@@ -2104,7 +2103,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack:1
+  m_text: Attack:11
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2131,8 +2130,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2193,7 +2192,7 @@ GameObject:
   - component: {fileID: 370392925}
   - component: {fileID: 370392924}
   - component: {fileID: 370392923}
-  - component: {fileID: 370392922}
+  - component: {fileID: 370392926}
   - component: {fileID: 370392921}
   m_Layer: 5
   m_Name: LeftHandButton
@@ -2220,8 +2219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -110, y: 75}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: -170, y: 140}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &370392921
 MonoBehaviour:
@@ -2240,8 +2239,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 370392922}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 370392926}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -2256,8 +2255,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 370392922}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 370392926}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -2272,8 +2271,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 370392922}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 370392926}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: unequip
           m_Mode: 1
           m_Arguments:
@@ -2288,8 +2287,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 370392922}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 370392926}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: unequip
           m_Mode: 1
           m_Arguments:
@@ -2304,8 +2303,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 370392922}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 370392926}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -2332,8 +2331,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 370392922}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 370392926}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -2344,19 +2343,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &370392922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370392919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d09d6d784d4a85643b741f08b19001cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationText: {fileID: 67947616}
 --- !u!114 &370392923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2439,6 +2425,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 370392919}
   m_CullTransparentMesh: 1
+--- !u!114 &370392926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 370392919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e231e54b2c5f1d4ea3d46936ad3cee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationText: {fileID: 67947616}
 --- !u!1 &428800391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,8 +2523,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2678,7 +2677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 441075519}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &436213507
 MonoBehaviour:
@@ -2833,6 +2832,7 @@ Transform:
   m_Children:
   - {fileID: 1327101928}
   - {fileID: 1377348068}
+  - {fileID: 1754919023}
   - {fileID: 436213506}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -2983,8 +2983,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -3045,7 +3045,7 @@ GameObject:
   - component: {fileID: 472539289}
   - component: {fileID: 472539288}
   - component: {fileID: 472539287}
-  - component: {fileID: 472539286}
+  - component: {fileID: 472539290}
   - component: {fileID: 472539285}
   m_Layer: 5
   m_Name: InventoryButton
@@ -3072,8 +3072,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176.66666, y: -30.742188}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 230, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &472539285
 MonoBehaviour:
@@ -3092,8 +3092,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 472539286}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 472539290}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -3108,8 +3108,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 472539286}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 472539290}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -3124,8 +3124,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 472539286}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 472539290}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -3136,8 +3136,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2135707260}
-          m_TargetAssemblyTypeName: UISystem.CreateItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 2135707264}
+          m_TargetAssemblyTypeName: UISystemV2.CreateItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -3152,8 +3152,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 472539286}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 472539290}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -3164,8 +3164,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2135707260}
-          m_TargetAssemblyTypeName: UISystem.CreateItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 2135707264}
+          m_TargetAssemblyTypeName: UISystemV2.CreateItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -3180,8 +3180,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 472539286}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 472539290}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: SelectReturnButton
           m_Mode: 1
           m_Arguments:
@@ -3208,8 +3208,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 472539286}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 472539290}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -3220,21 +3220,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &472539286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472539283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: GoInventoryScreen
-  informationText: {fileID: 544026753}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &472539287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3317,6 +3302,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 472539283}
   m_CullTransparentMesh: 1
+--- !u!114 &472539290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472539283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: GoInventoryScreen
+  informationText: {fileID: 544026753}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &479720355
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,7 +3530,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 507155143}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25152d4dc3d59a04d8587ea5d0bf4356, type: 3}
+  m_Script: {fileID: 11500000, guid: 32a146b299065234d84b5c49dcc47007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &537860671
@@ -3618,8 +3618,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3680,7 +3680,7 @@ GameObject:
   - component: {fileID: 539831260}
   - component: {fileID: 539831259}
   - component: {fileID: 539831258}
-  - component: {fileID: 539831257}
+  - component: {fileID: 539831261}
   - component: {fileID: 539831256}
   m_Layer: 5
   m_Name: EquipButton
@@ -3707,8 +3707,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99997, y: -30.742172}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 640, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539831256
 MonoBehaviour:
@@ -3727,8 +3727,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 539831257}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 539831261}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -3743,8 +3743,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 539831257}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 539831261}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -3759,8 +3759,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 539831257}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 539831261}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -3771,8 +3771,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1911531066}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 1911531071}
+          m_TargetAssemblyTypeName: UISystemV2.CreateEquipItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -3783,8 +3783,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -3795,8 +3795,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -3807,8 +3807,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -3823,8 +3823,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 539831257}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 539831261}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -3835,7 +3835,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1911531066}
+        - m_Target: {fileID: 0}
           m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
@@ -3847,8 +3847,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -3859,8 +3859,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -3871,8 +3871,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -3887,8 +3887,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 539831257}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 539831261}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: SelectReturnButton
           m_Mode: 1
           m_Arguments:
@@ -3915,8 +3915,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 539831257}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 539831261}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -3927,21 +3927,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &539831257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539831254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: GoEquipmentScreen
-  informationText: {fileID: 544026753}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &539831258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4024,6 +4009,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539831254}
   m_CullTransparentMesh: 1
+--- !u!114 &539831261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 539831254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: GoEquipmentScreen
+  informationText: {fileID: 544026753}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &544026751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4109,8 +4109,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 72
+  m_fontSizeBase: 72
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4171,7 +4171,7 @@ GameObject:
   - component: {fileID: 562725434}
   - component: {fileID: 562725433}
   - component: {fileID: 562725432}
-  - component: {fileID: 562725430}
+  - component: {fileID: 562725436}
   - component: {fileID: 562725431}
   m_Layer: 5
   m_Name: InventoryButton
@@ -4180,21 +4180,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &562725430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 562725429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: GoInventoryScreen
-  informationText: {fileID: 67947616}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &562725431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4212,8 +4197,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -4228,8 +4213,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -4244,8 +4229,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -4256,8 +4241,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2135707260}
-          m_TargetAssemblyTypeName: UISystem.CreateItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 2135707264}
+          m_TargetAssemblyTypeName: UISystemV2.CreateItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -4272,8 +4257,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -4284,8 +4269,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2135707260}
-          m_TargetAssemblyTypeName: UISystem.CreateItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 2135707264}
+          m_TargetAssemblyTypeName: UISystemV2.CreateItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -4300,8 +4285,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: SelectReturnButton
           m_Mode: 1
           m_Arguments:
@@ -4328,8 +4313,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -4440,9 +4425,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176.66666, y: -30.742172}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 230, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &562725436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562725429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: GoInventoryScreen
+  informationText: {fileID: 67947616}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &598833702
 GameObject:
   m_ObjectHideFlags: 0
@@ -4704,8 +4704,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -379, y: 0.000064135}
-  m_SizeDelta: {x: 200, y: 40.565}
+  m_AnchoredPosition: {x: -525, y: 0}
+  m_SizeDelta: {x: 210, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661033283
 MonoBehaviour:
@@ -4754,8 +4754,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 686395799}
   - component: {fileID: 686395798}
   - component: {fileID: 686395797}
-  - component: {fileID: 686395796}
+  - component: {fileID: 686395800}
   - component: {fileID: 686395795}
   m_Layer: 5
   m_Name: BackGameButton
@@ -4843,8 +4843,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 783.33325, y: -30.742188}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 1050, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &686395795
 MonoBehaviour:
@@ -4863,8 +4863,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 686395796}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 686395800}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -4879,8 +4879,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 686395796}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 686395800}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -4895,8 +4895,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 686395796}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 686395800}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -4911,8 +4911,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 686395796}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 686395800}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -4939,8 +4939,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 686395796}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 686395800}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -4951,21 +4951,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &686395796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 686395793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: BackGame
-  informationText: {fileID: 544026753}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &686395797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5048,6 +5033,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686395793}
   m_CullTransparentMesh: 1
+--- !u!114 &686395800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686395793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: BackGame
+  informationText: {fileID: 544026753}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &694783297
 GameObject:
   m_ObjectHideFlags: 0
@@ -5060,7 +5060,7 @@ GameObject:
   - component: {fileID: 694783303}
   - component: {fileID: 694783302}
   - component: {fileID: 694783301}
-  - component: {fileID: 694783300}
+  - component: {fileID: 694783304}
   - component: {fileID: 694783299}
   m_Layer: 5
   m_Name: EquipButton
@@ -5087,8 +5087,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99997, y: -30.742172}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 640, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &694783299
 MonoBehaviour:
@@ -5107,8 +5107,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 694783300}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 694783304}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -5123,8 +5123,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 694783300}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 694783304}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -5139,8 +5139,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 694783300}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 694783304}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -5151,8 +5151,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1911531066}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 1911531071}
+          m_TargetAssemblyTypeName: UISystemV2.CreateEquipItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -5163,8 +5163,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -5175,8 +5175,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -5187,8 +5187,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -5203,8 +5203,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 694783300}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 694783304}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -5215,8 +5215,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1911531066}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 1911531071}
+          m_TargetAssemblyTypeName: UISystemV2.CreateEquipItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -5227,8 +5227,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -5239,8 +5239,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -5251,8 +5251,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -5267,8 +5267,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 694783300}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 694783304}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: SelectReturnButton
           m_Mode: 1
           m_Arguments:
@@ -5295,8 +5295,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 694783300}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 694783304}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -5307,21 +5307,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &694783300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694783297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: GoEquipmentScreen
-  informationText: {fileID: 1973144932}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &694783301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5404,6 +5389,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 694783297}
   m_CullTransparentMesh: 1
+--- !u!114 &694783304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694783297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: GoEquipmentScreen
+  informationText: {fileID: 1973144932}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &740355025
 GameObject:
   m_ObjectHideFlags: 0
@@ -5439,8 +5439,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: -0.00013155}
-  m_SizeDelta: {x: 200, y: 40.566}
+  m_AnchoredPosition: {x: 213, y: 0}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &740355027
 MonoBehaviour:
@@ -5462,7 +5462,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Defense:1
+  m_text: Defense:11
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5489,8 +5489,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5574,8 +5574,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93, y: 105}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 180, y: 200}
+  m_SizeDelta: {x: 170, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &746100096
 MonoBehaviour:
@@ -5624,8 +5624,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5975,7 +5975,7 @@ GameObject:
   - component: {fileID: 774454536}
   - component: {fileID: 774454535}
   - component: {fileID: 774454534}
-  - component: {fileID: 774454533}
+  - component: {fileID: 774454537}
   - component: {fileID: 774454532}
   m_Layer: 5
   m_Name: RightHandButton
@@ -6002,8 +6002,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110, y: 75}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: 170, y: 140}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &774454532
 MonoBehaviour:
@@ -6022,8 +6022,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 774454533}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 774454537}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -6038,8 +6038,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 774454533}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 774454537}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -6054,8 +6054,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 774454533}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 774454537}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: unequip
           m_Mode: 1
           m_Arguments:
@@ -6070,8 +6070,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 774454533}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 774454537}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: unequip
           m_Mode: 1
           m_Arguments:
@@ -6086,8 +6086,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 774454533}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 774454537}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -6114,8 +6114,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 774454533}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 774454537}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -6126,19 +6126,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &774454533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 774454530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d09d6d784d4a85643b741f08b19001cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationText: {fileID: 67947616}
 --- !u!114 &774454534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6221,6 +6208,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 774454530}
   m_CullTransparentMesh: 1
+--- !u!114 &774454537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774454530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e231e54b2c5f1d4ea3d46936ad3cee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationText: {fileID: 67947616}
 --- !u!1 &818359416
 GameObject:
   m_ObjectHideFlags: 0
@@ -6306,8 +6306,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6654,8 +6654,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -6851,7 +6851,7 @@ GameObject:
   - component: {fileID: 1084384299}
   - component: {fileID: 1084384298}
   - component: {fileID: 1084384297}
-  - component: {fileID: 1084384296}
+  - component: {fileID: 1084384300}
   - component: {fileID: 1084384295}
   m_Layer: 5
   m_Name: EquipButton
@@ -6878,8 +6878,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99997, y: -30.742172}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 640, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1084384295
 MonoBehaviour:
@@ -6898,8 +6898,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1084384296}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1084384300}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -6914,8 +6914,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1084384296}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1084384300}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -6930,8 +6930,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1084384296}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1084384300}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -6942,8 +6942,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1911531066}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 1911531071}
+          m_TargetAssemblyTypeName: UISystemV2.CreateEquipItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -6954,8 +6954,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -6966,8 +6966,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -6978,8 +6978,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -6994,8 +6994,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1084384296}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1084384300}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -7006,8 +7006,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1911531066}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 1911531071}
+          m_TargetAssemblyTypeName: UISystemV2.CreateEquipItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -7018,8 +7018,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetBonusText
           m_Mode: 1
           m_Arguments:
@@ -7030,8 +7030,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 67180455}
-          m_TargetAssemblyTypeName: UISystem.EquipmentItemSQL, Assembly-CSharp
+        - m_Target: {fileID: 67180459}
+          m_TargetAssemblyTypeName: UISystemV2.EquipmentItemV2, Assembly-CSharp
           m_MethodName: SetButtonData
           m_Mode: 1
           m_Arguments:
@@ -7042,8 +7042,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 562725430}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 562725436}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -7058,8 +7058,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1084384296}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1084384300}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: SelectReturnButton
           m_Mode: 1
           m_Arguments:
@@ -7086,8 +7086,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1084384296}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1084384300}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -7098,21 +7098,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1084384296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1084384293}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: GoEquipmentScreen
-  informationText: {fileID: 67947616}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &1084384297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7195,6 +7180,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1084384293}
   m_CullTransparentMesh: 1
+--- !u!114 &1084384300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084384293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: GoEquipmentScreen
+  informationText: {fileID: 67947616}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &1104920326
 GameObject:
   m_ObjectHideFlags: 0
@@ -7299,7 +7299,7 @@ RectTransform:
   m_GameObject: {fileID: 1173021780}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.67296, y: 0.67296, z: 0.67296}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 840049353}
@@ -7310,7 +7310,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 39}
+  m_AnchoredPosition: {x: 0, y: 27}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1173021782
@@ -7436,8 +7436,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8000,8 +8000,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -8352,6 +8352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1377348068}
   - component: {fileID: 1377348069}
+  - component: {fileID: 1377348070}
   m_Layer: 0
   m_Name: Enemys
   m_TagString: Untagged
@@ -8387,6 +8388,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 436213502}
+--- !u!114 &1377348070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377348067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2861923cfb328cb4d90f77becf0734f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1441296819
 GameObject:
   m_ObjectHideFlags: 0
@@ -8882,7 +8895,7 @@ GameObject:
   - component: {fileID: 1531956636}
   - component: {fileID: 1531956635}
   - component: {fileID: 1531956634}
-  - component: {fileID: 1531956633}
+  - component: {fileID: 1531956637}
   - component: {fileID: 1531956632}
   m_Layer: 5
   m_Name: BackGameButton
@@ -8909,8 +8922,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 783.33325, y: -30.742188}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 1050, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1531956632
 MonoBehaviour:
@@ -8929,8 +8942,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1531956633}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1531956637}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -8945,8 +8958,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1531956633}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1531956637}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -8961,8 +8974,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1531956633}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1531956637}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -8977,8 +8990,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1531956633}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1531956637}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -9005,8 +9018,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1531956633}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1531956637}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -9017,21 +9030,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1531956633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531956630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: BackGame
-  informationText: {fileID: 1973144932}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &1531956634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9114,6 +9112,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531956630}
   m_CullTransparentMesh: 1
+--- !u!114 &1531956637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531956630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: BackGame
+  informationText: {fileID: 1973144932}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &1533594894
 GameObject:
   m_ObjectHideFlags: 0
@@ -9131,7 +9144,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1533594895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9689,8 +9702,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -9781,7 +9794,7 @@ GameObject:
   - component: {fileID: 1640164327}
   - component: {fileID: 1640164326}
   - component: {fileID: 1640164325}
-  - component: {fileID: 1640164324}
+  - component: {fileID: 1640164328}
   m_Layer: 5
   m_Name: SystemText
   m_TagString: Untagged
@@ -9789,21 +9802,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1640164324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1640164323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b49bfb7fe9c88c04fadb7a5e35f370fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMeshPro1: {fileID: 855743525}
-  textMeshPro2: {fileID: 279378075}
-  textMeshPro3: {fileID: 946783740}
 --- !u!114 &1640164325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9862,9 +9860,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -280.47455, y: -209.3905}
-  m_SizeDelta: {x: 398.251, y: 121.019}
+  m_AnchoredPosition: {x: -440.2, y: -300}
+  m_SizeDelta: {x: 400, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1640164328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640164323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372af4148f1ed314fb00626405052400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro1: {fileID: 855743525}
+  textMeshPro2: {fileID: 279378075}
+  textMeshPro3: {fileID: 946783740}
 --- !u!1 &1640556368
 GameObject:
   m_ObjectHideFlags: 0
@@ -9950,8 +9963,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10012,7 +10025,7 @@ GameObject:
   - component: {fileID: 1649540133}
   - component: {fileID: 1649540132}
   - component: {fileID: 1649540131}
-  - component: {fileID: 1649540130}
+  - component: {fileID: 1649540135}
   - component: {fileID: 1649540129}
   m_Layer: 5
   m_Name: InventoryButton
@@ -10038,8 +10051,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1649540130}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1649540135}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -10054,8 +10067,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1649540130}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1649540135}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -10070,8 +10083,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1649540130}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1649540135}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -10082,8 +10095,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2135707260}
-          m_TargetAssemblyTypeName: UISystem.CreateItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 2135707264}
+          m_TargetAssemblyTypeName: UISystemV2.CreateItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -10098,8 +10111,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1649540130}
-          m_TargetAssemblyTypeName: UISystem.InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1649540135}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: WindowOnOffSQL
           m_Mode: 2
           m_Arguments:
@@ -10110,8 +10123,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2135707260}
-          m_TargetAssemblyTypeName: UISystem.CreateItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 2135707264}
+          m_TargetAssemblyTypeName: UISystemV2.CreateItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -10126,8 +10139,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1649540130}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1649540135}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: SelectReturnButton
           m_Mode: 1
           m_Arguments:
@@ -10154,8 +10167,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1649540130}
-          m_TargetAssemblyTypeName: InventorySceneButton, Assembly-CSharp
+        - m_Target: {fileID: 1649540135}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
           m_MethodName: OnDeselected
           m_Mode: 1
           m_Arguments:
@@ -10166,21 +10179,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1649540130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1649540128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c913e77d1c63c04fa1a7f8c0822752e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  informationString: GoInventoryScreen
-  informationText: {fileID: 1973144932}
-  InventoryUI: {fileID: 1526274405}
 --- !u!114 &1649540131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10281,9 +10279,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 176.66666, y: -30.742188}
-  m_SizeDelta: {x: 180, y: 40}
+  m_AnchoredPosition: {x: 230, y: -41.215836}
+  m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1649540135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649540128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d710bfb7231d004c8dfb9829fc432ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  informationString: GoInventoryScreen
+  informationText: {fileID: 1973144932}
+  InventoryUI: {fileID: 1526274405}
 --- !u!1 &1656011406
 GameObject:
   m_ObjectHideFlags: 0
@@ -10417,8 +10430,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10484,9 +10497,53 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888, y: -55.286}
-  m_SizeDelta: {x: 402.16, y: 210.57}
+  m_AnchoredPosition: {x: 0, y: -70}
+  m_SizeDelta: {x: 600, y: 330}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1754919022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1754919023}
+  - component: {fileID: 1754919024}
+  m_Layer: 0
+  m_Name: Items
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1754919023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754919022}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 441075519}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1754919024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754919022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a978b3e2f0f664d919e8b584da5245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1844203667
 GameObject:
   m_ObjectHideFlags: 0
@@ -10599,8 +10656,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -145, y: 105}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -200, y: 200}
+  m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1899319740
 MonoBehaviour:
@@ -10649,8 +10706,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10711,7 +10768,7 @@ GameObject:
   - component: {fileID: 1911531069}
   - component: {fileID: 1911531068}
   - component: {fileID: 1911531067}
-  - component: {fileID: 1911531066}
+  - component: {fileID: 1911531071}
   m_Layer: 5
   m_Name: ItemArea
   m_TagString: Untagged
@@ -10719,22 +10776,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1911531066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1911531065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69c7fcb053df95441a26e5bce46cbd71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 4460590975337456279, guid: df81ac6b3f4d84b4382d7e672ebcb7ed, type: 3}
-  buttonContainer: {fileID: 1911531070}
-  informationText: {fileID: 67947616}
-  totalTextLength: 20
 --- !u!114 &1911531067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10817,6 +10858,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0.22460938, y: 0.83984375}
   m_SizeDelta: {x: -0.4512005, y: 1.038002}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1911531071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911531065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81af503fc2baeb41bc10262c08a307b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 406233905830618432, guid: 055e1a46814b118489ea37698c429606, type: 3}
+  buttonContainer: {fileID: 1911531070}
+  informationText: {fileID: 67947616}
+  totalTextLength: 20
 --- !u!1 &1931834491
 GameObject:
   m_ObjectHideFlags: 0
@@ -10981,8 +11038,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11116,8 +11173,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -11313,7 +11370,7 @@ GameObject:
   - component: {fileID: 2135707263}
   - component: {fileID: 2135707262}
   - component: {fileID: 2135707261}
-  - component: {fileID: 2135707260}
+  - component: {fileID: 2135707264}
   m_Layer: 5
   m_Name: ItemArea
   m_TagString: Untagged
@@ -11341,23 +11398,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0.6796875}
   m_SizeDelta: {x: 0, y: 1.3580017}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2135707260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2135707258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cbe189bbc1c5ba42913cf80ac9a982b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: -3857659980002422907, guid: a6e658531fe03794c98cca15d8a20a26, type: 3}
-  buttonContainer: {fileID: 2135707259}
-  informationText: {fileID: 1973144932}
-  MenuButton: {fileID: 1649540128}
-  totalTextLength: 50
 --- !u!114 &2135707261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11420,3 +11460,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2135707258}
   m_CullTransparentMesh: 1
+--- !u!114 &2135707264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135707258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7015e57a4a2f42443a531d30d0a54964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonPrefab: {fileID: 6672061056710448878, guid: 206ecb4661aa24f4fb91321dac831bf9, type: 3}
+  buttonContainer: {fileID: 2135707259}
+  informationText: {fileID: 1973144932}
+  MenuButton: {fileID: 1649540128}
+  totalTextLength: 50

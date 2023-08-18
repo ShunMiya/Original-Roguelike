@@ -1,23 +1,19 @@
-using PlayerStatusList;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace UISystem
+namespace UISystemV2
 {
     public class PauseSystemV2 : MonoBehaviour
     {
-        private PlayerStatusSQL playerStatusSQL;
-
         [SerializeField] private GameObject pauseUI;
         [SerializeField] private GameObject Systemtext;
         [SerializeField] private GameObject[] windowLists;
 
-        private SystemText systemTextCompo;
+        private SystemTextV2 systemTextCompo;
 
         private void Start()
         {
-            systemTextCompo = Systemtext.GetComponent<SystemText>();
-            playerStatusSQL = FindObjectOfType<PlayerStatusSQL>();
+            systemTextCompo = Systemtext.GetComponent<SystemTextV2>();
         }
         // Update is called once per frame
         public void PauseSwitching()

@@ -1,7 +1,7 @@
-using GameEndSystem;
-using ItemSystemSQL.Inventory;
+using GameEndSystemV2;
+using ItemSystemV2.Inventory;
 using System;
-using UISystem;
+using UISystemV2;
 using UnityEngine;
 
 namespace PlayerStatusSystemV2
@@ -9,19 +9,19 @@ namespace PlayerStatusSystemV2
     public class PlayerHPV2 : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
-        private SystemText systemText;
-        private GameEnd gameEnd;
+        private SystemTextV2 systemText;
+        private GameEndV2 gameEnd;
 
         private void Start()
         {
-            systemText = FindObjectOfType<SystemText>();
-            gameEnd = FindObjectOfType<GameEnd>();
+            systemText = FindObjectOfType<SystemTextV2>();
+            gameEnd = FindObjectOfType<GameEndV2>();
         }
         public void TakeDamage(int damage)
         {
             if (sqlDB == null)
             {
-                string databasePath = SQLDBInitialization.GetDatabasePath();
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
             string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
@@ -57,10 +57,10 @@ namespace PlayerStatusSystemV2
         {
             if (sqlDB == null)
             {
-                string databasePath = SQLDBInitialization.GetDatabasePath();
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
-            if (systemText == null) systemText = FindObjectOfType<SystemText>();
+            if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
             string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
             int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);

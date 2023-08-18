@@ -2,7 +2,7 @@ using System;
 using UISystem;
 using UnityEngine;
 
-namespace ItemSystemSQL.Inventory
+namespace ItemSystemV2.Inventory
 {
     public class SQLInventoryAddV2 : MonoBehaviour
     {
@@ -13,7 +13,7 @@ namespace ItemSystemSQL.Inventory
 
         public void Start()
         {
-            string databasePath = SQLDBInitialization.GetDatabasePath();
+            string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
             systemText = FindObjectOfType<SystemText>();
         }
@@ -28,8 +28,8 @@ namespace ItemSystemSQL.Inventory
         {
             itemCount = InventoryCount();
 
-            ConsumableData consumableItem = ItemDataCache.GetConsumable(itemId);
-            EquipmentData equipmentItem = ItemDataCache.GetEquipment(itemId);
+            ConsumableDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
+            EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
 
             bool GetItem = false;
             if (consumableItem != null)
@@ -46,7 +46,7 @@ namespace ItemSystemSQL.Inventory
         }
 
 
-        public bool AddConsumable(int itemId, int num, ConsumableData consumableItem)
+        public bool AddConsumable(int itemId, int num, ConsumableDataV2 consumableItem)
         {
             string query = "SELECT * FROM Inventory WHERE Id = " + itemId;
             DataTable itemsData = sqlDB.ExecuteQuery(query);
@@ -76,7 +76,7 @@ namespace ItemSystemSQL.Inventory
             return true;
         }
 
-        public bool AddEquipment(int itemId, EquipmentData equipmentItem)
+        public bool AddEquipment(int itemId, EquipmentDataV2 equipmentItem)
         {
             if (itemCount == inventorySize)
             {

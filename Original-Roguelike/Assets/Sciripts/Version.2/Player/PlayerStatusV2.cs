@@ -1,6 +1,6 @@
 using UnityEngine;
-using ItemSystemSQL.Inventory;
-using ItemSystemSQL;
+using ItemSystemV2.Inventory;
+using ItemSystemV2;
 using System;
 
 namespace PlayerStatusSystemV2
@@ -14,7 +14,7 @@ namespace PlayerStatusSystemV2
         {
             SQLInventory = GetComponent<SQLInventoryAddV2>();
 
-            string databasePath = SQLDBInitialization.GetDatabasePath();
+            string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
 
             inventorySizeLoad();
@@ -34,7 +34,7 @@ namespace PlayerStatusSystemV2
         {
             if (sqlDB == null)
             {
-                string databasePath = SQLDBInitialization.GetDatabasePath();
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
 
@@ -47,7 +47,7 @@ namespace PlayerStatusSystemV2
             foreach (DataRow row in equippedItems.Rows)
             {
                 int equippedItemId = Convert.ToInt32(row["Id"]);
-                EquipmentData equippedItem = ItemDataCache.GetEquipment(equippedItemId);
+                EquipmentDataV2 equippedItem = ItemDataCacheV2.GetEquipment(equippedItemId);
 
                 addAttack += equippedItem.AttackBonus;
                 addDefense += equippedItem.DefenseBonus;

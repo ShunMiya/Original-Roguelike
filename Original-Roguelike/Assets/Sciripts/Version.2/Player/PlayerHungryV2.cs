@@ -1,6 +1,6 @@
-using ItemSystemSQL.Inventory;
+using ItemSystemV2.Inventory;
 using System;
-using UISystem;
+using UISystemV2;
 using UnityEngine;
 
 namespace PlayerStatusSystemV2
@@ -9,22 +9,22 @@ namespace PlayerStatusSystemV2
     {
         private SqliteDatabase sqlDB;
         private PlayerHPV2 playerHP;
-        private SystemText systemText;
+        private SystemTextV2 systemText;
         float hung = 0;
 
         private void Start()
         {
             playerHP = GetComponent<PlayerHPV2>();
-            string databasePath = SQLDBInitialization.GetDatabasePath();
+            string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
-            systemText = FindObjectOfType<SystemText>();
+            systemText = FindObjectOfType<SystemTextV2>();
         }
 
         public void HungryDecrease()
         {
             if (sqlDB == null)
             {
-                string databasePath = SQLDBInitialization.GetDatabasePath();
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
             string query = "SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 1;";
@@ -56,10 +56,10 @@ namespace PlayerStatusSystemV2
         {
             if (sqlDB == null)
             {
-                string databasePath = SQLDBInitialization.GetDatabasePath();
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
-            if (systemText == null) systemText = FindObjectOfType<SystemText>();
+            if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
             string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
             int CurrentHungry = Convert.ToInt32(Data[0]["CurrentHungry"]);

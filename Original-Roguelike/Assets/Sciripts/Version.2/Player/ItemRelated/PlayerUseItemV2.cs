@@ -1,9 +1,9 @@
 using UnityEngine;
 using PlayerStatusSystemV2;
-using ItemSystemSQL.Inventory;
+using ItemSystemV2.Inventory;
 using System;
 
-namespace ItemSystemSQL
+namespace ItemSystemV2
 {
     public class PlayerUseItemV2 : MonoBehaviour
     {
@@ -43,7 +43,7 @@ namespace ItemSystemSQL
         public bool ConsumableUse(DataRow row)
         {
             int Id = Convert.ToInt32(row["Id"]);
-            ConsumableData itemData = ItemDataCache.GetConsumable(Id);
+            ConsumableDataV2 itemData = ItemDataCacheV2.GetConsumable(Id);
             switch (itemData.ConsumableType)
             {
                 case 1:

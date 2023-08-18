@@ -2,7 +2,7 @@ using System;
 using UISystem;
 using UnityEngine;
 
-namespace ItemSystemSQL.Inventory
+namespace ItemSystemV2.Inventory
 {
     public class SQLInventoryRemoveV2 : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace ItemSystemSQL.Inventory
 
         public void Start()
         {
-            string databasePath = SQLDBInitialization.GetDatabasePath();
+            string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
             systemText = FindObjectOfType<SystemText>();
         }
@@ -20,7 +20,7 @@ namespace ItemSystemSQL.Inventory
         {
             if (sqlDB == null)
             {
-                string databasePath = SQLDBInitialization.GetDatabasePath();
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
             int remainingStock = 0;
@@ -66,7 +66,7 @@ namespace ItemSystemSQL.Inventory
             sqlDB.ExecuteNonQuery(deleteQuery);
 
             if (systemText == null) systemText = FindObjectOfType<SystemText>();
-            EquipmentData equipmentItem = ItemDataCache.GetEquipment(Convert.ToInt32(row["Id"]));
+            EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(Convert.ToInt32(row["Id"]));
             systemText.TextSet(equipmentItem.ItemName + " Destruction");
 
             return 0;
