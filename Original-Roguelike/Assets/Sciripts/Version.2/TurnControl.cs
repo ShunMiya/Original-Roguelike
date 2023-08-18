@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using PlayerV2;
 using MoveSystem;
+using AttackSystem;
 using EnemySystem;
 using PlayerStatusSystemV2;
 
@@ -12,6 +13,7 @@ namespace TurnSystem
         public PlayerControlV2 PC;
         public MoveObjects MO;
         public EnemyObjects EO;
+        public AttackObjects AO;
         public PlayerHungryV2 PH;
 
         void Start()
@@ -28,6 +30,8 @@ namespace TurnSystem
                 EO.EnemiesActionSets();
 
                 yield return StartCoroutine(MO.MoveAllObjects());
+
+                yield return StartCoroutine(AO.AttackAllObject());
 
                 PH.HungryDecrease();
                 /*yield return new WaitForSeconds(1.0f); 

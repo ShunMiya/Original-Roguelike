@@ -121,11 +121,10 @@ namespace Field
             int xgrid = CurrentPos.x;
             int zgrid = CurrentPos.z;
 
-            for (int i=1; i < range; i++)
+            for (int i=1; i <= range; i++)
             {
                 xgrid += Pos.x;
                 zgrid += Pos.z;
-
                 if (xgrid == playerMovement.grid.x && zgrid == playerMovement.grid.z)
                     return playerMovement.gameObject;
                 foreach (var enemyMovement in enemies.GetComponentsInChildren<MoveAction>())

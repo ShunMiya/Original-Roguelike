@@ -13,7 +13,7 @@ namespace EnemySystem
         public AttackAction attackAction;
         public void EnemyActionSet()
         {
-            //StatusのIDを元にDBの行動タイプを確認しそれに応じて処理分岐。
+            //StatusのIDを元にCacheの行動タイプを確認しそれに応じて処理分岐。
             switch(ActionAI)
             {
                 case 0:
@@ -39,7 +39,7 @@ namespace EnemySystem
                 moveAction.MoveStance(PosRota.x, PosRota.z);
                 return;
             }
-            attackAction.AttackStance();
+            attackAction.AttackStance(0,1);
         }
     }
 }
