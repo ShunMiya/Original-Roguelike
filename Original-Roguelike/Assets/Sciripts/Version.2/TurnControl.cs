@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using PlayerV2;
 using MoveSystem;
-using Enemy;
+using EnemySystem;
 
 namespace TurnSystem
 {

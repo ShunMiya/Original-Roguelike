@@ -2,6 +2,7 @@ using UnityEngine;
 using MoveSystem;
 using System.Collections;
 using AttackSystem;
+using UISystem;
 
 namespace PlayerV2
 {
@@ -9,6 +10,7 @@ namespace PlayerV2
     {
         private MoveAction moveAction;
         private AttackAction attackAction;
+        private PauseSystemV2 pauseSystem;
 
         float movex;
         float movez;
@@ -17,10 +19,13 @@ namespace PlayerV2
         {
             moveAction = GetComponent<MoveAction>();
             attackAction = GetComponent<AttackAction>();
+            pauseSystem = FindObjectOfType<PauseSystemV2>();
         }
 
         public bool PlayerInput()
         {
+            if(Input.GetKeyDown("x")) pauseSystem.PauseSwitching();
+            
             StartCoroutine(WaitForTimeScale());
 
             bool TurnNext = false;

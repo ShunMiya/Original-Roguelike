@@ -65,4 +65,29 @@ public static class DirUtil
         }
         return new Vector3(0, 0, 0);
     }
+
+    //Šp“x‚ðŒ³‚É(XŽ²ˆÚ“®,ZŽ²ˆÚ“®)‚ð•Ô‚·
+    public static Pos2D SetAttackPoint(int R)
+    {
+        switch (R)
+        {
+            case -45:
+                return new Pos2D { x = -1, z = 1 };
+            case 0:
+                return new Pos2D { x = 0, z = 1 };
+            case 45:
+                return new Pos2D { x = 1, z = 1 };
+            case -90:
+                return new Pos2D { x = -1, z = 0 };
+            case 90:
+                return new Pos2D { x = 1, z = 0 };
+            case -135:
+                return new Pos2D { x = -1, z = -1 };
+            case 180:
+                return new Pos2D { x = 0, z = -1 };
+            case 135:
+                return new Pos2D { x = 1, z = -1 };
+        }
+        return new Pos2D {x = 0, z = 0};
+    }
 }

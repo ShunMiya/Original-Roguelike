@@ -3,18 +3,18 @@ using System;
 using UISystem;
 using UnityEngine;
 
-namespace PlayerStatusList
+namespace PlayerStatusSystemV2
 {
-    public class PlayerHungry : MonoBehaviour
+    public class PlayerHungryV2 : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
-        private PlayerHP playerHP;
+        private PlayerHPV2 playerHP;
         private SystemText systemText;
         float hung = 0;
 
         private void Start()
         {
-            playerHP = GetComponent<PlayerHP>();
+            playerHP = GetComponent<PlayerHPV2>();
             string databasePath = SQLDBInitialization.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
             systemText = FindObjectOfType<SystemText>();
@@ -33,8 +33,8 @@ namespace PlayerStatusList
 
             if (CurrentHungy > 0)
             {
-                hung ++;
-                if(hung >= 4)
+                hung++;
+                if (hung >= 4)
                 {
                     string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHungry = (SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 1) - " + 1 + " WHERE PlayerID = 1;";
                     sqlDB.ExecuteNonQuery(updateStatusQuery);
@@ -43,7 +43,7 @@ namespace PlayerStatusList
             }
             else
             {
-                hung ++;
+                hung++;
                 if (hung >= 2)
                 {
                     playerHP.TakeDamage(1);
@@ -65,14 +65,14 @@ namespace PlayerStatusList
             int CurrentHungry = Convert.ToInt32(Data[0]["CurrentHungry"]);
             int MaxHungry = Convert.ToInt32(Data[0]["MaxHungry"]);
 
-            Debug.Log(CurrentHungry+":"+ MaxHungry);
+            Debug.Log(CurrentHungry + ":" + MaxHungry);
             if (CurrentHungry >= MaxHungry)
             {
                 systemText.TextSet("Satiety!");
                 return false;
             }
             int HealHungry = CurrentHungry + Heal;
-            if(HealHungry > MaxHungry) HealHungry = MaxHungry;
+            if (HealHungry > MaxHungry) HealHungry = MaxHungry;
             string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHungry = " + HealHungry + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
 
