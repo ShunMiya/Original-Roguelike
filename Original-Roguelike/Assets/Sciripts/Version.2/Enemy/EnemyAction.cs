@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using AttackSystem;
 
-namespace Enemy
+namespace EnemySystem
 {
     public class EnemyAction : MonoBehaviour
     {

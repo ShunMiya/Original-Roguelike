@@ -1,7 +1,8 @@
 using UnityEngine;
-using MoveSystem;
 using System.Collections;
+using MoveSystem;
 using AttackSystem;
+using UISystemV2;
 
 namespace PlayerV2
 {
@@ -9,6 +10,7 @@ namespace PlayerV2
     {
         private MoveAction moveAction;
         private AttackAction attackAction;
+        private PauseSystemV2 pauseSystem;
 
         float movex;
         float movez;
@@ -17,11 +19,14 @@ namespace PlayerV2
         {
             moveAction = GetComponent<MoveAction>();
             attackAction = GetComponent<AttackAction>();
+            pauseSystem = FindObjectOfType<PauseSystemV2>();
         }
 
         public bool PlayerInput()
         {
-            StartCoroutine(WaitForTimeScale());
+            if(Input.GetKeyDown("x")) pauseSystem.PauseSwitching();
+
+            if (Time.timeScale != 1f) return false;
 
             bool TurnNext = false;
             movex = 0;
@@ -48,14 +53,5 @@ namespace PlayerV2
 
             return TurnNext;
         }
-
-        private IEnumerator WaitForTimeScale()
-        {
-            while (!Mathf.Approximately(Time.timeScale, 1.0f))
-            {
-                yield return null; // フレームの更新を待機
-            }
-        }
-
     }
 }
