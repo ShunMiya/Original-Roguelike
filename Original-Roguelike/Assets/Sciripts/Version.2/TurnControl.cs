@@ -3,6 +3,7 @@ using UnityEngine;
 using PlayerV2;
 using MoveSystem;
 using EnemySystem;
+using PlayerStatusSystemV2;
 
 namespace TurnSystem
 {
@@ -11,6 +12,7 @@ namespace TurnSystem
         public PlayerControlV2 PC;
         public MoveObjects MO;
         public EnemyObjects EO;
+        public PlayerHungryV2 PH;
 
         void Start()
         {
@@ -27,6 +29,7 @@ namespace TurnSystem
 
                 yield return StartCoroutine(MO.MoveAllObjects());
 
+                PH.HungryDecrease();
                 /*yield return new WaitForSeconds(1.0f); 
                 Debug.Log("NextTurn");*/ //DebugSystem 
 

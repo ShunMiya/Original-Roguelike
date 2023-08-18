@@ -25,8 +25,8 @@ namespace PlayerV2
         public bool PlayerInput()
         {
             if(Input.GetKeyDown("x")) pauseSystem.PauseSwitching();
-            
-            StartCoroutine(WaitForTimeScale());
+
+            if (Time.timeScale != 1f) return false;
 
             bool TurnNext = false;
             movex = 0;
@@ -53,14 +53,5 @@ namespace PlayerV2
 
             return TurnNext;
         }
-
-        private IEnumerator WaitForTimeScale()
-        {
-            while (!Mathf.Approximately(Time.timeScale, 1.0f))
-            {
-                yield return null; // フレームの更新を待機
-            }
-        }
-
     }
 }
