@@ -2722,6 +2722,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc291ba7ca86574d9748c73b7a635f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MA: {fileID: 436213507}
+  range: 0
+  damage: 0
 --- !u!114 &436213510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,6 +2888,7 @@ MonoBehaviour:
   PC: {fileID: 436213508}
   MO: {fileID: 441075523}
   EO: {fileID: 1377348069}
+  PH: {fileID: 436213510}
 --- !u!114 &441075523
 MonoBehaviour:
   m_ObjectHideFlags: 0
