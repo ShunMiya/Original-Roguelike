@@ -8,13 +8,20 @@ namespace EnemySystem
 {
     public class EnemyAction : MonoBehaviour
     {
-        [SerializeField] private int ActionAI;
         public MoveAction moveAction;
         public AttackAction attackAction;
+        private EnemyStatusV2 enemyStatus;
+        private EnemyDataV2 enemy;
+
+        public void Start()
+        {
+            enemyStatus = GetComponent<EnemyStatusV2>();
+            enemy = EnemyDataCacheV2.GetEnemyData(enemyStatus.EnemyID);
+        }
         public void EnemyActionSet()
         {
             //StatusのIDを元にCacheの行動タイプを確認しそれに応じて処理分岐。
-            switch(ActionAI)
+            switch(enemy.AIType)
             {
                 case 0:
                     break;
