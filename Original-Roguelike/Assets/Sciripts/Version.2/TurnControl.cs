@@ -15,6 +15,7 @@ namespace TurnSystem
         public EnemyObjects EO;
         public AttackObjects AO;
         public PlayerHungryV2 PH;
+        public PlayerAction PA;
 
         void Start()
         {
@@ -25,7 +26,9 @@ namespace TurnSystem
         {
             while (true) // ゲームループを無限に続ける
             {
-                yield return StartCoroutine(PlayerInputSet());　//プレイヤーの行動入力+アクション実施(攻撃、アイテム関連)
+                yield return StartCoroutine(PlayerInputSet());　//プレイヤーの行動入力
+
+                yield return StartCoroutine(PA.ActionStart());　//プレイヤーのアクション実施(攻撃、アイテム関連)
 
                 EO.EnemiesActionSets();　//エネミーの行動決定
 
