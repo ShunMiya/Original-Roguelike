@@ -21,7 +21,7 @@ namespace AttackSystem
         private float elapsedTime = 0f;
         [SerializeField]private float moveDuration = 0.2f; // ˆÚ“®‚É‚©‚¯‚éŽžŠÔ
 
-
+        public int EnemyY;
 
         private void Start()
         {
@@ -48,6 +48,8 @@ namespace AttackSystem
         {
             EnemyStatusV2 enemyStatus = GetComponent<EnemyStatusV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(enemyStatus.EnemyID);
+
+            transform.rotation = Quaternion.Euler(0, EnemyY, 0);
 
             int R = (int)transform.rotation.eulerAngles.y;
             if (R > 180) R -= 360;

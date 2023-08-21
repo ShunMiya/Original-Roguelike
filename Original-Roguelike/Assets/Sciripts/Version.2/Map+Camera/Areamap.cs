@@ -138,20 +138,24 @@ namespace Field
         }
 
         //エネミーの行動決定処理
-        public bool IsPlayerHitCheckBeforeMoving(Pos2D CurrentPos, int R, int range)
+        public Vector3 IsPlayerHitCheckBeforeMoving(Pos2D CurrentPos, int range)
         {
-            Pos2D Pos = DirUtil.SetAttackPoint(R);
-            int xgrid = CurrentPos.x;
-            int zgrid = CurrentPos.z;
-
-            for (int i = 1; i <= range; i++)
+            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
             {
-                xgrid += Pos.x;
-                zgrid += Pos.z;
-                if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
-                    return true;
+                Vector3 Rota =DirUtil.SetNewPosRotation(d);
+                Pos2D Pos = DirUtil.SetAttackPoint((int)Rota.y);
+                int xgrid = CurrentPos.x;
+                int zgrid = CurrentPos.z;
+
+                for (int i = 1; i <= range; i++)
+                {
+                    xgrid += Pos.x;
+                    zgrid += Pos.z;
+                    if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
+                        return Rota;
+                }
             }
-            return false;
+            return new Vector3 (0,0,0);
         }
 
         //全体移動後プレイヤーに本当に攻撃が当たるか確認処理。当たらないなら攻撃しない

@@ -11,6 +11,7 @@ public enum Dir
     LeftDown, // ç∂â∫
     Down,     // â∫
     RightDown,// âEâ∫
+    NoMove,
 };
 
 public static class DirUtil
