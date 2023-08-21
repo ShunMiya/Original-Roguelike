@@ -7,13 +7,13 @@ namespace AttackSystem
 {
     public class AttackObjects : MonoBehaviour
     {
-        public List<MoveAction> objectsToAttack = new List<MoveAction>();
+        public List<AttackAction> objectsToAttack = new List<AttackAction>();
 
         public IEnumerator AttackAllObject()
         {
-            foreach (MoveAction moveAction in objectsToAttack)
+            foreach (AttackAction AttackEnemy in objectsToAttack)
             {
-                Coroutine coroutine = StartCoroutine(moveAction.MoveObjectCoroutine(transform));
+                Coroutine coroutine = StartCoroutine(AttackEnemy.AttackPreparationEnemy(AttackEnemy.gameObject));
                 yield return coroutine;
             }
 
@@ -21,5 +21,4 @@ namespace AttackSystem
             objectsToAttack.Clear();
         }
     }
-
 }

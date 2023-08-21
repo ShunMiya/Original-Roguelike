@@ -114,7 +114,7 @@ namespace Field
             return false;
         }
 
-        //現在座標(CurrentPos)と角度(R)を元にエネミーorプレイヤーがいるかを攻撃射程分(range)チェック
+        //現在座標(CurrentPos)と角度(R)を元に攻撃範囲にエネミーorプレイヤーがいるかを攻撃射程分(range)チェック
         public GameObject IsCollideHit(Pos2D CurrentPos,int R, int range)
         {
             Pos2D Pos =DirUtil.SetAttackPoint(R);

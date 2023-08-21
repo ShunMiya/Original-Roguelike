@@ -39,7 +39,8 @@ namespace EnemySystem
                 moveAction.MoveStance(PosRota.x, PosRota.z);
                 return;
             }
-            attackAction.AttackStance(0,1);
+            AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
+            attackObjects.objectsToAttack.Add(attackAction);
         }
     }
 }

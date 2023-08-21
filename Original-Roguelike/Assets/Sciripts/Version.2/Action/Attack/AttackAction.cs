@@ -6,6 +6,7 @@ using UnityEngine;
 using PlayerStatusSystemV2;
 using System;
 using ItemSystemV2.Inventory;
+using EnemySystem;
 
 namespace AttackSystem
 {
@@ -19,7 +20,7 @@ namespace AttackSystem
             MA = GetComponent<MoveAction>();
         }
 
-        public void AttackPreparationPlayer()
+        public IEnumerator AttackPreparationPlayer()
         {
             if(sqlDB == null)
             {
@@ -32,16 +33,24 @@ namespace AttackSystem
             query = "SELECT AttackRange FROM PlayerStatus WHERE PlayerID = 1;";
             Data = sqlDB.ExecuteQuery(query);
             int range = Convert.ToInt32(Data[0]["AttackRange"]);
-            AttackStance(attack, range);
+            yield return StartCoroutine(AttackObjectCoroutine(attack, range));
         }
 
-        public void AttackStance(int damage, int range)
+        public IEnumerator AttackPreparationEnemy(GameObject Enemy)
+        {
+            EnemyStatusV2 enemyStatus = GetComponent<EnemyStatusV2>();
+            EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(enemyStatus.EnemyID);
+            yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range));
+        }
+
+        public IEnumerator AttackObjectCoroutine(int damage, int range)
         {
             //攻撃演出
-            //Debug.Log("Attack");
+            Debug.Log("Attack");
 
             //攻撃が当たっていたかチェック
             int R = (int)transform.rotation.eulerAngles.y;
+            if (R > 180)  R -= 360;
             GameObject HitObj =GetComponentInParent<Areamap>().IsCollideHit(MA.grid, R, range);
             if (HitObj != null) //当たってたので当たった対象のダメージ処理＋演出
             {                
@@ -60,6 +69,7 @@ namespace AttackSystem
                     // エネミーのダメージ演出
                 }
             }
+            yield return new WaitForSeconds(0.3f); //仮置き
         }
     }
 }

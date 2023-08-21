@@ -25,18 +25,20 @@ namespace TurnSystem
         {
             while (true) // ゲームループを無限に続ける
             {
-                yield return StartCoroutine(PlayerInputSet());
+                yield return StartCoroutine(PlayerInputSet());　//プレイヤーの行動入力+アクション実施(攻撃、アイテム関連)
 
-                EO.EnemiesActionSets();
+                EO.EnemiesActionSets();　//エネミーの行動決定
 
-                yield return StartCoroutine(MO.MoveAllObjects());
+                yield return StartCoroutine(MO.MoveAllObjects());　//全オブジェクトの同時移動
 
-                yield return StartCoroutine(AO.AttackAllObject());
+                //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
 
-                PH.HungryDecrease();
-                /*yield return new WaitForSeconds(1.0f); 
-                Debug.Log("NextTurn");*/ //DebugSystem 
+                yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
 
+                PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
+
+                /*Debug.Log("NextTurn"); 
+                yield return new WaitForSeconds(0.5f);*/ //DebugSystem 
             }
         }
 

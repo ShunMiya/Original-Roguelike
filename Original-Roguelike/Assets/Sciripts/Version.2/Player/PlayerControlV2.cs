@@ -34,7 +34,7 @@ namespace PlayerV2
 
             if (Input.GetKeyDown(KeyCode.Z)/*||Input.GetButtonDown("Circle")*/)
             {
-               attackAction.AttackPreparationPlayer();
+               StartCoroutine(attackAction.AttackPreparationPlayer());
                 return true;
             }
 

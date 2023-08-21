@@ -24,6 +24,7 @@ namespace EnemySystem
                 enemyData.Attack = Convert.ToInt32(row["Attack"]);
                 enemyData.Defense = Convert.ToInt32(row["Defense"]);
                 enemyData.Speed = Convert.ToInt32(row["Speed"]);
+                enemyData.Range = Convert.ToInt32(row["Range"]);
 
                 enemyCache[enemyData.EnemyID] = enemyData;
             }
