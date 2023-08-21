@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using PlayerV2;
 using MoveSystem;
+using AttackSystem;
 using EnemySystem;
 using PlayerStatusSystemV2;
 
@@ -12,7 +13,9 @@ namespace TurnSystem
         public PlayerControlV2 PC;
         public MoveObjects MO;
         public EnemyObjects EO;
+        public AttackObjects AO;
         public PlayerHungryV2 PH;
+        public PlayerAction PA;
 
         void Start()
         {
@@ -23,16 +26,22 @@ namespace TurnSystem
         {
             while (true) // ゲームループを無限に続ける
             {
-                yield return StartCoroutine(PlayerInputSet());
+                yield return StartCoroutine(PlayerInputSet());　//プレイヤーの行動入力
 
-                EO.EnemiesActionSets();
+                yield return StartCoroutine(PA.ActionStart());　//プレイヤーのアクション実施(攻撃、アイテム関連)
 
-                yield return StartCoroutine(MO.MoveAllObjects());
+                EO.EnemiesActionSets();　//エネミーの行動決定
 
-                PH.HungryDecrease();
-                /*yield return new WaitForSeconds(1.0f); 
-                Debug.Log("NextTurn");*/ //DebugSystem 
+                yield return StartCoroutine(MO.MoveAllObjects());　//全オブジェクトの同時移動
 
+                //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
+
+                yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
+
+                PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
+
+                /*Debug.Log("NextTurn"); 
+                yield return new WaitForSeconds(0.5f);*/ //DebugSystem 
             }
         }
 

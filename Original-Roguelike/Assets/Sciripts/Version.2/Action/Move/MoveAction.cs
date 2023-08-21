@@ -30,10 +30,10 @@ namespace MoveSystem
             transform.LookAt(targetPos);
             newGrid = MovePointCheck(GetComponentInParent<Areamap>(), grid,targetPos);
             if (newGrid == grid) return false;
-            MoveObjects moveObjects = FindObjectOfType<MoveObjects>(); // MoveObjects クラスのインスタンスを取得
+            MoveObjects moveObjects = FindObjectOfType<MoveObjects>();
             if (moveObjects != null)
             {
-                moveObjects.objectsToMove.Add(this); // this をリストに追加
+                moveObjects.objectsToMove.Add(this);
             }
             return true;
         }

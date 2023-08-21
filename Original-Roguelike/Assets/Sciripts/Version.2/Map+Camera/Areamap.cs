@@ -113,6 +113,27 @@ namespace Field
             }
             return false;
         }
-    }
 
+        //現在座標(CurrentPos)と角度(R)を元に攻撃範囲にエネミーorプレイヤーがいるかを攻撃射程分(range)チェック
+        public GameObject IsCollideHit(Pos2D CurrentPos,int R, int range)
+        {
+            Pos2D Pos =DirUtil.SetAttackPoint(R);
+            int xgrid = CurrentPos.x;
+            int zgrid = CurrentPos.z;
+
+            for (int i=1; i <= range; i++)
+            {
+                xgrid += Pos.x;
+                zgrid += Pos.z;
+                if (xgrid == playerMovement.grid.x && zgrid == playerMovement.grid.z)
+                    return playerMovement.gameObject;
+                foreach (var enemyMovement in enemies.GetComponentsInChildren<MoveAction>())
+                {
+                    if (xgrid == enemyMovement.grid.x && zgrid == enemyMovement.grid.z)
+                        return enemyMovement.gameObject;
+                }
+            }
+            return null;
+        }
+    }
 }

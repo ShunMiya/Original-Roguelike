@@ -2587,6 +2587,7 @@ GameObject:
   - component: {fileID: 436213503}
   - component: {fileID: 436213508}
   - component: {fileID: 436213507}
+  - component: {fileID: 436213516}
   - component: {fileID: 436213509}
   - component: {fileID: 436213515}
   - component: {fileID: 436213514}
@@ -2722,6 +2723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bc291ba7ca86574d9748c73b7a635f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveDuration: 0.2
 --- !u!114 &436213510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2798,6 +2800,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 094b8f6e3fb41ef41a83ecc83770a508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &436213516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c826e8af20145294ea424a69124e6d79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerToAttack: {fileID: 0}
 --- !u!1 &441075518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,6 +2825,7 @@ GameObject:
   - component: {fileID: 441075521}
   - component: {fileID: 441075520}
   - component: {fileID: 441075523}
+  - component: {fileID: 441075524}
   - component: {fileID: 441075522}
   m_Layer: 0
   m_Name: Field
@@ -2885,6 +2901,9 @@ MonoBehaviour:
   PC: {fileID: 436213508}
   MO: {fileID: 441075523}
   EO: {fileID: 1377348069}
+  AO: {fileID: 441075524}
+  PH: {fileID: 436213510}
+  PA: {fileID: 436213516}
 --- !u!114 &441075523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,6 +2917,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToMove: []
+--- !u!114 &441075524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441075518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8283e24145bc880468300bf1ac3b478e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToAttack: []
 --- !u!1 &457268854
 GameObject:
   m_ObjectHideFlags: 0

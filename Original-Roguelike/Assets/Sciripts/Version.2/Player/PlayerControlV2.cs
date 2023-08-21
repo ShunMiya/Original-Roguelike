@@ -3,6 +3,7 @@ using System.Collections;
 using MoveSystem;
 using AttackSystem;
 using UISystemV2;
+using Unity.VisualScripting;
 
 namespace PlayerV2
 {
@@ -34,7 +35,8 @@ namespace PlayerV2
 
             if (Input.GetKeyDown(KeyCode.Z)/*||Input.GetButtonDown("Circle")*/)
             {
-               attackAction.AttackStance();
+                PlayerAction PA = GetComponent<PlayerAction>();
+                PA.PlayerToAttack =attackAction;
                 return true;
             }
 
