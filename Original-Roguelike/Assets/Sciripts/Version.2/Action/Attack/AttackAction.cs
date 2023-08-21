@@ -8,6 +8,7 @@ using System;
 using ItemSystemV2.Inventory;
 using EnemySystem;
 using TMPro;
+using UnityEngine.SocialPlatforms;
 
 namespace AttackSystem
 {
@@ -47,6 +48,13 @@ namespace AttackSystem
         {
             EnemyStatusV2 enemyStatus = GetComponent<EnemyStatusV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(enemyStatus.EnemyID);
+
+            int R = (int)transform.rotation.eulerAngles.y;
+            if (R > 180) R -= 360;
+            bool PHit = GetComponentInParent<Areamap>().IsPlayerHitCheckAfterMoving(MA.grid, R, enemy.Range);
+
+            if (!PHit) yield break;
+
             yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range));
         }
 

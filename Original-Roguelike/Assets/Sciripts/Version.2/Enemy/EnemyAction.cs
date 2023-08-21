@@ -23,13 +23,13 @@ namespace EnemySystem
             //StatusのIDを元にCacheの行動タイプを確認しそれに応じて処理分岐。
             switch(enemy.AIType)
             {
-                case 0:
+                case 0: //基本移動
                     break;
-                case 1:
+                case 1: //逃走
                     break;
-                case 2:
+                case 2: //不動
                     break;
-                case 3:
+                case 3: //気紛れ
                     break;
                 default:
                     AllRandom();

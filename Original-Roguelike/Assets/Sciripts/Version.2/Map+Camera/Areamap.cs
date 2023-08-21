@@ -115,13 +115,14 @@ namespace Field
         }
 
         //現在座標(CurrentPos)と角度(R)を元に攻撃範囲にエネミーorプレイヤーがいるかを攻撃射程分(range)チェック
-        public GameObject IsCollideHit(Pos2D CurrentPos,int R, int range)
+        //攻撃することが確定しているときの処理(当たる当たらないは考慮しない)
+        public GameObject IsCollideHit(Pos2D CurrentPos, int R, int range)
         {
-            Pos2D Pos =DirUtil.SetAttackPoint(R);
+            Pos2D Pos = DirUtil.SetAttackPoint(R);
             int xgrid = CurrentPos.x;
             int zgrid = CurrentPos.z;
 
-            for (int i=1; i <= range; i++)
+            for (int i = 1; i <= range; i++)
             {
                 xgrid += Pos.x;
                 zgrid += Pos.z;
@@ -134,6 +135,40 @@ namespace Field
                 }
             }
             return null;
+        }
+
+        //エネミーの行動決定処理
+        public bool IsPlayerHitCheckBeforeMoving(Pos2D CurrentPos, int R, int range)
+        {
+            Pos2D Pos = DirUtil.SetAttackPoint(R);
+            int xgrid = CurrentPos.x;
+            int zgrid = CurrentPos.z;
+
+            for (int i = 1; i <= range; i++)
+            {
+                xgrid += Pos.x;
+                zgrid += Pos.z;
+                if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
+                    return true;
+            }
+            return false;
+        }
+
+        //全体移動後プレイヤーに本当に攻撃が当たるか確認処理。当たらないなら攻撃しない
+        public bool IsPlayerHitCheckAfterMoving(Pos2D CurrentPos, int R, int range)
+        {
+            Pos2D Pos = DirUtil.SetAttackPoint(R);
+            int xgrid = CurrentPos.x;
+            int zgrid = CurrentPos.z;
+
+            for (int i = 1; i <= range; i++)
+            {
+                xgrid += Pos.x;
+                zgrid += Pos.z;
+                if (xgrid == playerMovement.grid.x && zgrid == playerMovement.grid.z)
+                    return true;
+            }
+            return false;
         }
     }
 }
