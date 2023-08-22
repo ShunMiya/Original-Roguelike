@@ -99,6 +99,23 @@ namespace Field
         }
 
         /**
+         * * マップデータを返す
+         */
+        public Array2D GetMapData()
+        {
+            Array2D mapdata = new Array2D(map.width, map.height);
+            for (int z = 0; z < map.height; z++)
+            {
+                for (int x = 0; x < map.width; x++)
+                {
+                    mapdata.Set(x, z, map.Get(x, z));
+                }
+            }
+            return mapdata;
+        }
+
+
+        /**
         * 指定の座標が移動可能かどうかをチェック
         */
         public bool IsCollide(int xgrid, int zgrid)
@@ -112,6 +129,18 @@ namespace Field
                     return true;
             }
             return false;
+        }
+
+        public GameObject IsCollideReturnObj(int xgrid, int zgrid)
+        {
+            if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
+                return playerMovement.gameObject;
+            foreach (var enemyMovement in enemies.GetComponentsInChildren<MoveAction>())
+            {
+                if (xgrid == enemyMovement.newGrid.x && zgrid == enemyMovement.newGrid.z)
+                    return enemyMovement.gameObject;
+            }
+            return null;
         }
 
         //現在座標(CurrentPos)と角度(R)を元に攻撃範囲にエネミーorプレイヤーがいるかを攻撃射程分(range)チェック
@@ -137,8 +166,8 @@ namespace Field
             return null;
         }
 
-        //エネミーの行動決定処理
-        public Vector3 IsPlayerHitCheckBeforeMoving(Pos2D CurrentPos, int range)
+        //エネミーの行動決定処理。プレイヤーがエネミーの攻撃範囲に移動してこないかチェック
+        public int IsPlayerHitCheckBeforeMoving(Pos2D CurrentPos, int range)
         {
             foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
             {
@@ -152,10 +181,10 @@ namespace Field
                     xgrid += Pos.x;
                     zgrid += Pos.z;
                     if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
-                        return Rota;
+                        return (int)Rota.y;
                 }
             }
-            return new Vector3 (0,0,0);
+            return 1;
         }
 
         //全体移動後プレイヤーに本当に攻撃が当たるか確認処理。当たらないなら攻撃しない

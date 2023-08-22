@@ -20,6 +20,7 @@ namespace MoveSystem
             complementFrame = maxPerFrame / Time.deltaTime;
             newGrid = grid;
         }
+
         public bool MoveStance(float movex, float movez)
         {
             targetPos = transform.position;

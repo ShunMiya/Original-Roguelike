@@ -49,13 +49,11 @@ namespace AttackSystem
             EnemyStatusV2 enemyStatus = GetComponent<EnemyStatusV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(enemyStatus.EnemyID);
 
-            transform.rotation = Quaternion.Euler(0, EnemyY, 0);
-
-            int R = (int)transform.rotation.eulerAngles.y;
-            if (R > 180) R -= 360;
-            bool PHit = GetComponentInParent<Areamap>().IsPlayerHitCheckAfterMoving(MA.grid, R, enemy.Range);
+            bool PHit = GetComponentInParent<Areamap>().IsPlayerHitCheckAfterMoving(MA.grid, EnemyY, enemy.Range);
 
             if (!PHit) yield break;
+
+            transform.rotation = Quaternion.Euler(0, EnemyY, 0);
 
             yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range));
         }
@@ -75,7 +73,7 @@ namespace AttackSystem
                 {
                     Debug.Log(damage + "を" + range + "の射程で被弾");
                     // プレイヤーにダメージを与える処理
-                    HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage);
+                    //HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage);
                     //プレイヤーのダメージ演出
                 }
                 else if (HitObj.CompareTag("Enemy"))

@@ -11,7 +11,7 @@ public enum Dir
     LeftDown, // ç∂â∫
     Down,     // â∫
     RightDown,// âEâ∫
-    NoMove,
+    Pause,
 };
 
 public static class DirUtil
@@ -90,5 +90,32 @@ public static class DirUtil
                 return new Pos2D { x = 1, z = -1 };
         }
         return new Pos2D {x = 0, z = 0};
+    }
+
+    public static Pos2D GetNewGrid(Pos2D position, Dir d)
+    {
+        Pos2D newP = new Pos2D();
+        newP.x = position.x;
+        newP.z = position.z;
+        switch (d)
+        {
+            case Dir.LeftUp:
+                newP.x -= 1;  newP.z += 1; break;
+            case Dir.Up:
+                newP.z += 1; break;
+            case Dir.RightUp:
+                newP.x += 1; newP.z += 1; break;
+            case Dir.Left:
+                newP.x -= 1; break;
+            case Dir.Right:
+                newP.x += 1; break;
+            case Dir.LeftDown:
+                newP.x -= 1; newP.z -= 1; break;
+            case Dir.Down:
+                newP.z -= 1; break;
+            case Dir.RightDown:
+                newP.x += 1; newP.z -= 1; break;
+        }
+        return newP;
     }
 }
