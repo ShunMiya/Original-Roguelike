@@ -70,7 +70,7 @@ namespace MoveSystem
             newP.z = (int)targetPos.z;
             if (newP.x != Currentgrid.x && newP.z != Currentgrid.z) //Î‚ßˆÚ“®¶‰E‚ÌáŠQ•¨”»’è‚àæ‚é
             {
-                if (field.IsCollide(Currentgrid.x, newP.z) || field.IsCollide(newP.x, Currentgrid.z) || field.IsCollide(newP.x, newP.z)) return Currentgrid;
+                if (field.IsCollidediagonal(Currentgrid.x, newP.z) || field.IsCollidediagonal(newP.x, Currentgrid.z) || field.IsCollide(newP.x, newP.z)) return Currentgrid;
             }
             else
             {

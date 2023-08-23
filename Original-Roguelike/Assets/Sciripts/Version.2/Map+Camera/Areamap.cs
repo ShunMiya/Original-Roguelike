@@ -131,6 +131,12 @@ namespace Field
             return false;
         }
 
+        public bool IsCollidediagonal(int xgrid, int zgrid)
+        {
+            if (map.Get(xgrid, zgrid) != 0) return true;
+            return false;
+        }
+
         public GameObject IsCollideReturnObj(int xgrid, int zgrid)
         {
             if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)

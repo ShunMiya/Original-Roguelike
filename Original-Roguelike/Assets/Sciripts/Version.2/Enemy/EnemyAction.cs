@@ -109,7 +109,7 @@ namespace EnemySystem
                 grid.x = pos.x;
                 grid.z = pos.z;
                 Array2D nodeMap = field.GetMapData();
-                nodeMap.Set(grid.x, grid.z, 1);
+                nodeMap.Set(grid.x, grid.z, 2);
                 Node node = Astar(target, field, new List<Node>(), nodeMap);
                 if (node.parentNode == null) return Dir.Pause;
                 while (node.parentNode.parentNode != null) node = node.parentNode;
@@ -126,7 +126,7 @@ namespace EnemySystem
                     if (d == Dir.Pause) continue;
                     if (target.x == grid.x && target.z == grid.z) return this;
                     Pos2D newGrid = DirUtil.GetNewGrid(grid, d);
-                    if (nodeMap.Get(newGrid.x, newGrid.z) > 0) continue;
+                    if (nodeMap.AStarGet(newGrid.x, newGrid.z, d) > 0) continue;
                     Node node = new Node();
                     node.grid = newGrid;
                     node.direction = d;
@@ -138,7 +138,7 @@ namespace EnemySystem
                     if (openList.All(n => n.grid != node.grid))
                     {
                         openList.Add(node);
-                        nodeMap.Set(node.grid.x, node.grid.z, 1);
+                        nodeMap.Set(node.grid.x, node.grid.z, 2);
                     }
 
                 }
