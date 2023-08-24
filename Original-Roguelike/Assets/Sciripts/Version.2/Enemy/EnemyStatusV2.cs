@@ -22,10 +22,12 @@ namespace EnemySystem
             currentHP = enemy.MaxHP;
 
         }
-        public void TakeDamage(float damage)
+        public void TakeDamage(float damage,int R)
         {
             currentHP -= damage;
             systemText.TextSet("Enemy" + damage + "Damage! HP:" + currentHP);
+            int Rota =DirUtil.ReverseDirection(R);
+            transform.rotation = Quaternion.Euler(0, Rota, 0);
 
             if (currentHP <= 0 && EnemyDeath != null)
             {

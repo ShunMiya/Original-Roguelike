@@ -118,4 +118,29 @@ public static class DirUtil
         }
         return newP;
     }
+
+    //UŒ‚‚Ì”ò‚ñ‚Å‚«‚½Šp“x‚ğŒ³‚ÉUŒ‚‚µ‚Ä‚«‚½Œü‚«‚ğ•Ô‚·
+    public static int ReverseDirection(int R)
+    {
+        switch (R)
+        {
+            case -45:
+                return 135;
+            case 0:
+                return 180;
+            case 45:
+                return -135;
+            case -90:
+                return 90;
+            case 90:
+                return -90;
+            case -135:
+                return 45;
+            case 180:
+                return 0;
+            case 135:
+                return -45;
+        }
+        return 0;
+    }
 }
