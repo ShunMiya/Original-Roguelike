@@ -5,7 +5,6 @@ using UnityEngine;
 using AttackSystem;
 using Field;
 using System.Linq;
-using static UnityEngine.GraphicsBuffer;
 
 namespace EnemySystem
 {
@@ -33,11 +32,13 @@ namespace EnemySystem
                     Patrol();
                     break;
                 case 1: //逃走
+                    Escape();
                     break;
                 case 2: //不動
                     NoMove();
                     break;
                 case 3: //気紛れ
+                    Freaky();
                     break;
                 default:
                     AllRandom();
@@ -61,6 +62,14 @@ namespace EnemySystem
             moveAction.MoveStance(PosRota.x, PosRota.z);
         }
 
+        private void Escape()
+        {
+            Dir d = AstarEscapeMovementAI();
+            Vector3 PosRota = DirUtil.SetNewPosRotation(d);
+            transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
+            moveAction.MoveStance(PosRota.x, PosRota.z);
+        }
+
         private void NoMove()
         {
             int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range);
@@ -68,6 +77,16 @@ namespace EnemySystem
             attackAction.EnemyY = Rota;
             AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
             attackObjects.objectsToAttack.Add(attackAction);
+        }
+
+        private void Freaky()
+        {
+            if(Random.Range(0,2) > 0)
+            {
+                Patrol();
+                return;
+            }
+            AllRandom();
         }
 
         private void AllRandom()
@@ -91,6 +110,12 @@ namespace EnemySystem
             return node.GetAstarNextDirection(moveAction.grid, target.newGrid, GetComponentInParent<Areamap>());
         }
 
+        private Dir AstarEscapeMovementAI()
+        {
+            Node node = new Node();
+            return node.GetAstarEscapeNextDirection(moveAction.grid, target.newGrid, GetComponentInParent<Areamap>());
+        }
+
 
         private class Node
         {
@@ -99,6 +124,7 @@ namespace EnemySystem
             public int actualCost = 0;
             public int estimatedCost = 0;
             public Node parentNode = null;
+            public int EscapeCount = 0;
 
             /**
             * A*アルゴリズムにて算出した方向を返す
@@ -111,6 +137,19 @@ namespace EnemySystem
                 Array2D nodeMap = field.GetMapData();
                 nodeMap.Set(grid.x, grid.z, 2);
                 Node node = Astar(target, field, new List<Node>(), nodeMap);
+                if (node.parentNode == null) return Dir.Pause;
+                while (node.parentNode.parentNode != null) node = node.parentNode;
+                return node.direction;
+            }
+
+            public Dir GetAstarEscapeNextDirection(Pos2D pos, Pos2D target, Areamap field)
+            {
+                grid = new Pos2D();
+                grid.x = pos.x;
+                grid.z = pos.z;
+                Array2D nodeMap = field.GetMapData();
+                nodeMap.Set(grid.x, grid.z, 2);
+                Node node = AstarEscape(target, field, new List<Node>(), nodeMap);
                 if (node.parentNode == null) return Dir.Pause;
                 while (node.parentNode.parentNode != null) node = node.parentNode;
                 return node.direction;
@@ -134,7 +173,6 @@ namespace EnemySystem
                     node.actualCost = node.parentNode.actualCost + 1;
                     node.actualCost += field.IsCollideReturnObj(node.grid.x, node.grid.z) == null ? 0 : field.enemies.transform.childCount * 2;
                     node.estimatedCost = Mathf.Abs(target.x - node.grid.x) + Mathf.Abs(target.z - node.grid.z);
-                    // 既に同じ位置のノードがopenListにない場合のみ追加
                     if (openList.All(n => n.grid != node.grid))
                     {
                         openList.Add(node);
@@ -147,6 +185,35 @@ namespace EnemySystem
                 Node baseNode = openList[0];
                 openList.RemoveAt(0);
                 return baseNode.Astar(target, field, openList, nodeMap);
+            }
+
+            //移動コスト５の位置で最も遠いところに向かう処理にしたいが未完成
+            private Node AstarEscape(Pos2D target, Areamap field, List<Node> openList, Array2D nodeMap) 
+            {
+                foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
+                {
+                    if (d == Dir.Pause) continue;
+                    if (actualCost == 5) return this;
+                    Pos2D newGrid = DirUtil.GetNewGrid(grid, d);
+                    if (nodeMap.AStarGet(newGrid.x, newGrid.z, d) > 0) continue;
+                    Node node = new Node();
+                    node.grid = newGrid;
+                    node.direction = d;
+                    node.parentNode = this;
+                    node.actualCost = node.parentNode.actualCost + 1;
+                    node.estimatedCost = Mathf.Abs(target.x - node.grid.x) + Mathf.Abs(target.z - node.grid.z);
+                    if (openList.All(n => n.grid != node.grid))
+                    {
+                        openList.Add(node);
+                        nodeMap.Set(node.grid.x, node.grid.z, 2);
+                    }
+
+                }
+                if (openList.Count < 1) return this;
+                openList = openList.OrderByDescending(n => (n.actualCost + n.estimatedCost)).ThenByDescending(n => n.actualCost).ToList();
+                Node baseNode = openList[0];
+                openList.RemoveAt(0);
+                return baseNode.AstarEscape(target, field, openList, nodeMap);
             }
         }
     }
