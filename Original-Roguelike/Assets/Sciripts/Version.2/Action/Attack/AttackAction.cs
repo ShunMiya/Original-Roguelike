@@ -7,8 +7,6 @@ using PlayerStatusSystemV2;
 using System;
 using ItemSystemV2.Inventory;
 using EnemySystem;
-using TMPro;
-using UnityEngine.SocialPlatforms;
 
 namespace AttackSystem
 {
@@ -61,7 +59,6 @@ namespace AttackSystem
         public IEnumerator AttackObjectCoroutine(int damage, int range)
         {
             yield return StartCoroutine(BeginAttack());  //攻撃開始演出
-            Debug.Log("Attack");
 
             //攻撃が当たっていたかチェック
             int R = (int)transform.rotation.eulerAngles.y;

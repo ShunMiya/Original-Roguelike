@@ -119,7 +119,7 @@ public static class DirUtil
         return newP;
     }
 
-    //UŒ‚‚Ì”ò‚ñ‚Å‚«‚½Šp“x‚ğŒ³‚ÉUŒ‚‚µ‚Ä‚«‚½Œü‚«‚ğ•Ô‚·
+    //Šp“x‚ğŒ³‚É‹tŒü‚«‚ÌŠp“x‚ğ•Ô‚·
     public static int ReverseDirection(int R)
     {
         switch (R)
