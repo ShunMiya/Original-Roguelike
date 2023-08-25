@@ -10,23 +10,29 @@ namespace PlayerV2
     {
         private Areamap field;
         private MoveAction move;
+        private Pos2D oldgrid;
 
         private void Start()
         {
             field = GetComponentInParent<Areamap>();
             move = GetComponent<MoveAction>();
+            oldgrid = move.grid;
         }
 
         public IEnumerator EventCheck()
         {
-            GameObject AreaObj = field.IsCollideReturnAreaObj(move.grid.x, move.grid.z);
-            if (AreaObj == null) yield return null;
-
-            else
+            if (move.grid != oldgrid)
             {
-                SteppedOnEvent ObjEvent = AreaObj.GetComponent<SteppedOnEvent>();
-                yield return StartCoroutine(ObjEvent.Event());
+                GameObject AreaObj = field.IsCollideReturnAreaObj(move.grid.x, move.grid.z);
+                if (AreaObj == null) yield return null;
+
+                else
+                {
+                    SteppedOnEvent ObjEvent = AreaObj.GetComponent<SteppedOnEvent>();
+                    yield return StartCoroutine(ObjEvent.Event());
+                }
             }
+            oldgrid = move.grid;
         }
     }
 }
