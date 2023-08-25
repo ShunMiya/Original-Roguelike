@@ -13,6 +13,7 @@ namespace Field
 
         public MoveAction playerMovement;
         public GameObject enemies;
+        public GameObject items;
 
         private Array2D map;
         private static float onetile = GameRule.GridSize;
@@ -96,6 +97,10 @@ namespace Field
             {
                 Destroy(enemies.transform.GetChild(i).gameObject);
             }
+            for (int i = 0; i < items.transform.childCount; i++)
+            {
+                Destroy(items.transform.GetChild(i).gameObject);
+            }
         }
 
         /**
@@ -137,7 +142,7 @@ namespace Field
             return false;
         }
 
-        public GameObject IsCollideReturnObj(int xgrid, int zgrid)
+        public GameObject IsCollideReturnCharObj(int xgrid, int zgrid)
         {
             if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
                 return playerMovement.gameObject;
@@ -145,6 +150,16 @@ namespace Field
             {
                 if (xgrid == enemyMovement.newGrid.x && zgrid == enemyMovement.newGrid.z)
                     return enemyMovement.gameObject;
+            }
+            return null;
+        }
+
+        public GameObject IsCollideReturnAreaObj(int xgrid, int zgrid)
+        {
+            foreach (var itemMovement in items.GetComponentsInChildren<MoveAction>())
+            {
+                if (xgrid == itemMovement.grid.x && zgrid == itemMovement.grid.z)
+                    return itemMovement.gameObject;
             }
             return null;
         }

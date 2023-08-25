@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Field;
+using ItemSystemV2;
 
 namespace MoveSystem
 {
@@ -14,9 +15,11 @@ namespace MoveSystem
 
         public float maxPerFrame = 1.67f;
         private float complementFrame;
+        private Areamap field;
 
         private void Start ()
         {
+            field = GetComponentInParent<Areamap>();
             complementFrame = maxPerFrame / Time.deltaTime;
             newGrid = grid;
         }
@@ -29,7 +32,7 @@ namespace MoveSystem
             
             targetPos += InputPos;
             transform.LookAt(targetPos);
-            newGrid = MovePointCheck(GetComponentInParent<Areamap>(), grid,targetPos);
+            newGrid = MovePointCheck(field, grid,targetPos);
             if (newGrid == grid) return false;
             MoveObjects moveObjects = FindObjectOfType<MoveObjects>();
             if (moveObjects != null)

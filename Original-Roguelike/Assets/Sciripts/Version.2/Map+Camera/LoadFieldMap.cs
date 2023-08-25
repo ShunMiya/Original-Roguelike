@@ -11,7 +11,7 @@ namespace Field
         public Areamap field;
 
         public GameObject enemies;
-
+        public GameObject items;
         public MoveAction player;
 
         void Start()
@@ -78,6 +78,13 @@ namespace Field
                                     GameObject enemy = Instantiate(enemyObj, enemies.transform);
                                     enemy.GetComponent<MoveAction>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
                                     enemy.GetComponent<EnemyAction>().target = player;
+                                }
+                                if (name.Contains("Item"))
+                                {
+                                    GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+                                    GameObject item = Instantiate(itemObj, items.transform);
+                                    item.GetComponent<MoveAction>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
+
                                 }
                             }
                             break;

@@ -1,5 +1,5 @@
 using System;
-using UISystem;
+using UISystemV2;
 using UnityEngine;
 
 namespace ItemSystemV2.Inventory
@@ -7,7 +7,7 @@ namespace ItemSystemV2.Inventory
     public class SQLInventoryAddV2 : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
-        private SystemText systemText;
+        private SystemTextV2 systemText;
         int inventorySize;
         int itemCount;
 
@@ -15,7 +15,7 @@ namespace ItemSystemV2.Inventory
         {
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
-            systemText = FindObjectOfType<SystemText>();
+            systemText = FindObjectOfType<SystemTextV2>();
         }
 
         public void inventorySizeSet(int inventorysize)
