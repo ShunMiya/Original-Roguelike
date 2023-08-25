@@ -2595,6 +2595,7 @@ GameObject:
   - component: {fileID: 436213512}
   - component: {fileID: 436213511}
   - component: {fileID: 436213510}
+  - component: {fileID: 436213517}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2724,6 +2725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDuration: 0.2
+  EnemyY: 0
 --- !u!114 &436213510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2813,6 +2815,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerToAttack: {fileID: 0}
+--- !u!114 &436213517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f9f3073b0339b49bfbd1aca9c2f8f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &441075518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,6 +2884,7 @@ MonoBehaviour:
   line: {fileID: 2113554283648027067, guid: 1898058be3f434149aa0771689224ab0, type: 3}
   playerMovement: {fileID: 436213507}
   enemies: {fileID: 1377348067}
+  items: {fileID: 1754919022}
 --- !u!114 &441075521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2885,6 +2900,7 @@ MonoBehaviour:
   mapName: Assets/Maps/Test_Tilemap.tmx
   field: {fileID: 441075520}
   enemies: {fileID: 1377348067}
+  items: {fileID: 1754919022}
   player: {fileID: 436213507}
 --- !u!114 &441075522
 MonoBehaviour:
@@ -2904,6 +2920,7 @@ MonoBehaviour:
   AO: {fileID: 441075524}
   PH: {fileID: 436213510}
   PA: {fileID: 436213516}
+  PEAM: {fileID: 436213517}
 --- !u!114 &441075523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11443,14 +11460,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
-  m_ChildAlignment: 0
+    m_Left: 0
+    m_Right: 0
+    m_Top: 50
+    m_Bottom: 50
+  m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 400, y: 40}
+  m_CellSize: {x: 500, y: 60}
   m_Spacing: {x: 20, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -11508,4 +11525,4 @@ MonoBehaviour:
   buttonContainer: {fileID: 2135707259}
   informationText: {fileID: 1973144932}
   MenuButton: {fileID: 1649540128}
-  totalTextLength: 50
+  totalTextLength: 40

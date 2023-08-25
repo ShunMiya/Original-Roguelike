@@ -171,7 +171,7 @@ namespace EnemySystem
                     node.direction = d;
                     node.parentNode = this;
                     node.actualCost = node.parentNode.actualCost + 1;
-                    node.actualCost += field.IsCollideReturnObj(node.grid.x, node.grid.z) == null ? 0 : field.enemies.transform.childCount * 2;
+                    node.actualCost += field.IsCollideReturnCharObj(node.grid.x, node.grid.z) == null ? 0 : field.enemies.transform.childCount * 2;
                     node.estimatedCost = Mathf.Abs(target.x - node.grid.x) + Mathf.Abs(target.z - node.grid.z);
                     if (openList.All(n => n.grid != node.grid))
                     {

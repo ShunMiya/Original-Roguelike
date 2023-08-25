@@ -16,6 +16,7 @@ namespace TurnSystem
         public AttackObjects AO;
         public PlayerHungryV2 PH;
         public PlayerAction PA;
+        public PlayerEventAfterMove PEAM;
 
         void Start()
         {
@@ -34,7 +35,7 @@ namespace TurnSystem
 
                 yield return StartCoroutine(MO.MoveAllObjects());　//全オブジェクトの同時移動
 
-                //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
+                yield return StartCoroutine(PEAM.EventCheck()); //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
 
                 yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
 
