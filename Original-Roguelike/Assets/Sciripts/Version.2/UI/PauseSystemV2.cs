@@ -7,6 +7,8 @@ namespace UISystemV2
     {
         [SerializeField] private GameObject pauseUI;
         [SerializeField] private GameObject Systemtext;
+        [SerializeField] private GameObject subMenu;
+
         [SerializeField] private GameObject[] windowLists;
 
         private SystemTextV2 systemTextCompo;
@@ -18,6 +20,7 @@ namespace UISystemV2
         // Update is called once per frame
         public void PauseSwitching()
         {
+            subMenu.SetActive(false);
             pauseUI.SetActive(!pauseUI.activeSelf);
             systemTextCompo.TextSet("");
             systemTextCompo.TextSet("");

@@ -13,6 +13,7 @@ namespace UISystemV2
         public PlayerUseItemV2 playerUseItemSQL;
         private CreateItemButtonV2 createItemButton;
         private EquipmentItemV2 equipmentItemSQL;
+        public SubMenu subMenu;
 
 
         void Start()
@@ -37,36 +38,17 @@ namespace UISystemV2
             informationText.text = "";
         }
 
-        public void UseItem()
-        {
-            int itemId = Convert.ToInt32(row["Id"]);
-            int itemStock = Convert.ToInt32(row["Num"]);
-            IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
-
-            switch (itemData.ItemType)
-            {
-                case 0:
-                    Debug.Log("ID" + itemData.Id + "‚ÅStack" + itemStock + "‚ð‘I‘ð");
-                    int remainingStock = playerUseItemSQL.UseItem(row, 0);
-                    row["Num"] = remainingStock;
-
-                    if (remainingStock == 0) createItemButton.SelectButtonChangeForDestruction(this);
-
-                    createItemButton.SetButtonTextAfterUse(this);
-
-                    break;
-                case 1:
-                    playerUseItemSQL.UseItem(row, 1);
-
-                    createItemButton.SelectButtonChangeForDestruction(this);
-
-                    break;
-            }
-        }
-
         public void EquipItem()
         {
             equipmentItemSQL.EquipItem(row);
+        }
+
+        public void Use()
+        {
+            subMenu.gameObject.SetActive(true);
+            subMenu.row = row;
+            subMenu.informationText = informationText;
+            EventSystem.current.SetSelectedGameObject(subMenu.UseButton);
         }
     }
 }

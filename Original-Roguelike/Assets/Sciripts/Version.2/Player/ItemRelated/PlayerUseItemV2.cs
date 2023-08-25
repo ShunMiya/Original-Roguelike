@@ -2,6 +2,9 @@ using UnityEngine;
 using PlayerStatusSystemV2;
 using ItemSystemV2.Inventory;
 using System;
+using System.Collections;
+using AttackSystem;
+using PlayerV2;
 
 namespace ItemSystemV2
 {
@@ -12,8 +15,19 @@ namespace ItemSystemV2
         [SerializeField] private PlayerHPV2 playerHP;
         [SerializeField] private PlayerHungryV2 playerHungry;
         bool ItemUse;
+        private DataRow row;
+        private int ItemType;
 
-        public int UseItem(DataRow row, int ItemType)
+        public void SetData(DataRow date, int type)
+        {
+            row = date;
+            ItemType = type;
+            PlayerAction PA = GetComponent<PlayerAction>();
+            PA.PlayerUseItemV2 = this;
+
+        }
+
+        public IEnumerator UseItem()
         {
             int remainingStock = 0;
             switch (ItemType)
@@ -37,7 +51,7 @@ namespace ItemSystemV2
 
                     break;
             }
-            return remainingStock;
+            yield return null;
         }
 
         public bool ConsumableUse(DataRow row)

@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   informationText: {fileID: 0}
   playerUseItemSQL: {fileID: 0}
+  subMenu: {fileID: 0}
 --- !u!114 &5068514473071604593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,7 +234,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 6672061056710448878}
           m_TargetAssemblyTypeName: UISystemV2.ItemButtonV2, Assembly-CSharp
-          m_MethodName: UseItem
+          m_MethodName: Use
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -249,7 +250,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 6672061056710448878}
           m_TargetAssemblyTypeName: UISystemV2.ItemButtonV2, Assembly-CSharp
-          m_MethodName: UseItem
+          m_MethodName: Use
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
