@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Xml.Linq;
 using MoveSystem;
+using EnemySystem;
 
 namespace Field
 {
@@ -76,6 +77,7 @@ namespace Field
                                     GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
                                     GameObject enemy = Instantiate(enemyObj, enemies.transform);
                                     enemy.GetComponent<MoveAction>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
+                                    enemy.GetComponent<EnemyAction>().target = player;
                                 }
                             }
                             break;

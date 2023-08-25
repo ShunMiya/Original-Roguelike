@@ -7,7 +7,6 @@ using PlayerStatusSystemV2;
 using System;
 using ItemSystemV2.Inventory;
 using EnemySystem;
-using TMPro;
 
 namespace AttackSystem
 {
@@ -20,7 +19,7 @@ namespace AttackSystem
         private float elapsedTime = 0f;
         [SerializeField]private float moveDuration = 0.2f; // 移動にかける時間
 
-
+        public int EnemyY;
 
         private void Start()
         {
@@ -47,13 +46,19 @@ namespace AttackSystem
         {
             EnemyStatusV2 enemyStatus = GetComponent<EnemyStatusV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(enemyStatus.EnemyID);
+
+            bool PHit = GetComponentInParent<Areamap>().IsPlayerHitCheckAfterMoving(MA.grid, EnemyY, enemy.Range);
+
+            if (!PHit) yield break;
+
+            transform.rotation = Quaternion.Euler(0, EnemyY, 0);
+
             yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range));
         }
 
         public IEnumerator AttackObjectCoroutine(int damage, int range)
         {
             yield return StartCoroutine(BeginAttack());  //攻撃開始演出
-            Debug.Log("Attack");
 
             //攻撃が当たっていたかチェック
             int R = (int)transform.rotation.eulerAngles.y;
@@ -65,14 +70,13 @@ namespace AttackSystem
                 {
                     Debug.Log(damage + "を" + range + "の射程で被弾");
                     // プレイヤーにダメージを与える処理
-                    HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage);
+                    //HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage,R);
                     //プレイヤーのダメージ演出
                 }
                 else if (HitObj.CompareTag("Enemy"))
                 {
-                    Debug.Log(damage + "を" + range + "の射程で命中");
                     // 敵にダメージを与える処理
-                    HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage);
+                    HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage,R);
                     // エネミーのダメージ演出
                 }
             }

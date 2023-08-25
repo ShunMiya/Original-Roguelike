@@ -4,6 +4,7 @@ namespace EnemySystem
     {
         public int EnemyID { get; set; }
         public string PrefabName { get; set; }
+        public int AIType { get; set; }
         public int MaxHP { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }

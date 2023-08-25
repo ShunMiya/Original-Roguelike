@@ -17,7 +17,7 @@ namespace PlayerStatusSystemV2
             systemText = FindObjectOfType<SystemTextV2>();
             gameEnd = FindObjectOfType<GameEndV2>();
         }
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, int R)
         {
             if (sqlDB == null)
             {
@@ -50,6 +50,8 @@ namespace PlayerStatusSystemV2
             else if (newHP > 0)
             {
                 systemText.TextSet("Player" + reducedDamage + "Damage! HP:" + newHP);
+                int Rota = DirUtil.ReverseDirection(R);
+                transform.rotation = Quaternion.Euler(0, Rota, 0);
             }
         }
 

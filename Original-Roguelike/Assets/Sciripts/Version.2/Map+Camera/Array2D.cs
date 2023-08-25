@@ -34,4 +34,36 @@ public class Array2D
         }
         return -1;
     }
+
+    public int AStarGet(int x, int z, Dir d)
+    {
+        switch (d)
+        {
+            case Dir.LeftUp:
+                if (Get(x + 1, z) == 1) return 1;
+                if (Get(x, z - 1) == 1) return 1;
+                return Get(x, z);
+            case Dir.Up:
+                return Get(x, z);
+            case Dir.RightUp:
+                if (Get(x - 1, z) == 1) return 1;
+                if (Get(x, z - 1) == 1) return 1;
+                return Get(x, z);
+            case Dir.Left:
+                return Get(x, z);
+            case Dir.Right:
+                return Get(x, z);
+            case Dir.LeftDown:
+                if (Get(x + 1, z) == 1) return 1;
+                if (Get(x, z + 1) == 1) return 1;
+                return Get(x, z);
+            case Dir.Down:
+                return Get(x, z);
+            case Dir.RightDown:
+                if (Get(x - 1, z) == 1) return 1;
+                if (Get(x, z + 1) == 1) return 1;
+                return Get(x, z);
+        }
+        return Get(x, z);
+    }
 }

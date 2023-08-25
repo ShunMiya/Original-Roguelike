@@ -7,8 +7,8 @@ namespace EnemySystem
 {
     public class EnemyStatusV2 : MonoBehaviour
     {
-        public delegate void EnemyDefeatedEventHandler();
-        public event EnemyDefeatedEventHandler EnemyDefeated;
+        public delegate void EnemyDeathEvent();
+        public event EnemyDeathEvent EnemyDeath;
         private SystemTextV2 systemText;
 
         public float currentHP;
@@ -17,15 +17,20 @@ namespace EnemySystem
         private void Start()
         {
             systemText = FindObjectOfType<SystemTextV2>();
+            EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(EnemyID);
+            currentHP = enemy.MaxHP;
+
         }
-        public void TakeDamage(float damage)
+        public void TakeDamage(float damage,int R)
         {
             currentHP -= damage;
             systemText.TextSet("Enemy" + damage + "Damage! HP:" + currentHP);
+            int Rota =DirUtil.ReverseDirection(R);
+            transform.rotation = Quaternion.Euler(0, Rota, 0);
 
-            if (currentHP <= 0 && EnemyDefeated != null)
+            if (currentHP <= 0 && EnemyDeath != null)
             {
-                EnemyDefeated();
+                EnemyDeath();
             }
         }
 

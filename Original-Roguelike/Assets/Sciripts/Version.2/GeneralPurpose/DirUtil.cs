@@ -11,6 +11,7 @@ public enum Dir
     LeftDown, // ç∂â∫
     Down,     // â∫
     RightDown,// âEâ∫
+    Pause,
 };
 
 public static class DirUtil
@@ -89,5 +90,57 @@ public static class DirUtil
                 return new Pos2D { x = 1, z = -1 };
         }
         return new Pos2D {x = 0, z = 0};
+    }
+
+    public static Pos2D GetNewGrid(Pos2D position, Dir d)
+    {
+        Pos2D newP = new Pos2D();
+        newP.x = position.x;
+        newP.z = position.z;
+        switch (d)
+        {
+            case Dir.LeftUp:
+                newP.x -= 1;  newP.z += 1; break;
+            case Dir.Up:
+                newP.z += 1; break;
+            case Dir.RightUp:
+                newP.x += 1; newP.z += 1; break;
+            case Dir.Left:
+                newP.x -= 1; break;
+            case Dir.Right:
+                newP.x += 1; break;
+            case Dir.LeftDown:
+                newP.x -= 1; newP.z -= 1; break;
+            case Dir.Down:
+                newP.z -= 1; break;
+            case Dir.RightDown:
+                newP.x += 1; newP.z -= 1; break;
+        }
+        return newP;
+    }
+
+    //äpìxÇå≥Ç…ãtå¸Ç´ÇÃäpìxÇï‘Ç∑
+    public static int ReverseDirection(int R)
+    {
+        switch (R)
+        {
+            case -45:
+                return 135;
+            case 0:
+                return 180;
+            case 45:
+                return -135;
+            case -90:
+                return 90;
+            case 90:
+                return -90;
+            case -135:
+                return 45;
+            case 180:
+                return 0;
+            case 135:
+                return -45;
+        }
+        return 0;
     }
 }
