@@ -11,10 +11,10 @@ namespace UISystemV2
     public class SubMenu : MonoBehaviour
     {
         public DataRow row;
-        private GameObject returnButton;
         public GameObject UseButton;
+        public GameObject ItemButton;
         public TextMeshProUGUI informationText;
-        private PlayerUseItemV2 playerUseItemV2;
+        private PlayerUseItemV2 playerUseItemV2;        
 
         private void Start()
         {
@@ -61,9 +61,10 @@ namespace UISystemV2
 
         }
 
-        public void SelectReturnButton()
+        public void CancelUse()
         {
-            EventSystem.current.SetSelectedGameObject(returnButton);
+            EventSystem.current.SetSelectedGameObject(ItemButton);
+            gameObject.SetActive(false);
         }
     }
 }

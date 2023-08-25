@@ -48,6 +48,7 @@ namespace UISystemV2
             subMenu.gameObject.SetActive(true);
             subMenu.row = row;
             subMenu.informationText = informationText;
+            subMenu.ItemButton = gameObject;
             EventSystem.current.SetSelectedGameObject(subMenu.UseButton);
         }
     }

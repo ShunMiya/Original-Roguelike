@@ -24,7 +24,6 @@ namespace ItemSystemV2
             ItemType = type;
             PlayerAction PA = GetComponent<PlayerAction>();
             PA.PlayerUseItemV2 = this;
-
         }
 
         public IEnumerator UseItem()
