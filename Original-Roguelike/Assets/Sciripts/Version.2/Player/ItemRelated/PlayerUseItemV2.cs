@@ -10,7 +10,7 @@ namespace ItemSystemV2
 {
     public class PlayerUseItemV2 : MonoBehaviour
     {
-        [SerializeField] private SQLInventoryRemoveV2 SQLinventoryremove;
+        [SerializeField] private SQLInventoryRemoveV2 inventoryremove;
         public PlayerStatusV2 playerStatusV2;
         [SerializeField] private PlayerHPV2 playerHP;
         [SerializeField] private PlayerHungryV2 playerHungry;
@@ -40,12 +40,12 @@ namespace ItemSystemV2
                         remainingStock = itemStock;
                         break;
                     }
-                    remainingStock = SQLinventoryremove.RemoveItem(row, 0);
+                    remainingStock = inventoryremove.RemoveItem(row, 0);
 
                     break;
                 case 1:
 
-                    remainingStock = SQLinventoryremove.RemoveItem(row, 1);
+                    remainingStock = inventoryremove.RemoveItem(row, 1);
                     playerStatusV2.WeaponStatusPlus();
 
                     break;

@@ -1,7 +1,5 @@
 using ItemSystemV2;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,7 +13,7 @@ namespace UISystemV2
         public GameObject ItemButton;
         public TextMeshProUGUI informationText;
         private PlayerUseItemV2 playerUseItemV2;
-        public Transform menuArea;
+        public Transform MenuArea;
         public Transform ButtonArea;
         [SerializeField]private GameObject backgroundObject;
 
@@ -29,6 +27,16 @@ namespace UISystemV2
         {
             int itemId = Convert.ToInt32(row["Id"]);
             IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
+            switch (itemData.ItemType)
+            {
+                case 0:
+                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Use");
+                    break;
+                case 1:
+                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Equip");
+                    break;
+            }
+
             informationText.text = itemData.Description;
         }
 
@@ -49,7 +57,7 @@ namespace UISystemV2
                     break;
             }
             ButtonArea.GetComponent<CanvasGroup>().interactable = true;
-            menuArea.GetComponent<CanvasGroup>().interactable = true;
+            MenuArea.GetComponent<CanvasGroup>().interactable = true;
             gameObject.SetActive(false);
         }
 
@@ -70,7 +78,7 @@ namespace UISystemV2
         public void CancelUse()
         {
             ButtonArea.GetComponent<CanvasGroup>().interactable = true;
-            menuArea.GetComponent<CanvasGroup>().interactable = true;
+            MenuArea.GetComponent<CanvasGroup>().interactable = true;
             EventSystem.current.SetSelectedGameObject(ItemButton);
             gameObject.SetActive(false);
         }

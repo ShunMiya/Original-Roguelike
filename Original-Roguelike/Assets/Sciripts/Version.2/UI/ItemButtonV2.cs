@@ -9,10 +9,8 @@ namespace UISystemV2
     public class ItemButtonV2 : MonoBehaviour
     {
         public TextMeshProUGUI informationText;
+        public GameObject returnButton;
         public DataRow row;
-        public PlayerUseItemV2 playerUseItemSQL;
-        private CreateItemButtonV2 createItemButton;
-        private EquipmentItemV2 equipmentItemSQL;
         public SubMenu subMenu;
         private Transform menuArea;
         private Transform itemArea;
@@ -20,9 +18,6 @@ namespace UISystemV2
 
         void Start()
         {
-            createItemButton = GetComponentInParent<CreateItemButtonV2>();
-            equipmentItemSQL = transform.parent.parent.GetComponentInChildren<EquipmentItemV2>();
-            playerUseItemSQL = FindObjectOfType<PlayerUseItemV2>();
             menuArea = transform.parent.parent.Find("MenuArea");
             itemArea = transform.parent.parent.Find("ItemArea");
         }
@@ -42,11 +37,6 @@ namespace UISystemV2
             informationText.text = "";
         }
 
-        public void EquipItem()
-        {
-            equipmentItemSQL.EquipItem(row);
-        }
-
         public void Use()
         {
             subMenu.gameObject.SetActive(true);
@@ -54,13 +44,18 @@ namespace UISystemV2
             subMenu.informationText = informationText;
             subMenu.ItemButton = gameObject;
             subMenu.ButtonArea = itemArea;
-            subMenu.menuArea = menuArea;
+            subMenu.MenuArea = menuArea;
             //Å@EquipAreaÇñ≥å¯âª
             itemArea.GetComponent<CanvasGroup>().interactable = false;
             //Å@MenuAreaÇñ≥å¯âª
             menuArea.GetComponent<CanvasGroup>().interactable = false;
 
             EventSystem.current.SetSelectedGameObject(subMenu.UseButton);
+        }
+
+        public void SelectReturnButton()
+        {
+            EventSystem.current.SetSelectedGameObject(returnButton);
         }
     }
 }

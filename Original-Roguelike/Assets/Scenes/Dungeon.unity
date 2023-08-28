@@ -1826,6 +1826,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 16
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 270770729}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
+          m_MethodName: DisableWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &270770726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5405,6 +5421,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 16
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 686395800}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
+          m_MethodName: DisableWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &686395797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8053,7 +8085,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10283,6 +10315,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - eventID: 16
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1531956637}
+          m_TargetAssemblyTypeName: UISystemV2.InventorySceneButtonV2, Assembly-CSharp
+          m_MethodName: DisableWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1531956634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11997,7 +12045,7 @@ MonoBehaviour:
   UseButton: {fileID: 896277606}
   ItemButton: {fileID: 0}
   informationText: {fileID: 0}
-  menuArea: {fileID: 0}
+  MenuArea: {fileID: 0}
   ButtonArea: {fileID: 0}
   backgroundObject: {fileID: 1173021780}
 --- !u!225 &1863318253
@@ -12867,6 +12915,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 6672061056710448878, guid: 206ecb4661aa24f4fb91321dac831bf9, type: 3}
   buttonContainer: {fileID: 2135707259}
   informationText: {fileID: 1973144932}
+  returnButton: {fileID: 1531956630}
   MenuButton: {fileID: 1649540128}
   subMenu: {fileID: 1863318252}
   totalTextLength: 40

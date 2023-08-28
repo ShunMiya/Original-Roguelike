@@ -1,9 +1,7 @@
 using UnityEngine;
-using System.Collections;
 using MoveSystem;
 using AttackSystem;
 using UISystemV2;
-using Unity.VisualScripting;
 
 namespace PlayerV2
 {
@@ -25,8 +23,6 @@ namespace PlayerV2
 
         public bool PlayerInput()
         {
-            if (Time.timeScale != 1f) return false;
-
             if (Input.GetKeyDown("x")) pauseSystem.PauseSwitching();
 
             bool TurnNext = false;

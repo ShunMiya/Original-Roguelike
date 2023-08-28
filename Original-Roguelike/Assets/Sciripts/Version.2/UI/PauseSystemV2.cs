@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using PlayerV2;
 
 namespace UISystemV2
 {
@@ -28,15 +26,8 @@ namespace UISystemV2
             systemTextCompo.TextSet("");
             systemTextCompo.TextSet("");
             ChangeWindow(windowLists[0]);
-
-            if (pauseUI.activeSelf)
-            {
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-            }
+            
+            Time.timeScale = 0f;
         }
 
         public void ChangeWindow(GameObject window)

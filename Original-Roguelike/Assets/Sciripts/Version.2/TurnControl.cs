@@ -52,6 +52,12 @@ namespace TurnSystem
 
             while (true)
             {
+                if (Time.timeScale != 1f)
+                {
+                    yield return null; // フレームの更新を待機
+                    continue;
+                }
+
                 if (PA.PlayerUseItemV2 != null)
                 {
                     break;

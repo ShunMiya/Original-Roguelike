@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
-using UnityEngine.UI;
 
 namespace UISystemV2
 {
@@ -34,8 +33,9 @@ namespace UISystemV2
 
         public void DisableWindow()
         {
-            backgroundObject.SetActive(false);
             Time.timeScale = 1f;
+            backgroundObject.SetActive(false);
+            Input.ResetInputAxes();
         }
 
         public void WindowOnOffSQL(GameObject window)
