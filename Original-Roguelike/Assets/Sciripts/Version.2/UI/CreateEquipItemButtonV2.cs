@@ -11,6 +11,9 @@ namespace UISystemV2
         public ItemButtonV2 buttonPrefab;
         public Transform buttonContainer;
         [SerializeField] private TextMeshProUGUI informationText;
+        [SerializeField] private GameObject returnButton;
+        [SerializeField] private SubMenu subMenu;
+        [SerializeField] private Transform EquipArea;
         [SerializeField] private int totalTextLength;
 
         private SqliteDatabase sqlDB;
@@ -44,6 +47,9 @@ namespace UISystemV2
                     ItemButtonV2 itemButton = button.GetComponent<ItemButtonV2>();
                     itemButton.row = row;
                     itemButton.informationText = informationText;
+                    itemButton.returnButton = returnButton;
+                    itemButton.subMenu = subMenu;
+                    itemButton.EquipArea = EquipArea;
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
                     buttonText.text = equipmentItem.ItemName;

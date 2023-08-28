@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using ItemSystemV2;
 
 namespace UISystemV2
 {
@@ -9,6 +10,7 @@ namespace UISystemV2
         public TextMeshProUGUI informationText;
         private TextMeshProUGUI buttonText;
         public DataRow row;
+        private
 
         void Awake()
         {
@@ -48,7 +50,6 @@ namespace UISystemV2
 
         public void unequip()
         {
-            if (row != null) GetComponentInParent<EquipmentItemV2>().UnequipItem(row);
             row = null;
             informationText.text = "";
             if (buttonText != null) buttonText.text = "";

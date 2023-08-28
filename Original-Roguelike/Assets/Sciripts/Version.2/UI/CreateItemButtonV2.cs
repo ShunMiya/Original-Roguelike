@@ -12,7 +12,6 @@ namespace UISystemV2
         public Transform buttonContainer;
         [SerializeField] private TextMeshProUGUI informationText;
         [SerializeField] private GameObject returnButton;
-        [SerializeField] private GameObject MenuButton;
         [SerializeField] private SubMenu subMenu;
 
         private SqliteDatabase sqlDB;
@@ -64,6 +63,7 @@ namespace UISystemV2
                     ItemButtonV2 itemButton = button.GetComponent<ItemButtonV2>();
                     itemButton.row = row;
                     itemButton.informationText = informationText;
+                    itemButton.returnButton = returnButton;
                     itemButton.subMenu = subMenu;
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 

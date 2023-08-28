@@ -436,6 +436,7 @@ GameObject:
   - component: {fileID: 67180457}
   - component: {fileID: 67180456}
   - component: {fileID: 67180459}
+  - component: {fileID: 67180460}
   m_Layer: 5
   m_Name: EquipArea
   m_TagString: Untagged
@@ -520,6 +521,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BonusText: {fileID: 1720537373}
   playerStatusV2: {fileID: 436213515}
+--- !u!225 &67180460
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67180454}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &67947615
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,7 +2963,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e786297b256449d459836aeee4fbe4ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SQLinventoryremove: {fileID: 436213512}
+  inventoryremove: {fileID: 0}
   playerStatusV2: {fileID: 436213515}
   playerHP: {fileID: 436213511}
   playerHungry: {fileID: 436213510}
@@ -6368,6 +6381,7 @@ GameObject:
   - component: {fileID: 772730747}
   - component: {fileID: 772730746}
   - component: {fileID: 772730745}
+  - component: {fileID: 772730748}
   m_Layer: 5
   m_Name: MenuArea
   m_TagString: Untagged
@@ -6462,6 +6476,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772730743}
   m_CullTransparentMesh: 1
+--- !u!225 &772730748
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772730743}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &774454530
 GameObject:
   m_ObjectHideFlags: 0
@@ -12208,6 +12234,7 @@ GameObject:
   - component: {fileID: 1911531068}
   - component: {fileID: 1911531067}
   - component: {fileID: 1911531071}
+  - component: {fileID: 1911531072}
   m_Layer: 5
   m_Name: ItemArea
   m_TagString: Untagged
@@ -12312,7 +12339,22 @@ MonoBehaviour:
   buttonPrefab: {fileID: 406233905830618432, guid: 055e1a46814b118489ea37698c429606, type: 3}
   buttonContainer: {fileID: 1911531070}
   informationText: {fileID: 67947616}
+  returnButton: {fileID: 270770722}
+  subMenu: {fileID: 1863318252}
+  EquipArea: {fileID: 67180458}
   totalTextLength: 20
+--- !u!225 &1911531072
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911531065}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1931834491
 GameObject:
   m_ObjectHideFlags: 0
@@ -12916,7 +12958,6 @@ MonoBehaviour:
   buttonContainer: {fileID: 2135707259}
   informationText: {fileID: 1973144932}
   returnButton: {fileID: 1531956630}
-  MenuButton: {fileID: 1649540128}
   subMenu: {fileID: 1863318252}
   totalTextLength: 40
 --- !u!225 &2135707265

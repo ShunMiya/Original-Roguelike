@@ -14,6 +14,7 @@ namespace UISystemV2
         public SubMenu subMenu;
         private Transform menuArea;
         private Transform itemArea;
+        public Transform EquipArea;
 
 
         void Start()
@@ -45,10 +46,16 @@ namespace UISystemV2
             subMenu.ItemButton = gameObject;
             subMenu.ButtonArea = itemArea;
             subMenu.MenuArea = menuArea;
-            //　EquipAreaを無効化
+            //　ItemAreaを無効化
             itemArea.GetComponent<CanvasGroup>().interactable = false;
             //　MenuAreaを無効化
             menuArea.GetComponent<CanvasGroup>().interactable = false;
+            //　EquipAreaを無効化
+            if (EquipArea != null)
+            {
+                EquipArea.GetComponent<CanvasGroup>().interactable = false;
+                subMenu.EquipArea = EquipArea;
+            }
 
             EventSystem.current.SetSelectedGameObject(subMenu.UseButton);
         }
