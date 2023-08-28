@@ -52,6 +52,13 @@ namespace TurnSystem
 
             while (true)
             {
+                if (Time.timeScale != 1f)continue;
+
+                if (PA.PlayerUseItemV2 != null)
+                {
+                    break;
+                }
+
                 TurnNext = PC.PlayerInput();
 
                 if (TurnNext)

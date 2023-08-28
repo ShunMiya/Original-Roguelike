@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using PlayerV2;
 
 namespace UISystemV2
 {
