@@ -14,7 +14,11 @@ namespace UISystemV2
         public GameObject UseButton;
         public GameObject ItemButton;
         public TextMeshProUGUI informationText;
-        private PlayerUseItemV2 playerUseItemV2;        
+        private PlayerUseItemV2 playerUseItemV2;
+        public Transform menuArea;
+        public Transform ButtonArea;
+        [SerializeField]private GameObject backgroundObject;
+
 
         private void Start()
         {
@@ -44,7 +48,9 @@ namespace UISystemV2
 
                     break;
             }
-            
+            ButtonArea.GetComponent<CanvasGroup>().interactable = true;
+            menuArea.GetComponent<CanvasGroup>().interactable = true;
+            gameObject.SetActive(false);
         }
 
         public void ThrowItem()
@@ -63,8 +69,16 @@ namespace UISystemV2
 
         public void CancelUse()
         {
+            ButtonArea.GetComponent<CanvasGroup>().interactable = true;
+            menuArea.GetComponent<CanvasGroup>().interactable = true;
             EventSystem.current.SetSelectedGameObject(ItemButton);
             gameObject.SetActive(false);
+        }
+
+        public void DisableWindow()
+        {
+            backgroundObject.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 }

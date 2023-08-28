@@ -21,7 +21,7 @@ namespace UISystemV2
         public void PauseSwitching()
         {
             subMenu.SetActive(false);
-            pauseUI.SetActive(!pauseUI.activeSelf);
+            pauseUI.SetActive(true);
             systemTextCompo.TextSet("");
             systemTextCompo.TextSet("");
             systemTextCompo.TextSet("");

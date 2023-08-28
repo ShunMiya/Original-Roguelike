@@ -1203,6 +1203,7 @@ GameObject:
   - component: {fileID: 148985435}
   - component: {fileID: 148985434}
   - component: {fileID: 148985433}
+  - component: {fileID: 148985436}
   m_Layer: 5
   m_Name: MenuArea
   m_TagString: Untagged
@@ -1297,6 +1298,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148985431}
   m_CullTransparentMesh: 1
+--- !u!225 &148985436
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148985431}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &150192923
 GameObject:
   m_ObjectHideFlags: 0
@@ -4645,7 +4658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &598833703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4809,6 +4822,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1863318252}
+          m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
+          m_MethodName: DisableWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 15
     callback:
       m_PersistentCalls:
@@ -4816,6 +4841,18 @@ MonoBehaviour:
         - m_Target: {fileID: 1863318252}
           m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
           m_MethodName: PutItem
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1863318252}
+          m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
+          m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6180,6 +6217,7 @@ GameObject:
   - component: {fileID: 753176914}
   - component: {fileID: 753176913}
   - component: {fileID: 753176912}
+  - component: {fileID: 753176915}
   m_Layer: 5
   m_Name: MenuArea
   m_TagString: Untagged
@@ -6274,6 +6312,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753176910}
   m_CullTransparentMesh: 1
+--- !u!225 &753176915
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753176910}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &772730743
 GameObject:
   m_ObjectHideFlags: 0
@@ -7088,6 +7138,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1863318252}
+          m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
+          m_MethodName: DisableWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 15
     callback:
       m_PersistentCalls:
@@ -7095,6 +7157,18 @@ MonoBehaviour:
         - m_Target: {fileID: 1863318252}
           m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
           m_MethodName: UseItem
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1863318252}
+          m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
+          m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9423,6 +9497,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1863318252}
+          m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
+          m_MethodName: DisableWindow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 15
     callback:
       m_PersistentCalls:
@@ -9430,6 +9516,18 @@ MonoBehaviour:
         - m_Target: {fileID: 1863318252}
           m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
           m_MethodName: ThrowItem
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1863318252}
+          m_TargetAssemblyTypeName: UISystemV2.SubMenu, Assembly-CSharp
+          m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11789,6 +11887,7 @@ GameObject:
   - component: {fileID: 1863318250}
   - component: {fileID: 1863318249}
   - component: {fileID: 1863318252}
+  - component: {fileID: 1863318253}
   m_Layer: 5
   m_Name: SubMenu
   m_TagString: Untagged
@@ -11898,6 +11997,21 @@ MonoBehaviour:
   UseButton: {fileID: 896277606}
   ItemButton: {fileID: 0}
   informationText: {fileID: 0}
+  menuArea: {fileID: 0}
+  ButtonArea: {fileID: 0}
+  backgroundObject: {fileID: 1173021780}
+--- !u!225 &1863318253
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1863318247}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1899319738
 GameObject:
   m_ObjectHideFlags: 0
@@ -12648,6 +12762,7 @@ GameObject:
   - component: {fileID: 2135707262}
   - component: {fileID: 2135707261}
   - component: {fileID: 2135707264}
+  - component: {fileID: 2135707265}
   m_Layer: 5
   m_Name: ItemArea
   m_TagString: Untagged
@@ -12755,3 +12870,15 @@ MonoBehaviour:
   MenuButton: {fileID: 1649540128}
   subMenu: {fileID: 1863318252}
   totalTextLength: 40
+--- !u!225 &2135707265
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135707258}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

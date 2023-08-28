@@ -14,6 +14,8 @@ namespace UISystemV2
         private CreateItemButtonV2 createItemButton;
         private EquipmentItemV2 equipmentItemSQL;
         public SubMenu subMenu;
+        private Transform menuArea;
+        private Transform itemArea;
 
 
         void Start()
@@ -21,6 +23,8 @@ namespace UISystemV2
             createItemButton = GetComponentInParent<CreateItemButtonV2>();
             equipmentItemSQL = transform.parent.parent.GetComponentInChildren<EquipmentItemV2>();
             playerUseItemSQL = FindObjectOfType<PlayerUseItemV2>();
+            menuArea = transform.parent.parent.Find("MenuArea");
+            itemArea = transform.parent.parent.Find("ItemArea");
         }
 
         public void OnSelected()
@@ -49,6 +53,13 @@ namespace UISystemV2
             subMenu.row = row;
             subMenu.informationText = informationText;
             subMenu.ItemButton = gameObject;
+            subMenu.ButtonArea = itemArea;
+            subMenu.menuArea = menuArea;
+            //@EquipArea‚ğ–³Œø‰»
+            itemArea.GetComponent<CanvasGroup>().interactable = false;
+            //@MenuArea‚ğ–³Œø‰»
+            menuArea.GetComponent<CanvasGroup>().interactable = false;
+
             EventSystem.current.SetSelectedGameObject(subMenu.UseButton);
         }
     }

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using UnityEngine.UI;
 
 namespace UISystemV2
 {
@@ -36,6 +37,7 @@ namespace UISystemV2
             backgroundObject.SetActive(false);
             Time.timeScale = 1f;
         }
+
         public void WindowOnOffSQL(GameObject window)
         {
             InventoryUI.GetComponent<PauseSystemV2>().ChangeWindow(window);
