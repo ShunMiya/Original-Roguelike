@@ -33,9 +33,11 @@ namespace UISystemV2
 
         public void DisableWindow()
         {
-            backgroundObject.SetActive(false);
             Time.timeScale = 1f;
+            backgroundObject.SetActive(false);
+            Input.ResetInputAxes();
         }
+
         public void WindowOnOffSQL(GameObject window)
         {
             InventoryUI.GetComponent<PauseSystemV2>().ChangeWindow(window);

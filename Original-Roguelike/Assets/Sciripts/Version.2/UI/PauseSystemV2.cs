@@ -21,20 +21,13 @@ namespace UISystemV2
         public void PauseSwitching()
         {
             subMenu.SetActive(false);
-            pauseUI.SetActive(!pauseUI.activeSelf);
+            pauseUI.SetActive(true);
             systemTextCompo.TextSet("");
             systemTextCompo.TextSet("");
             systemTextCompo.TextSet("");
             ChangeWindow(windowLists[0]);
-
-            if (pauseUI.activeSelf)
-            {
-                Time.timeScale = 0f;
-            }
-            else
-            {
-                Time.timeScale = 1f;
-            }
+            
+            Time.timeScale = 0f;
         }
 
         public void ChangeWindow(GameObject window)

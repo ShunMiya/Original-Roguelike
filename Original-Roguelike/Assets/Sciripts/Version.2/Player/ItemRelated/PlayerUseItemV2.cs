@@ -3,15 +3,17 @@ using PlayerStatusSystemV2;
 using ItemSystemV2.Inventory;
 using System;
 using System.Collections;
-using AttackSystem;
 using PlayerV2;
+using UISystemV2;
 
 namespace ItemSystemV2
 {
     public class PlayerUseItemV2 : MonoBehaviour
     {
-        [SerializeField] private SQLInventoryRemoveV2 SQLinventoryremove;
+        [SerializeField] private SQLInventoryRemoveV2 inventoryremove;
+        [SerializeField]private EquipmentItemV2 equipmentitem;
         public PlayerStatusV2 playerStatusV2;
+        [SerializeField] private PlayerEquipmentChange equipmentchange;
         [SerializeField] private PlayerHPV2 playerHP;
         [SerializeField] private PlayerHungryV2 playerHungry;
         bool ItemUse;
@@ -40,13 +42,17 @@ namespace ItemSystemV2
                         remainingStock = itemStock;
                         break;
                     }
-                    remainingStock = SQLinventoryremove.RemoveItem(row, 0);
+                    remainingStock = inventoryremove.RemoveItem(row, 0);
 
                     break;
                 case 1:
-
-                    remainingStock = SQLinventoryremove.RemoveItem(row, 1);
-                    playerStatusV2.WeaponStatusPlus();
+                    if (Convert.ToInt32(row["Equipped"]) == 1)
+                    {
+                        equipmentchange.UnequipItem(row);
+                        break;
+                    }
+                    equipmentchange.EquipItem(row);
+                    //remainingStock = inventoryremove.RemoveItem(row, 1);
 
                     break;
             }

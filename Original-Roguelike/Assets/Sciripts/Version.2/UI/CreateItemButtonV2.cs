@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using System;
 using ItemSystemV2;
 using ItemSystemV2.Inventory;
@@ -12,7 +11,7 @@ namespace UISystemV2
         public ItemButtonV2 buttonPrefab;
         public Transform buttonContainer;
         [SerializeField] private TextMeshProUGUI informationText;
-        [SerializeField] private GameObject MenuButton;
+        [SerializeField] private GameObject returnButton;
         [SerializeField] private SubMenu subMenu;
 
         private SqliteDatabase sqlDB;
@@ -51,6 +50,7 @@ namespace UISystemV2
                     ItemButtonV2 itemButton = button.GetComponent<ItemButtonV2>();
                     itemButton.row = row;
                     itemButton.informationText = informationText;
+                    itemButton.returnButton = returnButton;
                     itemButton.subMenu = subMenu;
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
@@ -63,6 +63,7 @@ namespace UISystemV2
                     ItemButtonV2 itemButton = button.GetComponent<ItemButtonV2>();
                     itemButton.row = row;
                     itemButton.informationText = informationText;
+                    itemButton.returnButton = returnButton;
                     itemButton.subMenu = subMenu;
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
@@ -93,54 +94,6 @@ namespace UISystemV2
             }
 
             return itemText;
-        }
-
-        public void SetButtonTextAfterUse(ItemButtonV2 button)
-        {
-            string itemName = button.row["ItemName"].ToString();
-            int ItemStock = Convert.ToInt32(button.row["Num"]);
-            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = FormatItemText(itemName, ItemStock);
-        }
-
-        public void SelectButtonChangeForDestruction(ItemButtonV2 button)
-        {
-            ItemButtonV2[] existingButtons = buttonContainer.GetComponentsInChildren<ItemButtonV2>();
-            EventSystem eventSystem = EventSystem.current;
-
-            if (existingButtons.Length > 1)
-            {
-                GameObject currentSelectedObject = eventSystem.currentSelectedGameObject;
-
-                GameObject nextSelectedObject = null;
-                for (int i = 0; i < existingButtons.Length; i++)
-                {
-                    if (existingButtons[i].gameObject == currentSelectedObject)
-                    {
-                        if (i < existingButtons.Length - 1)
-                        {
-                            nextSelectedObject = existingButtons[i + 1].gameObject;
-                        }
-                        else
-                        {
-                            nextSelectedObject = existingButtons[i - 1].gameObject;
-                        }
-                        break;
-                    }
-                }
-
-                if (nextSelectedObject == null)
-                {
-                    nextSelectedObject = existingButtons[existingButtons.Length - 1].gameObject;
-                }
-                eventSystem.SetSelectedGameObject(nextSelectedObject);
-            }
-            else
-            {
-                EventSystem.current.SetSelectedGameObject(MenuButton);
-            }
-            Destroy(button.gameObject);
-            return;
         }
     }
 }

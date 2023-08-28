@@ -70,7 +70,7 @@ namespace AttackSystem
                 {
                     Debug.Log(damage + "を" + range + "の射程で被弾");
                     // プレイヤーにダメージを与える処理
-                    //HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage,R);
+                    HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage,R);
                     //プレイヤーのダメージ演出
                 }
                 else if (HitObj.CompareTag("Enemy"))

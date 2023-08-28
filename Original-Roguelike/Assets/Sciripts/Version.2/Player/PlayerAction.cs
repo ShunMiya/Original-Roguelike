@@ -1,7 +1,6 @@
 using AttackSystem;
 using ItemSystemV2;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerV2

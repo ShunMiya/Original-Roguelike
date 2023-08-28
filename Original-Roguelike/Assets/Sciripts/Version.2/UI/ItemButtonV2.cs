@@ -9,18 +9,18 @@ namespace UISystemV2
     public class ItemButtonV2 : MonoBehaviour
     {
         public TextMeshProUGUI informationText;
+        public GameObject returnButton;
         public DataRow row;
-        public PlayerUseItemV2 playerUseItemSQL;
-        private CreateItemButtonV2 createItemButton;
-        private EquipmentItemV2 equipmentItemSQL;
         public SubMenu subMenu;
+        private Transform menuArea;
+        private Transform itemArea;
+        public Transform EquipArea;
 
 
         void Start()
         {
-            createItemButton = GetComponentInParent<CreateItemButtonV2>();
-            equipmentItemSQL = transform.parent.parent.GetComponentInChildren<EquipmentItemV2>();
-            playerUseItemSQL = FindObjectOfType<PlayerUseItemV2>();
+            menuArea = transform.parent.parent.Find("MenuArea");
+            itemArea = transform.parent.parent.Find("ItemArea");
         }
 
         public void OnSelected()
@@ -38,18 +38,31 @@ namespace UISystemV2
             informationText.text = "";
         }
 
-        public void EquipItem()
-        {
-            equipmentItemSQL.EquipItem(row);
-        }
-
         public void Use()
         {
             subMenu.gameObject.SetActive(true);
             subMenu.row = row;
             subMenu.informationText = informationText;
             subMenu.ItemButton = gameObject;
+            subMenu.ButtonArea = itemArea;
+            subMenu.MenuArea = menuArea;
+            //Å@ItemAreaÇñ≥å¯âª
+            itemArea.GetComponent<CanvasGroup>().interactable = false;
+            //Å@MenuAreaÇñ≥å¯âª
+            menuArea.GetComponent<CanvasGroup>().interactable = false;
+            //Å@EquipAreaÇñ≥å¯âª
+            if (EquipArea != null)
+            {
+                EquipArea.GetComponent<CanvasGroup>().interactable = false;
+                subMenu.EquipArea = EquipArea;
+            }
+
             EventSystem.current.SetSelectedGameObject(subMenu.UseButton);
+        }
+
+        public void SelectReturnButton()
+        {
+            EventSystem.current.SetSelectedGameObject(returnButton);
         }
     }
 }
