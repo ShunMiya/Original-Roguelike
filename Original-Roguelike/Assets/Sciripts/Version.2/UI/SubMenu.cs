@@ -34,7 +34,7 @@ namespace UISystemV2
                     UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Use");
                     break;
                 case 1:
-                    if (Convert.ToInt32(row["Equipped"]) == 1)
+                    if (Convert.ToInt32(row["Equipped"]) == 1 || Convert.ToInt32(row["Equipped"]) == 2)
                     {
                         UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Unequip");
                         break;

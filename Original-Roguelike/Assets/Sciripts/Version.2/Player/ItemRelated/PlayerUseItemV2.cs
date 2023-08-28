@@ -46,7 +46,7 @@ namespace ItemSystemV2
 
                     break;
                 case 1:
-                    if (Convert.ToInt32(row["Equipped"]) == 1)
+                    if (Convert.ToInt32(row["Equipped"]) == 1 || Convert.ToInt32(row["Equipped"]) == 2)
                     {
                         equipmentchange.UnequipItem(row);
                         break;
