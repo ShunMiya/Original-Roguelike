@@ -25,6 +25,8 @@ namespace PlayerV2
 
         public bool PlayerInput()
         {
+            if (Time.timeScale != 1f) return false;
+
             if (Input.GetKeyDown("x")) pauseSystem.PauseSwitching();
 
             bool TurnNext = false;
