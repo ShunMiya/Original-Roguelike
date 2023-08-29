@@ -17,6 +17,7 @@ namespace UISystemV2
         [SerializeField] private int totalTextLength;
 
         private SqliteDatabase sqlDB;
+        string query;
 
         public void Start()
         {
@@ -33,12 +34,13 @@ namespace UISystemV2
             }
             ClearButtons();
 
-            string query = "SELECT * FROM Inventory ORDER BY Id ASC";
+            query = "SELECT * FROM Inventory ORDER BY Id ASC";
             DataTable InventoryData = sqlDB.ExecuteQuery(query);
 
             foreach (DataRow row in InventoryData.Rows)
             {
                 int itemId = Convert.ToInt32(row["Id"]);
+                ConsumableDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
                 EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
 
                 if (equipmentItem != null)
@@ -53,7 +55,6 @@ namespace UISystemV2
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
                     buttonText.text = equipmentItem.ItemName;
-
                 }
             }
         }
