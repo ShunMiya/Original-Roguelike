@@ -22,6 +22,7 @@ namespace ItemSystemV2
             move = GetComponent<MoveAction>();
             itemfactory = FindObjectOfType<ItemFactoryV2>();
         }
+
         public void SetData(DataRow date)
         {
             row = date;
@@ -31,12 +32,11 @@ namespace ItemSystemV2
 
         public IEnumerator PutItem()
         {
-            int itemId = Convert.ToInt32(row["Id"]);
             itemfactory.SpecifiedItemCreate(move.grid, Convert.ToInt32(row["Id"]), Convert.ToInt32(row["Num"]));
 
             inventoryremove.RemoveItem(row, 2);
 
-            yield break;
+            yield return null;
         }
     }
 }

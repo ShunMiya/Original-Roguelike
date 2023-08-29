@@ -1,3 +1,4 @@
+using Field;
 using MoveSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,11 +11,15 @@ namespace ItemSystemV2
     {
         private SystemTextV2 systemText;
         private GameObject parent;
+        private Areamap field;
+        private Pos2D setPos;
 
         private void Awake()
         {
             systemText = FindObjectOfType<SystemTextV2>();
             parent = GameObject.Find("Items");
+            field = GetComponentInParent<Areamap>();
+
         }
 
         public void SpecifiedItemCreate(Pos2D pos, int Id, int num)
@@ -25,11 +30,23 @@ namespace ItemSystemV2
 
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
             if (parent == null) parent = GameObject.Find("Items");
-            GameObject spawnedItem = Instantiate(prefab, parent.transform);
-            spawnedItem.GetComponent<MoveAction>().SetPosition(pos.x, pos.z);
-
-
-            spawnedItem.GetComponent<SteppedOnEvent>().num = num;
+            setPos = null;
+            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
+            {
+                Pos2D newPos = DirUtil.GetNewGrid(pos, d);
+                GameObject areaObj = field.IsCollideReturnAreaObj(newPos.x, newPos.z);
+                if(areaObj == null)
+                {
+                    setPos = new Pos2D { x = newPos.x, z = newPos.z };
+                    break;
+                }
+            }
+            if(setPos != null)
+            {
+                GameObject spawnedItem = Instantiate(prefab, parent.transform);
+                spawnedItem.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
+                spawnedItem.GetComponent<SteppedOnEvent>().num = num;
+            }
             if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
             Debug.Log(prefabName + "‚ÌNum" + num + "‚ðŽÌ‚Ä‚½");
         }

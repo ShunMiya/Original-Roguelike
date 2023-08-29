@@ -14,6 +14,7 @@ namespace UISystemV2
         public TextMeshProUGUI informationText;
         private PlayerUseItemV2 playerUseItemV2;
         private PlayerPutItem playerPutItem;
+        private PlayerThrowItem playerThrowItem;
         public Transform MenuArea;
         public Transform ButtonArea;
         public Transform EquipArea;
@@ -24,6 +25,7 @@ namespace UISystemV2
         {
             playerUseItemV2 = FindObjectOfType<PlayerUseItemV2>();
             playerPutItem = FindObjectOfType<PlayerPutItem>();
+            playerThrowItem = FindObjectOfType<PlayerThrowItem>();
         }
 
         public void OnSelected()
@@ -75,9 +77,16 @@ namespace UISystemV2
 
         public void ThrowItem()
         {
-            int itemId = Convert.ToInt32(row["Id"]);
-            IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
+            playerThrowItem.SetData(row);
 
+            ButtonArea.GetComponent<CanvasGroup>().interactable = true;
+            MenuArea.GetComponent<CanvasGroup>().interactable = true;
+            if (EquipArea != null)
+            {
+                EquipArea.GetComponent<CanvasGroup>().interactable = true;
+                EquipArea = null;
+            }
+            gameObject.SetActive(false);
         }
 
         public void PutItem()
