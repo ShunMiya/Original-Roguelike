@@ -34,8 +34,8 @@ namespace ItemSystemV2
             foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
             {
                 Pos2D newPos = DirUtil.GetNewGrid(pos, d);
-                GameObject areaObj = field.IsCollideReturnAreaObj(newPos.x, newPos.z);
-                if(areaObj == null)
+                bool PutItem = field.IsCollidePutItem(newPos.x, newPos.z);
+                if(PutItem == true)
                 {
                     setPos = new Pos2D { x = newPos.x, z = newPos.z };
                     break;
