@@ -32,6 +32,9 @@ namespace ItemSystemV2.Inventory
                 case 1:
                     remainingStock = RemoveEquipment(row);
                     break;
+                case 2:
+                    DiscardItem(row);
+                    break;
             }
             return remainingStock;
         }
@@ -70,6 +73,12 @@ namespace ItemSystemV2.Inventory
             systemText.TextSet(equipmentItem.ItemName + " Destruction");
 
             return 0;
+        }
+
+        public void DiscardItem(DataRow row)
+        {
+            string deleteQuery = "DELETE FROM Inventory WHERE IID = " + row["IID"];
+            sqlDB.ExecuteNonQuery(deleteQuery);
         }
     }
 }

@@ -4,14 +4,12 @@ using ItemSystemV2.Inventory;
 using System;
 using System.Collections;
 using PlayerV2;
-using UISystemV2;
 
 namespace ItemSystemV2
 {
     public class PlayerUseItemV2 : MonoBehaviour
     {
         [SerializeField] private SQLInventoryRemoveV2 inventoryremove;
-        public PlayerStatusV2 playerStatusV2;
         [SerializeField] private PlayerEquipmentChange equipmentchange;
         [SerializeField] private PlayerHPV2 playerHP;
         [SerializeField] private PlayerHungryV2 playerHungry;
@@ -24,7 +22,7 @@ namespace ItemSystemV2
             row = date;
             ItemType = type;
             PlayerAction PA = GetComponent<PlayerAction>();
-            PA.PlayerUseItemV2 = this;
+            PA.playerUseItemV2 = this;
         }
 
         public IEnumerator UseItem()

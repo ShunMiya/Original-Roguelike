@@ -8,7 +8,8 @@ namespace PlayerV2
     public class PlayerAction : MonoBehaviour
     {
         public AttackAction PlayerToAttack;
-        public PlayerUseItemV2 PlayerUseItemV2;
+        public PlayerUseItemV2 playerUseItemV2;
+        public PlayerPutItem playerPutItem;
 
         public IEnumerator ActionStart()
         {
@@ -17,15 +18,21 @@ namespace PlayerV2
                 Coroutine coroutine = StartCoroutine(PlayerToAttack.AttackPreparationPlayer());
                 yield return coroutine;
             }
-            if(PlayerUseItemV2 != null)
+            if(playerUseItemV2 != null)
             {
-                Coroutine coroutine = StartCoroutine(PlayerUseItemV2.UseItem());
+                Coroutine coroutine = StartCoroutine(playerUseItemV2.UseItem());
+                yield return coroutine;
+            }
+            if (playerPutItem != null)
+            {
+                Coroutine coroutine = StartCoroutine(playerPutItem.PutItem());
                 yield return coroutine;
             }
 
             // çsìÆÇ™äÆóπÇµÇΩå„ÇÃèàóù
             PlayerToAttack = null;
-            PlayerUseItemV2 = null;
+            playerUseItemV2 = null;
+            playerPutItem = null;
         }
     }
 }

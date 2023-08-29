@@ -58,10 +58,8 @@ namespace TurnSystem
                     continue;
                 }
 
-                if (PA.PlayerUseItemV2 != null)
-                {
-                    break;
-                }
+                if (PA.playerUseItemV2 != null) break;
+                if(PA.playerPutItem != null) break;
 
                 TurnNext = PC.PlayerInput();
 
