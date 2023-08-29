@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ItemSystemV2;
+using MoveSystem;
 
 namespace EnemySystem
 {
     public class EnemyDestroyV2 : MonoBehaviour
     {
-        /*[SerializeField] private ItemFactory itemFactory;
+        [SerializeField] private ItemFactoryV2 itemFactory;
+
+        private void Start()
+        {
+            itemFactory = FindFirstObjectByType<ItemFactoryV2>();
+        }
 
         public void DropItem()
         {
-            Vector3 dropPosition = transform.position;
+            Pos2D dropPosition = GetComponent<MoveAction>().grid;
 
-            itemFactory.ItemCreate(dropPosition);
-        }*/
+            itemFactory.RandomItemCreate(dropPosition);
+        }
 
         public void Destroy()
         {

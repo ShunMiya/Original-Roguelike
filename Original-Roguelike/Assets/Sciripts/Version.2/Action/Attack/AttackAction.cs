@@ -68,7 +68,6 @@ namespace AttackSystem
             {
                 if (HitObj.CompareTag("Player"))
                 {
-                    Debug.Log(damage + "を" + range + "の射程で被弾");
                     // プレイヤーにダメージを与える処理
                     HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage,R);
                     //プレイヤーのダメージ演出

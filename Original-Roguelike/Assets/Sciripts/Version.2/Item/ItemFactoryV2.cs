@@ -48,10 +48,10 @@ namespace ItemSystemV2
                 spawnedItem.GetComponent<SteppedOnEvent>().num = num;
             }
             if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
-            Debug.Log(prefabName + "ÇÃNum" + num + "ÇéÃÇƒÇΩ");
+            systemText.TextSet(itemData.ItemName + " Num:" + num + " Put");
         }
 
-        public void RandomItemCreate(Vector3 position)
+        public void RandomItemCreate(Pos2D pos)
         {
             bool chooseEquipItem = Random.value < 0.3f;
             IItemDataV2 randomItem = ItemDataCacheV2.GetRandomItem(chooseEquipItem);
@@ -61,12 +61,26 @@ namespace ItemSystemV2
 
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
             if (parent == null) parent = GameObject.Find("Items");
-            GameObject spawnedItem = Instantiate(prefab, position, Quaternion.identity, parent.transform);
-
-            int randomNum = NumSet();
-            spawnedItem.GetComponent<SteppedOnEvent>().num = randomNum;
-            if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
-            Debug.Log(prefabName + "ÇÃNum" + randomNum + "Ç™ÉhÉçÉbÉv");
+            setPos = null;
+            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
+            {
+                Pos2D newPos = DirUtil.GetNewGrid(pos, d);
+                bool PutItem = field.IsCollidePutItem(newPos.x, newPos.z);
+                if (PutItem == true)
+                {
+                    setPos = new Pos2D { x = newPos.x, z = newPos.z };
+                    break;
+                }
+            }
+            if (setPos != null)
+            {
+                GameObject spawnedItem = Instantiate(prefab, parent.transform);
+                spawnedItem.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
+                int randomNum = NumSet();
+                spawnedItem.GetComponent<SteppedOnEvent>().num = randomNum;
+                if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
+                systemText.TextSet(randomItem.ItemName + " Num:" + randomNum + " Drop");
+            }
         }
 
         public int NumSet()

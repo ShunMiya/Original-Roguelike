@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8993174590395575274
+--- !u!1 &334256710328646417
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,49 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4795927193273166738}
-  - component: {fileID: 6811771742702739919}
-  - component: {fileID: 8114821585246565574}
-  - component: {fileID: 5219014729532122021}
-  - component: {fileID: -2522231078610319480}
-  - component: {fileID: -5583180412526495534}
+  - component: {fileID: 334256710328646413}
+  - component: {fileID: 334256710328646412}
+  - component: {fileID: 334256710328646419}
+  - component: {fileID: 334256710328646418}
+  - component: {fileID: 3644819170298943645}
+  - component: {fileID: 6861993617410578342}
   m_Layer: 0
-  m_Name: Item2
+  m_Name: Item102
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4795927193273166738
+--- !u!4 &334256710328646413
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993174590395575274}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 334256710328646417}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.3, y: 0.4, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &6811771742702739919
+--- !u!33 &334256710328646412
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993174590395575274}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &8114821585246565574
+  m_GameObject: {fileID: 334256710328646417}
+  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &334256710328646419
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993174590395575274}
+  m_GameObject: {fileID: 334256710328646417}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -86,26 +86,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5219014729532122021
-SphereCollider:
+--- !u!136 &334256710328646418
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993174590395575274}
+  m_GameObject: {fileID: 334256710328646417}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-2522231078610319480
+--- !u!114 &3644819170298943645
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993174590395575274}
+  m_GameObject: {fileID: 334256710328646417}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 178713ab1d3565546be13416655a7010, type: 3}
@@ -118,18 +119,18 @@ MonoBehaviour:
     x: 0
     z: 0
   maxPerFrame: 1.67
---- !u!114 &-5583180412526495534
+--- !u!114 &6861993617410578342
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8993174590395575274}
+  m_GameObject: {fileID: 334256710328646417}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e7e2affd3bb68b44b15f854ff32654a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ObjType: 0
-  itemId: 2
-  num: 5
+  itemId: 102
+  num: 1
