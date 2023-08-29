@@ -11,7 +11,6 @@ namespace ItemSystemV2
     public class PlayerUseItemV2 : MonoBehaviour
     {
         [SerializeField] private SQLInventoryRemoveV2 inventoryremove;
-        [SerializeField]private EquipmentItemV2 equipmentitem;
         public PlayerStatusV2 playerStatusV2;
         [SerializeField] private PlayerEquipmentChange equipmentchange;
         [SerializeField] private PlayerHPV2 playerHP;
@@ -46,7 +45,7 @@ namespace ItemSystemV2
 
                     break;
                 case 1:
-                    if (Convert.ToInt32(row["Equipped"]) == 1)
+                    if (Convert.ToInt32(row["Equipped"]) == 1 || Convert.ToInt32(row["Equipped"]) == 2)
                     {
                         equipmentchange.UnequipItem(row);
                         break;

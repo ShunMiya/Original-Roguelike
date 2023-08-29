@@ -1,7 +1,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
-using ItemSystemV2;
 
 namespace UISystemV2
 {
@@ -10,12 +9,20 @@ namespace UISystemV2
         public TextMeshProUGUI informationText;
         private TextMeshProUGUI buttonText;
         public DataRow row;
-        private
+        public GameObject returnButton;
+        public SubMenu subMenu;
+        private Transform menuArea;
+        private Transform itemArea;
+        public Transform EquipArea;
 
-        void Awake()
+        private void Awake()
         {
             buttonText = GetComponentInChildren<TextMeshProUGUI>();
-
+        }
+        void Start()
+        {
+            menuArea = transform.parent.parent.Find("MenuArea");
+            itemArea = transform.parent.parent.Find("ItemArea");
         }
 
         public void OnSelected()
@@ -40,7 +47,8 @@ namespace UISystemV2
         {
             if (Row == null)
             {
-                unequip();
+                row = null;
+                buttonText.text = "";
                 return;
             }
             row = Row;
@@ -48,12 +56,29 @@ namespace UISystemV2
             buttonText.text = itemName;
         }
 
-        public void unequip()
+        public void Use()
         {
-            row = null;
-            informationText.text = "";
-            if (buttonText != null) buttonText.text = "";
+            if (row == null) return;
+            subMenu.gameObject.SetActive(true);
+            subMenu.row = row;
+            subMenu.informationText = informationText;
+            subMenu.ItemButton = gameObject;
+            subMenu.ButtonArea = itemArea;
+            subMenu.MenuArea = menuArea;
+            //Å@ItemAreaÇñ≥å¯âª
+            itemArea.GetComponent<CanvasGroup>().interactable = false;
+            //Å@MenuAreaÇñ≥å¯âª
+            menuArea.GetComponent<CanvasGroup>().interactable = false;
+            //Å@EquipAreaÇñ≥å¯âª
+            EquipArea.GetComponent<CanvasGroup>().interactable = false;
+            subMenu.EquipArea = EquipArea;
 
+            EventSystem.current.SetSelectedGameObject(subMenu.UseButton);
+        }
+
+        public void SelectReturnButton()
+        {
+            EventSystem.current.SetSelectedGameObject(returnButton);
         }
     }
 }

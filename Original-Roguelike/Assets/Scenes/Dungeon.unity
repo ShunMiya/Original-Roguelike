@@ -520,7 +520,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BonusText: {fileID: 1720537373}
-  playerStatusV2: {fileID: 436213515}
 --- !u!225 &67180460
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -2450,7 +2449,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 370392926}
           m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
-          m_MethodName: unequip
+          m_MethodName: Use
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2466,7 +2465,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 370392926}
           m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
-          m_MethodName: unequip
+          m_MethodName: Use
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2482,7 +2481,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 370392926}
           m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
-          m_MethodName: OnDeselected
+          m_MethodName: SelectReturnButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -2615,6 +2614,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   informationText: {fileID: 67947616}
+  returnButton: {fileID: 270770722}
+  subMenu: {fileID: 1863318252}
+  EquipArea: {fileID: 67180458}
 --- !u!1 &428800391
 GameObject:
   m_ObjectHideFlags: 0
@@ -2773,6 +2775,7 @@ GameObject:
   - component: {fileID: 436213511}
   - component: {fileID: 436213510}
   - component: {fileID: 436213517}
+  - component: {fileID: 436213518}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2963,8 +2966,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e786297b256449d459836aeee4fbe4ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryremove: {fileID: 0}
+  inventoryremove: {fileID: 436213512}
+  equipmentitem: {fileID: 67180459}
   playerStatusV2: {fileID: 436213515}
+  equipmentchange: {fileID: 436213518}
   playerHP: {fileID: 436213511}
   playerHungry: {fileID: 436213510}
 --- !u!114 &436213515
@@ -3003,6 +3008,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1f9f3073b0339b49bfbd1aca9c2f8f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &436213518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3289c10f23f896143998021cfe241fcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &441075518
@@ -4062,8 +4079,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UISystem.CreateEquipItemButtonSQL, Assembly-CSharp
+        - m_Target: {fileID: 1911531071}
+          m_TargetAssemblyTypeName: UISystemV2.CreateEquipItemButtonV2, Assembly-CSharp
           m_MethodName: SetButton
           m_Mode: 1
           m_Arguments:
@@ -6581,7 +6598,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 774454537}
           m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
-          m_MethodName: unequip
+          m_MethodName: Use
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6597,7 +6614,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 774454537}
           m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
-          m_MethodName: unequip
+          m_MethodName: Use
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6613,7 +6630,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 774454537}
           m_TargetAssemblyTypeName: UISystemV2.EquipmentItemButtonV2, Assembly-CSharp
-          m_MethodName: OnDeselected
+          m_MethodName: SelectReturnButton
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -6746,6 +6763,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   informationText: {fileID: 67947616}
+  returnButton: {fileID: 270770722}
+  subMenu: {fileID: 1863318252}
+  EquipArea: {fileID: 67180458}
 --- !u!1 &818359416
 GameObject:
   m_ObjectHideFlags: 0
@@ -12073,6 +12093,7 @@ MonoBehaviour:
   informationText: {fileID: 0}
   MenuArea: {fileID: 0}
   ButtonArea: {fileID: 0}
+  EquipArea: {fileID: 0}
   backgroundObject: {fileID: 1173021780}
 --- !u!225 &1863318253
 CanvasGroup:
@@ -12255,15 +12276,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 10
-    m_Right: 10
-    m_Top: 10
-    m_Bottom: 10
+    m_Left: 30
+    m_Right: 30
+    m_Top: 50
+    m_Bottom: 50
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 400, y: 40}
-  m_Spacing: {x: 10, y: 10}
+  m_CellSize: {x: 250, y: 50}
+  m_Spacing: {x: 30, y: 20}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1911531068
@@ -12336,13 +12357,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f81af503fc2baeb41bc10262c08a307b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonPrefab: {fileID: 406233905830618432, guid: 055e1a46814b118489ea37698c429606, type: 3}
+  buttonPrefab: {fileID: 6672061056710448878, guid: 206ecb4661aa24f4fb91321dac831bf9, type: 3}
   buttonContainer: {fileID: 1911531070}
   informationText: {fileID: 67947616}
   returnButton: {fileID: 270770722}
   subMenu: {fileID: 1863318252}
   EquipArea: {fileID: 67180458}
-  totalTextLength: 20
+  totalTextLength: 40
 --- !u!225 &1911531072
 CanvasGroup:
   m_ObjectHideFlags: 0
