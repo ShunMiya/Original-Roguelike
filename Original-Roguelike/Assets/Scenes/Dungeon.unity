@@ -2882,6 +2882,7 @@ MonoBehaviour:
     x: 0
     z: 0
   maxPerFrame: 1.67
+  complementFrame: 0
 --- !u!114 &436213508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2999,6 +3000,7 @@ MonoBehaviour:
   PlayerToAttack: {fileID: 0}
   playerUseItemV2: {fileID: 0}
   playerPutItem: {fileID: 0}
+  playerThrowItem: {fileID: 0}
 --- !u!114 &436213517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3139,6 +3141,7 @@ MonoBehaviour:
   EO: {fileID: 1377348069}
   AO: {fileID: 441075524}
   PH: {fileID: 436213510}
+  HP: {fileID: 436213511}
   PA: {fileID: 436213516}
   PEAM: {fileID: 436213517}
 --- !u!114 &441075523
