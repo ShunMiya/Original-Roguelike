@@ -1,6 +1,7 @@
 using System;
 using UISystem;
 using UnityEngine;
+using PlayerStatusSystemV2;
 
 namespace ItemSystemV2.Inventory
 {
@@ -8,12 +9,14 @@ namespace ItemSystemV2.Inventory
     {
         private SqliteDatabase sqlDB;
         private SystemText systemText;
+        private PlayerStatusV2 playerStatusV2;
 
         public void Start()
         {
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
             systemText = FindObjectOfType<SystemText>();
+            playerStatusV2 = GetComponent<PlayerStatusV2>();
         }
 
         public int RemoveItem(DataRow row, int ItemType)
@@ -71,6 +74,7 @@ namespace ItemSystemV2.Inventory
             if (systemText == null) systemText = FindObjectOfType<SystemText>();
             EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(Convert.ToInt32(row["Id"]));
             systemText.TextSet(equipmentItem.ItemName + " Destruction");
+            playerStatusV2.WeaponStatusPlus();
 
             return 0;
         }
@@ -79,6 +83,7 @@ namespace ItemSystemV2.Inventory
         {
             string deleteQuery = "DELETE FROM Inventory WHERE IID = " + row["IID"];
             sqlDB.ExecuteNonQuery(deleteQuery);
+            playerStatusV2.WeaponStatusPlus();
         }
     }
 }
