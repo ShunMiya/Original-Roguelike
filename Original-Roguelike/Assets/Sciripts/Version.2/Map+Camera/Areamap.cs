@@ -164,6 +164,17 @@ namespace Field
             return null;
         }
 
+        public bool IsCollidePutItem(int xgrid, int zgrid)
+        {
+            if (map.Get(xgrid, zgrid) != 0) return false;
+            foreach (var itemMovement in items.GetComponentsInChildren<MoveAction>())
+            {
+                if (xgrid == itemMovement.grid.x && zgrid == itemMovement.grid.z)
+                    return false;
+            }
+            return true;
+        }
+
         //現在座標(CurrentPos)と角度(R)を元に攻撃範囲にエネミーorプレイヤーがいるかを攻撃射程分(range)チェック
         //攻撃することが確定しているときの処理(当たる当たらないは考慮しない)
         public GameObject IsCollideHit(Pos2D CurrentPos, int R, int range)
@@ -224,5 +235,22 @@ namespace Field
             }
             return false;
         }
+
+        public Pos2D ItemDropPointCheck(Pos2D pos)
+        {
+            Pos2D setPos = null;
+            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
+            {
+                Pos2D newPos = DirUtil.GetNewGrid(pos, d);
+                bool PutItem = IsCollidePutItem(newPos.x, newPos.z);
+                if (PutItem == true)
+                {
+                    setPos = new Pos2D { x = newPos.x, z = newPos.z };
+                    break;
+                }
+            }
+            return setPos;
+        }
+
     }
 }

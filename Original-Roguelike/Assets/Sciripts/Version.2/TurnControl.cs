@@ -15,6 +15,7 @@ namespace TurnSystem
         public EnemyObjects EO;
         public AttackObjects AO;
         public PlayerHungryV2 PH;
+        public PlayerHPV2 HP;
         public PlayerAction PA;
         public PlayerEventAfterMove PEAM;
 
@@ -40,6 +41,7 @@ namespace TurnSystem
                 yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
 
                 PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
+                HP.TurnRecoveryHp();
 
                 /*Debug.Log("NextTurn"); 
                 yield return new WaitForSeconds(0.5f);*/ //DebugSystem 
@@ -58,10 +60,9 @@ namespace TurnSystem
                     continue;
                 }
 
-                if (PA.PlayerUseItemV2 != null)
-                {
-                    break;
-                }
+                if (PA.playerUseItemV2 != null) break;
+                if(PA.playerPutItem != null) break;
+                if (PA.playerThrowItem != null) break;
 
                 TurnNext = PC.PlayerInput();
 

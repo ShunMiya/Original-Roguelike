@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using Field;
 using ItemSystemV2;
+using Unity.VisualScripting;
+using EnemySystem;
 
 namespace MoveSystem
 {
@@ -14,10 +16,10 @@ namespace MoveSystem
         public Pos2D newGrid = null;
 
         public float maxPerFrame = 1.67f;
-        private float complementFrame;
+        [SerializeField]private float complementFrame;
         private Areamap field;
 
-        private void Start ()
+        private void Awake ()
         {
             field = GetComponentInParent<Areamap>();
             complementFrame = maxPerFrame / Time.deltaTime;
@@ -47,6 +49,8 @@ namespace MoveSystem
         */
         public IEnumerator MoveObjectCoroutine(Transform objTransform)
         {
+            Debug.Log("5newgrid:" + newGrid.x + "," + newGrid.z + " grid:" + grid.x + "," + grid.z);
+
             float px1 = CoordinateTransformation.ToWorldX(grid.x);
             float pz1 = CoordinateTransformation.ToWorldZ(grid.z);
             float px2 = CoordinateTransformation.ToWorldX(newGrid.x);
@@ -61,7 +65,7 @@ namespace MoveSystem
 
                 yield return new WaitForEndOfFrame();
             }
-
+            Debug.Log("ˆÚ“®Š®—¹");
             transform.position = new Vector3(px2, 0, pz2);
             grid = newGrid;
         }
@@ -101,6 +105,35 @@ namespace MoveSystem
             grid.z = zgrid;
             transform.position = new Vector3(CoordinateTransformation.ToWorldX(xgrid), 0, CoordinateTransformation.ToWorldZ(zgrid));
             newGrid = grid;
+        }
+
+        public IEnumerator ThrowMove(int movex, int movez)
+        {
+            if (field.IsCollidediagonal(movex, movez))
+            {
+                bool Throw = false;
+                yield return Throw;
+                yield break;
+            }
+            GameObject Char = field.IsCollideReturnCharObj(movex, movez);
+            if (Char != null)
+            {
+                Char.GetComponent<EnemyStatusV2>().TakeDamage(1, 1);
+                bool Throw = false;
+                yield return Throw;
+                Destroy(gameObject);
+                yield break;
+            }
+
+            newGrid = new Pos2D { x = movex, z = movez };
+
+            yield return StartCoroutine(MoveObjectCoroutine(transform));
+            yield return true;
+        }
+
+        public void SetcomplementFrame()
+        {
+            complementFrame = maxPerFrame;
         }
     }
 }

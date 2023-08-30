@@ -12,7 +12,7 @@ namespace EnemySystem
             enemyStatus = GetComponent<EnemyStatusV2>();
             enemyDestroy = GetComponent<EnemyDestroyV2>();
 
-            //enemyStatus.EnemyDefeated += enemyDestroy.DropItem;
+            enemyStatus.EnemyDeath += enemyDestroy.DropItem;
             enemyStatus.EnemyDeath += enemyDestroy.Destroy;
         }
     }

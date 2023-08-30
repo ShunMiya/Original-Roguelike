@@ -3,6 +3,7 @@ using UnityEngine;
 //•ûŒü‚ğ•\‚·’è”
 public enum Dir
 {
+    Pause,
     LeftUp,   // ¶ã
     Up,       // ã
     RightUp,  // ‰Eã
@@ -11,7 +12,6 @@ public enum Dir
     LeftDown, // ¶‰º
     Down,     // ‰º
     RightDown,// ‰E‰º
-    Pause,
 };
 
 public static class DirUtil
