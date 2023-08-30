@@ -65,8 +65,13 @@ namespace UISystemV2
                     itemButton.informationText = informationText;
                     itemButton.returnButton = returnButton;
                     itemButton.subMenu = subMenu;
+ 
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-
+                    if (Convert.ToInt32(row["Equipped"])  != 0)
+                    {
+                        buttonText.text = FormatEquippedItemText(equipmentItem.ItemName);
+                        continue;
+                    }
                     buttonText.text = equipmentItem.ItemName;
 
                 }
@@ -92,6 +97,14 @@ namespace UISystemV2
                 string spaceText = new string(' ', spacesToAdd);
                 itemText = $"{itemName}{spaceText}Å~{itemStack}";
             }
+
+            return itemText;
+        }
+
+        private string FormatEquippedItemText(string itemName)
+        {
+            string E = "E: ";
+            string itemText = $"{E}{itemName}";
 
             return itemText;
         }
