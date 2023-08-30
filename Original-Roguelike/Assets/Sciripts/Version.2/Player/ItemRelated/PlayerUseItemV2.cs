@@ -49,7 +49,6 @@ namespace ItemSystemV2
                         break;
                     }
                     equipmentchange.EquipItem(row);
-                    //remainingStock = inventoryremove.RemoveItem(row, 1);
 
                     break;
             }

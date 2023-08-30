@@ -235,5 +235,22 @@ namespace Field
             }
             return false;
         }
+
+        public Pos2D ItemDropPointCheck(Pos2D pos)
+        {
+            Pos2D setPos = null;
+            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
+            {
+                Pos2D newPos = DirUtil.GetNewGrid(pos, d);
+                bool PutItem = IsCollidePutItem(newPos.x, newPos.z);
+                if (PutItem == true)
+                {
+                    setPos = new Pos2D { x = newPos.x, z = newPos.z };
+                    break;
+                }
+            }
+            return setPos;
+        }
+
     }
 }

@@ -25,8 +25,11 @@ namespace EnemySystem
         {
             currentHP -= damage;
             systemText.TextSet("Enemy" + damage + "Damage! HP:" + currentHP);
-            int Rota =DirUtil.ReverseDirection(R);
-            transform.rotation = Quaternion.Euler(0, Rota, 0);
+            if(R != 1)
+            {
+                int Rota = DirUtil.ReverseDirection(R);
+                transform.rotation = Quaternion.Euler(0, Rota, 0);
+            }
 
             if (currentHP <= 0 && EnemyDeath != null)
             {

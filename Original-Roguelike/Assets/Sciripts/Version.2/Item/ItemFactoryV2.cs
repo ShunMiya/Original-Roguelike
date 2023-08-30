@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UISystemV2;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 namespace ItemSystemV2
 {
@@ -30,18 +31,10 @@ namespace ItemSystemV2
 
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
             if (parent == null) parent = GameObject.Find("Items");
-            setPos = null;
-            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
-            {
-                Pos2D newPos = DirUtil.GetNewGrid(pos, d);
-                bool PutItem = field.IsCollidePutItem(newPos.x, newPos.z);
-                if(PutItem == true)
-                {
-                    setPos = new Pos2D { x = newPos.x, z = newPos.z };
-                    break;
-                }
-            }
-            if(setPos != null)
+
+            setPos = field.ItemDropPointCheck(pos);
+            
+            if (setPos != null)
             {
                 GameObject spawnedItem = Instantiate(prefab, parent.transform);
                 spawnedItem.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
@@ -49,6 +42,23 @@ namespace ItemSystemV2
             }
             if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
             systemText.TextSet(itemData.ItemName + " Num:" + num + " Put");
+        }
+
+        public GameObject ThrowItemCreate(Pos2D pos, int Id, int num)
+        {
+            IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(Id);
+            string prefabName = itemData.PrefabName;
+            string prefabPath = "PrefabsV2/" + prefabName;
+
+            GameObject prefab = Resources.Load<GameObject>(prefabPath);
+            if (parent == null) parent = GameObject.Find("Items");
+
+            GameObject spawnedItem = Instantiate(prefab, parent.transform);
+            spawnedItem.GetComponent<MoveAction>().SetcomplementFrame();
+            spawnedItem.GetComponent<MoveAction>().SetPosition(pos.x, pos.z);
+            spawnedItem.GetComponent<SteppedOnEvent>().num = num;
+
+            return spawnedItem;
         }
 
         public void RandomItemCreate(Pos2D pos)
@@ -61,17 +71,9 @@ namespace ItemSystemV2
 
             GameObject prefab = Resources.Load<GameObject>(prefabPath);
             if (parent == null) parent = GameObject.Find("Items");
-            setPos = null;
-            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
-            {
-                Pos2D newPos = DirUtil.GetNewGrid(pos, d);
-                bool PutItem = field.IsCollidePutItem(newPos.x, newPos.z);
-                if (PutItem == true)
-                {
-                    setPos = new Pos2D { x = newPos.x, z = newPos.z };
-                    break;
-                }
-            }
+
+            setPos = field.ItemDropPointCheck(pos);
+
             if (setPos != null)
             {
                 GameObject spawnedItem = Instantiate(prefab, parent.transform);
@@ -100,5 +102,6 @@ namespace ItemSystemV2
                 selectedNumber = 5;
             return selectedNumber;
         }
+
     }
 }

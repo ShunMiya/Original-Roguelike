@@ -60,6 +60,7 @@ namespace TurnSystem
 
                 if (PA.playerUseItemV2 != null) break;
                 if(PA.playerPutItem != null) break;
+                if (PA.playerThrowItem != null) break;
 
                 TurnNext = PC.PlayerInput();
 
