@@ -26,6 +26,7 @@ namespace UISystemV2
             }
             informationText.text = informationString;
         }
+
         public void OnDeselected()
         {
             informationText.text = "";

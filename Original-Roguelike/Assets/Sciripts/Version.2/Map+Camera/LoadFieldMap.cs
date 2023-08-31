@@ -12,6 +12,7 @@ namespace Field
 
         public GameObject enemies;
         public GameObject items;
+        public GameObject gimmicks;
         public MoveAction player;
 
         void Start()
@@ -67,24 +68,39 @@ namespace Field
                                 int pw = int.Parse(obj.Attribute("width").Value);
                                 int ph = int.Parse(obj.Attribute("height").Value);
                                 string name = obj.Attribute("name").Value;
-                                if(name == "Player")
+                                string type = "";
+                                foreach (var prop in obj.Element("properties").Elements("property"))
+                                {
+                                    switch (prop.Attribute("name").Value)
+                                    {
+                                        case "Type":
+                                            type = prop.Attribute("value").Value;
+                                            break;
+                                    }
+                                }
+                                if (type == "Player")
                                 {
                                     player.SetPosition(x / pw, ToMirrorZ(z / ph, h));
                                     continue;
                                 }
-                                if(name.Contains("Enemy"))
+                                if(type.Contains("Enemy"))
                                 {
                                     GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
                                     GameObject enemy = Instantiate(enemyObj, enemies.transform);
                                     enemy.GetComponent<MoveAction>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
                                     enemy.GetComponent<EnemyAction>().target = player;
                                 }
-                                if (name.Contains("Item"))
+                                if (type.Contains("Item"))
                                 {
                                     GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
                                     GameObject item = Instantiate(itemObj, items.transform);
                                     item.GetComponent<MoveAction>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
-
+                                }
+                                if(type.Contains("Gimmick"))
+                                {
+                                    GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+                                    GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
+                                    Gimmick.GetComponent<ObjectPosition>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
                                 }
                             }
                             break;

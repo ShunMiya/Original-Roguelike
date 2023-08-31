@@ -14,6 +14,7 @@ namespace Field
         public MoveAction playerMovement;
         public GameObject enemies;
         public GameObject items;
+        public GameObject gimmicks;
 
         private Array2D map;
         private static float onetile = GameRule.GridSize;
@@ -101,6 +102,10 @@ namespace Field
             {
                 Destroy(items.transform.GetChild(i).gameObject);
             }
+            for (int i = 0; i < gimmicks.transform.childCount; i++)
+            {
+                Destroy(gimmicks.transform.GetChild(i).gameObject);
+            }
         }
 
         /**
@@ -161,6 +166,12 @@ namespace Field
                 if (xgrid == itemMovement.grid.x && zgrid == itemMovement.grid.z)
                     return itemMovement.gameObject;
             }
+            foreach (var gimmickPosition in gimmicks.GetComponentsInChildren<ObjectPosition>())
+            {
+                if (xgrid == gimmickPosition.grid.x && zgrid == gimmickPosition.grid.z)
+                    return gimmickPosition.gameObject;
+            }
+
             return null;
         }
 
@@ -172,6 +183,12 @@ namespace Field
                 if (xgrid == itemMovement.grid.x && zgrid == itemMovement.grid.z)
                     return false;
             }
+            foreach (var gimmickPosition in gimmicks.GetComponentsInChildren<ObjectPosition>())
+            {
+                if (xgrid == gimmickPosition.grid.x && zgrid == gimmickPosition.grid.z)
+                    return false;
+            }
+
             return true;
         }
 

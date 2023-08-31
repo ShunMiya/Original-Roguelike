@@ -2,8 +2,8 @@ using ItemSystemV2.Inventory;
 using System;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Fade;
+using UnityEngine.EventSystems;
 
 namespace UISystemV2
 {
@@ -16,6 +16,14 @@ namespace UISystemV2
         private void Start()
         {
             fadeSystem = FindObjectOfType<FadeSystem>();
+        }
+
+        public void OnSelected()
+        {
+            if (EventSystem.current.currentSelectedGameObject != gameObject)
+            {
+                EventSystem.current.SetSelectedGameObject(gameObject);
+            }
         }
 
         public void ChangeSceneButtonClick()
@@ -48,6 +56,12 @@ namespace UISystemV2
             ChangeSceneButtonClick();
 
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        public void DisableWindow()
+        {
+            gameObject.SetActive(false);
+            Input.ResetInputAxes();
         }
     }
 }

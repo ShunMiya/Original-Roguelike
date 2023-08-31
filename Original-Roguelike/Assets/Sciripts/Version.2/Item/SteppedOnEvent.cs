@@ -1,6 +1,8 @@
 using ItemSystemV2.Inventory;
 using UnityEngine;
 using System.Collections;
+using UISystemV2;
+using UnityEngine.EventSystems;
 
 namespace ItemSystemV2
 {
@@ -8,9 +10,13 @@ namespace ItemSystemV2
     {
         [SerializeField] private int ObjType;
         [SerializeField] private int itemId;
-        private GameObject StairsMenu;
         public int num;
+        private PauseSystemV2 pauseSystemV2;
 
+        private void Start ()
+        {
+            pauseSystemV2 = FindObjectOfType<PauseSystemV2>();
+        }
         public IEnumerator Event()
         {
             switch (ObjType)
@@ -22,7 +28,7 @@ namespace ItemSystemV2
                     //Trap();
                     break;
                 case 2:
-                    yield return StartCoroutine(AreaChange());
+                    yield return StartCoroutine(Stairs());
                     break;
             }
             yield return null;
@@ -43,15 +49,9 @@ namespace ItemSystemV2
 
         }
 
-        private IEnumerator AreaChange()
+        private IEnumerator Stairs()
         {
-            StairsMenu.SetActive(true);
-
-            // StairsMenu が非アクティブになるまで待機する
-            while (StairsMenu.activeSelf)
-            {
-                yield return null;
-            }
+            yield return StartCoroutine(pauseSystemV2.StairsMenuOpen());
         }
     }
 }

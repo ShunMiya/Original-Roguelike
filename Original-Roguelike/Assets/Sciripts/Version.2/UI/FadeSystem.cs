@@ -60,7 +60,6 @@ namespace Fade
             while (t < 1f)
             {
                 t += Time.unscaledDeltaTime / fadeInDuration;
-                Debug.Log(t);
                 if (t <= 0.5f) // 0.5 ‚æ‚è‘O‚Ìê‡
                 {
                     FadeImage.color = Color.Lerp(startColor, middleColor, t / 0.5f); // 0`0.5 ‚Ì”ÍˆÍ‚Å Lerp
