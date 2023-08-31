@@ -1,0 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class StaticCoroutine
+{
+    //ë„ì¸ÇµÇΩObjÇ™è¡Ç¶ÇÈÇ‹Ç≈ë“ã@
+    public static IEnumerator ObjectActiveFalse(GameObject Obj)
+    {
+        while (Obj.activeSelf)
+        {
+            yield return null;
+        }
+    }
+}

@@ -49,8 +49,6 @@ namespace MoveSystem
         */
         public IEnumerator MoveObjectCoroutine(Transform objTransform)
         {
-            Debug.Log("5newgrid:" + newGrid.x + "," + newGrid.z + " grid:" + grid.x + "," + grid.z);
-
             float px1 = CoordinateTransformation.ToWorldX(grid.x);
             float pz1 = CoordinateTransformation.ToWorldZ(grid.z);
             float px2 = CoordinateTransformation.ToWorldX(newGrid.x);
@@ -65,7 +63,6 @@ namespace MoveSystem
 
                 yield return new WaitForEndOfFrame();
             }
-            Debug.Log("ˆÚ“®Š®—¹");
             transform.position = new Vector3(px2, 0, pz2);
             grid = newGrid;
         }

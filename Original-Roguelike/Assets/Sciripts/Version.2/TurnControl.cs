@@ -10,20 +10,27 @@ namespace TurnSystem
 {
     public class TurnControl : MonoBehaviour
     {
-        public PlayerControlV2 PC;
-        public MoveObjects MO;
-        public EnemyObjects EO;
-        public AttackObjects AO;
-        public PlayerHungryV2 PH;
-        public PlayerHPV2 HP;
-        public PlayerAction PA;
-        public PlayerEventAfterMove PEAM;
+        [SerializeField] private PlayerControlV2 PC;
+        [SerializeField] private MoveObjects MO;
+        [SerializeField] private EnemyObjects EO;
+        [SerializeField] private AttackObjects AO;
+        [SerializeField] private PlayerHungryV2 PH;
+        [SerializeField] private PlayerHPV2 HP;
+        [SerializeField] private PlayerAction PA;
+        [SerializeField] private PlayerEventAfterMove PEAM;
+
+        [SerializeField] private GameObject FadeImage;
 
         void Start()
         {
-            StartCoroutine(GameLoop());
+            StartCoroutine(DungeonStart());
         }
 
+        private IEnumerator DungeonStart()
+        {
+            yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
+            StartCoroutine(GameLoop());
+        }
         private IEnumerator GameLoop()
         {
             while (true) // ÉQÅ[ÉÄÉãÅ[ÉvÇñ≥å¿Ç…ë±ÇØÇÈ

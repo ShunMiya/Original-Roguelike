@@ -8,6 +8,7 @@ namespace ItemSystemV2
     {
         [SerializeField] private int ObjType;
         [SerializeField] private int itemId;
+        private GameObject StairsMenu;
         public int num;
 
         public IEnumerator Event()
@@ -19,6 +20,9 @@ namespace ItemSystemV2
                     break;
                 case 1:
                     //Trap();
+                    break;
+                case 2:
+                    yield return StartCoroutine(AreaChange());
                     break;
             }
             yield return null;
@@ -32,6 +36,22 @@ namespace ItemSystemV2
             
             if (ItemGet == false) Debug.Log("持ち物がいっぱいだよ！");
             if (ItemGet == true) Destroy(gameObject);
+        }
+
+        private void Trap()
+        {
+
+        }
+
+        private IEnumerator AreaChange()
+        {
+            StairsMenu.SetActive(true);
+
+            // StairsMenu が非アクティブになるまで待機する
+            while (StairsMenu.activeSelf)
+            {
+                yield return null;
+            }
         }
     }
 }
