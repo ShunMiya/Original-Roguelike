@@ -53,9 +53,9 @@ namespace UISystemV2
             string updateStatusQuery = "UPDATE PlayerStatus SET FloorLevel = (SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1) + 1 WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
 
-            ChangeSceneButtonClick();
+            StartCoroutine(fadeSystem.NextStageFade());
 
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //ChangeSceneButtonClick();
         }
 
         public void DisableWindow()

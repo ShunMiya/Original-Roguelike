@@ -20,5 +20,10 @@ namespace AttackSystem
             // ‘S‚Ä‚Ìs“®‚ªŠ®—¹‚µ‚½Œã‚Ìˆ—
             objectsToAttack.Clear();
         }
+
+        public void DeleteList()
+        {
+            objectsToAttack.Clear();
+        }
     }
 }

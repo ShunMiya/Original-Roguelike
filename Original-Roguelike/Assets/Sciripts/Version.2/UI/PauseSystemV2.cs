@@ -58,7 +58,8 @@ namespace UISystemV2
             while (stairsMenu.gameObject.activeSelf)
             {
                 yield return null;
-            }            
+            }
+            //yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(stairsMenu));
         }
     }
 }

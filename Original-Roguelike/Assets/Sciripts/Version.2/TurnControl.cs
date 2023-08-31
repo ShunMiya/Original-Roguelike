@@ -5,6 +5,7 @@ using MoveSystem;
 using AttackSystem;
 using EnemySystem;
 using PlayerStatusSystemV2;
+using UISystemV2;
 
 namespace TurnSystem
 {
@@ -46,6 +47,12 @@ namespace TurnSystem
                 yield return StartCoroutine(PEAM.EventCheck()); //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
 
                 yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
+
+                if(FadeImage.activeSelf)
+                {
+                    yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
+                    continue;
+                }
 
                 PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
                 HP.TurnRecoveryHp();

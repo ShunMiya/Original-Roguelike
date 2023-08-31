@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Xml.Linq;
 using MoveSystem;
 using EnemySystem;
+using System.Collections;
 
 namespace Field
 {
@@ -17,12 +18,18 @@ namespace Field
 
         void Start()
         {
+            StartCoroutine(Load());
+        }
+
+        public IEnumerator Load()
+        {
             field.Reset();
             Array2D mapdata = readMapFile(mapName);
             if (mapdata != null)
             {
                 field.Create(mapdata);
             }
+            yield return null;
         }
 
         /**

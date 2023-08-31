@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using Field;
+using AttackSystem;
 
 namespace Fade
 {
@@ -12,6 +14,10 @@ namespace Fade
         public float fadeOutDuration;
         public float fadeInDuration;
         public float waitTime;
+
+        [SerializeField] private LoadFieldMap loadmap;
+        [SerializeField]private AttackObjects attackObjects;
+        [SerializeField] private GameObject StairsMenu;
 
         private void Awake()
         {
@@ -29,12 +35,23 @@ namespace Fade
             StartCoroutine(GameClose());
         }
 
+        public IEnumerator NextStageFade()
+        {
+            yield return StartCoroutine(FadeOut());
+
+            attackObjects.DeleteList();
+            StairsMenu.SetActive(false);
+            StartCoroutine(loadmap.Load());
+
+            StartCoroutine(FadeIn());
+        }
+
         private IEnumerator TransitionSeq(string SceneName)
         {
             yield return StartCoroutine(FadeOut());
             SceneManager.LoadScene(SceneName);
         }
-
+        
         private IEnumerator GameClose()
         {
             yield return StartCoroutine(FadeOut());

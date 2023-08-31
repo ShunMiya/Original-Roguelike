@@ -3196,7 +3196,7 @@ MonoBehaviour:
   newGrid:
     x: 0
     z: 0
-  maxPerFrame: 1.67
+  maxPerFrame: 50
   complementFrame: 0
 --- !u!114 &436213508
 MonoBehaviour:
@@ -3590,19 +3590,7 @@ MonoBehaviour:
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 442808767}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-          m_MethodName: OnDeselect
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &442808767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8233,6 +8221,9 @@ MonoBehaviour:
   fadeOutDuration: 0.7
   fadeInDuration: 0.7
   waitTime: 1
+  loadmap: {fileID: 441075521}
+  attackObjects: {fileID: 441075524}
+  StairsMenu: {fileID: 1590204994}
 --- !u!1 &943967777
 GameObject:
   m_ObjectHideFlags: 0
@@ -12981,19 +12972,7 @@ MonoBehaviour:
   - eventID: 1
     callback:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1752330033}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-          m_MethodName: OnDeselect
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
 --- !u!114 &1752330033
 MonoBehaviour:
   m_ObjectHideFlags: 0

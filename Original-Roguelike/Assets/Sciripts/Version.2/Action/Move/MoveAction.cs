@@ -22,7 +22,8 @@ namespace MoveSystem
         private void Awake ()
         {
             field = GetComponentInParent<Areamap>();
-            complementFrame = maxPerFrame / Time.deltaTime;
+            complementFrame = maxPerFrame;
+            //complementFrame = maxPerFrame / Time.deltaTime;
             newGrid = grid;
         }
 
