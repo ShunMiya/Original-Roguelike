@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -8,6 +9,7 @@ namespace UISystemV2
         [SerializeField] private GameObject pauseUI;
         [SerializeField] private GameObject Systemtext;
         [SerializeField] private GameObject subMenu;
+        [SerializeField] private GameObject stairsMenu;
 
         [SerializeField] private GameObject[] windowLists;
 
@@ -45,6 +47,19 @@ namespace UISystemV2
                 }
                 EventSystem.current.SetSelectedGameObject(window.transform.Find("MenuArea").GetChild(0).gameObject);
             }
+        }
+
+        public IEnumerator StairsMenuOpen()
+        {
+            stairsMenu.gameObject.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(stairsMenu.gameObject.transform.GetChild(1).gameObject);
+            
+            // StairsMenu が非アクティブになるまで待機する
+            while (stairsMenu.gameObject.activeSelf)
+            {
+                yield return null;
+            }
+            //yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(stairsMenu));
         }
     }
 }

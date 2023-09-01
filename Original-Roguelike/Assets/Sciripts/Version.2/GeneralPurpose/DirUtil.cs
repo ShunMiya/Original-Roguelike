@@ -92,6 +92,7 @@ public static class DirUtil
         return new Pos2D {x = 0, z = 0};
     }
 
+    //ˆÊ’u‚ÆŒü‚«‚ğŒ³‚É³–Ê‚ÌˆÊ’u‚ğ•Ô‚·
     public static Pos2D GetNewGrid(Pos2D position, Dir d)
     {
         Pos2D newP = new Pos2D();

@@ -55,13 +55,11 @@ namespace ItemSystemV2.Inventory
             {
                 int currentNum = Convert.ToInt32(row["Num"]);
                 int totalStock = currentNum + num;
-                Debug.Log("“üènum:" + num + " Š•inum" + currentNum + " ‰ÁZŒãnum:" + totalStock + " Å‘ånum:" + consumableItem.MaxStock);
                 if (totalStock <= consumableItem.MaxStock)
                 {
                     string updateQuery = "UPDATE Inventory SET Num = " + totalStock + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(updateQuery);
                     systemText.TextSet(consumableItem.ItemName + ":Stock" + num + " Get!");
-                    Debug.Log(totalStock + "‚É‰ÁZŠ®—¹");
                     return true;
                 }
             }

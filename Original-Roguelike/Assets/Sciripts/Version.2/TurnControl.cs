@@ -5,25 +5,33 @@ using MoveSystem;
 using AttackSystem;
 using EnemySystem;
 using PlayerStatusSystemV2;
+using UISystemV2;
 
 namespace TurnSystem
 {
     public class TurnControl : MonoBehaviour
     {
-        public PlayerControlV2 PC;
-        public MoveObjects MO;
-        public EnemyObjects EO;
-        public AttackObjects AO;
-        public PlayerHungryV2 PH;
-        public PlayerHPV2 HP;
-        public PlayerAction PA;
-        public PlayerEventAfterMove PEAM;
+        [SerializeField] private PlayerControlV2 PC;
+        [SerializeField] private MoveObjects MO;
+        [SerializeField] private EnemyObjects EO;
+        [SerializeField] private AttackObjects AO;
+        [SerializeField] private PlayerHungryV2 PH;
+        [SerializeField] private PlayerHPV2 HP;
+        [SerializeField] private PlayerAction PA;
+        [SerializeField] private PlayerEventAfterMove PEAM;
+
+        [SerializeField] private GameObject FadeImage;
 
         void Start()
         {
-            StartCoroutine(GameLoop());
+            StartCoroutine(DungeonStart());
         }
 
+        private IEnumerator DungeonStart()
+        {
+            yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
+            StartCoroutine(GameLoop());
+        }
         private IEnumerator GameLoop()
         {
             while (true) // ゲームループを無限に続ける
@@ -39,6 +47,12 @@ namespace TurnSystem
                 yield return StartCoroutine(PEAM.EventCheck()); //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
 
                 yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
+
+                if(FadeImage.activeSelf)
+                {
+                    yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
+                    continue;
+                }
 
                 PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
                 HP.TurnRecoveryHp();
