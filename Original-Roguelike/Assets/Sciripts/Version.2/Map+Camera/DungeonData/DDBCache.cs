@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Field
 {
-    public class DDB : MonoBehaviour
+    public class DDBCache : MonoBehaviour
     {
         SqliteDatabase sqlDB;
 

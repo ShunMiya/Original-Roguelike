@@ -62,10 +62,9 @@ namespace UISystemV2
             string dungeonName = (string)PlayerDB[0]["DungeonName"];
             int floorLevel = Convert.ToInt32(PlayerDB[0]["FloorLevel"]);
 
-            /*query = "SELECT TopFloor FROM " + dungeonName + " WHERE DungeonID = 1;";
+            query = "SELECT TopFloor FROM DungeonChallengeStatus WHERE DungeonName = '"+dungeonName+"';";
             DataTable DungeonDB = sqlDB.ExecuteQuery(query);
-            int topFloor = Convert.ToInt32(DungeonDB[0]["TopFloor"]);*/
-            int topFloor = 2;
+            int topFloor = Convert.ToInt32(DungeonDB[0]["TopFloor"]);
             if (floorLevel > topFloor)
             {
                 StartCoroutine(fadeSystem.GameClearFade());
