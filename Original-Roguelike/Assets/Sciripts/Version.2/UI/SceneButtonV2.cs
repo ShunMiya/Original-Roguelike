@@ -29,16 +29,19 @@ namespace UISystemV2
 
         public void ChangeSceneButtonClick()
         {
+            ButtonTargetReset();
             fadeSystem.SceneJump(SceneName);
         }
 
         public void GameEndButtonClick()
         {
+            ButtonTargetReset();
             fadeSystem.GameCloseButtonClick();
         }
 
         public void RetryButtonClick()
         {
+            ButtonTargetReset();
             SQLDBInitializationV2.PlayerDataInitialization();
             ChangeSceneButtonClick();
 
@@ -47,6 +50,7 @@ namespace UISystemV2
 
         public void NextStageButtonClick()
         {
+            ButtonTargetReset();
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
 
@@ -70,24 +74,32 @@ namespace UISystemV2
 
 
             StartCoroutine(fadeSystem.NextStageFade());
-
-            //ChangeSceneButtonClick();
         }
 
         public void SelectDungeon(string Dungeon)
         {
+            ButtonTargetReset();
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
 
             string updateStatusQuery = "UPDATE PlayerStatus SET DungeonName = '"+Dungeon+"' WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
 
+            updateStatusQuery = "UPDATE PlayerStatus SET FloorLevel = 1 WHERE PlayerID = 1;";
+            sqlDB.ExecuteNonQuery(updateStatusQuery);
+
         }
 
         public void DisableWindow()
         {
+            ButtonTargetReset();
             gameObject.SetActive(false);
             Input.ResetInputAxes();
+        }
+
+        public void ButtonTargetReset()
+        {
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 }

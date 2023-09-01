@@ -10,7 +10,6 @@ namespace Field
 {
     public class LoadFieldMap : MonoBehaviour
     {
-        public string mapName;
         public Areamap field;
 
         public GameObject enemies;

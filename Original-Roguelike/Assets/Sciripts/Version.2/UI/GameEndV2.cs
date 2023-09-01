@@ -1,4 +1,6 @@
+using UISystemV2;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace GameEndSystemV2
 {
@@ -10,11 +12,15 @@ namespace GameEndSystemV2
         public void GameOverPerformance()
         {
             GameOverUI.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(GameOverUI.transform.GetChild(1).gameObject);
+
         }
 
         public void GameClearPerformance()
         {
             GameClearUI.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(GameClearUI.transform.GetChild(1).gameObject);
+
         }
     }
 }

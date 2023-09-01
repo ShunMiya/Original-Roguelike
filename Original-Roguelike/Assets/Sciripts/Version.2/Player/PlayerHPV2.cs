@@ -45,7 +45,7 @@ namespace PlayerStatusSystemV2
             {
                 systemText.TextSet("Player Dead!");
                 gameEnd.GameOverPerformance();
-                gameObject.SetActive(false);
+                Time.timeScale = 0;
 
             }
             else if (newHP > 0)
@@ -74,7 +74,7 @@ namespace PlayerStatusSystemV2
             {
                 systemText.TextSet("Player Dead!");
                 gameEnd.GameOverPerformance();
-                gameObject.SetActive(false);
+                Time.timeScale = 0;
             }
         }
 

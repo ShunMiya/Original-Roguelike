@@ -19,7 +19,7 @@ namespace UISystemV2
         {
             systemTextCompo = Systemtext.GetComponent<SystemTextV2>();
         }
-        // Update is called once per frame
+
         public void PauseSwitching()
         {
             subMenu.SetActive(false);
@@ -59,7 +59,6 @@ namespace UISystemV2
             {
                 yield return null;
             }
-            //yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(stairsMenu));
         }
     }
 }
