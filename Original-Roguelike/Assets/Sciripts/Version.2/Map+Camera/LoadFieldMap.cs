@@ -3,6 +3,8 @@ using System.Xml.Linq;
 using MoveSystem;
 using EnemySystem;
 using System.Collections;
+using ItemSystemV2.Inventory;
+using System;
 
 namespace Field
 {
@@ -15,6 +17,7 @@ namespace Field
         public GameObject items;
         public GameObject gimmicks;
         public MoveAction player;
+        private SqliteDatabase sqlDB;
 
         void Start()
         {
@@ -37,17 +40,38 @@ namespace Field
         */
         private Array2D readMapFile(string path)
         {
+            if (sqlDB == null)
+            {
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
+                sqlDB = new SqliteDatabase(databasePath);
+            }
+
+            string query = "SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable Data = sqlDB.ExecuteQuery(query);
+            int FloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
+
             try
             {
                 XDocument xml = XDocument.Load(path);
                 XElement map = xml.Element("map");
+                XElement group = null;
+                foreach (var gp in map.Elements("group"))
+                {
+                    if (gp.Attribute("name").Value.Equals(FloorLevel + "F"))
+                    {
+                        group = gp;
+                        break;
+                    }
+                }
+                if (group == null)  return new Array2D(1, 1);
+
                 Array2D data = null;
                 int w = 0, h = 0;
-                foreach (var layer in map.Elements("layer"))
+                foreach (var layer in group.Elements("layer"))
                 {
-                    switch (layer.Attribute("id").Value)
+                    switch (layer.Attribute("name").Value)
                     {
-                        case "1":
+                        case "TileLayer":
                             string[] sdata = (layer.Element("data").Value).Split(',');
                             w = int.Parse(layer.Attribute("width").Value);
                             h = int.Parse(layer.Attribute("height").Value);
@@ -63,11 +87,11 @@ namespace Field
                             break;
                     }
                 }
-                foreach (var objgp in map.Elements("objectgroup"))
+                foreach (var objgp in group.Elements("objectgroup"))
                 {
-                    switch (objgp.Attribute("id").Value)
+                    switch (objgp.Attribute("name").Value)
                     {
-                        case "3":
+                        case "ObjectLayer":
                             foreach (var obj in objgp.Elements("object"))
                             {
                                 int x = int.Parse(obj.Attribute("x").Value);
