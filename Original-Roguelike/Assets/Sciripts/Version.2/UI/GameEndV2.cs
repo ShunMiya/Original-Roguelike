@@ -6,7 +6,6 @@ namespace GameEndSystemV2
     {
         [SerializeField] private GameObject GameOverUI;
         [SerializeField] private GameObject GameClearUI;
-        [SerializeField] private GameObject StageClearUI;
 
         public void GameOverPerformance()
         {
@@ -16,11 +15,6 @@ namespace GameEndSystemV2
         public void GameClearPerformance()
         {
             GameClearUI.SetActive(true);
-        }
-
-        public void StageClearPerformance()
-        {
-            StageClearUI.SetActive(true);
         }
     }
 }

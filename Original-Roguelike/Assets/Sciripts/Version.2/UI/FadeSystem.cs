@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using UnityEditor;
 using Field;
 using AttackSystem;
+using GameEndSystemV2;
 
 namespace Fade
 {
@@ -15,6 +16,7 @@ namespace Fade
         public float fadeInDuration;
         public float waitTime;
 
+        [SerializeField]private GameEndV2 gameEndV2;
         [SerializeField] private LoadFieldMap loadmap;
         [SerializeField]private AttackObjects attackObjects;
         [SerializeField] private GameObject StairsMenu;
@@ -44,6 +46,14 @@ namespace Fade
             loadmap.Load();
 
             StartCoroutine(FadeIn());
+        }
+
+        public IEnumerator GameClearFade()
+        {
+            yield return StartCoroutine (FadeOut());
+            gameEndV2.GameClearPerformance();
+            StartCoroutine(FadeIn());
+
         }
 
         private IEnumerator TransitionSeq(string SceneName)

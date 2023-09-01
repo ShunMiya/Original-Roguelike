@@ -27,7 +27,18 @@ namespace Field
         public void Load()
         {
             field.Reset();
-            Array2D mapdata = readMapFile(mapName);
+
+            if (sqlDB == null)
+            {
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
+                sqlDB = new SqliteDatabase(databasePath);
+            }
+
+            string query = "SELECT DungeonName FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable Data = sqlDB.ExecuteQuery(query);
+            string DungeonName = (string)Data[0]["DungeonName"];
+
+            Array2D mapdata = readMapFile("Assets/Maps/"+DungeonName+ ".tmx");
             if (mapdata != null)
             {
                 field.Create(mapdata);
