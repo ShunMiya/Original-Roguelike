@@ -41,7 +41,7 @@ namespace Fade
 
             attackObjects.DeleteList();
             StairsMenu.SetActive(false);
-            StartCoroutine(loadmap.Load());
+            loadmap.Load();
 
             StartCoroutine(FadeIn());
         }

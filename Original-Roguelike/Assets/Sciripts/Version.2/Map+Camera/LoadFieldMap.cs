@@ -21,10 +21,10 @@ namespace Field
 
         void Start()
         {
-            StartCoroutine(Load());
+            Load();
         }
 
-        public IEnumerator Load()
+        public void Load()
         {
             field.Reset();
             Array2D mapdata = readMapFile(mapName);
@@ -32,7 +32,6 @@ namespace Field
             {
                 field.Create(mapdata);
             }
-            yield return null;
         }
 
         /**

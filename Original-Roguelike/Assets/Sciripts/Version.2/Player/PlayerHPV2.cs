@@ -56,6 +56,28 @@ namespace PlayerStatusSystemV2
             }
         }
 
+        public void DirectDamage(int damage, int R)
+        {
+            if (sqlDB == null)
+            {
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
+                sqlDB = new SqliteDatabase(databasePath);
+            }
+            string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHP = (SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 1) - " + damage + " WHERE PlayerID = 1;";
+            sqlDB.ExecuteNonQuery(updateStatusQuery);
+
+            string query = "SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable Data = sqlDB.ExecuteQuery(query);
+            int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
+
+            if (CurrentHP <= 0)
+            {
+                systemText.TextSet("Player Dead!");
+                gameEnd.GameOverPerformance();
+                gameObject.SetActive(false);
+            }
+        }
+
         public bool HealHP(int Heal)
         {
             if (sqlDB == null)

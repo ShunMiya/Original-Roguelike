@@ -46,7 +46,8 @@ namespace PlayerStatusSystemV2
                 hung++;
                 if (hung >= 2)
                 {
-                    playerHP.TakeDamage(1,(int)transform.rotation.y);
+                    playerHP.DirectDamage(1,(int)transform.rotation.y);
+
                     hung = 0;
                 }
             }

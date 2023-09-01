@@ -40,7 +40,6 @@ namespace ItemSystemV2
             
             bool ItemGet = playerInventoryV2.AddItem(itemId, num);
             
-            if (ItemGet == false) Debug.Log("‚¿•¨‚ª‚¢‚Á‚Ï‚¢‚¾‚æI");
             if (ItemGet == true) Destroy(gameObject);
         }
 
