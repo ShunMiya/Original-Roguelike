@@ -89,7 +89,6 @@ namespace ItemSystemV2
         {
             int randomNum = Random.Range(1, 101);
             int selectedNumber;
-            Debug.Log(randomNum + "‚ª¶¬‚³‚ê‚½‚æ");
             if (randomNum <= 35)
                 selectedNumber = 1;
             else if (randomNum <= 60)

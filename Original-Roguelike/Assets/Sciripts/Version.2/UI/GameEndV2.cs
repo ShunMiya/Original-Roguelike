@@ -1,4 +1,6 @@
+using UISystemV2;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace GameEndSystemV2
 {
@@ -6,21 +8,19 @@ namespace GameEndSystemV2
     {
         [SerializeField] private GameObject GameOverUI;
         [SerializeField] private GameObject GameClearUI;
-        [SerializeField] private GameObject StageClearUI;
 
         public void GameOverPerformance()
         {
             GameOverUI.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(GameOverUI.transform.GetChild(1).gameObject);
+
         }
 
         public void GameClearPerformance()
         {
             GameClearUI.SetActive(true);
-        }
+            EventSystem.current.SetSelectedGameObject(GameClearUI.transform.GetChild(1).gameObject);
 
-        public void StageClearPerformance()
-        {
-            StageClearUI.SetActive(true);
         }
     }
 }
