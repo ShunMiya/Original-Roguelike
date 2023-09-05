@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="11">
+ <tileset firstgid="1" source="../../../../../../Downloads/Test-Tile.tsx"/>
+ <layer id="1" name="TileLayer" width="8" height="8">
+  <data encoding="csv">
+2,2,2,1,2,2,2,2,
+2,2,1,1,1,1,1,2,
+2,1,1,1,1,1,1,2,
+2,1,1,1,1,1,1,2,
+2,1,1,1,1,1,1,1,
+2,1,1,1,1,1,1,2,
+2,2,1,1,1,1,1,2,
+2,2,2,2,2,2,2,2
+</data>
+ </layer>
+ <objectgroup id="2" name="ObjectLayer">
+  <object id="2" name="Connection" x="97" y="1" width="31" height="31"/>
+  <object id="3" name="Connection" x="225" y="129" width="31" height="31"/>
+  <object id="10" name="Room" x="32.6667" y="32.6667" width="190.667" height="191.333">
+   <polygon points="32.3366,0.335156 191.327,0.339844 191.331,191.333 32.3411,191.327 32.3223,159.329 0.332663,159.325 0.336207,32.3327 32.3448,32.3402"/>
+  </object>
+ </objectgroup>
+</map>

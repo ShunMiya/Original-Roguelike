@@ -1,3 +1,4 @@
+using EnemySystem;
 using MoveSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -76,6 +77,33 @@ namespace Field
                 obj.transform.position = new Vector3(-onetile / 2, -0.4f, z * onetile - onetile / 2);
                 obj.transform.rotation = Quaternion.Euler(0, 90, 0);
                 obj.transform.localScale = new Vector3(1, 1, floorSize * onetile);
+            }
+        }
+
+        public void SetObject(string name, string type, int xgrid, int zgrid)
+        {
+
+            switch (type)
+            {
+                case "Gimmick":
+                    GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+                    GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
+                    Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    break;
+                case "Enemy":
+                    GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+                    GameObject enemy = Instantiate(enemyObj, enemies.transform);
+                    enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                    enemy.GetComponent<EnemyAction>().target = playerMovement;
+                    break;
+                case "Item":
+                    GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+                    GameObject item = Instantiate(itemObj, items.transform);
+                    item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                    break;
+                case "Player":
+                    playerMovement.SetPosition(xgrid, zgrid);
+                    break;
             }
         }
 

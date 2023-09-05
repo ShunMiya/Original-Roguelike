@@ -24,8 +24,8 @@ namespace Field
             {
                 FloorInfomationData FloorInfoData = new FloorInfomationData();
                 FloorInfoData.FloorLevel = Convert.ToInt32(row["FloorLevel"]);
-                FloorInfoData.MinEnemys = Convert.ToInt32(row["MinEnemys"]);
-                FloorInfoData.MaxEnemys = Convert.ToInt32(row["MaxEnemys"]);
+                FloorInfoData.MinEnemies = Convert.ToInt32(row["MinEnemies"]);
+                FloorInfoData.MaxEnemies = Convert.ToInt32(row["MaxEnemies"]);
                 FloorInfoData.MinItems = Convert.ToInt32(row["MinItems"]);
                 FloorInfoData.MaxItems = Convert.ToInt32(row["MaxItems"]);
 
@@ -33,7 +33,7 @@ namespace Field
             }
         }
 
-        public static FloorInfomationData GetEquipmentFloorInformation(int FloorLevel)
+        public static FloorInfomationData GetFloorInformation(int FloorLevel)
         {
             return FloorInformationCache.TryGetValue(FloorLevel, out FloorInfomationData FloorInfoData) ? FloorInfoData as FloorInfomationData : null;
         }
