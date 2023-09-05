@@ -42,7 +42,7 @@ namespace UISystemV2
         public void RetryButtonClick()
         {
             ButtonTargetReset();
-            SQLDBInitializationV2.PlayerDataInitialization();
+            StatusReset();
             ChangeSceneButtonClick();
 
             //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -99,6 +99,16 @@ namespace UISystemV2
         public void ButtonTargetReset()
         {
             EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        public void StatusReset()
+        {
+            SQLDBInitializationV2.PlayerStatusInitialization();
+        }
+
+        public void InventoryReset()
+        {
+            SQLDBInitializationV2.PlayerInventoryInitialization();
         }
     }
 }

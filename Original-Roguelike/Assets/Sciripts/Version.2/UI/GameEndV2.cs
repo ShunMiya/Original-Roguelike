@@ -1,4 +1,4 @@
-using UISystemV2;
+using ItemSystemV2.Inventory;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -12,6 +12,7 @@ namespace GameEndSystemV2
         public void GameOverPerformance()
         {
             GameOverUI.SetActive(true);
+            SQLDBInitializationV2.PlayerInventoryInitialization();
             EventSystem.current.SetSelectedGameObject(GameOverUI.transform.GetChild(1).gameObject);
 
         }

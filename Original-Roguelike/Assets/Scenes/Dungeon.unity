@@ -3134,18 +3134,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
   - eventID: 15
     callback:
       m_PersistentCalls:
@@ -3178,10 +3166,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!114 &442808767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9106,7 +9090,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1230204280}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
-          m_MethodName: ChangeSceneButtonClick
+          m_MethodName: StatusReset
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -9116,10 +9100,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
         - m_Target: {fileID: 1230204280}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: ChangeSceneButtonClick
@@ -10075,7 +10055,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1441296825}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
-          m_MethodName: ChangeSceneButtonClick
+          m_MethodName: StatusReset
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10085,26 +10065,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 10
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1441296822}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-          m_MethodName: OnDeselect
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
         - m_Target: {fileID: 1441296825}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: ChangeSceneButtonClick
