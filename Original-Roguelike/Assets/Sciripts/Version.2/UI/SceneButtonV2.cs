@@ -59,10 +59,10 @@ namespace UISystemV2
 
             string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable PlayerDB = sqlDB.ExecuteQuery(query);
-            string dungeonName = (string)PlayerDB[0]["DungeonName"];
+            int dungeonId = Convert.ToInt32(PlayerDB[0]["DungeonId"]);
             int floorLevel = Convert.ToInt32(PlayerDB[0]["FloorLevel"]);
 
-            query = "SELECT TopFloor FROM DungeonChallengeStatus WHERE DungeonName = '"+dungeonName+"';";
+            query = "SELECT TopFloor FROM DungeonChallengeStatus WHERE DungeonId = '"+ dungeonId + "';";
             DataTable DungeonDB = sqlDB.ExecuteQuery(query);
             int topFloor = Convert.ToInt32(DungeonDB[0]["TopFloor"]);
             if (floorLevel > topFloor)
@@ -75,13 +75,13 @@ namespace UISystemV2
             StartCoroutine(fadeSystem.NextStageFade());
         }
 
-        public void SelectDungeon(string Dungeon)
+        public void SelectDungeon(int Dungeon)
         {
             ButtonTargetReset();
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
 
-            string updateStatusQuery = "UPDATE PlayerStatus SET DungeonName = '"+Dungeon+"' WHERE PlayerID = 1;";
+            string updateStatusQuery = "UPDATE PlayerStatus SET DungeonId = '"+Dungeon+"' WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
 
             updateStatusQuery = "UPDATE PlayerStatus SET FloorLevel = 1 WHERE PlayerID = 1;";

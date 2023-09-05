@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Xml.Linq;
 using MoveSystem;
-using EnemySystem;
 using ItemSystemV2.Inventory;
 using System;
 using System.Collections.Generic;
@@ -36,14 +35,18 @@ namespace Field
                 sqlDB = new SqliteDatabase(databasePath);
             }
 
-            string query = "SELECT DungeonName FROM PlayerStatus WHERE PlayerID = 1;";
+            string query = "SELECT DungeonId FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
+            int DungeonId = Convert.ToInt32(Data[0]["DungeonId"]);
+            query = "SELECT DungeonName FROM DungeonChallengeStatus WHERE DungeonId = (SELECT DungeonId FROM PlayerStatus WHERE PlayerID = 1);)";
+            Data = sqlDB.ExecuteQuery(query);
             string DungeonName = (string)Data[0]["DungeonName"];
 
             Array2D mapdata = readMapFile("Assets/Maps/"+DungeonName+ ".tmx");
             if (mapdata != null)
             {
                 field.Create(mapdata);
+                return;
             }
         }
 

@@ -1,5 +1,6 @@
 using ItemSystemV2.Inventory;
 using System.IO;
+using UnityEditor.Search;
 using UnityEngine;
 
 namespace Field
@@ -12,7 +13,7 @@ namespace Field
         {
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
-            string query = "SELECT DungeonName FROM PlayerStatus WHERE PlayerID = 1;";
+            string query = "SELECT DungeonName FROM DungeonChallengeStatus WHERE DungeonId = (SELECT DungeonId FROM PlayerStatus WHERE PlayerID = 1);)";
             DataTable Data = sqlDB.ExecuteQuery(query);
             string DungeonName = (string)Data[0]["DungeonName"];
 
