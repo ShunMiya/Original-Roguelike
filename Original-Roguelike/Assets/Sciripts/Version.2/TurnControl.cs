@@ -54,7 +54,7 @@ namespace TurnSystem
                     continue;
                 }
 
-                PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
+                //PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
                 HP.TurnRecoveryHp();
 
                 /*Debug.Log("NextTurn"); 

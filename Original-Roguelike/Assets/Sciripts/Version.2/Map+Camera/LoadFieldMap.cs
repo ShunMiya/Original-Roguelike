@@ -161,9 +161,9 @@ namespace Field
 
         private class RandomDungeon
         {
-            private const int minArea = 3;
-            private const int minRoom = 1;
-            private const int margin = 1;
+            private const int minArea = 7;
+            private const int minRoom = 3;
+            private const int margin = 2;
             private Array2D data;
             private List<Area2D> areas;
 
@@ -247,18 +247,24 @@ namespace Field
             {
                 foreach (var area in areas)
                 {
-                    int aw = area.outLine.width - margin * 2;
-                    int ah = area.outLine.height - margin * 2;
+                    int aw = area.outLine.width - margin * 2 - 1;
+                    int ah = area.outLine.height - margin * 2 - 1;
                     int width = Random.Range(minRoom, aw);
                     int height = Random.Range(minRoom, ah);
                     int rw = aw - width;
                     int rh = ah - height;
-                    int rx = Random.Range(margin, rw - margin);
-                    int ry = Random.Range(margin, rh - margin);
-                    int left = area.outLine.left + rx;
-                    int top = area.outLine.top + ry;
+                    int rx = Random.Range(margin, rw - margin + 1);
+                    int ry = Random.Range(margin, rh - margin + 1);
+                    int left = area.outLine.left + rx + margin;
+                    int top = area.outLine.top + ry + margin;
                     int right = left + width;
                     int bottom = top + height;
+
+                    top = Mathf.Max(top, area.outLine.top + margin);
+                    bottom = Mathf.Min(bottom, area.outLine.bottom - margin);
+                    left = Mathf.Max(left, area.outLine.left + margin);
+                    right = Mathf.Min(right, area.outLine.right - margin);
+
                     area.room = new Rect2D(left, top, right, bottom);
                     FillRoom(area.room);
                 }
@@ -326,7 +332,6 @@ namespace Field
                 }
                 for (int i = 0; i < areas.Count - 2; i++)
                 {
-                    if (Random.Range(0, 2) == 0) continue;
                     if (areas[i].outLine.right < areas[i + 2].outLine.left)
                         CreateHorizontalRoad(areas[i], areas[i + 2]);
                     if (areas[i + 2].outLine.right < areas[i].outLine.left)
@@ -335,6 +340,18 @@ namespace Field
                         CreateVerticalRoad(areas[i], areas[i + 2]);
                     if (areas[i + 2].outLine.bottom < areas[i].outLine.top)
                         CreateVerticalRoad(areas[i + 2], areas[i]);
+                }
+                for (int i = 0; i < areas.Count - 3; i++)
+                {
+                    if (Random.Range(0, 3) == 0) continue;
+                    if (areas[i].outLine.right < areas[i + 3].outLine.left)
+                        CreateHorizontalRoad(areas[i], areas[i + 3]);
+                    if (areas[i + 3].outLine.right < areas[i].outLine.left)
+                        CreateHorizontalRoad(areas[i + 3], areas[i]);
+                    if (areas[i].outLine.bottom < areas[i + 3].outLine.top)
+                        CreateVerticalRoad(areas[i], areas[i + 3]);
+                    if (areas[i + 3].outLine.bottom < areas[i].outLine.top)
+                        CreateVerticalRoad(areas[i + 3], areas[i]);
                 }
 
             }
