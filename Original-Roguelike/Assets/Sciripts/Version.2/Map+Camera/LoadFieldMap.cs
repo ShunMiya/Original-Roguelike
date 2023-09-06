@@ -92,8 +92,6 @@ namespace Field
                     {
                         case "TileLayer":
                             string[] sdata = (layer.Element("data").Value).Split(',');
-                            w = int.Parse(layer.Attribute("width").Value);
-                            h = int.Parse(layer.Attribute("height").Value);
                             data = new Array2D(w, h);
                             for (int z = 0; z < h; z++)
                             {
@@ -172,7 +170,7 @@ namespace Field
             */
             public Array2D Create(int w, int h, Areamap field)
             {
-                data = new Array2D(w, h);
+                data = new Array2D(w+4, h+4);　//外枠２マスで壁を生成する
                 for (int x = 0; x < data.width; x++)
                 {
                     for (int y = 0; y < data.height; y++)
@@ -182,7 +180,7 @@ namespace Field
                 }
                 areas = new List<Area2D>();
                 Area2D area = new Area2D();
-                area.outLine = new Rect2D(0, 0, w - 1, h - 1);
+                area.outLine = new Rect2D(2, 2, w + 2, h + 2);　//内側に30*30で初期エリア作成
                 Split(area, Random.Range(0, 2) == 0);
                 CreateRooms();
                 SetObjects(field);
@@ -259,11 +257,6 @@ namespace Field
                     int top = area.outLine.top + ry + margin;
                     int right = left + width;
                     int bottom = top + height;
-
-                    top = Mathf.Max(top, area.outLine.top + margin);
-                    bottom = Mathf.Min(bottom, area.outLine.bottom - margin);
-                    left = Mathf.Max(left, area.outLine.left + margin);
-                    right = Mathf.Min(right, area.outLine.right - margin);
 
                     area.room = new Rect2D(left, top, right, bottom);
                     FillRoom(area.room);
