@@ -186,7 +186,7 @@ namespace Field
                 Split(area, Random.Range(0, 2) == 0);
                 CreateRooms();
                 SetObjects(field);
-                CreateRoads();
+                CreateRoads(field);
                 return data;
             }
 
@@ -282,7 +282,7 @@ namespace Field
             /**
             * …•½•ûŒü‚É“¹‚ğ‚Ì‚Î‚·
             */
-            private void CreateHorizontalRoad(Area2D area1, Area2D area2)
+            private void CreateHorizontalRoad(Area2D area1, Area2D area2, Areamap field)
             {
                 int y1 = Random.Range(area1.room.top, area1.room.bottom);
                 int y2 = Random.Range(area2.room.top, area2.room.bottom);
@@ -292,12 +292,16 @@ namespace Field
                     data.Set(x, y2, 0);
                 for (int y = Mathf.Min(y1, y2), end = Mathf.Max(y1, y2); y <= end; y++)
                     data.Set(area1.outLine.right, y, 0);
+                field.SetObject("Connection", "Connection", area1.room.right, y1);
+                field.SetObject("Connection", "Connection", area1.outLine.right, y1);
+                field.SetObject("Connection", "Connection", area2.room.left, y2);
+                field.SetObject("Connection", "Connection", area2.outLine.left - 1, y2);
             }
 
             /**
             * ‚’¼•ûŒü‚É“¹‚ğ‚Ì‚Î‚·
             */
-            private void CreateVerticalRoad(Area2D area1, Area2D area2)
+            private void CreateVerticalRoad(Area2D area1, Area2D area2, Areamap field)
             {
                 int x1 = Random.Range(area1.room.left, area1.room.right);
                 int x2 = Random.Range(area2.room.left, area2.room.right);
@@ -307,46 +311,50 @@ namespace Field
                     data.Set(x2, y, 0);
                 for (int x = Mathf.Min(x1, x2), end = Mathf.Max(x1, x2); x <= end; x++)
                     data.Set(x, area1.outLine.bottom, 0);
+                field.SetObject("Connection", "Connection", x1, area1.room.bottom);
+                field.SetObject("Connection", "Connection", x1, area1.outLine.bottom);
+                field.SetObject("Connection", "Connection", x2, area2.room.top);
+                field.SetObject("Connection", "Connection", x2, area2.outLine.top - 1);
             }
 
             /**
             * “¹‚ğì¬
             */
-            private void CreateRoads()
+            private void CreateRoads(Areamap field)
             {
                 for (int i = 0; i < areas.Count - 1; i++)
                 {
                     if (areas[i].outLine.right < areas[i + 1].outLine.left)
-                        CreateHorizontalRoad(areas[i], areas[i + 1]);
+                        CreateHorizontalRoad(areas[i], areas[i + 1], field);
                     if (areas[i + 1].outLine.right < areas[i].outLine.left)
-                        CreateHorizontalRoad(areas[i + 1], areas[i]);
+                        CreateHorizontalRoad(areas[i + 1], areas[i], field);
                     if (areas[i].outLine.bottom < areas[i + 1].outLine.top)
-                        CreateVerticalRoad(areas[i], areas[i + 1]);
+                        CreateVerticalRoad(areas[i], areas[i + 1], field);
                     if (areas[i + 1].outLine.bottom < areas[i].outLine.top)
-                        CreateVerticalRoad(areas[i + 1], areas[i]);
+                        CreateVerticalRoad(areas[i + 1], areas[i], field);
                 }
                 for (int i = 0; i < areas.Count - 2; i++)
                 {
                     if (areas[i].outLine.right < areas[i + 2].outLine.left)
-                        CreateHorizontalRoad(areas[i], areas[i + 2]);
+                        CreateHorizontalRoad(areas[i], areas[i + 2], field);
                     if (areas[i + 2].outLine.right < areas[i].outLine.left)
-                        CreateHorizontalRoad(areas[i + 2], areas[i]);
+                        CreateHorizontalRoad(areas[i + 2], areas[i], field);
                     if (areas[i].outLine.bottom < areas[i + 2].outLine.top)
-                        CreateVerticalRoad(areas[i], areas[i + 2]);
+                        CreateVerticalRoad(areas[i], areas[i + 2], field);
                     if (areas[i + 2].outLine.bottom < areas[i].outLine.top)
-                        CreateVerticalRoad(areas[i + 2], areas[i]);
+                        CreateVerticalRoad(areas[i + 2], areas[i], field);
                 }
                 for (int i = 0; i < areas.Count - 3; i++)
                 {
                     if (Random.Range(0, 3) == 0) continue;
                     if (areas[i].outLine.right < areas[i + 3].outLine.left)
-                        CreateHorizontalRoad(areas[i], areas[i + 3]);
+                        CreateHorizontalRoad(areas[i], areas[i + 3], field);
                     if (areas[i + 3].outLine.right < areas[i].outLine.left)
-                        CreateHorizontalRoad(areas[i + 3], areas[i]);
+                        CreateHorizontalRoad(areas[i + 3], areas[i], field);
                     if (areas[i].outLine.bottom < areas[i + 3].outLine.top)
-                        CreateVerticalRoad(areas[i], areas[i + 3]);
+                        CreateVerticalRoad(areas[i], areas[i + 3], field);
                     if (areas[i + 3].outLine.bottom < areas[i].outLine.top)
-                        CreateVerticalRoad(areas[i + 3], areas[i]);
+                        CreateVerticalRoad(areas[i + 3], areas[i], field);
                 }
 
             }
