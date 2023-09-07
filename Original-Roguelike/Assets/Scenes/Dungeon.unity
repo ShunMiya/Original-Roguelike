@@ -2775,7 +2775,7 @@ MonoBehaviour:
   newGrid:
     x: 0
     z: 0
-  maxPerFrame: 50
+  maxPerFrame: 40
   complementFrame: 0
 --- !u!114 &436213508
 MonoBehaviour:

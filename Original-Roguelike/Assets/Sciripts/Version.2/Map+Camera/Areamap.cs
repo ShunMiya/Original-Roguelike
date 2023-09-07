@@ -1,5 +1,8 @@
 using EnemySystem;
+using ItemSystemV2;
+using ItemSystemV2.Inventory;
 using MoveSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -97,14 +100,47 @@ namespace Field
                     enemy.GetComponent<EnemyAction>().target = playerMovement;
                     break;
                 case "Item":
-                    GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
-                    GameObject item = Instantiate(itemObj, items.transform);
-                    item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                    SetItem(name, xgrid, zgrid);
                     break;
                 case "Player":
                     playerMovement.SetPosition(xgrid, zgrid);
                     break;
             }
+        }
+
+        public void SetItem(string name, int xgrid, int zgrid)
+        {
+            if(name.Equals("Random"))
+            {
+                int itemId = 0;
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
+                SqliteDatabase sqlDB = new SqliteDatabase(databasePath);
+                string query = "SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1;";
+                DataTable Data = sqlDB.ExecuteQuery(query);
+                int FloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
+                List<ItemAppearData> ItemList = DungeonDataCache.GetItemsAppearInFloor(FloorLevel);
+                int MaxRate = 0;
+                foreach (ItemAppearData itemAppear in ItemList) MaxRate += itemAppear.GenerationRate;
+                int p = UnityEngine.Random.Range(1, MaxRate + 1);
+                foreach (ItemAppearData itemAppear in ItemList)
+                {
+                    p -= itemAppear.GenerationRate;
+                    if (p <= 0)
+                    {
+                        itemId = itemAppear.ItemId;
+                        break;
+                    }
+                }
+                IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
+                Debug.Log(itemData.ItemName);
+                GameObject ItemObj = (GameObject)Resources.Load("PrefabsV2/" + itemData.PrefabName);
+                GameObject Item = Instantiate(ItemObj, items.transform);
+                Item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                return;
+            }
+            GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+            GameObject item = Instantiate(itemObj, items.transform);
+            item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
         }
 
         /**

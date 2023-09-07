@@ -82,7 +82,9 @@ namespace Field
                 int h = int.Parse(map.Attribute("height").Value);
                 if (group == null)
                 {
-                    return dungeon.Create(w, h, field);
+                    int RandomW = Random.Range(w - 5, w + 5);
+                    int RandomH = Random.Range(h - 5, h + 5);
+                    return dungeon.Create(RandomW, RandomH, field);
                 }
 
                 Array2D data = null;
@@ -245,16 +247,16 @@ namespace Field
             {
                 foreach (var area in areas)
                 {
-                    int aw = area.outLine.width - margin * 2 - 1;
-                    int ah = area.outLine.height - margin * 2 - 1;
+                    int aw = area.outLine.width - margin * 2 ;
+                    int ah = area.outLine.height - margin * 2 ;
                     int width = Random.Range(minRoom, aw);
                     int height = Random.Range(minRoom, ah);
                     int rw = aw - width;
                     int rh = ah - height;
-                    int rx = Random.Range(margin, rw - margin + 1);
-                    int ry = Random.Range(margin, rh - margin + 1);
-                    int left = area.outLine.left + rx + margin;
-                    int top = area.outLine.top + ry + margin;
+                    int rx = Random.Range(margin, rw - margin );
+                    int ry = Random.Range(margin, rh - margin );
+                    int left = area.outLine.left + rx ;
+                    int top = area.outLine.top + ry ;
                     int right = left + width;
                     int bottom = top + height;
 
@@ -376,6 +378,20 @@ namespace Field
                 }
                 SetObject("Stairs", "Gimmick", field, tmpData);
                 SetObject("Player", "Player", field, tmpData);
+
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
+                SqliteDatabase sqlDB = new SqliteDatabase(databasePath);
+                string query = "SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1;";
+                DataTable Data = sqlDB.ExecuteQuery(query);
+                int FloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
+
+                FloorInfomationData FloorInfo = DungeonDataCache.GetFloorInformation(FloorLevel);
+                int PopItem = Random.Range(FloorInfo.MinItems, FloorInfo.MaxItems + 1);
+                Debug.Log(PopItem + "個ランダムアイテム生成");
+                for (int i = 0; i < PopItem; i++)
+                {
+                    SetObject("Random", "Item", field, tmpData);
+                }
             }
 
             public class Rect2D

@@ -66,19 +66,35 @@ namespace Field
             {
                 ItemAppearData ItemAppearData = new ItemAppearData();
                 ItemAppearData.Iid = Convert.ToInt32(row["Iid"]);
-                ItemAppearData.FloorLevel = Convert.ToInt32(row["FloorLevel"]);
                 ItemAppearData.ItemId = Convert.ToInt32(row["ItemId"]);
                 ItemAppearData.MinFloor = Convert.ToInt32(row["MinFloor"]);
                 ItemAppearData.MaxFloor = Convert.ToInt32(row["MaxFloor"]);
+                ItemAppearData.GenerationRate = Convert.ToInt32(row["GenerationRate"]);
                 ItemAppearData.ShopOnly = Convert.ToBoolean(row["ShopOnly"]);
 
-                ItemAppearCache[ItemAppearData.FloorLevel] = ItemAppearData;
+
+                ItemAppearCache[ItemAppearData.Iid] = ItemAppearData;
             }
         }
 
         public static ItemAppearData GetItemAppear(int Iid)
         {
             return ItemAppearCache.TryGetValue(Iid, out ItemAppearData ItemAppearData) ? ItemAppearData as ItemAppearData : null;
+        }
+
+        public static List<ItemAppearData> GetItemsAppearInFloor(int floorLevel)
+        {
+            List<ItemAppearData> itemsAppearList = new List<ItemAppearData>();
+
+            foreach (ItemAppearData itemAppearData in ItemAppearCache.Values)
+            {
+                if (floorLevel >= itemAppearData.MinFloor && floorLevel <= itemAppearData.MaxFloor)
+                {
+                    itemsAppearList.Add(itemAppearData);
+                }
+            }
+
+            return itemsAppearList;
         }
 
     }
