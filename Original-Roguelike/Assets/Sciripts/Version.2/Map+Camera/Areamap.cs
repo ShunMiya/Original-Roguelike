@@ -19,6 +19,7 @@ namespace Field
         public GameObject enemies;
         public GameObject items;
         public GameObject gimmicks;
+        public GameObject connections;
 
         private Array2D map;
         private static float onetile = GameRule.GridSize;
@@ -93,6 +94,11 @@ namespace Field
                     GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
                     Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
                     break;
+                case "Connection":
+                    GameObject connectObj = (GameObject)Resources.Load("PrefabsV2/Connection");
+                    GameObject connect = Instantiate(connectObj, connections.transform);
+                    connect.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    break;
                 case "Enemy":
                     SetEnemy(name, xgrid, zgrid);
                     break;
@@ -129,7 +135,6 @@ namespace Field
                     }
                 }
                 IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
-                Debug.Log(itemData.ItemName);
                 GameObject ItemObj = (GameObject)Resources.Load("PrefabsV2/" + itemData.PrefabName);
                 GameObject Item = Instantiate(ItemObj, items.transform);
                 Item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
@@ -164,7 +169,6 @@ namespace Field
                     }
                 }
                 EnemyDataV2 enemyData = EnemyDataCacheV2.GetEnemyData(enemyId);
-                Debug.Log(enemyData.EnemyName);
                 GameObject EnemyObj = (GameObject)Resources.Load("PrefabsV2/" + enemyData.PrefabName);
                 GameObject Enemy = Instantiate(EnemyObj, enemies.transform);
                 Enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
@@ -185,26 +189,18 @@ namespace Field
         {
             Transform walls = floor.transform.GetChild(0);
             for (int i = 0; i < walls.childCount; i++)
-            {
                 Destroy(walls.GetChild(i).gameObject);
-            }
             Transform effects = floor.transform.GetChild(1);
             for (int i = 0; i < effects.childCount; i++)
-            {
                 Destroy(effects.GetChild(i).gameObject);
-            }
             for (int i = 0; i < enemies.transform.childCount; i++)
-            {
                 Destroy(enemies.transform.GetChild(i).gameObject);
-            }
             for (int i = 0; i < items.transform.childCount; i++)
-            {
                 Destroy(items.transform.GetChild(i).gameObject);
-            }
             for (int i = 0; i < gimmicks.transform.childCount; i++)
-            {
                 Destroy(gimmicks.transform.GetChild(i).gameObject);
-            }
+            for (int i = 0; i < connections.transform.childCount; i++)
+                Destroy(connections.transform.GetChild(i).gameObject);
         }
 
         /**

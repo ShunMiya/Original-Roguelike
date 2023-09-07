@@ -17,11 +17,14 @@ namespace EnemySystem
         private Areamap areamap;
         public MoveAction target;
 
+        public Pos2D nextConnectionPos;
+
         public void Start()
         {
             enemyStatus = GetComponent<EnemyStatusV2>();
             enemy = EnemyDataCacheV2.GetEnemyData(enemyStatus.EnemyID);
             areamap = FindObjectOfType<Areamap>();
+            nextConnectionPos = moveAction.grid;
         }
         public void EnemyActionSet()
         {
@@ -29,7 +32,7 @@ namespace EnemySystem
             switch(enemy.AIType)
             {
                 case 0: //Šî–{ˆÚ“®
-                    Patrol();
+                    patrol();
                     break;
                 case 1: //“¦‘–
                     Escape();
@@ -43,6 +46,91 @@ namespace EnemySystem
                 default:
                     AllRandom();
                     break;
+            }
+        }
+
+        private void patrol()
+        {
+            GoAroundAI();
+        }
+
+        public void SetNextConnection(int xgrid, int zgrid, Dir dir)
+        {
+            Areamap field = GetComponentInParent<Areamap>();
+            ObjectPosition[] pos = field.connections.GetComponentsInChildren<ObjectPosition>();
+            List<ObjectPosition> posList = new List<ObjectPosition>();
+            posList.AddRange(pos);
+            List<Pos2D> cGrids = new List<Pos2D>();
+            foreach (var p in posList)
+            {
+                if (p.grid.x == xgrid && p.grid.z == zgrid) continue;
+                if (dir == Dir.Left && p.grid.x > xgrid) continue;
+                if (dir == Dir.Right && p.grid.x < xgrid) continue;
+                if (dir == Dir.Up && p.grid.z < zgrid) continue;
+                if (dir == Dir.Down && p.grid.z > zgrid) continue;
+                if (dir == Dir.LeftUp && p.grid.x > xgrid && p.grid.z < zgrid) continue;
+                if (dir == Dir.RightUp && p.grid.x < xgrid && p.grid.z < zgrid) continue;
+                if (dir == Dir.LeftDown &&  p.grid.x > xgrid &&p.grid.z > zgrid) continue;
+                if (dir == Dir.RightDown && p.grid.x < xgrid && p.grid.z > zgrid) continue;
+                int minX = Mathf.Min(p.grid.x, xgrid);
+                int maxX = Mathf.Max(p.grid.x, xgrid);
+                int minZ = Mathf.Min(p.grid.z, zgrid);
+                int maxZ = Mathf.Max(p.grid.z, zgrid);
+                bool isEnd = false;
+                for (int x = minX; x <= maxX; x++)
+                {
+                    for (int z = minZ; z <= maxZ; z++)
+                    {
+                        if (field.IsCollidediagonal(x, z))
+                        {
+                            isEnd = true;
+                            break;
+                        }
+                    }
+                    if (isEnd) break;
+                }
+                if (isEnd) continue;
+                cGrids.Add(p.grid);
+            }
+            if (cGrids.Count < 1)
+            {
+                Debug.Log("‚Ç‚ê‚à‘I‚Î‚ê‚Ä‚È‚¢");
+                nextConnectionPos = moveAction.grid;
+                return;
+            }
+            int idx = Random.Range(0, cGrids.Count);
+            nextConnectionPos = cGrids[idx];
+        }
+
+        private void GoAroundAI()
+        {
+            Pos2D grid = moveAction.grid;
+            int R = (int)transform.rotation.eulerAngles.y;
+            if (R > 180) R -= 360;
+            Dir dir = DirUtil.GetDirection(R);
+            Debug.Log(dir);
+            if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
+            {
+                SetNextConnection(grid.x, grid.z, dir);
+                if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
+                {
+                    dir = DirUtil.GetDirection(DirUtil.ReverseDirection(R));
+                    Debug.Log(dir);
+                    SetNextConnection(grid.x, grid.z, dir);
+                }
+            }
+
+            Debug.Log("grid:"+grid.x+","+grid.z+" Cone:"+nextConnectionPos.x+","+nextConnectionPos.z);
+            Vector3 PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
+            transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
+            bool move = moveAction.MoveStance(PosRota.x, PosRota.z);
+            if(!move)
+            {
+                Debug.Log("‹l‚Ü‚Á‚½‚Ì‚Å”½“]");
+                dir = DirUtil.GetDirection(DirUtil.ReverseDirection(R));
+                SetNextConnection(grid.x, grid.z, dir);
+                PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
+                transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
             }
         }
 

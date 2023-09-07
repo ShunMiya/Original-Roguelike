@@ -67,6 +67,31 @@ public static class DirUtil
         return new Vector3(0, 0, 0);
     }
 
+    public static Dir GetNewPosRotation(Pos2D pos, Pos2D targetPos)
+    {
+        if (pos.x == targetPos.x)
+        {
+            if (pos.z < targetPos.z) return Dir.Up;
+            if (pos.z > targetPos.z) return Dir.Down;
+        }
+        if (pos.z == targetPos.z)
+        {
+            if (pos.x < targetPos.x) return Dir.Right;
+            if (pos.x > targetPos.x) return Dir.Left;
+        }
+        if(pos.x < targetPos.x)
+        {
+            if (pos.z < targetPos.z) return Dir.RightUp;
+            if (pos.z > targetPos.z) return Dir.RightDown;
+        }
+        if (pos.x > targetPos.x)
+        {
+            if (pos.z < targetPos.z) return Dir.LeftUp;
+            if (pos.z > targetPos.z) return Dir.LeftDown;
+        }
+        return Dir.Pause;
+    }
+
     //Šp“x‚ðŒ³‚É(XŽ²ˆÚ“®,ZŽ²ˆÚ“®)‚ð•Ô‚·
     public static Pos2D SetAttackPoint(int R)
     {
@@ -143,5 +168,30 @@ public static class DirUtil
                 return -45;
         }
         return 0;
+    }
+
+    //Šp“x‚ðŒ³‚ÉŒü‚«‚ð•Ô‚·
+    public static Dir GetDirection(int R)
+    {
+        switch (R)
+        {
+            case -45:
+                return Dir.LeftUp;
+            case 0:
+                return Dir.Up;
+            case 45:
+                return Dir.RightUp;
+            case -90:
+                return Dir.Left;
+            case 90:
+                return Dir.Right;
+            case -135:
+                return Dir.LeftDown;
+            case 180:
+                return Dir.Down;
+            case 135:
+                return Dir.RightDown;
+        }
+        return Dir.Pause;
     }
 }
