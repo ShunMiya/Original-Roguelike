@@ -94,10 +94,7 @@ namespace Field
                     Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
                     break;
                 case "Enemy":
-                    GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
-                    GameObject enemy = Instantiate(enemyObj, enemies.transform);
-                    enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
-                    enemy.GetComponent<EnemyAction>().target = playerMovement;
+                    SetEnemy(name, xgrid, zgrid);
                     break;
                 case "Item":
                     SetItem(name, xgrid, zgrid);
@@ -141,6 +138,44 @@ namespace Field
             GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
             GameObject item = Instantiate(itemObj, items.transform);
             item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+        }
+
+        public void SetEnemy(string name, int xgrid, int zgrid)
+        {
+            if (name.Equals("Random"))
+            {
+                int enemyId = 0;
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
+                SqliteDatabase sqlDB = new SqliteDatabase(databasePath);
+                string query = "SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1;";
+                DataTable Data = sqlDB.ExecuteQuery(query);
+                int FloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
+                List<EnemyAppearData> EnemyList = DungeonDataCache.GetEnemyAppearInFloor(FloorLevel);
+                int MaxRate = 0;
+                foreach (EnemyAppearData enemyAppear in EnemyList) MaxRate += enemyAppear.GenerationRate;
+                int p = UnityEngine.Random.Range(1, MaxRate + 1);
+                foreach (EnemyAppearData enemyAppear in EnemyList)
+                {
+                    p -= enemyAppear.GenerationRate;
+                    if (p <= 0)
+                    {
+                        enemyId = enemyAppear.EnemyId;
+                        break;
+                    }
+                }
+                EnemyDataV2 enemyData = EnemyDataCacheV2.GetEnemyData(enemyId);
+                Debug.Log(enemyData.EnemyName);
+                GameObject EnemyObj = (GameObject)Resources.Load("PrefabsV2/" + enemyData.PrefabName);
+                GameObject Enemy = Instantiate(EnemyObj, enemies.transform);
+                Enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                Enemy.GetComponent<EnemyAction>().target = playerMovement;
+                return;
+            }
+            GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+            GameObject enemy = Instantiate(enemyObj, enemies.transform);
+            enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+            enemy.GetComponent<EnemyAction>().target = playerMovement;
+
         }
 
         /**

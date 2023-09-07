@@ -384,14 +384,15 @@ namespace Field
                 string query = "SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1;";
                 DataTable Data = sqlDB.ExecuteQuery(query);
                 int FloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
-
                 FloorInfomationData FloorInfo = DungeonDataCache.GetFloorInformation(FloorLevel);
+
                 int PopItem = Random.Range(FloorInfo.MinItems, FloorInfo.MaxItems + 1);
                 Debug.Log(PopItem + "個ランダムアイテム生成");
-                for (int i = 0; i < PopItem; i++)
-                {
-                    SetObject("Random", "Item", field, tmpData);
-                }
+                for (int i = 0; i < PopItem; i++) SetObject("Random", "Item", field, tmpData);
+
+                int PopEnemy = Random.Range(FloorInfo.MinEnemies,FloorInfo.MaxEnemies + 1);
+                Debug.Log(PopEnemy + "体ランダム敵生成");
+                for(int i = 0; i < PopEnemy; i++) SetObject("Random", "Enemy", field, tmpData);
             }
 
             public class Rect2D

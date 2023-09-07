@@ -59,6 +59,21 @@ namespace Field
             return EnemyAppearCache.TryGetValue(Iid, out EnemyAppearData EnemyAppearData) ? EnemyAppearData as EnemyAppearData : null;
         }
 
+        public static List<EnemyAppearData> GetEnemyAppearInFloor(int floorLevel)
+        {
+            List<EnemyAppearData> enemiesAppearList = new List<EnemyAppearData>();
+
+            foreach (EnemyAppearData enemyAppearData in EnemyAppearCache.Values)
+            {
+                if (floorLevel == enemyAppearData.FloorLevel)
+                {
+                    enemiesAppearList.Add(enemyAppearData);
+                }
+            }
+
+            return enemiesAppearList;
+        }
+
 
         public static void CacheItemAppear(DataTable ItemAppearTable)
         {
