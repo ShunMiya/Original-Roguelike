@@ -20,6 +20,7 @@ namespace Field
         public GameObject items;
         public GameObject gimmicks;
         public GameObject connections;
+        public GameObject rooms;
 
         private Array2D map;
         private static float onetile = GameRule.GridSize;
@@ -84,7 +85,7 @@ namespace Field
             }
         }
 
-        public void SetObject(string name, string type, int xgrid, int zgrid)
+        public void SetObject(string name, string type, int xgrid, int zgrid, int width, int height)
         {
 
             switch (type)
@@ -98,6 +99,12 @@ namespace Field
                     GameObject connectObj = (GameObject)Resources.Load("PrefabsV2/Connection");
                     GameObject connect = Instantiate(connectObj, connections.transform);
                     connect.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    break;
+                case "Room":
+                    GameObject roomObj = (GameObject)Resources.Load("PrefabsV2/Room");
+                    GameObject room = Instantiate(roomObj, rooms.transform);
+                    room.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    room.GetComponent<ObjectPosition>().SetRange(0, 0, width, height);
                     break;
                 case "Enemy":
                     SetEnemy(name, xgrid, zgrid);
@@ -201,6 +208,8 @@ namespace Field
                 Destroy(gimmicks.transform.GetChild(i).gameObject);
             for (int i = 0; i < connections.transform.childCount; i++)
                 Destroy(connections.transform.GetChild(i).gameObject);
+            for (int i = 0; i < rooms.transform.childCount; i++)
+                Destroy(rooms.transform.GetChild(i).gameObject);
         }
 
         /**
@@ -364,5 +373,27 @@ namespace Field
             return setPos;
         }
 
+        //“n‚³‚ê‚½À•W‚ª“n‚³‚ê‚½•”‰®“à‚©‚Ç‚¤‚©
+        public bool IsInRoom(ObjectPosition room, int xgrid, int zgrid)
+        {
+            int leftx = room.grid.x + room.range.left;
+            int rightx = leftx + room.range.right;
+            int topz = room.grid.z + room.range.top;
+            int bottomz = topz + room.range.bottom;
+            return xgrid >= leftx && xgrid <= rightx && zgrid >= topz && zgrid <= bottomz;
+        }
+
+        //“n‚³‚ê‚½À•W‚ª•”‰®“à‚Å‚ ‚ê‚Î•”‰®‚ð•Ô‚·B
+        public ObjectPosition GetInRoom(int xgrid, int zgrid)
+        {
+            foreach (var room in rooms.GetComponentsInChildren<ObjectPosition>())
+            {
+                if (IsInRoom(room, xgrid, zgrid))
+                {
+                    return room;
+                }
+            }
+            return null;
+        }
     }
 }

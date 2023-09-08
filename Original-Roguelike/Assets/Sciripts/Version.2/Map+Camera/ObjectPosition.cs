@@ -5,6 +5,7 @@ namespace Field
     public class ObjectPosition : MonoBehaviour
     {
         public Pos2D grid = new Pos2D();
+        public Rect2D range = new Rect2D(0, 0, 0, 0);
 
         // インスペクターの値が変わった時に呼び出される
         void OnValidate()
@@ -23,6 +24,13 @@ namespace Field
             grid.x = xgrid;
             grid.z = zgrid;
             transform.position = new Vector3(CoordinateTransformation.ToWorldX(xgrid), (float)-0.5, CoordinateTransformation.ToWorldZ(zgrid));
+        }
+        public void SetRange(int left, int right, int width, int height)
+        {
+            range.left = left;
+            range.right = right;
+            range.right = left + width - 1;
+            range.bottom = right + height - 1;
         }
     }
 }
