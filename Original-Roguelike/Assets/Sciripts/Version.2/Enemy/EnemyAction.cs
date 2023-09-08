@@ -18,7 +18,8 @@ namespace EnemySystem
         public MoveAction target;
 
         public Pos2D nextConnectionPos;
-
+        public int detectDistance = 3;
+        private bool OldDetectTarget = false;
         public void Start()
         {
             enemyStatus = GetComponent<EnemyStatusV2>();
@@ -32,7 +33,7 @@ namespace EnemySystem
             switch(enemy.AIType)
             {
                 case 0: //Šî–{ˆÚ“®
-                    patrol();
+                    Patrol();
                     break;
                 case 1: //“¦‘–
                     Escape();
@@ -49,9 +50,62 @@ namespace EnemySystem
             }
         }
 
-        private void patrol()
+        private void Patrol()
         {
+            bool NowDetectTarget = DetectTarget();
+
+            if(OldDetectTarget && !NowDetectTarget)
+            {
+                nextConnectionPos = moveAction.grid;
+            }
+
+            OldDetectTarget = NowDetectTarget;
+
+            if(NowDetectTarget)
+            {
+                Tracking();
+                return;
+            }
             GoAroundAI();
+        }
+
+        private bool DetectTarget()
+        {
+            int distanceX = Mathf.Abs(target.newGrid.x - moveAction.grid.x);
+            int distanceZ = Mathf.Abs(target.newGrid.z - moveAction.grid.z);
+            return distanceX < detectDistance && distanceZ < detectDistance;
+        }
+
+        private void GoAroundAI()
+        {
+            Pos2D grid = moveAction.grid;
+            int R = (int)transform.rotation.eulerAngles.y;
+            if (R > 180) R -= 360;
+            Dir dir = DirUtil.GetDirection(R);
+            Debug.Log(dir);
+            if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
+            {
+                SetNextConnection(grid.x, grid.z, dir);
+                if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
+                {
+                    dir = DirUtil.GetDirection(DirUtil.ReverseDirection(R));
+                    Debug.Log(dir);
+                    SetNextConnection(grid.x, grid.z, dir);
+                }
+            }
+
+            Debug.Log("grid:" + grid.x + "," + grid.z + " Cone:" + nextConnectionPos.x + "," + nextConnectionPos.z);
+            Vector3 PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
+            transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
+            bool move = moveAction.MoveStance(PosRota.x, PosRota.z);
+            if (!move)
+            {
+                Debug.Log("‹l‚Ü‚Á‚½‚Ì‚Å”½“]");
+                dir = DirUtil.GetDirection(DirUtil.ReverseDirection(R));
+                SetNextConnection(grid.x, grid.z, dir);
+                PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
+                transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
+            }
         }
 
         public void SetNextConnection(int xgrid, int zgrid, Dir dir)
@@ -102,39 +156,7 @@ namespace EnemySystem
             nextConnectionPos = cGrids[idx];
         }
 
-        private void GoAroundAI()
-        {
-            Pos2D grid = moveAction.grid;
-            int R = (int)transform.rotation.eulerAngles.y;
-            if (R > 180) R -= 360;
-            Dir dir = DirUtil.GetDirection(R);
-            Debug.Log(dir);
-            if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
-            {
-                SetNextConnection(grid.x, grid.z, dir);
-                if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
-                {
-                    dir = DirUtil.GetDirection(DirUtil.ReverseDirection(R));
-                    Debug.Log(dir);
-                    SetNextConnection(grid.x, grid.z, dir);
-                }
-            }
-
-            Debug.Log("grid:"+grid.x+","+grid.z+" Cone:"+nextConnectionPos.x+","+nextConnectionPos.z);
-            Vector3 PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
-            transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
-            bool move = moveAction.MoveStance(PosRota.x, PosRota.z);
-            if(!move)
-            {
-                Debug.Log("‹l‚Ü‚Á‚½‚Ì‚Å”½“]");
-                dir = DirUtil.GetDirection(DirUtil.ReverseDirection(R));
-                SetNextConnection(grid.x, grid.z, dir);
-                PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
-                transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
-            }
-        }
-
-        private void Patrol()
+        private void Tracking()
         {
             int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range);
             if (Rota != 1)
@@ -171,7 +193,7 @@ namespace EnemySystem
         {
             if(Random.Range(0,2) > 0)
             {
-                Patrol();
+                Tracking();
                 return;
             }
             AllRandom();
