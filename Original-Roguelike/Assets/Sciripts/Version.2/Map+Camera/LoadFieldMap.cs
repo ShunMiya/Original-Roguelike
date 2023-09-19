@@ -76,6 +76,8 @@ namespace Field
                 }
                 int w = int.Parse(map.Attribute("width").Value);
                 int h = int.Parse(map.Attribute("height").Value);
+                int pw = int.Parse(map.Attribute("tilewidth").Value);
+                int ph = int.Parse(map.Attribute("tileheight").Value);
                 if (group == null)
                 {
                     int RandomW = Random.Range(w - 5, w + 5);
@@ -90,6 +92,8 @@ namespace Field
                     {
                         case "TileLayer":
                             string[] sdata = (layer.Element("data").Value).Split(',');
+                            w = int.Parse(layer.Attribute("width").Value);
+                            h = int.Parse(layer.Attribute("height").Value);
                             data = new Array2D(w, h);
                             for (int z = 0; z < h; z++)
                             {
@@ -111,8 +115,8 @@ namespace Field
                             {
                                 int x = int.Parse(obj.Attribute("x").Value);
                                 int z = int.Parse(obj.Attribute("y").Value);
-                                int pw = int.Parse(obj.Attribute("width").Value);
-                                int ph = int.Parse(obj.Attribute("height").Value);
+                                int rw = int.Parse(obj.Attribute("width").Value);
+                                int rh = int.Parse(obj.Attribute("height").Value);
                                 string name = obj.Attribute("name").Value;
                                 string type = "";
                                 foreach (var prop in obj.Element("properties").Elements("property"))
@@ -124,7 +128,7 @@ namespace Field
                                             break;
                                     }
                                 }
-                                field.SetObject(name, type, x/pw, ToMirrorZ(z / ph, h), pw, ph);
+                                field.SetObject(name, type, x/pw, ToMirrorZ(z / ph, h) - (rh / ph), rw / pw, rh / ph);
                             }
                             break;
                     }
