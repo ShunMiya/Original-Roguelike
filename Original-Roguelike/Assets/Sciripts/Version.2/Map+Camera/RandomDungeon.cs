@@ -110,7 +110,7 @@ namespace Field
 
                 area.room = new Rect2D(left, top, right, bottom);
                 FillRoom(area.room);
-                field.SetObject("Room", "Room", left, top, width, height);
+                field.SetObject("Room", "Room", left, top, width + 1, height + 1);
             }
         }
 

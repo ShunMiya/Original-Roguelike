@@ -128,7 +128,7 @@ namespace Field
                                             break;
                                     }
                                 }
-                                field.SetObject(name, type, x/pw, ToMirrorZ(z / ph, h) - (rh / ph), rw / pw, rh / ph);
+                                field.SetObject(name, type, x/pw, ToMirrorZ(z / ph, h) - (rh / ph), rw / pw + 1, rh / ph + 1);
                             }
                             break;
                     }

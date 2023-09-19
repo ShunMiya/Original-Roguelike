@@ -5,6 +5,7 @@ using UnityEngine;
 using AttackSystem;
 using Field;
 using System.Linq;
+using UnityEditor;
 
 namespace EnemySystem
 {
@@ -18,7 +19,7 @@ namespace EnemySystem
         public MoveAction target;
 
         public Pos2D nextConnectionPos;
-        public int detectDistance = 3;
+        public int detectDistance = 4;
         private bool OldDetectTarget = false;
         public void Start()
         {
@@ -56,7 +57,7 @@ namespace EnemySystem
 
             if(OldDetectTarget && !NowDetectTarget)
             {
-                nextConnectionPos = moveAction.grid;
+                nextConnectionPos = target.grid;
             }
 
             OldDetectTarget = NowDetectTarget;
@@ -71,9 +72,33 @@ namespace EnemySystem
 
         private bool DetectTarget()
         {
-            int distanceX = Mathf.Abs(target.newGrid.x - moveAction.grid.x);
-            int distanceZ = Mathf.Abs(target.newGrid.z - moveAction.grid.z);
-            return distanceX < detectDistance && distanceZ < detectDistance;
+            Areamap field = GetComponentInParent<Areamap>();
+            Pos2D agrid = moveAction.grid;
+            Pos2D tgrid = target.newGrid;
+            ObjectPosition room = field.GetInRoom(agrid.x, agrid.z);
+
+            if(room != null)
+            {
+                if (field.IsInRoom(room, tgrid.x, tgrid.z)) return true;
+            }
+            
+            if (agrid.x == tgrid.x && Mathf.Abs(agrid.z - tgrid.z) <= detectDistance)
+            {
+                for (int z = Mathf.Min(agrid.z, tgrid.z), ez = Mathf.Max(agrid.z, tgrid.z); z < ez; z++)
+                {
+                    if (field.IsCollidediagonal(agrid.x, z)) return false;
+                }
+                return true;
+            }
+            if (agrid.z == tgrid.z && Mathf.Abs(agrid.x - tgrid.x) <= detectDistance)
+            {
+                for (int x = Mathf.Min(agrid.x, tgrid.x), ex = Mathf.Max(agrid.x, tgrid.x); x < ex; x++)
+                {
+                    if (field.IsCollidediagonal(x, agrid.z)) return false;
+                }
+                return true;
+            }
+            return false;
         }
 
         private void GoAroundAI()
@@ -82,25 +107,20 @@ namespace EnemySystem
             int R = (int)transform.rotation.eulerAngles.y;
             if (R > 180) R -= 360;
             Dir dir = DirUtil.GetDirection(R);
-            Debug.Log(dir);
             if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
             {
                 SetNextConnection(grid.x, grid.z, dir);
                 if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
                 {
                     dir = DirUtil.GetDirection(DirUtil.ReverseDirection(R));
-                    Debug.Log(dir);
                     SetNextConnection(grid.x, grid.z, dir);
                 }
             }
-
-            Debug.Log("grid:" + grid.x + "," + grid.z + " Cone:" + nextConnectionPos.x + "," + nextConnectionPos.z);
             Vector3 PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
             transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
             bool move = moveAction.MoveStance(PosRota.x, PosRota.z);
             if (!move)
             {
-                Debug.Log("‹l‚Ü‚Á‚½‚Ì‚Å”½“]");
                 dir = DirUtil.GetDirection(DirUtil.ReverseDirection(R));
                 SetNextConnection(grid.x, grid.z, dir);
                 PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
@@ -148,7 +168,6 @@ namespace EnemySystem
             }
             if (cGrids.Count < 1)
             {
-                Debug.Log("‚Ç‚ê‚à‘I‚Î‚ê‚Ä‚È‚¢");
                 nextConnectionPos = moveAction.grid;
                 return;
             }
@@ -182,11 +201,14 @@ namespace EnemySystem
 
         private void NoMove()
         {
-            int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range);
-            if (Rota == 1) return;
-            attackAction.EnemyY = Rota;
-            AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
-            attackObjects.objectsToAttack.Add(attackAction);
+            if(DetectTarget())
+            {
+                int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range);
+                if (Rota == 1) return;
+                attackAction.EnemyY = Rota;
+                AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
+                attackObjects.objectsToAttack.Add(attackAction);
+            }
         }
 
         private void Freaky()
