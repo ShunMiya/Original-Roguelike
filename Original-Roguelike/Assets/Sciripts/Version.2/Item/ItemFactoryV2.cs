@@ -78,29 +78,11 @@ namespace ItemSystemV2
             {
                 GameObject spawnedItem = Instantiate(prefab, parent.transform);
                 spawnedItem.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
-                int randomNum = NumSet();
+                int randomNum = RandomNum.NumSetStock();
                 spawnedItem.GetComponent<SteppedOnEvent>().num = randomNum;
                 if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
                 systemText.TextSet(randomItem.ItemName + " Num:" + randomNum + " Drop");
             }
         }
-
-        public int NumSet()
-        {
-            int randomNum = Random.Range(1, 101);
-            int selectedNumber;
-            if (randomNum <= 35)
-                selectedNumber = 1;
-            else if (randomNum <= 60)
-                selectedNumber = 2;
-            else if (randomNum <= 80)
-                selectedNumber = 3;
-            else if (randomNum <= 95)
-                selectedNumber = 4;
-            else
-                selectedNumber = 5;
-            return selectedNumber;
-        }
-
     }
 }

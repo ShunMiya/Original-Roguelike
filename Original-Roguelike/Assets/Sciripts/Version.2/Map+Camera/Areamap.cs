@@ -145,11 +145,15 @@ namespace Field
                 GameObject ItemObj = (GameObject)Resources.Load("PrefabsV2/" + itemData.PrefabName);
                 GameObject Item = Instantiate(ItemObj, items.transform);
                 Item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                int randomnum = RandomNum.NumSetStock();
+                Item.GetComponent<SteppedOnEvent>().num = randomnum;
                 return;
             }
             GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
             GameObject item = Instantiate(itemObj, items.transform);
             item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+            int randomNum = RandomNum.NumSetStock();
+            item.GetComponent<SteppedOnEvent>().num = randomNum;
         }
 
         public void SetEnemy(string name, int xgrid, int zgrid)
