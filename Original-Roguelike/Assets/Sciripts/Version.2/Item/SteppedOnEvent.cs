@@ -9,7 +9,7 @@ namespace ItemSystemV2
     public class SteppedOnEvent : MonoBehaviour
     {
         [SerializeField] private int ObjType;
-        [SerializeField] private int itemId;
+        [SerializeField] private int Id;
         public int num;
         private PauseSystemV2 pauseSystemV2;
 
@@ -38,7 +38,7 @@ namespace ItemSystemV2
         {
             SQLInventoryAddV2 playerInventoryV2 = FindObjectOfType<SQLInventoryAddV2>();
             
-            bool ItemGet = playerInventoryV2.AddItem(itemId, num);
+            bool ItemGet = playerInventoryV2.AddItem(Id, num);
             
             if (ItemGet == true) Destroy(gameObject);
         }

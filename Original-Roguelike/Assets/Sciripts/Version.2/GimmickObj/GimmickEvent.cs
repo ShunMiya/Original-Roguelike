@@ -50,7 +50,6 @@ namespace Field
                     break;
             }
 
-
             yield return null;
         }
 
