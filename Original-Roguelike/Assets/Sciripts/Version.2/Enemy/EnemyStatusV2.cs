@@ -13,12 +13,14 @@ namespace EnemySystem
 
         public float currentHP;
         public int EnemyID;
+        private int Defense;
 
         private void Start()
         {
             systemText = FindObjectOfType<SystemTextV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(EnemyID);
             currentHP = enemy.MaxHP;
+            Defense = enemy.Defense;
 
         }
         public void TakeDamage(float damage,int R, float HitRate)
@@ -41,7 +43,14 @@ namespace EnemySystem
             }
             #endregion
 
-            currentHP -= damage;
+            #region É_ÉÅÅ[ÉWåàíËèàóù
+            float damageModifier = UnityEngine.Random.Range(0.85f, 1.0f);
+            int ModifierDamage = Mathf.RoundToInt(damage * damageModifier);
+
+            int reducedDamage = Mathf.CeilToInt(ModifierDamage * Mathf.Pow(GameRule.DamageIndexValue, Defense));
+            #endregion
+
+            currentHP -= reducedDamage;
             systemText.TextSet("Enemy" + damage + "Damage! HP:" + currentHP);
             if(R != 1)
             {
@@ -54,6 +63,5 @@ namespace EnemySystem
                 EnemyDeath();
             }
         }
-
     }
 }

@@ -1,9 +1,12 @@
+using System;
+
 public static class GameRule
 {
     private static float gridSize = 1.0f;
     private static float moveSpeed = 40.0f;
     private static float hitRate = 95;
     private static float evasionRate = 0;
+    private static float damageIndexValue = 0.7f;
 
     public static float GridSize
     {
@@ -21,5 +24,9 @@ public static class GameRule
     public static float EvasionRate
     {
         get { return evasionRate; }
+    }
+    public static float DamageIndexValue
+    {
+        get { return damageIndexValue; }
     }
 }
