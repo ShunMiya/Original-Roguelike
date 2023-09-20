@@ -2,7 +2,7 @@ using ItemSystemV2.Inventory;
 using UnityEngine;
 using System.Collections;
 using UISystemV2;
-using UnityEngine.EventSystems;
+using Field;
 
 namespace ItemSystemV2
 {
@@ -25,7 +25,7 @@ namespace ItemSystemV2
                     GetItem();
                     break;
                 case 1:
-                    Trap();
+                    yield return StartCoroutine(Trap());
                     break;
                 case 2:
                     yield return StartCoroutine(Stairs());
@@ -43,10 +43,14 @@ namespace ItemSystemV2
             if (ItemGet == true) Destroy(gameObject);
         }
 
-        private void Trap()
+        private IEnumerator Trap()
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            Debug.Log("ã©”­“®");
+
+            GimmickEvent GE = GetComponent<GimmickEvent>();
+
+            yield return StartCoroutine(GE.Event(num));
+
         }
 
         private IEnumerator Stairs()
