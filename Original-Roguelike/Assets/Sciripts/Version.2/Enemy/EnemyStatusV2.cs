@@ -23,12 +23,23 @@ namespace EnemySystem
         }
         public void TakeDamage(float damage,int R, float HitRate)
         {
+            #region –½’†—¦ˆ—
             int HitCheck = Random.Range(1,101);
             if(HitCheck > HitRate)
             {
                 systemText.TextSet("NoHit!");
                 return;
             }
+            #endregion
+
+            #region ‰ñ”ğ—¦ˆ—
+            int EvasionCheck = UnityEngine.Random.Range(1, 101);
+            if (EvasionCheck < GameRule.EvasionRate)
+            {
+                systemText.TextSet("NoHit!");
+                return;
+            }
+            #endregion
 
             currentHP -= damage;
             systemText.TextSet("Enemy" + damage + "Damage! HP:" + currentHP);

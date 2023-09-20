@@ -39,7 +39,9 @@ namespace AttackSystem
             query = "SELECT AttackRange FROM PlayerStatus WHERE PlayerID = 1;";
             Data = sqlDB.ExecuteQuery(query);
             int range = Convert.ToInt32(Data[0]["AttackRange"]);
+
             float CurrentHitRate = GameRule.HitRate;
+
             yield return StartCoroutine(AttackObjectCoroutine(attack, range, CurrentHitRate));
         }
 
@@ -53,6 +55,7 @@ namespace AttackSystem
             if (!PHit) yield break;
 
             transform.rotation = Quaternion.Euler(0, EnemyY, 0);
+
             float CurrentHitRate = GameRule.HitRate;
 
             yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range, CurrentHitRate));

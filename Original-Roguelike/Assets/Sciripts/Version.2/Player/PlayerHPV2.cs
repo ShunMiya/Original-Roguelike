@@ -20,12 +20,14 @@ namespace PlayerStatusSystemV2
         }
         public void TakeDamage(int damage, int R, float HitRate)
         {
+            #region –½’†—¦ˆ—
             int HitCheck = UnityEngine.Random.Range(1, 101);
             if(HitCheck > HitRate)
             {
                 systemText.TextSet("NoHit!");
                 return;
             }
+            #endregion
 
             if (sqlDB == null)
             {
@@ -36,6 +38,15 @@ namespace PlayerStatusSystemV2
             DataTable Data = sqlDB.ExecuteQuery(query);
             int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
             int Defense = Convert.ToInt32(Data[0]["Defense"]);
+
+            #region ‰ñ”ğ—¦ˆ—
+            int EvasionCheck = UnityEngine.Random.Range(1, 101);
+            if (EvasionCheck < GameRule.EvasionRate)
+            {
+                systemText.TextSet("NoHit!");
+                return;
+            }
+            #endregion
 
             int reducedDamage = damage - Defense;
             if (reducedDamage <= 0)
