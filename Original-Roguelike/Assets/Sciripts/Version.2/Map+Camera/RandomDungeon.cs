@@ -33,8 +33,8 @@ namespace Field
             area.outLine = new Rect2D(2, 2, w + 2, h + 2); //“à‘¤‚É30*30‚Å‰ŠúƒGƒŠƒAì¬
             Split(area, Random.Range(0, 2) == 0);
             CreateRooms(field);
-            SetObjects(field);
             CreateRoads(field);
+            SetObjects(field);
             return data;
         }
 

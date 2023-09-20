@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjType: 0
-  itemId: 1
+  Id: 1
   num: 5
 --- !u!114 &9049176899225057751
 MonoBehaviour:

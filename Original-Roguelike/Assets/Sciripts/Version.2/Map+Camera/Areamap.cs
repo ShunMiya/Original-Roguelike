@@ -220,16 +220,16 @@ namespace Field
                 GameObject TrapObj = (GameObject)Resources.Load("PrefabsV2/" + trapData.PrefabName);
                 GameObject Trap = Instantiate(TrapObj, gimmicks.transform);
                 Trap.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-                Trap.GetComponent<SteppedOnEvent>().num = trapData.GimmickId; //同一Objのマテリアルを変えて罠の種類を増やすなら、ここでIdを変える必要がある。別Objなら必要なし。
+                Trap.GetComponent<SteppedOnEvent>().num = trapData.GimmickId; //同一Objのマテリアルを変えて見た目を変えるなら、ここでIdを変える必要がある。別Objなら必要なし。
                 Trap.transform.GetChild(0).gameObject.SetActive(false);
 
                 return;
             }
-            GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+            GimmickData gimmickData = GimmickDataCache.GetGimmickDataInGimmickName(name);
+            GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + gimmickData.PrefabName);
             GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
             Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-            GimmickData gimmickData = GimmickDataCache.GetGimmickDataInPrefabName(name);
-            Gimmick.GetComponent<SteppedOnEvent>().num = gimmickData.GimmickId;
+            Gimmick.GetComponent<SteppedOnEvent>().num = gimmickData.GimmickId; //同上
             if (gimmickData.GimmickType != 1) return;
             Gimmick.transform.GetChild(0).gameObject.SetActive(false);
 

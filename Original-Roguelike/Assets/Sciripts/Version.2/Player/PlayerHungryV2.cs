@@ -46,7 +46,7 @@ namespace PlayerStatusSystemV2
                 hung++;
                 if (hung >= 2)
                 {
-                    playerHP.DirectDamage(1,(int)transform.rotation.y);
+                    playerHP.DirectDamage(1);
 
                     hung = 0;
                 }
@@ -66,7 +66,6 @@ namespace PlayerStatusSystemV2
             int CurrentHungry = Convert.ToInt32(Data[0]["CurrentHungry"]);
             int MaxHungry = Convert.ToInt32(Data[0]["MaxHungry"]);
 
-            Debug.Log(CurrentHungry + ":" + MaxHungry);
             if (CurrentHungry >= MaxHungry)
             {
                 systemText.TextSet("Satiety!");

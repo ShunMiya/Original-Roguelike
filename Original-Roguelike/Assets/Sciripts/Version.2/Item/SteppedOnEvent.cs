@@ -2,14 +2,14 @@ using ItemSystemV2.Inventory;
 using UnityEngine;
 using System.Collections;
 using UISystemV2;
-using UnityEngine.EventSystems;
+using Field;
 
 namespace ItemSystemV2
 {
     public class SteppedOnEvent : MonoBehaviour
     {
         [SerializeField] private int ObjType;
-        [SerializeField] private int itemId;
+        [SerializeField] private int Id;
         public int num;
         private PauseSystemV2 pauseSystemV2;
 
@@ -25,7 +25,7 @@ namespace ItemSystemV2
                     GetItem();
                     break;
                 case 1:
-                    Trap();
+                    yield return StartCoroutine(Trap());
                     break;
                 case 2:
                     yield return StartCoroutine(Stairs());
@@ -38,15 +38,19 @@ namespace ItemSystemV2
         {
             SQLInventoryAddV2 playerInventoryV2 = FindObjectOfType<SQLInventoryAddV2>();
             
-            bool ItemGet = playerInventoryV2.AddItem(itemId, num);
+            bool ItemGet = playerInventoryV2.AddItem(Id, num);
             
             if (ItemGet == true) Destroy(gameObject);
         }
 
-        private void Trap()
+        private IEnumerator Trap()
         {
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
-            Debug.Log("ã©”­“®");
+
+            GimmickEvent GE = GetComponent<GimmickEvent>();
+
+            yield return StartCoroutine(GE.Event(num));
+
         }
 
         private IEnumerator Stairs()

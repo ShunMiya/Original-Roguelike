@@ -56,7 +56,7 @@ namespace PlayerStatusSystemV2
             }
         }
 
-        public void DirectDamage(int damage, int R)
+        public void DirectDamage(int damage)
         {
             if (sqlDB == null)
             {

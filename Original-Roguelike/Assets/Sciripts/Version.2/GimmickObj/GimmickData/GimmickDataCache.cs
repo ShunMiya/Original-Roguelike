@@ -33,11 +33,11 @@ namespace Field
             return gimmickCache.TryGetValue(GimmickId, out GimmickData gimmickData) ? gimmickData : null;
         }
 
-        public static GimmickData GetGimmickDataInPrefabName(string PrefabName)
+        public static GimmickData GetGimmickDataInGimmickName(string GimmickName)
         {
             foreach (var gimmickData in gimmickCache)
             {
-                if (gimmickData.Value.PrefabName == PrefabName)
+                if (gimmickData.Value.GimmickName == GimmickName)
                 {
                     return gimmickData.Value;
                 }

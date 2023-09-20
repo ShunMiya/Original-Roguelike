@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjType: 0
-  itemId: 101
+  Id: 101
   num: 1
 --- !u!114 &-4331066054015693425
 MonoBehaviour:

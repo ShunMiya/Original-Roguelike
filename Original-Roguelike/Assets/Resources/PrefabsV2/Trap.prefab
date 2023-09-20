@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 8442969551104579142}
   - component: {fileID: 8442969551104579138}
   - component: {fileID: 8442969551104579149}
+  - component: {fileID: 2926137793609565078}
   m_Layer: 0
   m_Name: Trap
   m_TagString: Untagged
@@ -167,3 +168,15 @@ MonoBehaviour:
   ObjType: 1
   itemId: 0
   num: 0
+--- !u!114 &2926137793609565078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8442969551104579148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cbd55a55cfd2c4b97e537d6888302f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
