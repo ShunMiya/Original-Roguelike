@@ -19,6 +19,7 @@ namespace EnemySystem
             {
                 EnemyDataV2 enemyData = new EnemyDataV2();
                 enemyData.EnemyID = Convert.ToInt32(row["EnemyID"]);
+                enemyData.EnemyName = row["EnemyName"].ToString();
                 enemyData.PrefabName = row["PrefabName"].ToString();
                 enemyData.AIType = Convert.ToInt32(row["AIType"]);
                 enemyData.MaxHP = Convert.ToInt32(row["MaxHP"]);

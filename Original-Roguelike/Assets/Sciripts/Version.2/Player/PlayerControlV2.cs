@@ -23,13 +23,13 @@ namespace PlayerV2
 
         public bool PlayerInput()
         {
-            if (Input.GetKeyDown("x")) pauseSystem.PauseSwitching();
+            if (Input.GetKeyDown("a")) pauseSystem.PauseSwitching();
 
             bool TurnNext = false;
             movex = 0;
             movez = 0;
 
-            if (Input.GetKeyDown(KeyCode.Z)/*||Input.GetButtonDown("Circle")*/)
+            if (Input.GetKey(KeyCode.Z)/*||Input.GetButtonDown("Circle")*/)
             {
                 PlayerAction PA = GetComponent<PlayerAction>();
                 PA.PlayerToAttack =attackAction;

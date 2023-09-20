@@ -53,28 +53,47 @@ namespace ItemSystemV2.Inventory
             return databasePath;
         }
 
-        public static void PlayerDataInitialization()
+        public static void PlayerStatusInitialization()
         {
-            string originalDatabasePath = Path.Combine(Application.streamingAssetsPath, "PlayerDataBase.db");
-            string copiedDatabasePath = Path.Combine(Application.persistentDataPath, "PlayerDataBase.db");
+            SqliteDatabase copiedsqlDB = new SqliteDatabase(databasePath);
 
-            File.Delete(copiedDatabasePath);
-
+            string updateQuery = "UPDATE PlayerStatus " +
+                                "SET CurrentHP = (SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "MaxHP = (SELECT MaxHP FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "CurrentHungry = (SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "MaxHungry = (SELECT MaxHungry FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "Strength = (SELECT Strength FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "Vitality = (SELECT Vitality FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "Attack = (SELECT Attack FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "Defense = (SELECT Defense FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "AttackRange = (SELECT AttackRange FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "AttackDistance = (SELECT AttackDistance FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "ActionSpeed = (SELECT ActionSpeed FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "InventorySize = (SELECT InventorySize FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "FloorLevel = (SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 99) " +
+                                "WHERE PlayerID = 1;";
             try
             {
-                File.Copy(originalDatabasePath, copiedDatabasePath);
-            }
-            catch (FileNotFoundException e)
-            {
-                Debug.LogError("ファイルが見つかりません: " + e.Message);
-            }
-            catch (DirectoryNotFoundException e)
-            {
-                Debug.LogError("コピー先のディレクトリが見つかりません: " + e.Message);
+                copiedsqlDB.ExecuteNonQuery(updateQuery);
             }
             catch (Exception e)
             {
-                Debug.LogError("Unknown Error: " + e.Message);
+                Debug.LogError("エクスポートエラー: " + e.Message);
+            }
+        }
+
+        public static void PlayerInventoryInitialization()
+        {
+            SqliteDatabase copiedsqlDB = new SqliteDatabase(databasePath);
+
+            string deleteQuery = "DELETE FROM Inventory WHERE Equipped IS NULL OR (Equipped <> 1 AND Equipped <> 2);";
+            try
+            {
+                copiedsqlDB.ExecuteNonQuery(deleteQuery);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("削除エラー: " + e.Message);
             }
         }
     }

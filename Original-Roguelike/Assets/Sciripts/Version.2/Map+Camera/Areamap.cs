@@ -1,7 +1,13 @@
+using EnemySystem;
+using ItemSystemV2;
+using ItemSystemV2.Inventory;
 using MoveSystem;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Field
 {
@@ -15,6 +21,8 @@ namespace Field
         public GameObject enemies;
         public GameObject items;
         public GameObject gimmicks;
+        public GameObject connections;
+        public GameObject rooms;
 
         private Array2D map;
         private static float onetile = GameRule.GridSize;
@@ -79,6 +87,153 @@ namespace Field
             }
         }
 
+        public void SetObject(string name, string type, int xgrid, int zgrid, int width, int height)
+        {
+
+            switch (type)
+            {
+                case "Connection":
+                    GameObject connectObj = (GameObject)Resources.Load("PrefabsV2/Connection");
+                    GameObject connect = Instantiate(connectObj, connections.transform);
+                    connect.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    break;
+                case "Room":
+                    GameObject roomObj = (GameObject)Resources.Load("PrefabsV2/Room");
+                    GameObject room = Instantiate(roomObj, rooms.transform);
+                    room.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    room.GetComponent<ObjectPosition>().SetRange(0, 0, width, height);
+                    break;
+                case "Stairs":
+                    GameObject StairsObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+                    GameObject Stairs = Instantiate(StairsObj, gimmicks.transform);
+                    Stairs.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    break;
+                case "Gimmick":
+                    SetGimmick(name, xgrid, zgrid);
+                    break;
+                case "Enemy":
+                    SetEnemy(name, xgrid, zgrid);
+                    break;
+                case "Item":
+                    SetItem(name, xgrid, zgrid);
+                    break;
+                case "Player":
+                    playerMovement.SetPosition(xgrid, zgrid);
+                    break;
+            }
+        }
+
+        public void SetItem(string name, int xgrid, int zgrid)
+        {
+            if(name.Equals("Random"))
+            {
+                int itemId = 0;
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
+                SqliteDatabase sqlDB = new SqliteDatabase(databasePath);
+                string query = "SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1;";
+                DataTable Data = sqlDB.ExecuteQuery(query);
+                int FloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
+                List<ItemAppearData> ItemList = DungeonDataCache.GetItemsAppearInFloor(FloorLevel);
+                int MaxRate = 0;
+                foreach (ItemAppearData itemAppear in ItemList) MaxRate += itemAppear.GenerationRate;
+                int p = UnityEngine.Random.Range(1, MaxRate + 1);
+                foreach (ItemAppearData itemAppear in ItemList)
+                {
+                    p -= itemAppear.GenerationRate;
+                    if (p <= 0)
+                    {
+                        itemId = itemAppear.ItemId;
+                        break;
+                    }
+                }
+                IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
+                GameObject ItemObj = (GameObject)Resources.Load("PrefabsV2/" + itemData.PrefabName);
+                GameObject Item = Instantiate(ItemObj, items.transform);
+                Item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                int randomnum = RandomNum.NumSetStock();
+                Item.GetComponent<SteppedOnEvent>().num = randomnum;
+                return;
+            }
+            GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+            GameObject item = Instantiate(itemObj, items.transform);
+            item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+            int randomNum = RandomNum.NumSetStock();
+            item.GetComponent<SteppedOnEvent>().num = randomNum;
+        }
+
+        public void SetEnemy(string name, int xgrid, int zgrid)
+        {
+            if (name.Equals("Random"))
+            {
+                int enemyId = 0;
+                string databasePath = SQLDBInitializationV2.GetDatabasePath();
+                SqliteDatabase sqlDB = new SqliteDatabase(databasePath);
+                string query = "SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1;";
+                DataTable Data = sqlDB.ExecuteQuery(query);
+                int FloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
+                List<EnemyAppearData> EnemyList = DungeonDataCache.GetEnemyAppearInFloor(FloorLevel);
+                int MaxRate = 0;
+                foreach (EnemyAppearData enemyAppear in EnemyList) MaxRate += enemyAppear.GenerationRate;
+                int p = UnityEngine.Random.Range(1, MaxRate + 1);
+                foreach (EnemyAppearData enemyAppear in EnemyList)
+                {
+                    p -= enemyAppear.GenerationRate;
+                    if (p <= 0)
+                    {
+                        enemyId = enemyAppear.EnemyId;
+                        break;
+                    }
+                }
+                EnemyDataV2 enemyData = EnemyDataCacheV2.GetEnemyData(enemyId);
+                GameObject EnemyObj = (GameObject)Resources.Load("PrefabsV2/" + enemyData.PrefabName);
+                GameObject Enemy = Instantiate(EnemyObj, enemies.transform);
+                Enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                Enemy.GetComponent<EnemyAction>().target = playerMovement;
+                return;
+            }
+            GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+            GameObject enemy = Instantiate(enemyObj, enemies.transform);
+            enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+            enemy.GetComponent<EnemyAction>().target = playerMovement;
+
+        }
+
+        public void SetGimmick(string name, int xgrid, int zgrid)
+        {
+            if(name.Equals("RandomTrap"))
+            {
+                int trapId = 0;
+                List<GimmickAppearData> TrapList = DungeonDataCache.GetGimmickAppearInGimmickType(1);
+                int MaxRate = 0;
+                foreach (GimmickAppearData gimmickAppear in TrapList) MaxRate += gimmickAppear.GenerationRate;
+                int p = UnityEngine.Random.Range(1, MaxRate + 1);
+                foreach (GimmickAppearData gimmickAppear in TrapList)
+                {
+                    p -= gimmickAppear.GenerationRate;
+                    if (p <= 0)
+                    {
+                        trapId = gimmickAppear.GimmickId;
+                        break;
+                    }
+                }
+                GimmickData trapData = GimmickDataCache.GetGimmickData(trapId);
+                GameObject TrapObj = (GameObject)Resources.Load("PrefabsV2/" + trapData.PrefabName);
+                GameObject Trap = Instantiate(TrapObj, gimmicks.transform);
+                Trap.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                Trap.GetComponent<SteppedOnEvent>().num = trapData.GimmickId; //同一Objのマテリアルを変えて罠の種類を増やすなら、ここでIdを変える必要がある。別Objなら必要なし。
+                Trap.transform.GetChild(0).gameObject.SetActive(false);
+
+                return;
+            }
+            GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+            GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
+            Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+            GimmickData gimmickData = GimmickDataCache.GetGimmickDataInPrefabName(name);
+            Gimmick.GetComponent<SteppedOnEvent>().num = gimmickData.GimmickId;
+            if (gimmickData.GimmickType != 1) return;
+            Gimmick.transform.GetChild(0).gameObject.SetActive(false);
+
+        }
         /**
         * 生成したマップのリセット
         */
@@ -86,26 +241,20 @@ namespace Field
         {
             Transform walls = floor.transform.GetChild(0);
             for (int i = 0; i < walls.childCount; i++)
-            {
                 Destroy(walls.GetChild(i).gameObject);
-            }
             Transform effects = floor.transform.GetChild(1);
             for (int i = 0; i < effects.childCount; i++)
-            {
                 Destroy(effects.GetChild(i).gameObject);
-            }
             for (int i = 0; i < enemies.transform.childCount; i++)
-            {
                 Destroy(enemies.transform.GetChild(i).gameObject);
-            }
             for (int i = 0; i < items.transform.childCount; i++)
-            {
                 Destroy(items.transform.GetChild(i).gameObject);
-            }
             for (int i = 0; i < gimmicks.transform.childCount; i++)
-            {
                 Destroy(gimmicks.transform.GetChild(i).gameObject);
-            }
+            for (int i = 0; i < connections.transform.childCount; i++)
+                Destroy(connections.transform.GetChild(i).gameObject);
+            for (int i = 0; i < rooms.transform.childCount; i++)
+                Destroy(rooms.transform.GetChild(i).gameObject);
         }
 
         /**
@@ -269,5 +418,27 @@ namespace Field
             return setPos;
         }
 
+        //渡された座標が渡された部屋内かどうか
+        public bool IsInRoom(ObjectPosition room, int xgrid, int zgrid)
+        {
+            int leftx = room.grid.x + room.range.left;
+            int rightx = leftx + room.range.right;
+            int topz = room.grid.z + room.range.top;
+            int bottomz = topz + room.range.bottom;
+            return xgrid >= leftx && xgrid <= rightx && zgrid >= topz && zgrid <= bottomz;
+        }
+
+        //渡された座標が部屋内であれば部屋を返す。
+        public ObjectPosition GetInRoom(int xgrid, int zgrid)
+        {
+            foreach (var room in rooms.GetComponentsInChildren<ObjectPosition>())
+            {
+                if (IsInRoom(room, xgrid, zgrid))
+                {
+                    return room;
+                }
+            }
+            return null;
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace ItemSystemV2
                     GetItem();
                     break;
                 case 1:
-                    //Trap();
+                    Trap();
                     break;
                 case 2:
                     yield return StartCoroutine(Stairs());
@@ -45,7 +45,8 @@ namespace ItemSystemV2
 
         private void Trap()
         {
-
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            Debug.Log("ã©”­“®");
         }
 
         private IEnumerator Stairs()

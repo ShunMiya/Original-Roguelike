@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Xml.Linq;
 using MoveSystem;
-using EnemySystem;
-using System.Collections;
 using ItemSystemV2.Inventory;
 using System;
+using System.Collections.Generic;
+using Random = UnityEngine.Random;
 
 namespace Field
 {
@@ -17,6 +17,7 @@ namespace Field
         public GameObject gimmicks;
         public MoveAction player;
         private SqliteDatabase sqlDB;
+        [SerializeField]private RandomDungeon dungeon;
 
         void Start()
         {
@@ -33,7 +34,7 @@ namespace Field
                 sqlDB = new SqliteDatabase(databasePath);
             }
 
-            string query = "SELECT DungeonName FROM PlayerStatus WHERE PlayerID = 1;";
+            string query = "SELECT DungeonName FROM DungeonChallengeStatus WHERE DungeonId = (SELECT DungeonId FROM PlayerStatus WHERE PlayerID = 1);)";
             DataTable Data = sqlDB.ExecuteQuery(query);
             string DungeonName = (string)Data[0]["DungeonName"];
 
@@ -41,6 +42,7 @@ namespace Field
             if (mapdata != null)
             {
                 field.Create(mapdata);
+                return;
             }
         }
 
@@ -72,10 +74,18 @@ namespace Field
                         break;
                     }
                 }
-                if (group == null)  return new Array2D(1, 1);
+                int w = int.Parse(map.Attribute("width").Value);
+                int h = int.Parse(map.Attribute("height").Value);
+                int pw = int.Parse(map.Attribute("tilewidth").Value);
+                int ph = int.Parse(map.Attribute("tileheight").Value);
+                if (group == null)
+                {
+                    int RandomW = Random.Range(w - 5, w + 5);
+                    int RandomH = Random.Range(h - 5, h + 5);
+                    return dungeon.Create(RandomW, RandomH, field);
+                }
 
                 Array2D data = null;
-                int w = 0, h = 0;
                 foreach (var layer in group.Elements("layer"))
                 {
                     switch (layer.Attribute("name").Value)
@@ -105,8 +115,8 @@ namespace Field
                             {
                                 int x = int.Parse(obj.Attribute("x").Value);
                                 int z = int.Parse(obj.Attribute("y").Value);
-                                int pw = int.Parse(obj.Attribute("width").Value);
-                                int ph = int.Parse(obj.Attribute("height").Value);
+                                int rw = int.Parse(obj.Attribute("width").Value);
+                                int rh = int.Parse(obj.Attribute("height").Value);
                                 string name = obj.Attribute("name").Value;
                                 string type = "";
                                 foreach (var prop in obj.Element("properties").Elements("property"))
@@ -118,30 +128,7 @@ namespace Field
                                             break;
                                     }
                                 }
-                                if (type == "Player")
-                                {
-                                    player.SetPosition(x / pw, ToMirrorZ(z / ph, h));
-                                    continue;
-                                }
-                                if(type.Contains("Enemy"))
-                                {
-                                    GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
-                                    GameObject enemy = Instantiate(enemyObj, enemies.transform);
-                                    enemy.GetComponent<MoveAction>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
-                                    enemy.GetComponent<EnemyAction>().target = player;
-                                }
-                                if (type.Contains("Item"))
-                                {
-                                    GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
-                                    GameObject item = Instantiate(itemObj, items.transform);
-                                    item.GetComponent<MoveAction>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
-                                }
-                                if(type.Contains("Gimmick"))
-                                {
-                                    GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + name);
-                                    GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
-                                    Gimmick.GetComponent<ObjectPosition>().SetPosition(x / pw, ToMirrorZ(z / ph, h));
-                                }
+                                field.SetObject(name, type, x/pw, ToMirrorZ(z / ph, h) - (rh / ph), rw / pw + 1, rh / ph + 1);
                             }
                             break;
                     }
