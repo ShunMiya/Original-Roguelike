@@ -31,6 +31,9 @@ namespace Field
             DataTable ItemAppearData = sqlDB.ExecuteQuery(query);
             DungeonDataCache.CacheItemAppear(ItemAppearData);
 
+            query = "SELECT * FROM GimmickAppear";
+            DataTable GimmickAppearData = sqlDB.ExecuteQuery(query);
+            DungeonDataCache.CacheGimmickAppear(GimmickAppearData);
         }
     }
 }

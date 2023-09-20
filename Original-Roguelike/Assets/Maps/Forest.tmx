@@ -104,7 +104,7 @@
    </object>
    <object id="17" name="Stairs" x="161" y="65" width="31" height="31">
     <properties>
-     <property name="Type" value="Gimmick"/>
+     <property name="Type" value="Stairs"/>
     </properties>
    </object>
    <object id="33" name="Connection" x="65" y="129" width="31" height="31">

@@ -5,7 +5,9 @@ using MoveSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Field
 {
@@ -90,11 +92,6 @@ namespace Field
 
             switch (type)
             {
-                case "Gimmick":
-                    GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + name);
-                    GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
-                    Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-                    break;
                 case "Connection":
                     GameObject connectObj = (GameObject)Resources.Load("PrefabsV2/Connection");
                     GameObject connect = Instantiate(connectObj, connections.transform);
@@ -105,6 +102,14 @@ namespace Field
                     GameObject room = Instantiate(roomObj, rooms.transform);
                     room.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
                     room.GetComponent<ObjectPosition>().SetRange(0, 0, width, height);
+                    break;
+                case "Stairs":
+                    GameObject StairsObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+                    GameObject Stairs = Instantiate(StairsObj, gimmicks.transform);
+                    Stairs.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    break;
+                case "Gimmick":
+                    SetGimmick(name, xgrid, zgrid);
                     break;
                 case "Enemy":
                     SetEnemy(name, xgrid, zgrid);
@@ -193,6 +198,42 @@ namespace Field
 
         }
 
+        public void SetGimmick(string name, int xgrid, int zgrid)
+        {
+            if(name.Equals("RandomTrap"))
+            {
+                int trapId = 0;
+                List<GimmickAppearData> TrapList = DungeonDataCache.GetGimmickAppearInGimmickType(1);
+                int MaxRate = 0;
+                foreach (GimmickAppearData gimmickAppear in TrapList) MaxRate += gimmickAppear.GenerationRate;
+                int p = UnityEngine.Random.Range(1, MaxRate + 1);
+                foreach (GimmickAppearData gimmickAppear in TrapList)
+                {
+                    p -= gimmickAppear.GenerationRate;
+                    if (p <= 0)
+                    {
+                        trapId = gimmickAppear.GimmickId;
+                        break;
+                    }
+                }
+                GimmickData trapData = GimmickDataCache.GetGimmickData(trapId);
+                GameObject TrapObj = (GameObject)Resources.Load("PrefabsV2/" + trapData.PrefabName);
+                GameObject Trap = Instantiate(TrapObj, gimmicks.transform);
+                Trap.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                Trap.GetComponent<SteppedOnEvent>().num = trapData.GimmickId; //同一Objのマテリアルを変えて罠の種類を増やすなら、ここでIdを変える必要がある。別Objなら必要なし。
+                Trap.transform.GetChild(0).gameObject.SetActive(false);
+
+                return;
+            }
+            GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + name);
+            GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
+            Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+            GimmickData gimmickData = GimmickDataCache.GetGimmickDataInPrefabName(name);
+            Gimmick.GetComponent<SteppedOnEvent>().num = gimmickData.GimmickId;
+            if (gimmickData.GimmickType != 1) return;
+            Gimmick.transform.GetChild(0).gameObject.SetActive(false);
+
+        }
         /**
         * 生成したマップのリセット
         */

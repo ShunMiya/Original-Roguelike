@@ -233,7 +233,7 @@ namespace Field
                     tmpData.Set(x, y, data.Get(x, y));
                 }
             }
-            SetObject("Stairs", "Gimmick", field, tmpData);
+            SetObject("Stairs", "Stairs", field, tmpData);
             SetObject("Player", "Player", field, tmpData);
 
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
@@ -250,6 +250,10 @@ namespace Field
             int PopEnemy = Random.Range(FloorInfo.MinEnemies, FloorInfo.MaxEnemies + 1);
             Debug.Log(PopEnemy + "‘Ìƒ‰ƒ“ƒ_ƒ€“G¶¬");
             for (int i = 0; i < PopEnemy; i++) SetObject("Random", "Enemy", field, tmpData);
+
+            int PopTrap = 5;
+            Debug.Log(PopTrap + "ŒÂƒ‰ƒ“ƒ_ƒ€ã©¶¬");
+            for (int i = 0; i < PopTrap; i++) SetObject("RandomTrap", "Gimmick", field, tmpData);
         }
 
         private class Area2D
