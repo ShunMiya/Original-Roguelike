@@ -39,7 +39,10 @@ namespace AttackSystem
             query = "SELECT AttackRange FROM PlayerStatus WHERE PlayerID = 1;";
             Data = sqlDB.ExecuteQuery(query);
             int range = Convert.ToInt32(Data[0]["AttackRange"]);
-            yield return StartCoroutine(AttackObjectCoroutine(attack, range));
+
+            float CurrentHitRate = GameRule.HitRate;
+
+            yield return StartCoroutine(AttackObjectCoroutine(attack, range, CurrentHitRate));
         }
 
         public IEnumerator AttackPreparationEnemy(GameObject Enemy)
@@ -53,10 +56,12 @@ namespace AttackSystem
 
             transform.rotation = Quaternion.Euler(0, EnemyY, 0);
 
-            yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range));
+            float CurrentHitRate = GameRule.HitRate;
+
+            yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range, CurrentHitRate));
         }
 
-        public IEnumerator AttackObjectCoroutine(int damage, int range)
+        public IEnumerator AttackObjectCoroutine(int damage, int range, float HitRate)
         {
             yield return StartCoroutine(BeginAttack());  //攻撃開始演出
 
@@ -69,13 +74,13 @@ namespace AttackSystem
                 if (HitObj.CompareTag("Player"))
                 {
                     // プレイヤーにダメージを与える処理
-                    HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage,R);
+                    HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage,R, HitRate);
                     //プレイヤーのダメージ演出
                 }
                 else if (HitObj.CompareTag("Enemy"))
                 {
                     // 敵にダメージを与える処理
-                    HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage,R);
+                    HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage,R, HitRate);
                     // エネミーのダメージ演出
                 }
             }
