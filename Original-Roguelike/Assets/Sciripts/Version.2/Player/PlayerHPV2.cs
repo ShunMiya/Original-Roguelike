@@ -18,8 +18,15 @@ namespace PlayerStatusSystemV2
             systemText = FindObjectOfType<SystemTextV2>();
             gameEnd = FindObjectOfType<GameEndV2>();
         }
-        public void TakeDamage(int damage, int R)
+        public void TakeDamage(int damage, int R, float HitRate)
         {
+            int HitCheck = UnityEngine.Random.Range(1, 101);
+            if(HitCheck > HitRate)
+            {
+                systemText.TextSet("NoHit!");
+                return;
+            }
+
             if (sqlDB == null)
             {
                 string databasePath = SQLDBInitializationV2.GetDatabasePath();

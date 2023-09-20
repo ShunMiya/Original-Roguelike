@@ -21,8 +21,15 @@ namespace EnemySystem
             currentHP = enemy.MaxHP;
 
         }
-        public void TakeDamage(float damage,int R)
+        public void TakeDamage(float damage,int R, float HitRate)
         {
+            int HitCheck = Random.Range(1,101);
+            if(HitCheck > HitRate)
+            {
+                systemText.TextSet("NoHit!");
+                return;
+            }
+
             currentHP -= damage;
             systemText.TextSet("Enemy" + damage + "Damage! HP:" + currentHP);
             if(R != 1)

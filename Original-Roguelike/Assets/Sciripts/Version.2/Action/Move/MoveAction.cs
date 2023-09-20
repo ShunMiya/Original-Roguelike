@@ -116,7 +116,7 @@ namespace MoveSystem
             GameObject Char = field.IsCollideReturnCharObj(movex, movez);
             if (Char != null)
             {
-                Char.GetComponent<EnemyStatusV2>().TakeDamage(1, 1);
+                Char.GetComponent<EnemyStatusV2>().TakeDamage(1, 1, GameRule.HitRate);
                 bool Throw = false;
                 yield return Throw;
                 Destroy(gameObject);
