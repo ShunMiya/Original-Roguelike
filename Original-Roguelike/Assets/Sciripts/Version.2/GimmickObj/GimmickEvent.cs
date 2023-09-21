@@ -52,6 +52,14 @@ namespace Field
                     systemText.TextSet("PoisonTrap!");
                     playerCondition.SetCondition(1, 10);
                     break;
+                case 4:
+                    systemText.TextSet("ConfusionTrap!");
+                    playerCondition.SetCondition(2, 5);
+                    break;
+                case 5:
+                    systemText.TextSet("StunTrap!");
+                    playerCondition.SetCondition(3, 3);
+                    break;
                 default:
                     break;
             }
