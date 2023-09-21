@@ -42,6 +42,12 @@ namespace AttackSystem
 
             float CurrentHitRate = GameRule.HitRate;
 
+            PlayerCondition PCondition = GetComponent<PlayerCondition>();
+            if (PCondition.BlindTurn != 0)
+            {
+                PCondition.BlindEvent();
+                CurrentHitRate = CurrentHitRate - 50;
+            }
             yield return StartCoroutine(AttackObjectCoroutine(attack, range, CurrentHitRate));
         }
 

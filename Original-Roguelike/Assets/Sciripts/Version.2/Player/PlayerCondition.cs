@@ -57,6 +57,7 @@ namespace PlayerStatusSystemV2
 
         public void BlindEvent()
         {
+            //‰‰o‚Æ‚©
         }
 
         public void ConditionTurn()

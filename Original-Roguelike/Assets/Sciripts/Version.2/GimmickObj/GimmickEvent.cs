@@ -60,6 +60,11 @@ namespace Field
                     systemText.TextSet("StunTrap!");
                     playerCondition.SetCondition(3, 3);
                     break;
+                case 6:
+                    systemText.TextSet("BlindTrap!");
+                    playerCondition.SetCondition(4, 15);
+                    break;
+
                 default:
                     break;
             }
