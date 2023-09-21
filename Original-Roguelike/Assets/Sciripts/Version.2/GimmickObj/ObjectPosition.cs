@@ -25,12 +25,12 @@ namespace Field
             grid.z = zgrid;
             transform.position = new Vector3(CoordinateTransformation.ToWorldX(xgrid), (float)-0.5, CoordinateTransformation.ToWorldZ(zgrid));
         }
-        public void SetRange(int left, int right, int width, int height)
+        public void SetRange(int left, int top, int width, int height)
         {
             range.left = left;
-            range.right = right;
+            range.top = top;
             range.right = left + width - 1;
-            range.bottom = right + height - 1;
+            range.bottom = top + height - 1;
         }
     }
 }

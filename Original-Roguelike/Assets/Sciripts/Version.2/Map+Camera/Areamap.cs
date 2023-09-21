@@ -234,6 +234,25 @@ namespace Field
             Gimmick.transform.GetChild(0).gameObject.SetActive(false);
 
         }
+
+        public void PopEnemy()
+        {
+            int RoomCount = rooms.transform.childCount; // roomsの子オブジェクトの数を取得
+            while(true)
+            {
+                int RandomRoom = UnityEngine.Random.Range(0, RoomCount); // 0からRoomCount未満のランダムな数を取得
+                Transform selectedRoom = rooms.transform.GetChild(RandomRoom); // ランダムに選択された子オブジェクトを取得
+                ObjectPosition room = selectedRoom.GetComponent<ObjectPosition>();
+                if (IsInRoom(room, playerMovement.grid.x, playerMovement.grid.z)) continue;
+                int x = UnityEngine.Random.Range(room.grid.x, room.grid.x + room.range.right + 1);
+                int y = UnityEngine.Random.Range(room.grid.z, room.grid.z + room.range.bottom + 1);
+                if (IsCollide(x, y)) continue;
+                SetEnemy("Random", x, y);
+                break;
+            }
+
+        }
+
         /**
         * 生成したマップのリセット
         */

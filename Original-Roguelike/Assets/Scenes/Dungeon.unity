@@ -918,6 +918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 1469801075}
   GameClearUI: {fileID: 1625498292}
+  fadeSystem: {fileID: 910648573}
 --- !u!1 &144706582
 GameObject:
   m_ObjectHideFlags: 0
@@ -3048,6 +3049,8 @@ MonoBehaviour:
   HP: {fileID: 436213511}
   PA: {fileID: 436213516}
   PEAM: {fileID: 436213517}
+  field: {fileID: 441075520}
+  gameEnd: {fileID: 98720148}
   FadeImage: {fileID: 403240040}
 --- !u!114 &441075523
 MonoBehaviour:
