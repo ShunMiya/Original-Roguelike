@@ -355,6 +355,11 @@ namespace Field
                 zgrid += Pos.z;
                 if (xgrid == playerMovement.grid.x && zgrid == playerMovement.grid.z)
                     return playerMovement.gameObject;
+                foreach(var gimmickPosition in gimmicks.GetComponentsInChildren<ObjectPosition>())
+                {
+                    if(xgrid == gimmickPosition.grid.x &&zgrid == gimmickPosition.grid.z)
+                        gimmickPosition.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
                 foreach (var enemyMovement in enemies.GetComponentsInChildren<MoveAction>())
                 {
                     if (xgrid == enemyMovement.grid.x && zgrid == enemyMovement.grid.z)
