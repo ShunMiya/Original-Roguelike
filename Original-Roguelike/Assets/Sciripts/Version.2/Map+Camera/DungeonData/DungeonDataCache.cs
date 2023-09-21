@@ -30,6 +30,7 @@ namespace Field
                 FloorInfoData.MaxEnemies = Convert.ToInt32(row["MaxEnemies"]);
                 FloorInfoData.MinItems = Convert.ToInt32(row["MinItems"]);
                 FloorInfoData.MaxItems = Convert.ToInt32(row["MaxItems"]);
+                FloorInfoData.TrapNum = Convert.ToInt32(row["TrapNum"]);
 
                 FloorInformationCache[FloorInfoData.FloorLevel] = FloorInfoData;
             }
