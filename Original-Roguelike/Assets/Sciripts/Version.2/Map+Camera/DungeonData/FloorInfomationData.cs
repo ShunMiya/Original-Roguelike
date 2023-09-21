@@ -7,6 +7,7 @@ namespace Field
         public int MaxEnemies { get; set; }
         public int MinItems { get; set; }
         public int MaxItems { get; set; }
+        public int TrapNum { get; set; }
 
     }
 

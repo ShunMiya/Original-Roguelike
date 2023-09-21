@@ -109,7 +109,7 @@
    </object>
    <object id="17" name="Stairs" x="161" y="65" width="31" height="31">
     <properties>
-     <property name="Type" value="Gimmick"/>
+     <property name="Type" value="Stairs"/>
     </properties>
    </object>
   </objectgroup>
@@ -222,7 +222,7 @@
    </object>
    <object id="32" name="Stairs" x="609" y="65" width="31" height="31">
     <properties>
-     <property name="Type" value="Gimmick"/>
+     <property name="Type" value="Stairs"/>
     </properties>
    </object>
   </objectgroup>

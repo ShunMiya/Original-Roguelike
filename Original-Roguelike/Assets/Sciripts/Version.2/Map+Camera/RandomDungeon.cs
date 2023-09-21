@@ -251,7 +251,7 @@ namespace Field
             Debug.Log(PopEnemy + "‘Ìƒ‰ƒ“ƒ_ƒ€“G¶¬");
             for (int i = 0; i < PopEnemy; i++) SetObject("Random", "Enemy", field, tmpData);
 
-            int PopTrap = 5;
+            int PopTrap = FloorInfo.TrapNum;
             Debug.Log(PopTrap + "ŒÂƒ‰ƒ“ƒ_ƒ€ã©¶¬");
             for (int i = 0; i < PopTrap; i++) SetObject("RandomTrap", "Gimmick", field, tmpData);
         }
