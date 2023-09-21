@@ -25,6 +25,7 @@ namespace TurnSystem
         [SerializeField] private PlayerEventAfterMove PEAM;
         [SerializeField] private Areamap field;
         [SerializeField] private GameEndV2 gameEnd;
+        [SerializeField] private PlayerCondition PCondition;
 
         [SerializeField] private GameObject FadeImage;
 
@@ -61,8 +62,10 @@ namespace TurnSystem
                     continue;
                 }
 
-                PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
+                if (PCondition.PoisonTurn != 0) PCondition.PoisonEvent();//ターン回し(毒ダメージ、空腹値減少、HP回復、状態異常ターン経過、ターン数記憶等)
+                PH.HungryDecrease();
                 HP.TurnRecoveryHp();
+                PCondition.ConditionTurn();
                 AreaTurn++;
 
                 if (AreaTurn == 500)

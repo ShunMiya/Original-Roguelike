@@ -2674,6 +2674,7 @@ GameObject:
   - component: {fileID: 436213518}
   - component: {fileID: 436213520}
   - component: {fileID: 436213519}
+  - component: {fileID: 436213521}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2791,6 +2792,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c65a1ba4df7366e42b888494fb411e2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PCondition: {fileID: 436213521}
 --- !u!114 &436213509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2945,6 +2947,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd24c62f88e5cb40b34248e06a7a642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &436213521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1716443b3c6a458468500bf6c7dc8b55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PoisonTurn: 0
+  ConfusionTurn: 0
+  StunTurn: 0
+  BlindTurn: 0
 --- !u!1 &441075518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3051,6 +3069,7 @@ MonoBehaviour:
   PEAM: {fileID: 436213517}
   field: {fileID: 441075520}
   gameEnd: {fileID: 98720148}
+  PCondition: {fileID: 436213521}
   FadeImage: {fileID: 403240040}
 --- !u!114 &441075523
 MonoBehaviour:

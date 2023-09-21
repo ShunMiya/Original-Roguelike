@@ -11,10 +11,12 @@ namespace Field
     {
         private SystemTextV2 systemText;
         private SqliteDatabase sqlDB;
+        private PlayerCondition playerCondition;
 
         private void Start()
         {
             systemText = FindObjectOfType<SystemTextV2>();
+            playerCondition = FindObjectOfType<PlayerCondition>();
         }
         
         public IEnumerator Event(int num)
@@ -45,6 +47,10 @@ namespace Field
                     if (newHungry < 0) newHungry = 0;
                     string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHungry = " + newHungry + " WHERE PlayerID = 1;";
                     sqlDB.ExecuteNonQuery(updateStatusQuery);
+                    break;
+                case 3:
+                    systemText.TextSet("PoisonTrap!");
+                    playerCondition.SetCondition(1, 10);
                     break;
                 default:
                     break;
