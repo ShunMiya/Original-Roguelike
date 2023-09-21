@@ -6,11 +6,15 @@ using AttackSystem;
 using EnemySystem;
 using PlayerStatusSystemV2;
 using UISystemV2;
+using Field;
+using GameEndSystemV2;
 
 namespace TurnSystem
 {
     public class TurnControl : MonoBehaviour
     {
+        private int DungeonTurn = 0;
+        private int AreaTurn = 0;
         [SerializeField] private PlayerControlV2 PC;
         [SerializeField] private MoveObjects MO;
         [SerializeField] private EnemyObjects EO;
@@ -19,6 +23,8 @@ namespace TurnSystem
         [SerializeField] private PlayerHPV2 HP;
         [SerializeField] private PlayerAction PA;
         [SerializeField] private PlayerEventAfterMove PEAM;
+        [SerializeField] private Areamap field;
+        [SerializeField] private GameEndV2 gameEnd;
 
         [SerializeField] private GameObject FadeImage;
 
@@ -50,12 +56,27 @@ namespace TurnSystem
 
                 if(FadeImage.activeSelf)
                 {
+                    AreaTurn = 0; DungeonTurn+=AreaTurn;
                     yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
                     continue;
                 }
 
                 PH.HungryDecrease();　//ターン回し(空腹値減少、HP回復、状態異常処理、ターン数記憶等)
                 HP.TurnRecoveryHp();
+                AreaTurn++;
+
+                if (AreaTurn == 500)
+                {
+                    gameEnd.NextStagePerformance();
+                    AreaTurn = 0; DungeonTurn += AreaTurn;
+                    yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
+                    continue;
+                }
+
+                if (AreaTurn % 40 == 0)
+                {
+                    field.PopEnemy();
+                }
 
                 /*Debug.Log("NextTurn"); 
                 yield return new WaitForSeconds(0.5f);*/ //DebugSystem 

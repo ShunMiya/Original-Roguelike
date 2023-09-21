@@ -1,10 +1,9 @@
 using ItemSystemV2.Inventory;
 using System;
-using System.IO;
 using UnityEngine;
 using Fade;
 using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
+using GameEndSystemV2;
 
 namespace UISystemV2
 {
@@ -12,11 +11,13 @@ namespace UISystemV2
     {
         private SqliteDatabase sqlDB;
         private FadeSystem fadeSystem;
+        private GameEndV2 gameEnd;
         [SerializeField] private string SceneName;
 
         private void Start()
         {
             fadeSystem = FindObjectOfType<FadeSystem>();
+            gameEnd = FindObjectOfType<GameEndV2>();
         }
 
         public void OnSelected()
@@ -51,28 +52,8 @@ namespace UISystemV2
         public void NextStageButtonClick()
         {
             ButtonTargetReset();
-            string databasePath = SQLDBInitializationV2.GetDatabasePath();
-            sqlDB = new SqliteDatabase(databasePath);
 
-            string updateStatusQuery = "UPDATE PlayerStatus SET FloorLevel = (SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1) + 1 WHERE PlayerID = 1;";
-            sqlDB.ExecuteNonQuery(updateStatusQuery);
-
-            string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
-            DataTable PlayerDB = sqlDB.ExecuteQuery(query);
-            int dungeonId = Convert.ToInt32(PlayerDB[0]["DungeonId"]);
-            int floorLevel = Convert.ToInt32(PlayerDB[0]["FloorLevel"]);
-
-            query = "SELECT TopFloor FROM DungeonChallengeStatus WHERE DungeonId = '"+ dungeonId + "';";
-            DataTable DungeonDB = sqlDB.ExecuteQuery(query);
-            int topFloor = Convert.ToInt32(DungeonDB[0]["TopFloor"]);
-            if (floorLevel > topFloor)
-            {
-                StartCoroutine(fadeSystem.GameClearFade());
-                return;
-            }
-
-
-            StartCoroutine(fadeSystem.NextStageFade());
+            gameEnd.NextStagePerformance();
         }
 
         public void SelectDungeon(int Dungeon)
