@@ -9,7 +9,7 @@ namespace ItemSystemV2
     public class SteppedOnEvent : MonoBehaviour
     {
         [SerializeField] private int ObjType;
-        [SerializeField] private int Id;
+        public int Id;
         public int num;
         private PauseSystemV2 pauseSystemV2;
 
@@ -49,7 +49,11 @@ namespace ItemSystemV2
 
             GimmickEvent GE = GetComponent<GimmickEvent>();
 
-            yield return StartCoroutine(GE.Event(num));
+            yield return StartCoroutine(GE.Event(Id));
+
+            GimmickData trapData = GimmickDataCache.GetGimmickData(Id);
+            int BrakeCheck = Random.Range(1, 101);
+            if(BrakeCheck <= trapData.BrakeRate) Destroy(gameObject);
 
         }
 
