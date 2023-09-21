@@ -58,11 +58,13 @@ namespace TurnSystem
                 if(FadeImage.activeSelf)
                 {
                     AreaTurn = 0; DungeonTurn+=AreaTurn;
+                    PCondition.ConditionClear();
                     yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
                     continue;
                 }
 
-                if (PCondition.PoisonTurn != 0) PCondition.PoisonEvent();//ターン回し(毒ダメージ、空腹値減少、HP回復、状態異常ターン経過、ターン数記憶等)
+                //ターン回し(毒ダメージ、空腹値減少、HP回復、状態異常ターン経過、ターン数記憶等)
+                if (PCondition.PoisonTurn != 0) PCondition.PoisonEvent();
                 PH.HungryDecrease();
                 HP.TurnRecoveryHp();
                 PCondition.ConditionTurn();
@@ -89,7 +91,7 @@ namespace TurnSystem
         private IEnumerator PlayerInputSet()
         {
             bool TurnNext = false;
-
+            
             while (true)
             {
                 if (Time.timeScale != 1f)
@@ -98,6 +100,11 @@ namespace TurnSystem
                     continue;
                 }
 
+                if (PCondition.StunTurn != 0)
+                {
+                    PCondition.StunEvent();
+                    break;
+                }
                 if (PA.playerUseItemV2 != null) break;
                 if(PA.playerPutItem != null) break;
                 if (PA.playerThrowItem != null) break;

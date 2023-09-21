@@ -52,6 +52,7 @@ namespace PlayerStatusSystemV2
 
         public void StunEvent()
         {
+            //‰‰o‚Æ‚©
         }
 
         public void BlindEvent()
@@ -64,6 +65,14 @@ namespace PlayerStatusSystemV2
             if(ConfusionTurn > 0) ConfusionTurn--;
             if(StunTurn > 0) StunTurn--;
             if(BlindTurn > 0) BlindTurn--;
+        }
+
+        public void ConditionClear()
+        {
+            PoisonTurn = 0;
+            ConfusionTurn = 0;
+            StunTurn = 0;
+            BlindTurn = 0;
         }
     }
 }

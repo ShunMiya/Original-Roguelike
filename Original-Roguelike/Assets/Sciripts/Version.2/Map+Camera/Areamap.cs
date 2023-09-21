@@ -172,6 +172,7 @@ namespace Field
                 DataTable Data = sqlDB.ExecuteQuery(query);
                 int FloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
                 List<EnemyAppearData> EnemyList = DungeonDataCache.GetEnemyAppearInFloor(FloorLevel);
+                if (EnemyList.Count == 0) return;
                 int MaxRate = 0;
                 foreach (EnemyAppearData enemyAppear in EnemyList) MaxRate += enemyAppear.GenerationRate;
                 int p = UnityEngine.Random.Range(1, MaxRate + 1);
