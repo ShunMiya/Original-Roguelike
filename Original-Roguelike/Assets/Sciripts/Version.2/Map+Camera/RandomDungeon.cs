@@ -244,15 +244,12 @@ namespace Field
             FloorInfomationData FloorInfo = DungeonDataCache.GetFloorInformation(FloorLevel);
 
             int PopItem = Random.Range(FloorInfo.MinItems, FloorInfo.MaxItems + 1);
-            Debug.Log(PopItem + "個ランダムアイテム生成");
             for (int i = 0; i < PopItem; i++) SetObject("Random", "Item", field, tmpData);
 
             int PopEnemy = Random.Range(FloorInfo.MinEnemies, FloorInfo.MaxEnemies + 1);
-            Debug.Log(PopEnemy + "体ランダム敵生成");
             for (int i = 0; i < PopEnemy; i++) SetObject("Random", "Enemy", field, tmpData);
 
             int PopTrap = FloorInfo.TrapNum;
-            Debug.Log(PopTrap + "個ランダム罠生成");
             for (int i = 0; i < PopTrap; i++) SetObject("RandomTrap", "Gimmick", field, tmpData);
         }
 
