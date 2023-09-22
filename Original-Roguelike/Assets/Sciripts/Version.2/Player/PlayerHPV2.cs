@@ -11,12 +11,14 @@ namespace PlayerStatusSystemV2
         private SqliteDatabase sqlDB;
         private SystemTextV2 systemText;
         private GameEndV2 gameEnd;
+        private PlayerCondition PCondition;
         private float Recovery = 0;
 
         private void Start()
         {
             systemText = FindObjectOfType<SystemTextV2>();
             gameEnd = FindObjectOfType<GameEndV2>();
+            PCondition = GetComponent<PlayerCondition>();
         }
         public void TakeDamage(int damage, int R, float HitRate)
         {
@@ -137,6 +139,7 @@ namespace PlayerStatusSystemV2
             DataTable Data = sqlDB.ExecuteQuery(query);
 
             if (Convert.ToInt32(Data[0]["CurrentHungry"]) == 0) return;
+            if (PCondition.PoisonTurn != 0) return;
 
             int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
             int MaxHP = Convert.ToInt32(Data[0]["MaxHP"]);

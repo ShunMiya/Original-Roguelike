@@ -50,7 +50,7 @@ namespace Field
                     break;
                 case 3:
                     systemText.TextSet("PoisonTrap!");
-                    playerCondition.SetCondition(1, 10);
+                    playerCondition.SetCondition(1, 5);
                     break;
                 case 4:
                     systemText.TextSet("ConfusionTrap!");
