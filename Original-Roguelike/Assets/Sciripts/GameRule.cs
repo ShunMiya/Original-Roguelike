@@ -29,4 +29,14 @@ public static class GameRule
     {
         get { return damageIndexValue; }
     }
+
+    public static void DashMove()
+    {
+        moveSpeed = 10;
+    }
+
+    public static void WalkMove()
+    {
+        moveSpeed = 40;
+    }
 }

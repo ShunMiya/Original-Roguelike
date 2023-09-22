@@ -62,10 +62,10 @@ namespace PlayerStatusSystemV2
 
         public void ConditionTurn()
         {
-            if(PoisonTurn > 0) PoisonTurn--;
-            if(ConfusionTurn > 0) ConfusionTurn--;
-            if(StunTurn > 0) StunTurn--;
-            if(BlindTurn > 0) BlindTurn--;
+            PoisonTurn = (PoisonTurn > 0) ? PoisonTurn - 1 : 0;
+            ConfusionTurn = (ConfusionTurn > 0) ? ConfusionTurn - 1 : 0;
+            StunTurn = (StunTurn > 0) ? StunTurn - 1 : 0;
+            BlindTurn = (BlindTurn > 0) ? BlindTurn - 1 : 0;
         }
 
         public void ConditionClear()

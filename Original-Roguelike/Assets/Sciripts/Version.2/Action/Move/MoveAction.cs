@@ -15,14 +15,14 @@ namespace MoveSystem
         public Pos2D grid = new Pos2D();
         public Pos2D newGrid = null;
 
-        public float maxPerFrame = 1.67f;
+        public float ThrowMoveFrame = 15f;
         [SerializeField]private float complementFrame;
         private Areamap field;
 
         private void Awake ()
         {
             field = GetComponentInParent<Areamap>();
-            complementFrame = maxPerFrame;
+            complementFrame = GameRule.MoveSpeed;
             //complementFrame = maxPerFrame / Time.deltaTime;
             newGrid = grid;
         }
@@ -40,6 +40,7 @@ namespace MoveSystem
             MoveObjects moveObjects = FindObjectOfType<MoveObjects>();
             if (moveObjects != null)
             {
+                complementFrame = GameRule.MoveSpeed;
                 moveObjects.objectsToMove.Add(this);
             }
             return true;
@@ -131,7 +132,7 @@ namespace MoveSystem
 
         public void SetcomplementFrame()
         {
-            complementFrame = maxPerFrame;
+            complementFrame = ThrowMoveFrame;
         }
     }
 }

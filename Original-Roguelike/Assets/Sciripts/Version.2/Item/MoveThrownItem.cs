@@ -29,7 +29,6 @@ public class MoveThrownItem : MonoBehaviour
         {
             Debug.Log(xgrid + " " + zgrid);
             NextPointAreaObj = field.IsCollideReturnAreaObj(xgrid, zgrid);
-            if (NextPointAreaObj != null) Debug.Log("アイテムがある");
 
 
             IEnumerator Coroutine = move.ThrowMove(xgrid, zgrid);
@@ -38,7 +37,6 @@ public class MoveThrownItem : MonoBehaviour
             bool Throw = (bool)Coroutine.Current;
             if (!Throw)
             {
-                Debug.Log("移動中断");
                 break;
             }
 
@@ -50,7 +48,6 @@ public class MoveThrownItem : MonoBehaviour
         Pos2D setPos = new Pos2D { x = move.grid.x, z = move.grid.z };
         if (areaObj != null)
         {
-            Debug.Log("アイテムがある");
             setPos = field.ItemDropPointCheck(setPos);
         }
 

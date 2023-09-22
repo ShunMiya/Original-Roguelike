@@ -28,6 +28,9 @@ namespace PlayerV2
         {
             if (Input.GetKeyDown("a")) pauseSystem.PauseSwitching();
 
+            if (Input.GetKey(KeyCode.X)) GameRule.DashMove();
+            else GameRule.WalkMove();
+
             bool TurnNext = false;
             movex = 0;
             movez = 0;
