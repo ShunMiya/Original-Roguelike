@@ -1,13 +1,11 @@
 using EnemySystem;
 using ItemSystemV2;
 using ItemSystemV2.Inventory;
+using Minimap;
 using MoveSystem;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Field
 {
@@ -23,6 +21,7 @@ namespace Field
         public GameObject gimmicks;
         public GameObject connections;
         public GameObject rooms;
+        public AutoMapping autoMapping;
 
         private Array2D map;
         private static float onetile = GameRule.GridSize;
@@ -35,8 +34,11 @@ namespace Field
         {
             map = mapdata;
 
+            autoMapping.ResetMinimap(map.width, map.height);
+
             ShowFloor();
             ShowWall();
+
             ShowGridEffects();
         }
 
@@ -65,6 +67,7 @@ namespace Field
                         block.transform.position = new Vector3(xblock, 0, zblock);
                         block.transform.SetParent(floor.transform.GetChild(0));
                     }
+                    autoMapping.Mapping(x, z, map.Get(x, z) + 1);
                 }
             }
 
