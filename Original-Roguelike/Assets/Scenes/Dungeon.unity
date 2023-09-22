@@ -10034,10 +10034,10 @@ RectTransform:
   m_Father: {fileID: 1985504867}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1416781877
 GameObject:
@@ -10070,10 +10070,10 @@ RectTransform:
   m_Father: {fileID: 1985504867}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1441296819
 GameObject:
@@ -10999,10 +10999,10 @@ RectTransform:
   m_Father: {fileID: 1985504867}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1563137915
 GameObject:
@@ -13196,14 +13196,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.039215688}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -13234,10 +13234,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roads: {fileID: 313108088}
+  roadImage: {fileID: 3974493760763900507, guid: 6f2567ed793b1d043b6c208cad3a26f2, type: 3}
   enemies: {fileID: 1537674821}
+  enemiesObj: {fileID: 1377348067}
+  enemyIcon: {fileID: 2955749755470531665, guid: 4962b92a11a04294dbf3e12a1fd8ffdf, type: 3}
   items: {fileID: 1397439612}
+  itemsObj: {fileID: 1754919022}
+  itemIcon: {fileID: 2955749755470531665, guid: e26f4c4691d247f43b2b0d9c939f082e, type: 3}
   gimmicks: {fileID: 1416781877}
-  roadImage: {fileID: 3974493760763900507, guid: 95a3155a55a8e73488b863b88f9eabd7, type: 3}
+  gimmicksObj: {fileID: 943967777}
+  StairsIcon: {fileID: 3974493760763900507, guid: 95a3155a55a8e73488b863b88f9eabd7, type: 3}
+  TrapIcon: {fileID: 2955749755470531665, guid: 18235e262471bfc41b6c9c72612449b9, type: 3}
 --- !u!1 &2024477454
 GameObject:
   m_ObjectHideFlags: 0
