@@ -20,8 +20,13 @@ namespace Minimap
 
         public GameObject gimmicks;
         public GameObject gimmicksObj;
-        public GameObject StairsIcon;
-        public GameObject TrapIcon;
+        public GameObject stairsIcon;
+        public GameObject trapIcon;
+
+        public GameObject playerObj;
+        public GameObject playerIcon;
+
+        public Areamap field;
 
         private float pw, ph;
         private Array2D map;
@@ -35,11 +40,48 @@ namespace Minimap
 
         private void Update()
         {
-            ShowObjectsAllTime(itemIcon, items, itemsObj);
             ShowGimmickObjects();
+
+            ShowMoveObj(enemyIcon, enemies, enemiesObj);
+            ShowNoMoveObj(itemIcon, items, itemsObj);
+//            TrapObj;
+
         }
 
-        public void ShowObjectsAllTime(GameObject image, GameObject imgs, GameObject objs)
+        public void ShowMoveObj(GameObject Icon, GameObject imgs, GameObject objs)
+        {
+            for (int i = imgs.transform.childCount; i < objs.transform.childCount; i++)
+                Instantiate(Icon, imgs.transform);
+            for (int i = objs.transform.childCount; i < imgs.transform.childCount; i++)
+                Destroy(imgs.transform.GetChild(i).gameObject);
+
+            for (int i = 0; i < objs.transform.childCount; i++)
+            {
+                Pos2D agrid = objs.transform.GetChild(i).GetComponent<MoveAction>().grid;
+                Pos2D tgrid = playerObj.GetComponent<MoveAction>().grid;
+                ObjectPosition room = field.GetInRoom(agrid.x, agrid.z);
+                Transform img = imgs.transform.GetChild(i);
+
+                if (room != null)
+                {
+                    if (field.IsInRoom(room, tgrid.x, tgrid.z))
+                    {
+                        img.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * agrid.x, ph * agrid.z);
+                        img.gameObject.SetActive(true);
+                        continue;
+                    }
+                }
+                if (Mathf.Abs(agrid.x - tgrid.x) <= 1 && Mathf.Abs(agrid.z - tgrid.z) <= 1)
+                {
+                    img.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * agrid.x, ph * agrid.z);
+                    img.gameObject.SetActive(true);
+                }
+                else img.gameObject.SetActive(false);
+            }
+
+        }
+
+        public void ShowNoMoveObj(GameObject image, GameObject imgs, GameObject objs)
         {
             for (int i = imgs.transform.childCount; i < objs.transform.childCount; i++)
                 Instantiate(image, imgs.transform);
@@ -65,10 +107,10 @@ namespace Minimap
                 switch (gimmicksObj.transform.GetChild(i).GetComponent<SteppedOnEvent>().ObjType)
                 {
                     case 1:
-                        Instantiate(TrapIcon, gimmicks.transform);
+                        Instantiate(trapIcon, gimmicks.transform);
                         break;
                     case 2:
-                        Instantiate(StairsIcon, gimmicks.transform);
+                        Instantiate(stairsIcon, gimmicks.transform);
                         break;
                 }
             }

@@ -13243,8 +13243,11 @@ MonoBehaviour:
   itemIcon: {fileID: 2955749755470531665, guid: e26f4c4691d247f43b2b0d9c939f082e, type: 3}
   gimmicks: {fileID: 1416781877}
   gimmicksObj: {fileID: 943967777}
-  StairsIcon: {fileID: 3974493760763900507, guid: 95a3155a55a8e73488b863b88f9eabd7, type: 3}
-  TrapIcon: {fileID: 2955749755470531665, guid: 18235e262471bfc41b6c9c72612449b9, type: 3}
+  stairsIcon: {fileID: 3974493760763900507, guid: 95a3155a55a8e73488b863b88f9eabd7, type: 3}
+  trapIcon: {fileID: 2955749755470531665, guid: 18235e262471bfc41b6c9c72612449b9, type: 3}
+  playerObj: {fileID: 436213502}
+  playerIcon: {fileID: 2955749755470531665, guid: ed4dc378344914641bc5aa79d969b0c3, type: 3}
+  field: {fileID: 441075520}
 --- !u!1 &2024477454
 GameObject:
   m_ObjectHideFlags: 0
