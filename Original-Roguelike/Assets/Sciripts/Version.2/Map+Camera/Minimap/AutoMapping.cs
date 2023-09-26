@@ -23,6 +23,7 @@ namespace Minimap
         public GameObject stairsIcon;
         public GameObject trapIcon;
 
+        public GameObject player;
         public GameObject playerObj;
         public GameObject playerIcon;
 
@@ -42,10 +43,17 @@ namespace Minimap
         {
             ShowGimmickObjects();
 
+            ShowPlayerObj();
             ShowMoveObj(enemyIcon, enemies, enemiesObj);
             ShowNoMoveObj(itemIcon, items, itemsObj);
 //            TrapObj;
 
+        }
+
+        public void ShowPlayerObj()
+        {
+            Pos2D tgrid = playerObj.GetComponent<MoveAction>().grid;
+            player.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * tgrid.x, ph * tgrid.z);
         }
 
         public void ShowMoveObj(GameObject Icon, GameObject imgs, GameObject objs)
