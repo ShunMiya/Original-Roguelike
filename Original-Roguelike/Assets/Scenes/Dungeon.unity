@@ -2794,7 +2794,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 441075519}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &436213507
 MonoBehaviour:
@@ -3039,6 +3039,7 @@ Transform:
   - {fileID: 1377348068}
   - {fileID: 1754919023}
   - {fileID: 943967778}
+  - {fileID: 463309274}
   - {fileID: 436213506}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -3062,6 +3063,7 @@ MonoBehaviour:
   enemies: {fileID: 1377348067}
   items: {fileID: 1754919022}
   gimmicks: {fileID: 943967777}
+  traps: {fileID: 463309273}
   connections: {fileID: 1527902709}
   rooms: {fileID: 700491621}
   autoMapping: {fileID: 1985504870}
@@ -3078,10 +3080,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   field: {fileID: 441075520}
-  enemies: {fileID: 1377348067}
-  items: {fileID: 1754919022}
-  gimmicks: {fileID: 943967777}
-  player: {fileID: 436213507}
   dungeon: {fileID: 441075526}
 --- !u!114 &441075522
 MonoBehaviour:
@@ -3460,6 +3458,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457268854}
   m_CullTransparentMesh: 1
+--- !u!1 &463309273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 463309274}
+  m_Layer: 0
+  m_Name: Traps
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &463309274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463309273}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 441075519}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &472539283
 GameObject:
   m_ObjectHideFlags: 0
@@ -7046,7 +7075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2955749755470531666, guid: ed4dc378344914641bc5aa79d969b0c3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2955749755470531666, guid: ed4dc378344914641bc5aa79d969b0c3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -13282,6 +13311,7 @@ RectTransform:
   - {fileID: 1537674822}
   - {fileID: 1397439613}
   - {fileID: 1416781878}
+  - {fileID: 2074315092}
   - {fileID: 790147715}
   m_Father: {fileID: 213921879}
   m_RootOrder: 0
@@ -13351,7 +13381,10 @@ MonoBehaviour:
   itemIcon: {fileID: 2955749755470531665, guid: e26f4c4691d247f43b2b0d9c939f082e, type: 3}
   gimmicks: {fileID: 1416781877}
   gimmicksObj: {fileID: 943967777}
+  gimmickIcon: {fileID: 2955749755470531665, guid: b8acd245fb0aa8e44b1decaa15afeb69, type: 3}
   stairsIcon: {fileID: 3974493760763900507, guid: 95a3155a55a8e73488b863b88f9eabd7, type: 3}
+  traps: {fileID: 2074315091}
+  trapsObj: {fileID: 463309273}
   trapIcon: {fileID: 2955749755470531665, guid: 18235e262471bfc41b6c9c72612449b9, type: 3}
   player: {fileID: 790147716}
   playerObj: {fileID: 436213502}
@@ -13492,6 +13525,42 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024477454}
   m_CullTransparentMesh: 1
+--- !u!1 &2074315091
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2074315092}
+  m_Layer: 5
+  m_Name: TrapIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2074315092
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074315091}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1985504867}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2092707980
 GameObject:
   m_ObjectHideFlags: 0

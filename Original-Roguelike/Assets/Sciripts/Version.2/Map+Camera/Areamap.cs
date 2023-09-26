@@ -19,6 +19,7 @@ namespace Field
         public GameObject enemies;
         public GameObject items;
         public GameObject gimmicks;
+        public GameObject traps;
         public GameObject connections;
         public GameObject rooms;
         public AutoMapping autoMapping;
@@ -90,6 +91,7 @@ namespace Field
             }
         }
 
+
         public void SetObject(string name, string type, int xgrid, int zgrid, int width, int height)
         {
 
@@ -108,11 +110,14 @@ namespace Field
                     break;
                 case "Stairs":
                     GameObject StairsObj = (GameObject)Resources.Load("PrefabsV2/" + name);
-                    GameObject Stairs = Instantiate(StairsObj, gimmicks.transform);
-                    Stairs.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    GameObject stairs = Instantiate(StairsObj, gimmicks.transform);
+                    stairs.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
                     break;
                 case "Gimmick":
                     SetGimmick(name, xgrid, zgrid);
+                    break;
+                case "Trap":
+                    SetTrap(name, xgrid, zgrid);
                     break;
                 case "Enemy":
                     SetEnemy(name, xgrid, zgrid);
@@ -202,7 +207,7 @@ namespace Field
 
         }
 
-        public void SetGimmick(string name, int xgrid, int zgrid)
+        public void SetTrap(string name, int xgrid, int zgrid)
         {
             if(name.Equals("RandomTrap"))
             {
@@ -220,23 +225,54 @@ namespace Field
                         break;
                     }
                 }
-                GimmickData trapData = GimmickDataCache.GetGimmickData(trapId);
-                GameObject TrapObj = (GameObject)Resources.Load("PrefabsV2/" + trapData.PrefabName);
-                GameObject Trap = Instantiate(TrapObj, gimmicks.transform);
+                GimmickData TrapData = GimmickDataCache.GetGimmickData(trapId);
+                GameObject TrapObj = (GameObject)Resources.Load("PrefabsV2/" + TrapData.PrefabName);
+                GameObject Trap = Instantiate(TrapObj, traps.transform);
                 Trap.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-                Trap.GetComponent<SteppedOnEvent>().Id = trapData.GimmickId; //同一Objのマテリアルを変えて見た目を変えるなら、ここでIdを変える必要がある。別Objなら必要なし。
+                Trap.GetComponent<SteppedOnEvent>().Id = TrapData.GimmickId; //同一Objのマテリアルを変えて見た目を変えるなら、ここでIdを変える必要がある。別Objなら必要なし。
                 Trap.transform.GetChild(0).gameObject.SetActive(false);
 
                 return;
             }
-            GimmickData gimmickData = GimmickDataCache.GetGimmickDataInGimmickName(name);
-            GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + gimmickData.PrefabName);
-            GameObject Gimmick = Instantiate(GimmickObj, gimmicks.transform);
-            Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-            Gimmick.GetComponent<SteppedOnEvent>().Id = gimmickData.GimmickId; //同上
-            if (gimmickData.GimmickType != 1) return;
-            Gimmick.transform.GetChild(0).gameObject.SetActive(false);
+            GimmickData trapData = GimmickDataCache.GetGimmickDataInGimmickName(name);
+            GameObject trapObj = (GameObject)Resources.Load("PrefabsV2/" + trapData.PrefabName);
+            GameObject trap = Instantiate(trapObj, traps.transform);
+            trap.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+            trap.GetComponent<SteppedOnEvent>().Id = trapData.GimmickId; //同上
+            trap.transform.GetChild(0).gameObject.SetActive(false);
+        }
 
+        public void SetGimmick(string name, int xgrid, int zgrid)
+        {
+            if (name.Equals("RandomGimmick"))
+            {
+                int gimmickId = 0;
+                List<GimmickAppearData> GimmickList = DungeonDataCache.GetGimmickAppearInGimmickType(2);
+                int MaxRate = 0;
+                foreach (GimmickAppearData gimmickAppear in GimmickList) MaxRate += gimmickAppear.GenerationRate;
+                int p = UnityEngine.Random.Range(1, MaxRate + 1);
+                foreach (GimmickAppearData gimmickAppear in GimmickList)
+                {
+                    p -= gimmickAppear.GenerationRate;
+                    if (p <= 0)
+                    {
+                        gimmickId = gimmickAppear.GimmickId;
+                        break;
+                    }
+                }
+                GimmickData GimmickData = GimmickDataCache.GetGimmickData(gimmickId);
+                GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + GimmickData.PrefabName);
+                GameObject Gimmick = Instantiate(GimmickObj, traps.transform);
+                Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                Gimmick.GetComponent<SteppedOnEvent>().Id = GimmickData.GimmickId; //同一Objのマテリアルを変えて見た目を変えるなら、ここでIdを変える必要がある。別Objなら必要なし。
+
+                return;
+            }
+            GimmickData gimmickData = GimmickDataCache.GetGimmickDataInGimmickName(name);
+            GameObject gimmickObj = (GameObject)Resources.Load("PrefabsV2/" + gimmickData.PrefabName);
+            GameObject gimmick = Instantiate(gimmickObj, traps.transform);
+            gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+            gimmick.GetComponent<SteppedOnEvent>().Id = gimmickData.GimmickId; //同上
         }
 
         public void PopEnemy()
@@ -274,6 +310,8 @@ namespace Field
                 Destroy(items.transform.GetChild(i).gameObject);
             for (int i = 0; i < gimmicks.transform.childCount; i++)
                 Destroy(gimmicks.transform.GetChild(i).gameObject);
+            for (int i = 0; i < traps.transform.childCount; i++)
+                Destroy(traps.transform.GetChild(i).gameObject);
             for (int i = 0; i < connections.transform.childCount; i++)
                 Destroy(connections.transform.GetChild(i).gameObject);
             for (int i = 0; i < rooms.transform.childCount; i++)
@@ -343,6 +381,11 @@ namespace Field
                 if (xgrid == gimmickPosition.grid.x && zgrid == gimmickPosition.grid.z)
                     return gimmickPosition.gameObject;
             }
+            foreach (var trapPosition in traps.GetComponentsInChildren<ObjectPosition>())
+            {
+                if (xgrid == trapPosition.grid.x && zgrid == trapPosition.grid.z)
+                    return trapPosition.gameObject;
+            }
 
             return null;
         }
@@ -358,6 +401,11 @@ namespace Field
             foreach (var gimmickPosition in gimmicks.GetComponentsInChildren<ObjectPosition>())
             {
                 if (xgrid == gimmickPosition.grid.x && zgrid == gimmickPosition.grid.z)
+                    return false;
+            }
+            foreach (var trapPosition in traps.GetComponentsInChildren<ObjectPosition>())
+            {
+                if (xgrid == trapPosition.grid.x && zgrid == trapPosition.grid.z)
                     return false;
             }
 
@@ -378,10 +426,10 @@ namespace Field
                 zgrid += Pos.z;
                 if (xgrid == playerMovement.grid.x && zgrid == playerMovement.grid.z)
                     return playerMovement.gameObject;
-                foreach(var gimmickPosition in gimmicks.GetComponentsInChildren<ObjectPosition>())
+                foreach(var trapPosition in traps.GetComponentsInChildren<ObjectPosition>())
                 {
-                    if(xgrid == gimmickPosition.grid.x &&zgrid == gimmickPosition.grid.z)
-                        gimmickPosition.gameObject.transform.GetChild(0).gameObject.SetActive(true);
+                    if(xgrid == trapPosition.grid.x &&zgrid == trapPosition.grid.z)
+                        trapPosition.gameObject.transform.GetChild(0).gameObject.SetActive(true);
                 }
                 foreach (var enemyMovement in enemies.GetComponentsInChildren<MoveAction>())
                 {

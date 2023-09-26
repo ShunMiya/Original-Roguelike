@@ -2,6 +2,7 @@ using Field;
 using ItemSystemV2;
 using MoveSystem;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Minimap
 {
@@ -20,7 +21,11 @@ namespace Minimap
 
         public GameObject gimmicks;
         public GameObject gimmicksObj;
+        public GameObject gimmickIcon;
         public GameObject stairsIcon;
+
+        public GameObject traps;
+        public GameObject trapsObj;
         public GameObject trapIcon;
 
         public GameObject player;
@@ -41,13 +46,12 @@ namespace Minimap
 
         private void Update()
         {
-            ShowGimmickObjects();
 
             ShowPlayerObj();
             ShowMoveObj(enemyIcon, enemies, enemiesObj);
             ShowNoMoveObj(itemIcon, items, itemsObj);
-//            TrapObj;
-
+            ShowGimmickObj();
+            ShowTrapObj();
         }
 
         public void ShowPlayerObj()
@@ -108,14 +112,14 @@ namespace Minimap
             }
         }
 
-        public void ShowGimmickObjects()
+        public void ShowGimmickObj()
         {
             for (int i = gimmicks.transform.childCount; i < gimmicksObj.transform.childCount; i++)
             {
                 switch (gimmicksObj.transform.GetChild(i).GetComponent<SteppedOnEvent>().ObjType)
                 {
                     case 1:
-                        Instantiate(trapIcon, gimmicks.transform);
+                        Instantiate(gimmickIcon, gimmicks.transform);
                         break;
                     case 2:
                         Instantiate(stairsIcon, gimmicks.transform);
@@ -135,8 +139,28 @@ namespace Minimap
                 }
                 else img.gameObject.SetActive(false);
             }
-
         }
+
+        public void ShowTrapObj()
+        {
+            for (int i = traps.transform.childCount; i < trapsObj.transform.childCount; i++)
+                Instantiate(trapIcon, traps.transform);
+            for (int i = trapsObj.transform.childCount; i < traps.transform.childCount; i++)
+                Destroy(traps.transform.GetChild(i).gameObject);
+            for (int i = 0; i < trapsObj.transform.childCount; i++)
+            {
+                Pos2D p = trapsObj.transform.GetChild(i).GetComponent<ObjectPosition>().grid;
+                Transform img = traps.transform.GetChild(i);
+
+                if (trapsObj.transform.GetChild(i).GetChild(0).gameObject.activeSelf)
+                {
+                    img.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * p.x, ph * p.z);
+                    img.gameObject.SetActive(true);
+                }
+                else img.gameObject.SetActive(false);
+            }
+        }
+
 
         public void Mapping(int x, int y, int value)
         {

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ItemSystemV2.Inventory;
@@ -250,7 +249,7 @@ namespace Field
             for (int i = 0; i < PopEnemy; i++) SetObject("Random", "Enemy", field, tmpData);
 
             int PopTrap = FloorInfo.TrapNum;
-            for (int i = 0; i < PopTrap; i++) SetObject("RandomTrap", "Gimmick", field, tmpData);
+            for (int i = 0; i < PopTrap; i++) SetObject("RandomTrap", "Trap", field, tmpData);
         }
 
         private class Area2D
