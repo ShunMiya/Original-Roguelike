@@ -8,7 +8,7 @@ namespace ItemSystemV2
 {
     public class SteppedOnEvent : MonoBehaviour
     {
-        [SerializeField] private int ObjType;
+        public int ObjType;
         public int Id;
         public int num;
         private PauseSystemV2 pauseSystemV2;

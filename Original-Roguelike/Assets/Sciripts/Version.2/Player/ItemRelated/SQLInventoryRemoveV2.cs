@@ -53,14 +53,12 @@ namespace ItemSystemV2.Inventory
                 string updateQuery = "UPDATE Inventory SET Num = " + remainingStock + " WHERE IID = " + row["IID"];
                 sqlDB.ExecuteNonQuery(updateQuery);
 
-                Debug.Log("IID" + row["IID"] + "のStockを(" + remainingStock + ")に減少");
                 return remainingStock;
             }
             else if (remainingStock == 0)
             {
                 string deleteQuery = "DELETE FROM Inventory WHERE IID = " + row["IID"];
                 sqlDB.ExecuteNonQuery(deleteQuery);
-                Debug.Log("IID" + row["IID"] + "のアイテムを使い切った");
                 return remainingStock;
             }
             return 0;

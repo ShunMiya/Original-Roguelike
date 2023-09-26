@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Xml.Linq;
-using MoveSystem;
 using ItemSystemV2.Inventory;
 using System;
-using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 namespace Field
@@ -12,10 +10,6 @@ namespace Field
     {
         public Areamap field;
 
-        public GameObject enemies;
-        public GameObject items;
-        public GameObject gimmicks;
-        public MoveAction player;
         private SqliteDatabase sqlDB;
         [SerializeField]private RandomDungeon dungeon;
 
