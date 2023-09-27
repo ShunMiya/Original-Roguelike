@@ -43,15 +43,21 @@ namespace TurnSystem
         {
             while (true) // ゲームループを無限に続ける
             {
+                field.MappingUpdate();
+
                 yield return StartCoroutine(PlayerInputSet());　//プレイヤーの行動入力
 
                 yield return StartCoroutine(PA.ActionStart());　//プレイヤーのアクション実施(攻撃、アイテム関連)
 
                 EO.EnemiesActionSets();　//エネミーの行動決定
 
-                yield return StartCoroutine(MO.MoveAllObjects());　//全オブジェクトの同時移動
+                yield return StartCoroutine(MO.MoveAllObjects()); //全オブジェクトの同時移動
+
+                field.MappingUpdate();
 
                 yield return StartCoroutine(PEAM.EventCheck()); //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
+
+                field.MappingUpdate();
 
                 yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
 

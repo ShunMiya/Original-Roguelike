@@ -96,10 +96,10 @@ namespace Field
             {
                 int aw = area.outLine.width - margin * 2;
                 int ah = area.outLine.height - margin * 2;
-                int width = Random.Range(minRoom, aw);
-                int height = Random.Range(minRoom, ah);
-                int rw = aw - width;
-                int rh = ah - height;
+                int width = Random.Range(minRoom - 1, aw);
+                int height = Random.Range(minRoom - 1, ah);
+                int rw = area.outLine.width - width;
+                int rh = area.outLine.height - height;
                 int rx = Random.Range(margin, rw - margin);
                 int ry = Random.Range(margin, rh - margin);
                 int left = area.outLine.left + rx;
@@ -135,9 +135,17 @@ namespace Field
             int y1 = Random.Range(area1.room.top, area1.room.bottom);
             int y2 = Random.Range(area2.room.top, area2.room.bottom);
             for (int x = area1.room.right; x < area1.outLine.right; x++)
+            {
+                if (data.Get(x, y1 - 1) == 0) y1--;
+                if (data.Get(x, y1 + 1) == 0) y1++;
                 data.Set(x, y1, 0);
+            }
             for (int x = area2.outLine.left; x < area2.room.left; x++)
+            {
+                if (data.Get(x, y2 - 1) == 0) y2--;
+                if (data.Get(x, y2 + 1) == 0) y2++;
                 data.Set(x, y2, 0);
+            }
             for (int y = Mathf.Min(y1, y2), end = Mathf.Max(y1, y2); y <= end; y++)
                 data.Set(area1.outLine.right, y, 0);
             field.SetObject("Connection", "Connection", area1.room.right, y1, 1, 1);
@@ -154,9 +162,17 @@ namespace Field
             int x1 = Random.Range(area1.room.left, area1.room.right);
             int x2 = Random.Range(area2.room.left, area2.room.right);
             for (int y = area1.room.bottom; y < area1.outLine.bottom; y++)
+            {
+                if (data.Get(x1 - 1, y) == 0) x1--;
+                if (data.Get(x1 + 1, y) == 0) x1++;
                 data.Set(x1, y, 0);
+            }
             for (int y = area2.outLine.top; y < area2.room.top; y++)
+            {
+                if (data.Get(x2 - 1, y) == 0) x2--;
+                if (data.Get(x2 + 1, y) == 0) x2++;
                 data.Set(x2, y, 0);
+            }
             for (int x = Mathf.Min(x1, x2), end = Mathf.Max(x1, x2); x <= end; x++)
                 data.Set(x, area1.outLine.bottom, 0);
             field.SetObject("Connection", "Connection", x1, area1.room.bottom, 1, 1);

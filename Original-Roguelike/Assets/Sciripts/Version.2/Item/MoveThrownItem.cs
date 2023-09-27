@@ -27,7 +27,6 @@ public class MoveThrownItem : MonoBehaviour
 
         for (int i = 1; i <= 4; i++)
         {
-            Debug.Log(xgrid + " " + zgrid);
             NextPointAreaObj = field.IsCollideReturnAreaObj(xgrid, zgrid);
 
 

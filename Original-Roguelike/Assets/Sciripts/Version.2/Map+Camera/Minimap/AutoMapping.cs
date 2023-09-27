@@ -224,7 +224,6 @@ namespace Minimap
 
 
             map = new Array2D(width, height);
-            Debug.Log(width + "*" + pw + "," + height + "*" + ph);
             GetComponent<RectTransform>().sizeDelta = new Vector2(width * pw, height * ph);
         }
     }
