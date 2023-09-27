@@ -249,7 +249,7 @@ namespace Field
             for (int i = 0; i < PopEnemy; i++) SetObject("Random", "Enemy", field, tmpData);
 
             int PopTrap = FloorInfo.TrapNum;
-            for (int i = 0; i < PopTrap; i++) SetObject("RandomTrap", "Trap", field, tmpData);
+            for (int i = 0; i < PopTrap; i++) SetObject("Random", "Trap", field, tmpData);
         }
 
         private class Area2D
