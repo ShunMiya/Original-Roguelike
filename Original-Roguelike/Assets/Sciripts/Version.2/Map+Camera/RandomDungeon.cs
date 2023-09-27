@@ -107,9 +107,6 @@ namespace Field
                 int right = left + width;
                 int bottom = top + height;
 
-                Debug.Log("エリアサイズ幅:"+area.outLine.width+"高さ:"+area.outLine.height+"左端:"+area.outLine.left+"下端:"+area.outLine.top);
-                Debug.Log("部屋幅:" + width + "高さ:" + height + "左端:" + left + "下端:" + top);
-                Debug.Log("エリア余白計幅:"+rw+"高さ:"+rh+"左余白:"+rx+"下余白"+ry);
                 area.room = new Rect2D(left, top, right, bottom);
                 FillRoom(area.room);
                 field.SetObject("Room", "Room", left, top, width + 1, height + 1);

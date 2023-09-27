@@ -28,7 +28,7 @@ namespace Field
         private static float onetile = GameRule.GridSize;
         private static float floorSize = 10.0f / onetile;
 
-        private void Update()
+        public void MappingUpdate()
         {
             Pos2D p = playerMovement.newGrid;
             ObjectPosition room = GetInRoom(p.x, p.z);
