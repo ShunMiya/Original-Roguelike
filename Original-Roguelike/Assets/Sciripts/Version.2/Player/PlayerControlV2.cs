@@ -13,6 +13,10 @@ namespace PlayerV2
         private PlayerCondition PCondition;
         private PauseSystemV2 pauseSystem;
 
+        private float WaitInput = 0.05f;
+        private float WaitInputTimer = 0f;
+        private bool firstInputProcessed = false;
+
         float movex;
         float movez;
 
@@ -49,25 +53,53 @@ namespace PlayerV2
                 return true;
             }
 
-            movex = Input.GetAxis("Horizontal");
-            movez = Input.GetAxis("Vertical");
-
-            if (Mathf.Abs(movex) > 0.3f) movex = Mathf.Sign(movex);
-            else movex = 0;
-
-            if (Mathf.Abs(movez) > 0.3f) movez = Mathf.Sign(movez);
-            else movez = 0;
-
-            if (movex == 0 && movez == 0) return false;
-
-            if (PCondition.ConfusionTurn != 0)
+            if (!firstInputProcessed)
             {
-                Vector3 PosRota = PCondition.ConfusionEvent();
-                movex = PosRota.x; movez = PosRota.z;
+                if (WaitInputTimer > 0)
+                {
+                    WaitInputTimer -= Time.deltaTime;
+                }
+                else
+                {
+                    movex = Input.GetAxis("Horizontal");
+                    movez = Input.GetAxis("Vertical");
+
+                    if (Mathf.Abs(movex) > 0.3f || Mathf.Abs(movez) > 0.3f)
+                    {
+                        firstInputProcessed = true;
+                    }
+                    else
+                    {
+                        WaitInputTimer = WaitInput;
+                    }
+                }
             }
+            else
+            {
+                movex = Input.GetAxis("Horizontal");
+                movez = Input.GetAxis("Vertical");
 
-            TurnNext = moveAction.MoveStance(movex, movez);
+                if (Mathf.Abs(movex) > 0.3f) movex = Mathf.Sign(movex);
+                else movex = 0;
 
+                if (Mathf.Abs(movez) > 0.3f) movez = Mathf.Sign(movez);
+                else movez = 0;
+
+                if (movex == 0 && movez == 0)
+                {
+                    WaitInputTimer = 0f;
+                    firstInputProcessed = false;
+                    return false;
+                }
+
+                if (PCondition.ConfusionTurn != 0)
+                {
+                    Vector3 PosRota = PCondition.ConfusionEvent();
+                    movex = PosRota.x; movez = PosRota.z;
+                }
+
+                TurnNext = moveAction.MoveStance(movex, movez);
+            }
             return TurnNext;
         }
     }
