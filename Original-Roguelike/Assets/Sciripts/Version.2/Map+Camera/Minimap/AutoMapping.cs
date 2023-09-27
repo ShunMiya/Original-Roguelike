@@ -10,6 +10,7 @@ namespace Minimap
     {
         public GameObject roads;
         public GameObject roadImage;
+        public GameObject roomImage;
 
         public GameObject enemies;
         public GameObject enemiesObj;
@@ -44,7 +45,7 @@ namespace Minimap
             ph = rect.sizeDelta.y;
         }
 
-        private void Update()
+        public void ObjMapping()
         {
 
             ShowPlayerObj();
@@ -161,14 +162,50 @@ namespace Minimap
             }
         }
 
+        public void MappingRoom(ObjectPosition room)
+        {
+            int sx = room.grid.x + room.range.left;
+            int sy = room.grid.z + room.range.top;
+            int ex = sx + room.range.width - 1;
+            int ey = sy + room.range.height - 1;
+
+            for (int ax = sx - 1; ax <= ex + 1; ax++)
+            {
+                for (int ay = sy - 1; ay <= ey + 1; ay++)
+                {
+                    Mapping(ax, ay, field.IsCollidediagonal(ax, ay) ? 0 : 1);
+                }
+            }
+
+        }
+
+        public void MappingRoads(int x, int y)
+        {
+            for (int ax = x - 1; ax <= x + 1; ax++)
+            {
+                for (int ay = y - 1; ay <= y + 1; ay++)
+                {
+                    Mapping(ax, ay, field.IsCollidediagonal(ax, ay) ? 0 : 1);
+                }
+            }
+        }
 
         public void Mapping(int x, int y, int value)
         {
+            if (map.Get(x, y) > 0) return;
             map.Set(x, y, value);
             if (value == 1)
             {
-                GameObject road = Instantiate(roadImage, roads.transform);
-                road.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * x, ph * y);
+                if (field.GetInRoom(x, y) == null)
+                {
+                    GameObject road = Instantiate(roadImage, roads.transform);
+                    road.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * x, ph * y);
+                }
+                else
+                {
+                    GameObject road = Instantiate(roomImage, roads.transform);
+                    road.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * x, ph * y);
+                }
             }
         }
 
@@ -182,6 +219,9 @@ namespace Minimap
                 Destroy(items.transform.GetChild(i).gameObject);
             for (int i = 0; i < gimmicks.transform.childCount; i++)
                 Destroy(gimmicks.transform.GetChild(i).gameObject);
+            for (int i = 0; i < traps.transform.childCount; i++)
+                Destroy(traps.transform.GetChild(i).gameObject);
+
 
             map = new Array2D(width, height);
             Debug.Log(width + "*" + pw + "," + height + "*" + ph);

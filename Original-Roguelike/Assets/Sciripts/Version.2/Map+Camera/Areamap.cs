@@ -28,6 +28,22 @@ namespace Field
         private static float onetile = GameRule.GridSize;
         private static float floorSize = 10.0f / onetile;
 
+        private void Update()
+        {
+            Pos2D p = playerMovement.newGrid;
+            ObjectPosition room = GetInRoom(p.x, p.z);
+
+            if (room != null)
+            {
+                autoMapping.MappingRoom(room);
+            }
+            else
+            {
+                autoMapping.MappingRoads(p.x, p.z);
+            }
+            autoMapping.ObjMapping();
+        }
+
         /**
         * マップデータの生成
         */
@@ -68,7 +84,6 @@ namespace Field
                         block.transform.position = new Vector3(xblock, 0, zblock);
                         block.transform.SetParent(floor.transform.GetChild(0));
                     }
-                    autoMapping.Mapping(x, z, map.Get(x, z) + 1);
                 }
             }
 
@@ -209,7 +224,7 @@ namespace Field
 
         public void SetTrap(string name, int xgrid, int zgrid)
         {
-            if(name.Equals("RandomTrap"))
+            if(name.Equals("Random"))
             {
                 int trapId = 0;
                 List<GimmickAppearData> TrapList = DungeonDataCache.GetGimmickAppearInGimmickType(1);
@@ -244,7 +259,7 @@ namespace Field
 
         public void SetGimmick(string name, int xgrid, int zgrid)
         {
-            if (name.Equals("RandomGimmick"))
+            if (name.Equals("Random"))
             {
                 int gimmickId = 0;
                 List<GimmickAppearData> GimmickList = DungeonDataCache.GetGimmickAppearInGimmickType(2);

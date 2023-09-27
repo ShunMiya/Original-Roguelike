@@ -13373,6 +13373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roads: {fileID: 313108088}
   roadImage: {fileID: 3974493760763900507, guid: 6f2567ed793b1d043b6c208cad3a26f2, type: 3}
+  roomImage: {fileID: 3974493760763900507, guid: e4e21146eb7ebaf429187437040ba9d6, type: 3}
   enemies: {fileID: 1537674821}
   enemiesObj: {fileID: 1377348067}
   enemyIcon: {fileID: 2955749755470531665, guid: 4962b92a11a04294dbf3e12a1fd8ffdf, type: 3}
