@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using ItemSystemV2.Inventory;
 using System;
 using Random = UnityEngine.Random;
+using System.IO;
 
 namespace Field
 {
@@ -32,7 +33,9 @@ namespace Field
             DataTable Data = sqlDB.ExecuteQuery(query);
             string DungeonName = (string)Data[0]["DungeonName"];
 
-            Array2D mapdata = readMapFile("Assets/Maps/"+DungeonName+ ".tmx");
+            string tmxFilePath = Path.Combine(Application.streamingAssetsPath, "Maps/"+ DungeonName + ".tmx");
+
+            Array2D mapdata = readMapFile(tmxFilePath);
             if (mapdata != null)
             {
                 field.Create(mapdata);

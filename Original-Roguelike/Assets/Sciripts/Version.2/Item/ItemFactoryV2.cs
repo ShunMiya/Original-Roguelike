@@ -1,10 +1,7 @@
 using Field;
 using MoveSystem;
-using System.Collections;
-using System.Collections.Generic;
 using UISystemV2;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 namespace ItemSystemV2
 {

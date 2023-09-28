@@ -64,7 +64,7 @@ namespace PlayerV2
                     movex = Input.GetAxis("Horizontal");
                     movez = Input.GetAxis("Vertical");
 
-                    if (Mathf.Abs(movex) > 0.3f || Mathf.Abs(movez) > 0.3f)
+                    if (Mathf.Abs(movex) > 0.2f || Mathf.Abs(movez) > 0.2f)
                     {
                         firstInputProcessed = true;
                     }
@@ -79,10 +79,10 @@ namespace PlayerV2
                 movex = Input.GetAxis("Horizontal");
                 movez = Input.GetAxis("Vertical");
 
-                if (Mathf.Abs(movex) > 0.3f) movex = Mathf.Sign(movex);
+                if (Mathf.Abs(movex) > 0.2f) movex = Mathf.Sign(movex);
                 else movex = 0;
 
-                if (Mathf.Abs(movez) > 0.3f) movez = Mathf.Sign(movez);
+                if (Mathf.Abs(movez) > 0.2f) movez = Mathf.Sign(movez);
                 else movez = 0;
 
                 if (movex == 0 && movez == 0)

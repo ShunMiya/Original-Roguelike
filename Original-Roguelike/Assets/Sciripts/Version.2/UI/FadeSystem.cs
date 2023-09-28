@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEditor;
 using Field;
 using AttackSystem;
 using GameEndSystemV2;
@@ -66,7 +65,7 @@ namespace Fade
         {
             yield return StartCoroutine(FadeOut());
 
-            EditorApplication.isPlaying = false; // UnityEditorClose NotAplicationClose
+            //EditorApplication.isPlaying = false; // UnityEditorClose NotAplicationClose
             Application.Quit();
         }
 

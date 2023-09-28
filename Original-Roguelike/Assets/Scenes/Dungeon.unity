@@ -2815,7 +2815,7 @@ MonoBehaviour:
     x: 0
     z: 0
   ThrowMoveFrame: 15
-  complementFrame: 0
+  complementFrame: 40
 --- !u!114 &436213508
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,5 +1,3 @@
-using System;
-
 public static class GameRule
 {
     private static float gridSize = 1.0f;
@@ -32,11 +30,11 @@ public static class GameRule
 
     public static void DashMove()
     {
-        moveSpeed = 10;
+        moveSpeed = 10f;
     }
 
     public static void WalkMove()
     {
-        moveSpeed = 40;
+        moveSpeed = 40f;
     }
 }
