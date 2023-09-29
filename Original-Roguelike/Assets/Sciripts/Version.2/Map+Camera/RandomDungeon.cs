@@ -3,6 +3,7 @@ using UnityEngine;
 using ItemSystemV2.Inventory;
 using System;
 using Random = UnityEngine.Random;
+using MoveSystem;
 
 namespace Field
 {
@@ -13,6 +14,8 @@ namespace Field
         private const int margin = 2;
         private Array2D data;
         private List<Area2D> areas;
+        private int Proom;
+
 
         /**
         * É_ÉìÉWÉáÉìÇçÏê¨Ç∑ÇÈ
@@ -232,11 +235,31 @@ namespace Field
                 int x = Random.Range(room.left, room.right + 1);
                 int y = Random.Range(room.top, room.bottom + 1);
                 if (data.Get(x, y) != 0) continue;
+                if (name == "Player") Proom = areaIdx;
                 data.Set(x, y, 1);
                 field.SetObject(name, type, x, y, 1, 1);
                 break;
             }
         }
+
+        private void SetObjectPlayerRoomAvoidance(string name, string type, Areamap field, Array2D data)
+        {
+            while (true)
+            {
+                int areaIdx = Random.Range(0, areas.Count);
+
+                if (areaIdx == Proom) continue;
+
+                Rect2D room = areas[areaIdx].room;
+                int x = Random.Range(room.left, room.right + 1);
+                int y = Random.Range(room.top, room.bottom + 1);
+                if (data.Get(x, y) != 0) continue;
+                data.Set(x, y, 1);
+                field.SetObject(name, type, x, y, 1, 1);
+                break;
+            }
+        }
+
 
         private void SetObjects(Areamap field)
         {
@@ -262,7 +285,11 @@ namespace Field
             for (int i = 0; i < PopItem; i++) SetObject("Random", "Item", field, tmpData);
 
             int PopEnemy = Random.Range(FloorInfo.MinEnemies, FloorInfo.MaxEnemies + 1);
-            for (int i = 0; i < PopEnemy; i++) SetObject("Random", "Enemy", field, tmpData);
+            for (int i = 0; i < PopEnemy; i++)
+            {
+                if(FloorLevel <= 2) SetObjectPlayerRoomAvoidance("Random", "Enemy", field, tmpData);
+                else SetObject("Random", "Enemy", field, tmpData);
+            }
 
             int PopTrap = FloorInfo.TrapNum;
             for (int i = 0; i < PopTrap; i++) SetObject("Random", "Trap", field, tmpData);
