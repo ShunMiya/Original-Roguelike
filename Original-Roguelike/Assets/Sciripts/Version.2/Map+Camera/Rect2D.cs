@@ -1,3 +1,5 @@
+using System;
+
 namespace Field
 {
     [System.Serializable]
@@ -16,6 +18,11 @@ namespace Field
             top = t;
             right = r;
             bottom = b;
+        }
+
+        internal T GetComponent<T>()
+        {
+            throw new NotImplementedException();
         }
     }
 }

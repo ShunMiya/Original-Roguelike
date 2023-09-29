@@ -102,7 +102,7 @@ namespace TurnSystem
             {
                 if (Time.timeScale != 1f)
                 {
-                    yield return null; // フレームの更新を待機
+                    yield return null;
                     continue;
                 }
 
@@ -122,7 +122,7 @@ namespace TurnSystem
                     break;
                 }
 
-                yield return null; // フレームの更新を待機
+                yield return null;
             }
         }
     }
