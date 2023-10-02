@@ -33,7 +33,6 @@ namespace PlayerV2
             {
                 Coroutine coroutine = StartCoroutine(playerThrowItem.ThrowItem());
                 yield return coroutine;
-
             }
 
             // s“®‚ªŠ®—¹‚µ‚½Œã‚Ìˆ—

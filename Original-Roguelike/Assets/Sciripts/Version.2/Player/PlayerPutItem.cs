@@ -36,7 +36,7 @@ namespace ItemSystemV2
 
             inventoryremove.RemoveItem(row, 2);
 
-            yield return null;
+            yield return new WaitForSeconds(0.2f);
         }
     }
 }

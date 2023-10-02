@@ -177,13 +177,16 @@ namespace EnemySystem
 
         private void Tracking()
         {
-            int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range);
-            if (Rota != 1)
+            if(DetectTarget())
             {
-                attackAction.EnemyY = Rota;
-                AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
-                attackObjects.objectsToAttack.Add(attackAction);
-                return;
+                int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range);
+                if (Rota != 1)
+                {
+                    attackAction.EnemyY = Rota;
+                    AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
+                    attackObjects.objectsToAttack.Add(attackAction);
+                    return;
+                }
             }
             Dir d = AstarMovementAI();
             Vector3 PosRota = DirUtil.SetNewPosRotation(d);
@@ -231,6 +234,8 @@ namespace EnemySystem
                 return;
             }
             attackAction.EnemyY = (int)PosRota.y;
+            AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
+            attackObjects.objectsToAttack.Add(attackAction);
         }
 
         /**

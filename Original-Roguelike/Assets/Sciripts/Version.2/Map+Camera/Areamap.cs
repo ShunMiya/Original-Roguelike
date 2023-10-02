@@ -439,6 +439,12 @@ namespace Field
             {
                 xgrid += Pos.x;
                 zgrid += Pos.z;
+
+                if(Pos.x != 0 && Pos.z != 0)
+                {
+                    if (IsCollidediagonal(xgrid - Pos.x, zgrid) || IsCollidediagonal(xgrid, zgrid - Pos.z)) return null;
+                }
+
                 if (xgrid == playerMovement.grid.x && zgrid == playerMovement.grid.z)
                     return playerMovement.gameObject;
                 foreach(var trapPosition in traps.GetComponentsInChildren<ObjectPosition>())

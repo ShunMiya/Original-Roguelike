@@ -1,8 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using Field;
-using ItemSystemV2;
-using Unity.VisualScripting;
 using EnemySystem;
 
 namespace MoveSystem
@@ -15,15 +13,14 @@ namespace MoveSystem
         public Pos2D grid = new Pos2D();
         public Pos2D newGrid = null;
 
-        public float ThrowMoveFrame = 15f;
-        [SerializeField]private float complementFrame;
+        private float ThrowMoveFrame = 0.06f;
+        private float complementFrame;
         private Areamap field;
 
         private void Awake ()
         {
             field = GetComponentInParent<Areamap>();
             complementFrame = GameRule.MoveSpeed;
-            //complementFrame = maxPerFrame / Time.deltaTime;
             newGrid = grid;
         }
 
@@ -56,9 +53,11 @@ namespace MoveSystem
             float px2 = CoordinateTransformation.ToWorldX(newGrid.x);
             float pz2 = CoordinateTransformation.ToWorldZ(newGrid.z);
 
-            for (int currentFrame = 0; currentFrame <= complementFrame; currentFrame++)
+            int numFrames = Mathf.CeilToInt(complementFrame / Time.deltaTime);
+
+            for (int currentFrame = 0; currentFrame <= numFrames; currentFrame++)
             {
-                float t = (float)currentFrame / complementFrame;
+                float t = (float)currentFrame / numFrames;
                 float newX = px1 + (px2 - px1) * t;
                 float newZ = pz1 + (pz2 - pz1) * t;
                 transform.position = new Vector3(newX, 0, newZ);

@@ -52,7 +52,7 @@ namespace ItemSystemV2
 
                     break;
             }
-            yield return null;
+            yield return new WaitForSeconds(0.2f);
         }
 
         public bool ConsumableUse(DataRow row)
