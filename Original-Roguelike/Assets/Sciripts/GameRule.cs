@@ -30,11 +30,11 @@ public static class GameRule
 
     public static void DashMove()
     {
-        moveSpeed = 10f;
+        moveSpeed = 0.04f;
     }
 
     public static void WalkMove()
     {
-        moveSpeed = 40f;
+        moveSpeed = 0.2f;
     }
 }
