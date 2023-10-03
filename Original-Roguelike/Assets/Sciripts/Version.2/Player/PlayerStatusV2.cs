@@ -41,7 +41,6 @@ namespace PlayerStatusSystemV2
             float addAttack = 0;
             float addDefense = 0;
             float RangeBonus = 0;
-            float DistanceBonus = 0;
             string checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped IN (1, 2)";
             DataTable equippedItems = sqlDB.ExecuteQuery(checkEquippedQuery);
             foreach (DataRow row in equippedItems.Rows)
@@ -52,15 +51,12 @@ namespace PlayerStatusSystemV2
                 addAttack += equippedItem.AttackBonus;
                 addDefense += equippedItem.DefenseBonus;
                 RangeBonus += equippedItem.WeaponRange;
-                DistanceBonus += equippedItem.WeaponDistance;
             }
             string updateStatusQuery = "UPDATE PlayerStatus SET Attack = (SELECT Strength FROM PlayerStatus WHERE PlayerID = 1) + " + addAttack + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
             updateStatusQuery = "UPDATE PlayerStatus SET Defense = " + addDefense + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
             updateStatusQuery = "UPDATE PlayerStatus SET AttackRange = " + 1 + " + " + RangeBonus + " WHERE PlayerID = 1;";
-            sqlDB.ExecuteNonQuery(updateStatusQuery);
-            updateStatusQuery = "UPDATE PlayerStatus SET AttackDistance = " + 1 + " + " + DistanceBonus + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
         }
     }

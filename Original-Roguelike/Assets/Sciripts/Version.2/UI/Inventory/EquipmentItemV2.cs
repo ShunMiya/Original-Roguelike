@@ -45,7 +45,6 @@ namespace UISystemV2
             float addAttack = 0;
             float addDefense = 0;
             float RangeBonus = 0;
-            float DistanceBonus = 0;
             string checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped IN (1, 2)";
             DataTable equippedItems = sqlDB.ExecuteQuery(checkEquippedQuery);
 
@@ -57,13 +56,12 @@ namespace UISystemV2
                 addAttack += equippedItem.AttackBonus;
                 addDefense += equippedItem.DefenseBonus;
                 RangeBonus += equippedItem.WeaponRange;
-                DistanceBonus += equippedItem.WeaponDistance;
             }
 
             string output = "Attack Bonus\t" + addAttack + "\n" +
                             "Defense Bonus\t" + addDefense + "\n" +
-                            "Range Bonus\t" + RangeBonus + "\n" +
-                            "Distance Bonus\t" + DistanceBonus;
+                            "Range Bonus\t" + RangeBonus;
+
 
             BonusText.text = (output);
         }

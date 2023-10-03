@@ -522,7 +522,7 @@ namespace Field
             int rightx = leftx + room.range.right;
             int topz = room.grid.z + room.range.top;
             int bottomz = topz + room.range.bottom;
-            return xgrid >= leftx && xgrid <= rightx && zgrid >= topz && zgrid <= bottomz;
+            return leftx <= xgrid && xgrid <= rightx && topz <= zgrid && zgrid <= bottomz;
         }
 
         //“n‚³‚ê‚½À•W‚ª•”‰®“à‚Å‚ ‚ê‚Î•”‰®‚ð•Ô‚·B
