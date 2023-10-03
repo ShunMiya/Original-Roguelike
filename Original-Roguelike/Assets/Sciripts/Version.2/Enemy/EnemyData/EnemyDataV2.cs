@@ -11,5 +11,6 @@ namespace EnemySystem
         public int Defense { get; set; }
         public int Speed { get; set; }
         public int Range { get; set; }
+        public int EnemyExp { get; set; }
     }
 }

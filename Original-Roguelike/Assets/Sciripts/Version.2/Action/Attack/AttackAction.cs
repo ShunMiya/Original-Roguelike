@@ -85,7 +85,7 @@ namespace AttackSystem
                 else if (HitObj.CompareTag("Enemy"))
                 {
                     // 敵にダメージを与える処理
-                    HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage,R, HitRate);
+                    HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage,R, HitRate, gameObject);
                     // エネミーのダメージ演出
                 }
             }

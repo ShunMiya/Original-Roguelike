@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using Field;
 using EnemySystem;
+using PlayerStatusSystemV2;
 
 namespace MoveSystem
 {
@@ -116,7 +117,7 @@ namespace MoveSystem
             GameObject Char = field.IsCollideReturnCharObj(movex, movez);
             if (Char != null)
             {
-                Char.GetComponent<EnemyStatusV2>().TakeDamage(1, 1, GameRule.HitRate);
+                Char.GetComponent<EnemyStatusV2>().TakeDamage(1, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject);
                 bool Throw = false;
                 yield return Throw;
                 Destroy(gameObject);
