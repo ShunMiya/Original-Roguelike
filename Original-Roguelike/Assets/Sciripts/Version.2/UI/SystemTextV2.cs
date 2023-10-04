@@ -6,6 +6,7 @@ namespace UISystemV2
 {
     public class SystemTextV2 : MonoBehaviour
     {
+        public GameObject textBox;
         public TextMeshProUGUI textMeshPro1;
         public TextMeshProUGUI textMeshPro2;
         public TextMeshProUGUI textMeshPro3;
@@ -13,6 +14,7 @@ namespace UISystemV2
 
         public void TextSet(string text)
         {
+            textBox.SetActive(true);
             if (!gameObject.activeSelf) return;
             if (displayCoroutine != null) StopCoroutine(displayCoroutine);
 
@@ -31,6 +33,15 @@ namespace UISystemV2
             textMeshPro2.text = "";
             textMeshPro3.text = "";
             displayCoroutine = null;
+            textBox.SetActive(false);
+        }
+
+        public void NonActive()
+        {
+            textMeshPro1.text = "";
+            textMeshPro2.text = "";
+            textMeshPro3.text = "";
+            textBox.SetActive(false);
         }
     }
 }

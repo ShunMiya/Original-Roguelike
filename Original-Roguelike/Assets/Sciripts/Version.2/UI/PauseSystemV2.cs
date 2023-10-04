@@ -13,20 +13,13 @@ namespace UISystemV2
 
         [SerializeField] private GameObject[] windowLists;
 
-        private SystemTextV2 systemTextCompo;
-
-        private void Start()
-        {
-            systemTextCompo = Systemtext.GetComponent<SystemTextV2>();
-        }
+        [SerializeField] private SystemTextV2 systemText;
 
         public void PauseSwitching()
         {
             subMenu.SetActive(false);
             pauseUI.SetActive(true);
-            systemTextCompo.TextSet("");
-            systemTextCompo.TextSet("");
-            systemTextCompo.TextSet("");
+            systemText.NonActive();
             ChangeWindow(windowLists[0]);
             
             Time.timeScale = 0f;
