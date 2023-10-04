@@ -1,11 +1,9 @@
 using MoveSystem;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using AttackSystem;
 using Field;
 using System.Linq;
-using UnityEditor;
 
 namespace EnemySystem
 {
@@ -21,6 +19,7 @@ namespace EnemySystem
         public Pos2D nextConnectionPos;
         public int detectDistance = 4;
         private bool OldDetectTarget = false;
+
         public void Start()
         {
             enemyStatus = GetComponent<EnemyStatusV2>();

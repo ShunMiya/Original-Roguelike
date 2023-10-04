@@ -4,7 +4,7 @@ public static class GameRule
     private static float moveSpeed = 40.0f;
     private static float hitRate = 95;
     private static float evasionRate = 0;
-    private static float damageIndexValue = 0.7f;
+    private static float damageIndexValue = 0.9375f;
 
     public static float GridSize
     {

@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using PlayerStatusSystemV2;
 using UISystemV2;
 using UnityEngine;
 
@@ -14,6 +13,7 @@ namespace EnemySystem
         public float currentHP;
         public int EnemyID;
         private int Defense;
+        private int Exp;
 
         private void Start()
         {
@@ -21,9 +21,10 @@ namespace EnemySystem
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(EnemyID);
             currentHP = enemy.MaxHP;
             Defense = enemy.Defense;
+            Exp = enemy.EnemyExp;
 
         }
-        public void TakeDamage(float damage,int R, float HitRate)
+        public void TakeDamage(float damage,int R, float HitRate, GameObject attacker)
         {
             #region –½’†—¦ˆ—
             int HitCheck = Random.Range(1,101);
@@ -35,7 +36,7 @@ namespace EnemySystem
             #endregion
 
             #region ‰ñ”ğ—¦ˆ—
-            int EvasionCheck = UnityEngine.Random.Range(1, 101);
+            int EvasionCheck = Random.Range(1, 101);
             if (EvasionCheck < GameRule.EvasionRate)
             {
                 systemText.TextSet("NoHit!");
@@ -44,9 +45,8 @@ namespace EnemySystem
             #endregion
 
             #region ƒ_ƒ[ƒWŒˆ’èˆ—
-            float damageModifier = UnityEngine.Random.Range(0.85f, 1.0f);
+            float damageModifier = Random.Range(0.85f, 1.0f);
             int ModifierDamage = Mathf.RoundToInt(damage * damageModifier);
-
             int reducedDamage = Mathf.CeilToInt(ModifierDamage * Mathf.Pow(GameRule.DamageIndexValue, Defense));
             #endregion
 
@@ -60,6 +60,11 @@ namespace EnemySystem
 
             if (currentHP <= 0 && EnemyDeath != null)
             {
+                systemText.TextSet("EnemyDead!");
+                if (attacker.CompareTag("Player"))
+                {
+                    FindFirstObjectByType<PlayerLevel>().PlayerGetExp(Exp);
+                }
                 EnemyDeath();
             }
         }

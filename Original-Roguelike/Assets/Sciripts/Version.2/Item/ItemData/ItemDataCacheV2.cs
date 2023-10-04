@@ -37,7 +37,6 @@ namespace ItemSystemV2
                 equipmentData.AttackBonus = Convert.ToInt32(row["AttackBonus"]);
                 equipmentData.DefenseBonus = Convert.ToInt32(row["DefenseBonus"]);
                 equipmentData.WeaponRange = Convert.ToInt32(row["WeaponRange"]);
-                equipmentData.WeaponDistance = Convert.ToInt32(row["WeaponDistance"]);
 
                 equipmentCache[equipmentData.Id] = equipmentData;
             }

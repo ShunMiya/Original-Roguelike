@@ -77,8 +77,8 @@ namespace ItemSystemV2
                 spawnedItem.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
                 int randomNum = RandomNum.NumSetStock();
                 spawnedItem.GetComponent<SteppedOnEvent>().num = randomNum;
-                if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
-                systemText.TextSet(randomItem.ItemName + " Num:" + randomNum + " Drop");
+                /*if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
+                systemText.TextSet(randomItem.ItemName + " Num:" + randomNum + " Drop");*/
             }
         }
     }

@@ -53,7 +53,6 @@ namespace PlayerStatusSystemV2
             #region ƒ_ƒ[ƒWŒˆ’èˆ—
             float damageModifier = UnityEngine.Random.Range(0.85f, 1.0f);
             int ModifierDamage = Mathf.RoundToInt(damage * damageModifier);
-
             int reducedDamage = Mathf.CeilToInt(ModifierDamage * Mathf.Pow(GameRule.DamageIndexValue, Defense));
             #endregion
 
@@ -112,12 +111,13 @@ namespace PlayerStatusSystemV2
             int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
             int MaxHP = Convert.ToInt32(Data[0]["MaxHP"]);
 
-            int HealHP = CurrentHP + Heal;
-            if (HealHP > MaxHP)
+            if (CurrentHP >= MaxHP)
             {
                 systemText.TextSet("MaxHP!");
                 return false;
             }
+            int HealHP = CurrentHP + Heal;
+            if(HealHP > MaxHP) HealHP = MaxHP;
 
             string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHP = " + HealHP + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);

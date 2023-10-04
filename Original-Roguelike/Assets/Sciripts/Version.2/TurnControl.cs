@@ -5,7 +5,6 @@ using MoveSystem;
 using AttackSystem;
 using EnemySystem;
 using PlayerStatusSystemV2;
-using UISystemV2;
 using Field;
 using GameEndSystemV2;
 
@@ -88,9 +87,6 @@ namespace TurnSystem
                 {
                     field.PopEnemy();
                 }
-
-                /*Debug.Log("NextTurn"); 
-                yield return new WaitForSeconds(0.5f);*/ //DebugSystem 
             }
         }
 

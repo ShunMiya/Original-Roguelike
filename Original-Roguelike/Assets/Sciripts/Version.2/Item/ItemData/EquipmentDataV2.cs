@@ -20,6 +20,5 @@ namespace ItemSystemV2
         public int AttackBonus { get; set; }
         public int DefenseBonus { get; set; }
         public int WeaponRange { get; set; }
-        public int WeaponDistance { get; set; }
     }
 }

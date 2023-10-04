@@ -58,7 +58,9 @@ namespace ItemSystemV2.Inventory
             SqliteDatabase copiedsqlDB = new SqliteDatabase(databasePath);
 
             string updateQuery = "UPDATE PlayerStatus " +
-                                "SET CurrentHP = (SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "SET PlayerLevel = (SELECT PlayerLevel FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "PlayerExp = (SELECT PlayerExp FROM PlayerStatus WHERE PlayerID = 99), " +
+                                "CurrentHP = (SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 99), " +
                                 "MaxHP = (SELECT MaxHP FROM PlayerStatus WHERE PlayerID = 99), " +
                                 "CurrentHungry = (SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 99), " +
                                 "MaxHungry = (SELECT MaxHungry FROM PlayerStatus WHERE PlayerID = 99), " +
@@ -67,7 +69,6 @@ namespace ItemSystemV2.Inventory
                                 "Attack = (SELECT Attack FROM PlayerStatus WHERE PlayerID = 99), " +
                                 "Defense = (SELECT Defense FROM PlayerStatus WHERE PlayerID = 99), " +
                                 "AttackRange = (SELECT AttackRange FROM PlayerStatus WHERE PlayerID = 99), " +
-                                "AttackDistance = (SELECT AttackDistance FROM PlayerStatus WHERE PlayerID = 99), " +
                                 "ActionSpeed = (SELECT ActionSpeed FROM PlayerStatus WHERE PlayerID = 99), " +
                                 "InventorySize = (SELECT InventorySize FROM PlayerStatus WHERE PlayerID = 99), " +
                                 "FloorLevel = (SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 99) " +
