@@ -3,7 +3,6 @@ using UnityEngine;
 using ItemSystemV2.Inventory;
 using System;
 using Random = UnityEngine.Random;
-using MoveSystem;
 
 namespace Field
 {
