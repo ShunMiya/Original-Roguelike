@@ -52,7 +52,7 @@ namespace PlayerStatusSystemV2
 
             #region ƒ_ƒ[ƒWŒˆ’èˆ—
             float damageModifier = UnityEngine.Random.Range(0.85f, 1.0f);
-            int ModifierDamage = Mathf.RoundToInt(damage * damageModifier);
+            float ModifierDamage = damage * damageModifier;
             int reducedDamage = Mathf.CeilToInt(ModifierDamage * Mathf.Pow(GameRule.DamageIndexValue, Defense));
             #endregion
 
