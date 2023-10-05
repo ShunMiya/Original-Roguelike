@@ -39,7 +39,7 @@ namespace ItemSystemV2.Inventory
             }
             else if (equipmentItem != null)
             {
-                GetItem = AddEquipment(itemId, equipmentItem);
+                GetItem = AddEquipment(itemId, num, equipmentItem);
                 return GetItem;
             }
             return GetItem;
@@ -59,30 +59,30 @@ namespace ItemSystemV2.Inventory
                 {
                     string updateQuery = "UPDATE Inventory SET Num = " + totalStock + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(updateQuery);
-                    systemText.TextSet(consumableItem.ItemName + ":Stock" + num + " Get!");
+                    systemText.TextSet(consumableItem.ItemName + " (" + num + ") を手に入れた");
                     return true;
                 }
             }
             if (itemCount == inventorySize)
             {
-                systemText.TextSet("Inventory Max!");
+                systemText.TextSet("バッグが一杯だ！");
                 return false;
             }
-            string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + consumableItem.Id + "', '" + consumableItem.ItemName + "', " + num + ")";
-            systemText.TextSet(consumableItem.ItemName + ":Stock" + num + " Get!");
+            string insertQuery = "INSERT INTO Inventory (Id, Num) VALUES ('" + consumableItem.Id + "', " + num + ")";
+            systemText.TextSet(consumableItem.ItemName + " (" + num + ") を手に入れた");
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }
 
-        public bool AddEquipment(int itemId, EquipmentDataV2 equipmentItem)
+        public bool AddEquipment(int itemId, int num, EquipmentDataV2 equipmentItem)
         {
             if (itemCount == inventorySize)
             {
-                systemText.TextSet("Inventory Max!");
+                systemText.TextSet("バッグが一杯だ！");
                 return false;
             }
-            string insertQuery = "INSERT INTO Inventory (Id, ItemName, Num) VALUES ('" + equipmentItem.Id + "', '" + equipmentItem.ItemName + "', " + 1 + ")";
-            systemText.TextSet(equipmentItem.ItemName + " Get!");
+            string insertQuery = "INSERT INTO Inventory (Id, Num) VALUES ('" + equipmentItem.Id + "', " + num + ")";
+            systemText.TextSet(equipmentItem.ItemName + " を手に入れた");
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }

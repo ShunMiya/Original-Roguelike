@@ -38,7 +38,7 @@ namespace ItemSystemV2
                 spawnedItem.GetComponent<SteppedOnEvent>().num = num;
             }
             if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
-            systemText.TextSet(itemData.ItemName + " Num:" + num + " Put");
+            systemText.TextSet(itemData.ItemName + "‚ð’u‚¢‚½");
         }
 
         public GameObject ThrowItemCreate(Pos2D pos, int Id, int num)
@@ -54,6 +54,9 @@ namespace ItemSystemV2
             spawnedItem.GetComponent<MoveAction>().SetcomplementFrame();
             spawnedItem.GetComponent<MoveAction>().SetPosition(pos.x, pos.z);
             spawnedItem.GetComponent<SteppedOnEvent>().num = num;
+
+            if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
+            systemText.TextSet(itemData.ItemName + "‚ð“Š‚°‚½");
 
             return spawnedItem;
         }
@@ -77,8 +80,6 @@ namespace ItemSystemV2
                 spawnedItem.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
                 int randomNum = RandomNum.NumSetStock();
                 spawnedItem.GetComponent<SteppedOnEvent>().num = randomNum;
-                /*if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
-                systemText.TextSet(randomItem.ItemName + " Num:" + randomNum + " Drop");*/
             }
         }
     }
