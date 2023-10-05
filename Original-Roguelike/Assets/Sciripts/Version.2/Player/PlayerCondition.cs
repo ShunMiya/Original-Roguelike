@@ -1,6 +1,3 @@
-using PlayerStatusList;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PlayerStatusSystemV2
@@ -74,6 +71,23 @@ namespace PlayerStatusSystemV2
             ConfusionTurn = 0;
             StunTurn = 0;
             BlindTurn = 0;
+        }
+
+        public int GetConditionTurn(int ConditionNum)
+        {
+            switch (ConditionNum)
+            {
+                case 1:
+                    return PoisonTurn;
+                case 2:
+                    return ConfusionTurn;
+                case 3:
+                    return StunTurn;
+                case 4:
+                    return BlindTurn;
+                default:
+                    return 0;
+            }
         }
     }
 }
