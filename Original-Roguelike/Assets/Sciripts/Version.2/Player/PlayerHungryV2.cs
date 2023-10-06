@@ -29,9 +29,9 @@ namespace PlayerStatusSystemV2
             }
             string query = "SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
-            int CurrentHungy = Convert.ToInt32(Data[0]["CurrentHungry"]);
+            int CurrentHungry = Convert.ToInt32(Data[0]["CurrentHungry"]);
 
-            if (CurrentHungy > 0)
+            if (CurrentHungry > 0)
             {
                 hung++;
                 if (hung >= 4)
@@ -50,6 +50,20 @@ namespace PlayerStatusSystemV2
 
                     hung = 0;
                 }
+            }
+
+            query = "SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable newData = sqlDB.ExecuteQuery(query);
+            int newCurrentHungry = Convert.ToInt32(newData[0]["CurrentHungry"]);
+
+            if(CurrentHungry > 10 && newCurrentHungry <= 10)
+            {
+                systemText.TextSet("おなかがすいてきた……");
+                return;
+            }
+            if(CurrentHungry > 0 && newCurrentHungry <= 0)
+            {
+                systemText.TextSet("もう倒れそうだ……！");
             }
         }
 

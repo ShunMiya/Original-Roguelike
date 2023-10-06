@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine.EventSystems;
 using System;
 using ItemSystemV2;
+using UnityEngine.UI;
 
 namespace UISystemV2
 {
@@ -79,6 +80,14 @@ namespace UISystemV2
             //Å@EquipAreaÇñ≥å¯âª
             EquipArea.GetComponent<CanvasGroup>().interactable = false;
             subMenu.EquipArea = EquipArea;
+
+            Button button = gameObject.GetComponent<Button>();
+            if (button != null)
+            {
+                ColorBlock colors = button.colors;
+                colors.disabledColor = Color.green;
+                button.colors = colors;
+            }
 
             EventSystem.current.SetSelectedGameObject(subMenu.UseButton);
         }

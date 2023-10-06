@@ -61,6 +61,9 @@ namespace Field
             try
             {
                 XDocument xml = XDocument.Load(path);
+
+                if(xml == null) return dungeon.Create(45, 45, field);
+
                 XElement map = xml.Element("map");
                 XElement group = null;
                 foreach (var gp in map.Elements("group"))
