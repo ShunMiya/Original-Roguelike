@@ -8,6 +8,7 @@ namespace UISystemV2
     public class StatusBarV2 : MonoBehaviour
     {
         private SqliteDatabase sqlDB;
+        [SerializeField] private TextMeshProUGUI LevelText;
         [SerializeField] private TextMeshProUGUI HPText;
         [SerializeField] private TextMeshProUGUI HungryText;
         [SerializeField] private TextMeshProUGUI AttackText;
@@ -31,11 +32,18 @@ namespace UISystemV2
             string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
 
+            UpdateLevelText(Data);
             UpdateHPText(Data);
             UpdateHungryText(Data);
-            UpdateAttackText(Data);
-            UpdateDefenseText(Data);
-            UpdateInventoryText(Data);
+            //UpdateAttackText(Data);
+            //UpdateDefenseText(Data);
+            //UpdateInventoryText(Data);
+        }
+
+        public void UpdateLevelText(DataTable Data)
+        {
+            int Level = Convert.ToInt32(Data[0]["PlayerLevel"]);
+            LevelText.text = "Level:" + Level;
         }
 
         public void UpdateHPText(DataTable Data)
@@ -49,7 +57,7 @@ namespace UISystemV2
         {
             int CurrentHungry = Convert.ToInt32(Data[0]["CurrentHungry"]);
             int MaxHungry = Convert.ToInt32(Data[0]["MaxHungry"]);
-            HungryText.text = "Hungry:" + CurrentHungry + "/" + MaxHungry;
+            HungryText.text = "–ž• “x:" + CurrentHungry + "/" + MaxHungry;
         }
 
         public void UpdateAttackText(DataTable Data)

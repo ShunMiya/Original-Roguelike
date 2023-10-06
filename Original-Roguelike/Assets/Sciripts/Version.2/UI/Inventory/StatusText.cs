@@ -35,7 +35,7 @@ namespace UISystemV2
             playerLevel = Convert.ToInt32(Data[0]["PlayerLevel"]);
             playerlevelData = PlayerLevelDataCache.GetPlayerLevelData(playerLevel);
 
-            string output = "Level:\t\t" + Convert.ToInt32(Data[0]["PlayerLevel"]) + "\n" +
+            string output = "Level:\t" + Convert.ToInt32(Data[0]["PlayerLevel"]) + "\n" +
                             "Exp:\t\t" + Convert.ToInt32(Data[0]["PlayerExp"]) + " / " + playerlevelData.NextLevelExp +"\n" +
                             "HP:\t\t" + Convert.ToInt32(Data[0]["CurrentHP"]) + " / " + Convert.ToInt32(Data[0]["MaxHP"]) + "\n" +
                             "Hungry:\t" + Convert.ToInt32(Data[0]["CurrentHungry"]) + " / " + Convert.ToInt32(Data[0]["MaxHungry"]) + "\n" +
