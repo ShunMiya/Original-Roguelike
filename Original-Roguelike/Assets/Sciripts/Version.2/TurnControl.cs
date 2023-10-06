@@ -7,6 +7,7 @@ using EnemySystem;
 using PlayerStatusSystemV2;
 using Field;
 using GameEndSystemV2;
+using UISystemV2;
 
 namespace TurnSystem
 {
@@ -25,6 +26,7 @@ namespace TurnSystem
         [SerializeField] private Areamap field;
         [SerializeField] private GameEndV2 gameEnd;
         [SerializeField] private PlayerCondition PCondition;
+        [SerializeField] private SystemTextV2 systemtext;
 
         [SerializeField] private GameObject FadeImage;
 
@@ -77,6 +79,9 @@ namespace TurnSystem
 
                 if (AreaTurn == 500)
                 {
+                    systemtext.TextSet("“Ë•—‚ª‚¢‚Ä‚«‚½I@æ‚Öi‚à‚¤");
+                    yield return new WaitForSeconds(1.0f);
+
                     gameEnd.NextStagePerformance();
                     AreaTurn = 0; DungeonTurn += AreaTurn;
                     yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));

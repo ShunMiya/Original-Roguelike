@@ -92,7 +92,6 @@ namespace PlayerStatusSystemV2
 
             if (CurrentHP <= 0)
             {
-                //systemText.TextSet("Player Dead!");
                 gameEnd.GameOverPerformance();
                 Time.timeScale = 0;
             }
