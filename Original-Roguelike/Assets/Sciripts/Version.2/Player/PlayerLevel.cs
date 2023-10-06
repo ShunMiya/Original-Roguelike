@@ -30,7 +30,7 @@ namespace PlayerStatusSystemV2
 
         public void PlayerGetExp(int Exp)
         {
-            systemText.TextSet("Get"+Exp+"Exp!");
+            systemText.TextSet(Exp+"‚ÌŒoŒ±’l‚ðŠl“¾‚µ‚½");
 
             string updateStatusQuery = "UPDATE PlayerStatus SET PlayerExp = (SELECT PlayerExp FROM PlayerStatus WHERE PlayerID = 1) + " + Exp + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);

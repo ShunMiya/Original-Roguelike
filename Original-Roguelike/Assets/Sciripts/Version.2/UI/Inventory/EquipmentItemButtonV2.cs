@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
+using System;
+using ItemSystemV2;
 
 namespace UISystemV2
 {
@@ -36,7 +38,10 @@ namespace UISystemV2
                 informationText.text = "";
                 return;
             }
-            informationText.text = "UnEquip " + row["ItemName"].ToString();
+            int itemId = Convert.ToInt32(row["Id"]);
+            EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
+
+            informationText.text = equipmentItem.Description;
         }
         public void OnDeselected()
         {
@@ -52,8 +57,10 @@ namespace UISystemV2
                 return;
             }
             row = Row;
-            string itemName = row["ItemName"].ToString();
-            buttonText.text = itemName;
+
+            int itemId = Convert.ToInt32(row["Id"]);
+            EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
+            buttonText.text = equipmentItem.ItemName;
         }
 
         public void Use()

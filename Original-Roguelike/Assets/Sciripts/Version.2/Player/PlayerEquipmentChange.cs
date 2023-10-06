@@ -41,7 +41,7 @@ namespace ItemSystemV2
 
                     string equipQuery = "UPDATE Inventory SET Equipped = " + 1 + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(equipQuery);
-                    systemText.TextSet(equipmentItem.ItemName + " Equip!");
+                    systemText.TextSet(equipmentItem.ItemName + " ‚ð‘•”õ‚µ‚½");
                     break;
                 case 1:
                     checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped IN (1, 2)";
@@ -55,7 +55,7 @@ namespace ItemSystemV2
 
                     equipQuery = "UPDATE Inventory SET Equipped = " + 1 + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(equipQuery);
-                    systemText.TextSet(equipmentItem.ItemName + " Equip!");
+                    systemText.TextSet(equipmentItem.ItemName + " ‚ð‘•”õ‚µ‚½");
                     break;
                 case 2:
                     checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped = 1";
@@ -83,7 +83,7 @@ namespace ItemSystemV2
 
                     equipQuery = "UPDATE Inventory SET Equipped = " + 2 + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(equipQuery);
-                    systemText.TextSet(equipmentItem.ItemName + " Equip!");
+                    systemText.TextSet(equipmentItem.ItemName + " ‚ð‘•”õ‚µ‚½");
                     break;
             }
 
@@ -96,6 +96,10 @@ namespace ItemSystemV2
             int IID = Convert.ToInt32(row["IID"]);
             string unequipQuery = "UPDATE Inventory SET Equipped = 0 WHERE IID = " + IID;
             sqlDB.ExecuteNonQuery(unequipQuery);
+
+            int itemId = Convert.ToInt32(row["Id"]);
+            EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
+            systemText.TextSet(equipmentItem.ItemName + " ‚ðŠO‚µ‚½");
 
             playerStatusV2.WeaponStatusPlus();
         }

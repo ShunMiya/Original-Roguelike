@@ -35,15 +35,15 @@ namespace UISystemV2
             switch (itemData.ItemType)
             {
                 case 0:
-                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Use");
+                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Žg‚¤");
                     break;
                 case 1:
                     if (Convert.ToInt32(row["Equipped"]) == 1 || Convert.ToInt32(row["Equipped"]) == 2)
                     {
-                        UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Unequip");
+                        UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("ŠO‚·");
                         break;
                     }
-                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Equip");
+                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("‘•”õ‚·‚é");
                     break;
             }
             informationText.text = itemData.Description;

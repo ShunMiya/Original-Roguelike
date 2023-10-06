@@ -139,6 +139,7 @@ MonoBehaviour:
   informationText: {fileID: 0}
   returnButton: {fileID: 0}
   subMenu: {fileID: 0}
+  EquipArea: {fileID: 0}
 --- !u!114 &5068514473071604593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,8 +345,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: abc
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

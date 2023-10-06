@@ -68,7 +68,7 @@ namespace PlayerStatusSystemV2
 
             if (CurrentHungry >= MaxHungry)
             {
-                systemText.TextSet("Satiety!");
+                systemText.TextSet("‚¨‚È‚©‚¢‚Á‚Ï‚¢!");
                 return false;
             }
             int HealHungry = CurrentHungry + Heal;
@@ -76,7 +76,7 @@ namespace PlayerStatusSystemV2
             string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHungry = " + HealHungry + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
 
-            systemText.TextSet("Player" + Heal + "HungryHeal!");
+            systemText.TextSet("<color=blue>Player</color>‚Í‹ó• ’l‚ª" + Heal + "‰ñ•œ‚µ‚½!");
 
             return true;
         }

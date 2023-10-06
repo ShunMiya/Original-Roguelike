@@ -29,17 +29,17 @@ namespace Field
             switch (num)
             {
                 case 1:
-                    systemText.TextSet("FallingRockTrap!");
+                    systemText.TextSet("落石の罠だ!");
                     string query = "SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 1;";
                     DataTable Data = sqlDB.ExecuteQuery(query);
                     int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
                     int damage = (int)(CurrentHP * 0.7f);
                     PlayerHPV2 playerHPV2 = FindAnyObjectByType<PlayerHPV2>();
-                    systemText.TextSet("Player" + damage + "damage!");
+                    systemText.TextSet("<color=blue>Player</color>は" + damage + "ダメージを受けた!");
                     playerHPV2.DirectDamage(damage);
                     break;
                 case 2:
-                    systemText.TextSet("HungryTrap!");
+                    systemText.TextSet("空腹の罠だ!");
                     query = "SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 1;";
                     Data = sqlDB.ExecuteQuery(query);
                     int CurrentHungry = Convert.ToInt32(Data[0]["CurrentHungry"]);
@@ -47,27 +47,27 @@ namespace Field
                     int newHungry = CurrentHungry - damage;
                     if (newHungry < 0) newHungry = 0;
                     string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHungry = " + newHungry + " WHERE PlayerID = 1;";
-                    systemText.TextSet("Player" + damage + "Hungrydamage!");
+                    systemText.TextSet("<color=blue>Player</color>は空腹値が" + damage + "減った!");
                     sqlDB.ExecuteNonQuery(updateStatusQuery);
                     break;
                 case 3:
-                    systemText.TextSet("PoisonTrap!");
-                    systemText.TextSet("Player Became Poisoned! @ 5Turn");
+                    systemText.TextSet("毒の罠だ!");
+                    systemText.TextSet("<color=blue>Player</color>は毒状態になった");
                     playerCondition.SetCondition(1, 5);
                     break;
                 case 4:
-                    systemText.TextSet("ConfusionTrap!");
-                    systemText.TextSet("Player Became Confused! @ 5Turn");
+                    systemText.TextSet("混乱の罠だ!");
+                    systemText.TextSet("<color=blue>Player</color>は混乱状態になった");
                     playerCondition.SetCondition(2, 5);
                     break;
                 case 5:
-                    systemText.TextSet("StunTrap!");
-                    systemText.TextSet("Player Became Stuned! @ 3Turn");
+                    systemText.TextSet("気絶の罠だ!");
+                    systemText.TextSet("<color=blue>Player</color>は気絶状態になった");
                     playerCondition.SetCondition(3, 3);
                     break;
                 case 6:
-                    systemText.TextSet("BlindTrap!");
-                    systemText.TextSet("Player Became Blinded! @ 10Turn");
+                    systemText.TextSet("盲目の罠だ!");
+                    systemText.TextSet("<color=blue>Player</color>は盲目状態になった");
                     playerCondition.SetCondition(4, 10);
                     break;
 

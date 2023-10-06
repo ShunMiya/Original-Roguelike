@@ -63,14 +63,14 @@ namespace PlayerStatusSystemV2
 
             if (newHP <= 0)
             {
-                systemText.TextSet("Player Dead!");
+                //systemText.TextSet("Player Dead!");
                 gameEnd.GameOverPerformance();
                 Time.timeScale = 0;
 
             }
             else if (newHP > 0)
             {
-                systemText.TextSet("Player" + reducedDamage + "Damage! HP:" + newHP);
+                systemText.TextSet("<color=blue>Player</color>は" + reducedDamage + "ダメージを受けた!");
                 int Rota = DirUtil.ReverseDirection(R);
                 transform.rotation = Quaternion.Euler(0, Rota, 0);
             }
@@ -92,7 +92,7 @@ namespace PlayerStatusSystemV2
 
             if (CurrentHP <= 0)
             {
-                systemText.TextSet("Player Dead!");
+                //systemText.TextSet("Player Dead!");
                 gameEnd.GameOverPerformance();
                 Time.timeScale = 0;
             }
@@ -113,7 +113,7 @@ namespace PlayerStatusSystemV2
 
             if (CurrentHP >= MaxHP)
             {
-                systemText.TextSet("MaxHP!");
+                systemText.TextSet("HPは万全だ!");
                 return false;
             }
             int HealHP = CurrentHP + Heal;
@@ -122,7 +122,7 @@ namespace PlayerStatusSystemV2
             string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHP = " + HealHP + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
 
-            systemText.TextSet("Player" + Heal + "Heal! HP:" + HealHP);
+            systemText.TextSet("<color=blue>Player</color>はＨＰが" + Heal + "回復した!");
 
             return true;
         }
@@ -134,7 +134,6 @@ namespace PlayerStatusSystemV2
                 string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
-            if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
             string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
 

@@ -19,6 +19,7 @@ namespace EnemySystem
         {
             systemText = FindObjectOfType<SystemTextV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(EnemyID);
+            name = enemy.EnemyName;
             currentHP = enemy.MaxHP;
             Defense = enemy.Defense;
             Exp = enemy.EnemyExp;
@@ -51,7 +52,7 @@ namespace EnemySystem
             #endregion
 
             currentHP -= reducedDamage;
-            systemText.TextSet("Enemy" + damage + "Damage! HP:" + currentHP);
+            systemText.TextSet("<color=red>" +name + "</color>は" + damage + "ダメージを受けた！");
             if(R != 1)
             {
                 int Rota = DirUtil.ReverseDirection(R);
@@ -60,7 +61,7 @@ namespace EnemySystem
 
             if (currentHP <= 0 && EnemyDeath != null)
             {
-                systemText.TextSet("EnemyDead!");
+                systemText.TextSet("<color=red>" + name + "</color>は倒れた！");
                 if (attacker.CompareTag("Player"))
                 {
                     FindFirstObjectByType<PlayerLevel>().PlayerGetExp(Exp);
