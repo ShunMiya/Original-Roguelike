@@ -41,7 +41,7 @@ namespace UISystemV2
             int itemId = Convert.ToInt32(row["Id"]);
             EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
 
-            informationText.text = equipmentItem.ItemName;
+            informationText.text = equipmentItem.Description;
         }
         public void OnDeselected()
         {
