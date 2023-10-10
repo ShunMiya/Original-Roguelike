@@ -27,6 +27,7 @@ namespace TurnSystem
         [SerializeField] private GameEndV2 gameEnd;
         [SerializeField] private PlayerCondition PCondition;
         [SerializeField] private SystemTextV2 systemtext;
+        [SerializeField] private DungeonFloorBar DFB;
 
         [SerializeField] private GameObject FadeImage;
 
@@ -66,6 +67,7 @@ namespace TurnSystem
                 {
                     AreaTurn = 0; DungeonTurn+=AreaTurn;
                     PCondition.ConditionClear();
+                    DFB.UpdateFloorBar();
                     yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
                     continue;
                 }

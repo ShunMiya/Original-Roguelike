@@ -29,7 +29,6 @@ namespace UISystemV2
         //private float RWeaponLevelper = 0;
 
         private PlayerLevelData playerlevelData;
-        private int playerLevel;
 
         void Start()
         {
@@ -47,7 +46,7 @@ namespace UISystemV2
 
             string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
-            playerLevel = Convert.ToInt32(Data[0]["PlayerLevel"]);
+            int playerLevel = Convert.ToInt32(Data[0]["PlayerLevel"]);
             playerlevelData = PlayerLevelDataCache.GetPlayerLevelData(playerLevel);
 
             UpdateLevelText(Data);
