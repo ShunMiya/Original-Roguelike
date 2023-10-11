@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="33">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="42">
  <tileset firstgid="1" source="../../../../../../Downloads/Test-Tile.tsx"/>
- <group id="5" name="1F">
+ <group id="5" name="1F" visible="0">
   <layer id="1" name="TileLayer" width="30" height="30">
    <data encoding="csv">
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-2,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,
-2,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,
-2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,2,2,2,
-2,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
-2,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
-2,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
-2,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
-2,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
+2,1,2,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,
+2,1,2,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,
+2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,1,2,2,2,
+2,1,2,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
+2,1,2,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
+2,1,2,1,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
+2,1,1,1,1,1,1,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
+2,1,1,2,1,1,1,1,1,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
 2,2,1,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
 2,2,1,2,2,1,1,1,1,1,2,2,1,2,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
 2,2,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,2,2,2,1,1,1,1,2,
@@ -37,12 +37,12 @@
 </data>
   </layer>
   <objectgroup id="3" name="ObjectLayer">
-   <object id="2" name="Player" x="97" y="97" width="31" height="31">
+   <object id="2" name="Player" x="97" y="33" width="31" height="31">
     <properties>
      <property name="Type" value="Player"/>
     </properties>
    </object>
-   <object id="3" name="Enemy5" x="225" y="65" width="31" height="31">
+   <object id="3" name="Enemy5" x="32" y="33" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
     </properties>
@@ -67,22 +67,22 @@
      <property name="Type" value="Enemy"/>
     </properties>
    </object>
-   <object id="8" name="Item1" x="161" y="161" width="31" height="31">
+   <object id="8" name="Item1" x="225" y="193" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="10" name="Item1" x="193" y="161" width="31" height="31">
+   <object id="10" name="Item1" x="225" y="225" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="11" name="Item1" x="129" y="161" width="31" height="31">
+   <object id="11" name="Item1" x="225" y="97" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="12" name="Item1" x="97" y="161" width="31" height="31">
+   <object id="12" name="Item1" x="225" y="129" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
@@ -92,12 +92,12 @@
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="14" name="Item101" x="97" y="225" width="31" height="31">
+   <object id="14" name="Item101" x="97" y="65" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="15" name="Item102" x="129" y="225" width="31" height="31">
+   <object id="15" name="Item102" x="97" y="161" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
@@ -107,14 +107,49 @@
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="17" name="Stairs" x="161" y="65" width="31" height="31">
+   <object id="17" name="Stairs" x="225" y="33" width="31" height="31">
     <properties>
      <property name="Type" value="Stairs"/>
     </properties>
    </object>
+   <object id="34" name="Item101" x="97" y="97" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="36" name="Item101" x="97" y="129" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="37" name="Item102" x="97" y="193" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="38" name="Item102" x="97" y="225" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="39" name="Item103" x="129" y="225" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="40" name="Item103" x="193" y="225" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="41" name="Item2" x="225" y="65" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
   </objectgroup>
  </group>
- <group id="6" name="2F" visible="0">
+ <group id="6" name="2F">
   <layer id="10" name="TileLayer" width="30" height="30">
    <data encoding="csv">
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
@@ -170,7 +205,7 @@
      <property name="Type" value="Enemy"/>
     </properties>
    </object>
-   <object id="22" name="Enemy4" x="545" y="193" width="31" height="31">
+   <object id="22" name="Enemy4" x="545" y="129" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
     </properties>

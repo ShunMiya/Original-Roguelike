@@ -22,8 +22,6 @@ namespace UISystemV2
             {
                 Vector3 itemPosition = scrollRect.transform.InverseTransformPoint(item.position);
 
-                Debug.Log("scrollRect.yMin:" + scrollRect.GetComponent<RectTransform>().rect.yMin + " item.y:" + itemPosition.y + " scrollRect.yMax :" + scrollRect.GetComponent<RectTransform>().rect.yMax);
-
                 if (itemPosition.y > scrollRect.GetComponent<RectTransform>().rect.yMax)
                 {
                     Vector2 contentPosition = content.GetComponent<RectTransform>().anchoredPosition;

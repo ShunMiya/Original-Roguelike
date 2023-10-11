@@ -81,7 +81,7 @@ namespace TurnSystem
 
                 if (AreaTurn == 500)
                 {
-                    systemtext.TextSet("突風が吹いてきた！　先へ進もう");
+                    systemtext.TextSet("突風が吹いてきた！　先へ進もう！");
                     yield return new WaitForSeconds(1.0f);
 
                     gameEnd.NextStagePerformance();
