@@ -20,8 +20,8 @@ namespace UISystemV2
 
         void Start()
         {
-            menuArea = transform.parent.parent.Find("MenuArea");
-            itemArea = transform.parent.parent.Find("ItemArea");
+            menuArea = transform.parent.parent.parent.parent.Find("MenuArea");
+            itemArea = transform.parent.parent.Find("Content");
         }
 
         public void OnSelected()
