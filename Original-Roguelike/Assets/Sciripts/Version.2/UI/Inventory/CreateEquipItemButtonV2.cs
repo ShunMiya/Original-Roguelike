@@ -62,8 +62,8 @@ namespace UISystemV2
 
                     buttonText.text = equipmentItem.ItemName;
                 }
-
             }
+            GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);
         }
 
         private void ClearButtons()
