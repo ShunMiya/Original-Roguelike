@@ -76,6 +76,7 @@ namespace UISystemV2
 
                 }
             }
+            GetComponent<RectTransform>().anchoredPosition = new Vector2 (0, 0);
         }
 
         private void ClearButtons()

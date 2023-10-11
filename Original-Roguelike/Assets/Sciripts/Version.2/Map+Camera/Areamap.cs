@@ -296,6 +296,7 @@ namespace Field
             while(true)
             {
                 int RandomRoom = UnityEngine.Random.Range(0, RoomCount);
+                if (RandomRoom == 0) break;
                 Transform selectedRoom = rooms.transform.GetChild(RandomRoom);
                 ObjectPosition room = selectedRoom.GetComponent<ObjectPosition>();
                 if (IsInRoom(room, playerMovement.grid.x, playerMovement.grid.z)) continue;

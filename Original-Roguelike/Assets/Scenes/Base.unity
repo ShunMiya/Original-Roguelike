@@ -1245,10 +1245,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mountain
+  m_text: "\u707C\u71B1\u306E\u706B\u5C71"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -12962,11 +12962,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ec027b75a1627747bf0b9e60190617c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelText: {fileID: 0}
+  LevelGauge: {fileID: 0}
   HPText: {fileID: 580213616}
+  HPGauge: {fileID: 0}
   HungryText: {fileID: 268047573}
-  AttackText: {fileID: 1926907266}
-  DefenseText: {fileID: 1898313267}
-  InventoryText: {fileID: 782269520}
+  HungryGauge: {fileID: 0}
+  LWeaponLevelBar: {fileID: 0}
+  LWeaponLevelText: {fileID: 0}
+  LWeaponLevelGauge: {fileID: 0}
+  RWeaponLevelBar: {fileID: 0}
+  RWeaponLevelText: {fileID: 0}
+  RWeaponLevelGauge: {fileID: 0}
 --- !u!114 &2086647158
 MonoBehaviour:
   m_ObjectHideFlags: 0

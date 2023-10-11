@@ -15,13 +15,15 @@ namespace UISystemV2
         public SubMenu subMenu;
         private Transform menuArea;
         private Transform itemArea;
+        private Transform scrollView;
         public Transform EquipArea;
 
 
         void Start()
         {
-            menuArea = transform.parent.parent.Find("MenuArea");
-            itemArea = transform.parent.parent.Find("ItemArea");
+            menuArea = transform.parent.parent.parent.parent.Find("MenuArea");
+            itemArea = transform.parent.parent.Find("Content");
+            scrollView = transform.parent.parent.parent.parent.Find("ScrollView");
         }
 
         public void OnSelected()
@@ -33,6 +35,8 @@ namespace UISystemV2
             int itemId = Convert.ToInt32(row["Id"]);
             IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
             informationText.text = itemData.Description;
+            RectTransform buttonRect = GetComponent<RectTransform>();
+            scrollView.GetComponent<ScrollViewController>().ScrollToItem(buttonRect);
         }
         public void OnDeselected()
         {
