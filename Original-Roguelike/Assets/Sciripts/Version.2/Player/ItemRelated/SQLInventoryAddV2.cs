@@ -34,7 +34,7 @@ namespace ItemSystemV2.Inventory
             bool GetItem = false;
             if (consumableItem != null)
             {
-                GetItem = AddConsumable(itemId, num, consumableItem);
+                GetItem = AddConsumable(itemId, 1, consumableItem);
                 return GetItem;
             }
             else if (equipmentItem != null)
@@ -59,7 +59,10 @@ namespace ItemSystemV2.Inventory
                 {
                     string updateQuery = "UPDATE Inventory SET Num = " + totalStock + " WHERE IID = " + row["IID"];
                     sqlDB.ExecuteNonQuery(updateQuery);
-                    systemText.TextSet(consumableItem.ItemName + " (" + num + ") ‚ðŽè‚É“ü‚ê‚½");
+
+                    systemText.TextSet(consumableItem.ItemName + "‚ðŽè‚É“ü‚ê‚½");
+                    //systemText.TextSet(consumableItem.ItemName + " (" + num + ") ‚ðŽè‚É“ü‚ê‚½");
+                    
                     return true;
                 }
             }
@@ -69,7 +72,10 @@ namespace ItemSystemV2.Inventory
                 return false;
             }
             string insertQuery = "INSERT INTO Inventory (Id, Num) VALUES ('" + consumableItem.Id + "', " + num + ")";
-            systemText.TextSet(consumableItem.ItemName + " (" + num + ") ‚ðŽè‚É“ü‚ê‚½");
+
+            systemText.TextSet(consumableItem.ItemName + "‚ðŽè‚É“ü‚ê‚½");
+            //systemText.TextSet(consumableItem.ItemName + " (" + num + ") ‚ðŽè‚É“ü‚ê‚½");
+            
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }

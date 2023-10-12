@@ -11,6 +11,7 @@ namespace UISystemV2
         public ItemButtonV2 buttonPrefab;
         public Transform buttonContainer;
         [SerializeField] private TextMeshProUGUI informationText;
+        [SerializeField] private TextMeshProUGUI itemCountText;
         [SerializeField] private GameObject returnButton;
         [SerializeField] private SubMenu subMenu;
 
@@ -45,7 +46,7 @@ namespace UISystemV2
 
                 if (consumableItem != null)
                 {
-                    int itemStock = Convert.ToInt32(row["Num"]);
+                    //int itemStock = Convert.ToInt32(row["Num"]);
                     ItemButtonV2 button = Instantiate(buttonPrefab, buttonContainer);
                     ItemButtonV2 itemButton = button.GetComponent<ItemButtonV2>();
                     itemButton.row = row;
@@ -54,7 +55,9 @@ namespace UISystemV2
                     itemButton.subMenu = subMenu;
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
-                    buttonText.text = FormatItemText(consumableItem.ItemName, itemStock);
+                    buttonText.text = consumableItem.ItemName;
+
+                    //buttonText.text = FormatItemText(consumableItem.ItemName, itemStock);
 
                 }
                 if (equipmentItem != null)
@@ -76,6 +79,8 @@ namespace UISystemV2
 
                 }
             }
+            ItemCountText();
+
             GetComponent<RectTransform>().anchoredPosition = new Vector2 (0, 0);
         }
 
@@ -108,6 +113,20 @@ namespace UISystemV2
             string itemText = $"{E}{itemName}";
 
             return itemText;
+        }
+
+        private void ItemCountText()
+        {
+            string query = "SELECT COUNT(*) AS TotalCount FROM Inventory";
+            DataTable result = sqlDB.ExecuteQuery(query);
+            object value = result.Rows[0]["TotalCount"];
+            int itemCount = Convert.ToInt32(value);
+
+            query = "SELECT InventorySize FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable Data = sqlDB.ExecuteQuery(query);
+            int Size = Convert.ToInt32(Data[0]["InventorySize"]);
+
+            itemCountText.text = "èäéùêî\t" + itemCount + " / " + Size;
         }
     }
 }
