@@ -38,9 +38,9 @@ namespace UISystemV2
             string output = "Level:\t" + Convert.ToInt32(Data[0]["PlayerLevel"]) + "\n" +
                             "Exp:\t\t" + Convert.ToInt32(Data[0]["PlayerExp"]) + " / " + playerlevelData.NextLevelExp +"\n" +
                             "HP:\t\t" + Convert.ToInt32(Data[0]["CurrentHP"]) + " / " + Convert.ToInt32(Data[0]["MaxHP"]) + "\n" +
-                            "Hungry:\t" + Convert.ToInt32(Data[0]["CurrentHungry"]) + " / " + Convert.ToInt32(Data[0]["MaxHungry"]) + "\n" +
-                            "Attack:\t" + Convert.ToInt32(Data[0]["Attack"]) + "\n" +
-                            "Defense:\t" + Convert.ToInt32(Data[0]["Defense"]) + "\n";
+                            "満腹度:\t" + Convert.ToInt32(Data[0]["CurrentHungry"]) + " / " + Convert.ToInt32(Data[0]["MaxHungry"]) + "\n" +
+                            "攻撃力:\t" + Convert.ToInt32(Data[0]["Attack"]) + "\n" +
+                            "防御力:\t" + Convert.ToInt32(Data[0]["Defense"]) + "\n";
 
 
             statusText.text = (output);
@@ -62,22 +62,22 @@ namespace UISystemV2
 
             if (PoisonTurn > 0)
             {
-                output += "Poison :\t" + PoisonTurn + "Turn\n";
+                output += "毒状態 :\t　" + PoisonTurn + "Turn\n";
             }
 
             if (ConfusionTurn > 0)
             {
-                output += "Confusion :\t" + ConfusionTurn + "Turn\n";
+                output += "混乱状態 :　" + ConfusionTurn + "Turn\n";
             }
 
             if (StunTurn > 0)
             {
-                output += "Stun :\t" + StunTurn + "Turn\n";
+                output += "気絶状態 :　" + StunTurn + "Turn\n";
             }
 
             if (BlindTurn > 0)
             {
-                output += "Blind :\t" + BlindTurn + "Turn\n";
+                output += "盲目状態 :　" + BlindTurn + "Turn\n";
             }
 
             conditionText.text = (output);
