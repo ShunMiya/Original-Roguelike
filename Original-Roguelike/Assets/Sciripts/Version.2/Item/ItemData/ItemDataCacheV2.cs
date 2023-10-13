@@ -76,6 +76,30 @@ namespace ItemSystemV2
             return consumableCache.TryGetValue(itemId, out IItemDataV2 consumableData) ? consumableData as ConsumableDataV2 : null;
         }
 
+        public static void CacheOffensive(DataTable offensiveTable)
+        {
+            foreach (DataRow row in offensiveTable.Rows)
+            {
+                OffensiveDataV2 offensiveData = new OffensiveDataV2();
+                offensiveData.Id = Convert.ToInt32(row["Id"]);
+                offensiveData.PrefabName = row["PrefabName"].ToString();
+                offensiveData.ItemName = row["ItemName"].ToString();
+                offensiveData.ItemType = Convert.ToInt32(row["ItemType"]);
+                offensiveData.Description = row["Description"].ToString();
+                offensiveData.OffensiveType = Convert.ToInt32(row["OffensiveType"]);
+                offensiveData.MaxStock = Convert.ToInt32(row["MaxStock"]);
+                offensiveData.DamageNum = Convert.ToInt32(row["DamageNum"]);
+                offensiveData.Range = Convert.ToInt32(row["Range"]);
+
+                offensiveCache[offensiveData.Id] = offensiveData;
+            }
+        }
+
+        public static OffensiveDataV2 GetOffensive(int itemId)
+        {
+            return offensiveCache.TryGetValue(itemId, out IItemDataV2 offensiveData) ? offensiveData as OffensiveDataV2 : null;
+        }
+
         public static IItemDataV2 GetRandomItem(bool isEquipment)
         {
             Dictionary<int, IItemDataV2> selectedCache;

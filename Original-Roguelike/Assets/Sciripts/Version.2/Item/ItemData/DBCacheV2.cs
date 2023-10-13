@@ -18,6 +18,10 @@ namespace ItemSystemV2
             query = "SELECT * FROM Consumable";
             DataTable consumableData = sqlDB.ExecuteQuery(query);
             ItemDataCacheV2.CacheConsumable(consumableData);
+
+            query = "SELECT * FROM Offensive";
+            DataTable offensiveData = sqlDB.ExecuteQuery(query);
+            ItemDataCacheV2.CacheOffensive(offensiveData);
         }
     }
 }
