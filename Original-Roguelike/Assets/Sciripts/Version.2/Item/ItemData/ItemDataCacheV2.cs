@@ -8,19 +8,25 @@ namespace ItemSystemV2
     {
         private static Dictionary<int, IItemDataV2> equipmentCache;
         private static Dictionary<int, IItemDataV2> consumableCache;
+        private static Dictionary<int, IItemDataV2> offensiveCache;
 
         static ItemDataCacheV2()
         {
             equipmentCache = new Dictionary<int, IItemDataV2>();
             consumableCache = new Dictionary<int, IItemDataV2>();
+            offensiveCache = new Dictionary<int, IItemDataV2>();
         }
 
         public static IItemDataV2 GetIItemData(int itemId)
         {
             IItemDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
             IItemDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
+            IItemDataV2 offensiveItem = ItemDataCacheV2.GetOffensive(itemId);
 
-            return consumableItem != null ? consumableItem : equipmentItem;
+            if (consumableItem != null) return consumableItem;
+            else if (equipmentItem != null) return equipmentItem;
+            else if (offensiveItem != null) return offensiveItem;
+            else return null;
         }
 
         public static void CacheEquipment(DataTable equipmentTable)

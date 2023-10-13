@@ -11,6 +11,7 @@ namespace PlayerStatusSystemV2
         private SystemTextV2 systemText;
         private SqliteDatabase sqlDB;
         private PlayerLevelData playerlevelData;
+        [SerializeField] private GameObject levelupText;
 
         private int playerLevel;
 
@@ -47,7 +48,7 @@ namespace PlayerStatusSystemV2
 
         public void PlayerLevelUp(int PlayerExp)
         {
-            systemText.TextSet("LevelUp!!");
+            levelupText.SetActive(true);
 
             while (PlayerExp >= playerlevelData.NextLevelExp)
             {
