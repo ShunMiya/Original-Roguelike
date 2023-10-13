@@ -15,7 +15,7 @@ namespace UISystemV2
         public GameObject returnButton;
         public SubMenu subMenu;
         private Transform menuArea;
-        private Transform itemArea;
+        [SerializeField] private Transform itemArea;
         public Transform EquipArea;
 
         private void Awake()
@@ -25,7 +25,6 @@ namespace UISystemV2
         void Start()
         {
             menuArea = transform.parent.parent.Find("MenuArea");
-            itemArea = transform.parent.parent.Find("ItemArea");
         }
 
         public void OnSelected()

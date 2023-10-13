@@ -73,6 +73,7 @@ namespace UISystemV2
                 EquipArea.GetComponent<CanvasGroup>().interactable = true;
                 EquipArea = null;
             }
+            ChangeSelectColor();
             gameObject.SetActive(false);
         }
 
@@ -87,6 +88,7 @@ namespace UISystemV2
                 EquipArea.GetComponent<CanvasGroup>().interactable = true;
                 EquipArea = null;
             }
+            ChangeSelectColor();
             gameObject.SetActive(false);
         }
 
@@ -101,6 +103,8 @@ namespace UISystemV2
                 EquipArea.GetComponent<CanvasGroup>().interactable = true;
                 EquipArea = null;
             }
+
+            ChangeSelectColor();
             gameObject.SetActive(false);
         }
 
@@ -114,6 +118,14 @@ namespace UISystemV2
                 EquipArea = null;
             }
 
+            ChangeSelectColor();
+
+            EventSystem.current.SetSelectedGameObject(ItemButton);
+            gameObject.SetActive(false);
+        }
+
+        public void ChangeSelectColor()
+        {
             Button button = ItemButton.GetComponent<Button>();
             if (button != null)
             {
@@ -121,9 +133,6 @@ namespace UISystemV2
                 colors.disabledColor = new Color(0, 0, 0, 128 / 255f);
                 button.colors = colors;
             }
-
-            EventSystem.current.SetSelectedGameObject(ItemButton);
-            gameObject.SetActive(false);
         }
 
         public void DisableWindow()
