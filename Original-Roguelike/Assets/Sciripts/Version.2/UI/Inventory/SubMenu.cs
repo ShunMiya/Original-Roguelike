@@ -74,6 +74,7 @@ namespace UISystemV2
                 EquipArea = null;
             }
             ChangeSelectColor();
+            Input.ResetInputAxes();
             gameObject.SetActive(false);
         }
 
@@ -89,6 +90,7 @@ namespace UISystemV2
                 EquipArea = null;
             }
             ChangeSelectColor();
+            Input.ResetInputAxes();
             gameObject.SetActive(false);
         }
 
@@ -105,6 +107,7 @@ namespace UISystemV2
             }
 
             ChangeSelectColor();
+            Input.ResetInputAxes();
             gameObject.SetActive(false);
         }
 
