@@ -4,8 +4,6 @@ using MoveSystem;
 using PlayerV2;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 namespace ItemSystemV2
