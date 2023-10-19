@@ -87,6 +87,8 @@ namespace ItemSystemV2
             }
             IItemDataV2 randomItem = ItemDataCacheV2.GetIItemData(itemId);
 
+            if (randomItem == null) return;
+
             string prefabName = randomItem.PrefabName;
             string prefabPath = "PrefabsV2/" + prefabName;
 

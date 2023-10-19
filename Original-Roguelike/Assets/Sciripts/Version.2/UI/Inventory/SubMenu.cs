@@ -54,18 +54,9 @@ namespace UISystemV2
         {
             int itemId = Convert.ToInt32(row["Id"]);
             IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
+            
+            playerUseItemV2.SetData(row, itemData.ItemType);
 
-            switch (itemData.ItemType)
-            {
-                case 0:
-                    playerUseItemV2.SetData(row, 0);
-
-                    break;
-                case 1:
-                    playerUseItemV2.SetData(row, 1);
-
-                    break;
-            }
             ButtonArea.GetComponent<CanvasGroup>().interactable = true;
             MenuArea.GetComponent<CanvasGroup>().interactable = true;
             if(EquipArea != null)
