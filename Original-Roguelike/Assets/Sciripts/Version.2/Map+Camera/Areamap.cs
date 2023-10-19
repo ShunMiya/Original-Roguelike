@@ -5,7 +5,9 @@ using Minimap;
 using MoveSystem;
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace Field
 {
@@ -170,18 +172,26 @@ namespace Field
                     }
                 }
                 IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
-                GameObject ItemObj = (GameObject)Resources.Load("PrefabsV2/" + itemData.PrefabName);
-                GameObject Item = Instantiate(ItemObj, items.transform);
-                Item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/Item");
+                GameObject item = Instantiate(itemObj, items.transform);
+                item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
+                item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
                 int randomnum = RandomNum.NumSetStock();
-                Item.GetComponent<SteppedOnEvent>().num = randomnum;
+                item.GetComponent<SteppedOnEvent>().ObjType = 0;
+                item.GetComponent<SteppedOnEvent>().Id = itemId;
+                item.GetComponent<SteppedOnEvent>().num = randomnum;
+
                 return;
             }
-            GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/" + name);
-            GameObject item = Instantiate(itemObj, items.transform);
-            item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
-            int randomNum = RandomNum.NumSetStock();
-            item.GetComponent<SteppedOnEvent>().num = randomNum;
+            IItemDataV2 ItemData = ItemDataCacheV2.GetIItemDataByName(name);
+            GameObject ItemObj = (GameObject)Resources.Load("PrefabsV2/Item");
+            GameObject Item = Instantiate(ItemObj, items.transform);
+            Item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + ItemData.PrefabName);
+            Item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+            int Randomnum = RandomNum.NumSetStock();
+            Item.GetComponent<SteppedOnEvent>().ObjType = 0;
+            Item.GetComponent<SteppedOnEvent>().Id = ItemData.Id;
+            Item.GetComponent<SteppedOnEvent>().num = Randomnum;
         }
 
         public void SetEnemy(string name, int xgrid, int zgrid)

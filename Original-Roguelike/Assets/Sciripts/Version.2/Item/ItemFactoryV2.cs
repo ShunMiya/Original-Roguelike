@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System;
 using UISystemV2;
 using UnityEngine;
+using ItemSystemSQL;
+using static UnityEditor.Progress;
+using UnityEditor;
 
 namespace ItemSystemV2
 {
@@ -26,19 +29,22 @@ namespace ItemSystemV2
         public void SpecifiedItemCreate(Pos2D pos, int Id, int num)
         {
             IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(Id);
-            string prefabName = itemData.PrefabName;
-            string prefabPath = "PrefabsV2/" + prefabName;
-
-            GameObject prefab = Resources.Load<GameObject>(prefabPath);
+            GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/Item");
             if (parent == null) parent = GameObject.Find("Items");
 
             setPos = field.ItemDropPointCheck(pos);
-            
+
             if (setPos != null)
             {
-                GameObject spawnedItem = Instantiate(prefab, parent.transform);
-                spawnedItem.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
-                spawnedItem.GetComponent<SteppedOnEvent>().num = num;
+                GameObject item = Instantiate(itemObj, parent.transform);
+                item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
+                item.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
+
+                //switch(randomItem.ItemType)
+
+                item.GetComponent<SteppedOnEvent>().ObjType = 0;
+                item.GetComponent<SteppedOnEvent>().Id = Id;
+                item.GetComponent<SteppedOnEvent>().num = num;
             }
             if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
             systemText.TextSet(itemData.ItemName + "‚ð’u‚¢‚½");
@@ -47,21 +53,22 @@ namespace ItemSystemV2
         public GameObject ThrowItemCreate(Pos2D pos, int Id, int num)
         {
             IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(Id);
-            string prefabName = itemData.PrefabName;
-            string prefabPath = "PrefabsV2/" + prefabName;
-
-            GameObject prefab = Resources.Load<GameObject>(prefabPath);
+            GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/Item");
             if (parent == null) parent = GameObject.Find("Items");
 
-            GameObject spawnedItem = Instantiate(prefab, parent.transform);
-            spawnedItem.GetComponent<MoveAction>().SetcomplementFrame();
-            spawnedItem.GetComponent<MoveAction>().SetPosition(pos.x, pos.z);
-            spawnedItem.GetComponent<SteppedOnEvent>().num = num;
+            GameObject item = Instantiate(itemObj, parent.transform);
+            item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
+
+            item.GetComponent<MoveAction>().SetcomplementFrame();
+            item.GetComponent<MoveAction>().SetPosition(pos.x, pos.z);
+            item.GetComponent<SteppedOnEvent>().ObjType = 0;
+            item.GetComponent<SteppedOnEvent>().Id = Id;
+            item.GetComponent<SteppedOnEvent>().num = num;
 
             if (systemText == null) systemText = FindObjectOfType<SystemTextV2>();
             systemText.TextSet(itemData.ItemName + "‚ð“Š‚°‚½");
 
-            return spawnedItem;
+            return item;
         }
 
         public void RandomItemCreate(Pos2D pos) //EnemyDropItemSystem
@@ -89,21 +96,24 @@ namespace ItemSystemV2
 
             if (randomItem == null) return;
 
-            string prefabName = randomItem.PrefabName;
-            string prefabPath = "PrefabsV2/" + prefabName;
+            GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/Item");
 
-            GameObject prefab = Resources.Load<GameObject>(prefabPath);
             if (parent == null) parent = GameObject.Find("Items");
 
             setPos = field.ItemDropPointCheck(pos);
 
             if (setPos != null)
             {
-                GameObject spawnedItem = Instantiate(prefab, parent.transform);
-                spawnedItem.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
+                GameObject item = Instantiate(itemObj, parent.transform);
+                item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + randomItem.PrefabName);
+                item.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
+
                 //switch(randomItem.ItemType)
-                int randomNum = RandomNum.NumSetStock();
-                spawnedItem.GetComponent<SteppedOnEvent>().num = randomNum;
+
+                int randomnum = RandomNum.NumSetStock();
+                item.GetComponent<SteppedOnEvent>().ObjType = 0;
+                item.GetComponent<SteppedOnEvent>().Id = itemId;
+                item.GetComponent<SteppedOnEvent>().num = randomnum;
             }
         }
     }

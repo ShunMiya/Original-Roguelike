@@ -149,7 +149,18 @@ namespace Field
                 data.Set(x, y2, 0);
             }
             for (int y = Mathf.Min(y1, y2), end = Mathf.Max(y1, y2); y <= end; y++)
-                data.Set(area1.outLine.right, y, 0);
+            {
+                int outLinex = area1.outLine.right;
+                if (y == Mathf.Min(y1, y2) || y == Mathf.Max(y1, y2))
+                {
+                    data.Set(outLinex, y, 0);
+                    continue;
+                }
+                if (data.Get(area1.outLine.right - 1, y) == 0) outLinex--;
+                if (data.Get(area1.outLine.right + 1, y) == 0) outLinex++;
+
+                data.Set(outLinex, y, 0);
+            }
             field.SetObject("Connection", "Connection", area1.room.right, y1, 1, 1);
             field.SetObject("Connection", "Connection", area1.outLine.right, y1, 1, 1);
             field.SetObject("Connection", "Connection", area2.room.left, y2, 1, 1);
@@ -176,7 +187,18 @@ namespace Field
                 data.Set(x2, y, 0);
             }
             for (int x = Mathf.Min(x1, x2), end = Mathf.Max(x1, x2); x <= end; x++)
-                data.Set(x, area1.outLine.bottom, 0);
+            {
+                int outLiney = area1.outLine.bottom;
+                if(x == Mathf.Min(x1, x2) || x == Mathf.Max(x1, x2))
+                {
+                    data.Set(x, outLiney, 0);
+                    continue;
+                }
+                if (data.Get(x, area1.outLine.bottom - 1) == 0) outLiney--;
+                if (data.Get(x, area1.outLine.bottom + 1) == 0) outLiney++;
+
+                data.Set(x, outLiney, 0);
+            }
             field.SetObject("Connection", "Connection", x1, area1.room.bottom, 1, 1);
             field.SetObject("Connection", "Connection", x1, area1.outLine.bottom, 1, 1);
             field.SetObject("Connection", "Connection", x2, area2.room.top, 1, 1);
