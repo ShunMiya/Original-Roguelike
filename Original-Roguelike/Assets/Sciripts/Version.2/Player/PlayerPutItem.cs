@@ -34,7 +34,7 @@ namespace ItemSystemV2
         {
             itemfactory.SpecifiedItemCreate(move.grid, Convert.ToInt32(row["Id"]), Convert.ToInt32(row["Num"]));
 
-            inventoryremove.RemoveItem(row, 2);
+            inventoryremove.RemoveItem(row, 1);
 
             yield return new WaitForSeconds(0.2f);
         }

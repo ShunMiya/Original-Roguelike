@@ -46,6 +46,9 @@ namespace UISystemV2
                     }
                     UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("‘•”õ‚·‚é");
                     break;
+                case 2:
+                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Žg‚¤");
+                    break;
             }
             informationText.text = itemData.Description;
         }

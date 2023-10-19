@@ -57,4 +57,31 @@ public class MoveThrownItem : MonoBehaviour
         }
         move.SetPosition(setPos.x, setPos.z);
     }
+
+    public IEnumerator ThrowAttackObj(int R, int range)
+    {
+        Pos2D Pos = DirUtil.SetAttackPoint(R);
+        int xgrid = move.grid.x;
+        int zgrid = move.grid.z;
+        xgrid += Pos.x;
+        zgrid += Pos.z;
+
+        for (int i = 1; i <= range; i++)
+        {
+            IEnumerator Coroutine = move.ThrowMove(xgrid, zgrid);
+            yield return StartCoroutine(Coroutine);
+
+            bool Throw = (bool)Coroutine.Current;
+            if (!Throw)
+            {
+                break;
+            }
+
+            xgrid += Pos.x;
+            zgrid += Pos.z;
+        }
+        
+        Destroy(gameObject);
+        yield break;
+    }
 }

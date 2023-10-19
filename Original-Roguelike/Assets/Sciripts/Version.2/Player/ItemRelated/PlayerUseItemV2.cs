@@ -4,6 +4,7 @@ using ItemSystemV2.Inventory;
 using System;
 using System.Collections;
 using PlayerV2;
+using AttackSystem;
 
 namespace ItemSystemV2
 {
@@ -13,6 +14,7 @@ namespace ItemSystemV2
         [SerializeField] private PlayerEquipmentChange equipmentchange;
         [SerializeField] private PlayerHPV2 playerHP;
         [SerializeField] private PlayerHungryV2 playerHungry;
+        [SerializeField] private PlayerThrowItem playerThrowItem;
         bool ItemUse;
         private DataRow row;
         private int ItemType;
@@ -27,7 +29,6 @@ namespace ItemSystemV2
 
         public IEnumerator UseItem()
         {
-            int remainingStock = 0;
             switch (ItemType)
             {
                 case 0:
@@ -35,11 +36,9 @@ namespace ItemSystemV2
 
                     if (ItemUse == false)
                     {
-                        int itemStock = Convert.ToInt32(row["Num"]);
-                        remainingStock = itemStock;
                         break;
                     }
-                    remainingStock = inventoryremove.RemoveItem(row, 0);
+                    inventoryremove.RemoveItem(row, 1);
 
                     break;
                 case 1:
@@ -49,6 +48,10 @@ namespace ItemSystemV2
                         break;
                     }
                     equipmentchange.EquipItem(row);
+
+                    break;
+                case 2:
+                    yield return StartCoroutine(OffensiveUse(row));
 
                     break;
             }
@@ -69,6 +72,13 @@ namespace ItemSystemV2
                     break;
             }
             return ItemUse;
+        }
+
+        public IEnumerator OffensiveUse(DataRow row)
+        {
+            yield return StartCoroutine(playerThrowItem.ThrowOffensiveItem(row));
+
+            inventoryremove.RemoveItem(row, 0);
         }
     }
 }

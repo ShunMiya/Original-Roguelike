@@ -3088,6 +3088,7 @@ MonoBehaviour:
   equipmentchange: {fileID: 436213518}
   playerHP: {fileID: 436213511}
   playerHungry: {fileID: 436213510}
+  playerThrowItem: {fileID: 436213520}
 --- !u!114 &436213515
 MonoBehaviour:
   m_ObjectHideFlags: 0
