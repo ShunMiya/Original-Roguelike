@@ -65,8 +65,6 @@ namespace ItemSystemV2
             int R = (int)transform.rotation.eulerAngles.y;
             if (R > 180) R -= 360;
             yield return StartCoroutine(Obj.GetComponent<MoveThrownItem>().ThrowAttackObj(R, itemData.Range));
-
-            yield return null;
         }
     }
 }

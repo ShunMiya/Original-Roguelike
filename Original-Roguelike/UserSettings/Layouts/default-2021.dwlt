@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 109
+  controlID: 16
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 110
+  controlID: 17
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 111
+  controlID: 18
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -312,7 +312,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: bc2efcff9230fcff9a22fdff9e84fdffa21bfeff6e39feff6642feffb642feff7a44feff9c44feffaa44feffda44feffee44fefff244fefffc44feffa4d2ffff8cd3ffffc0d4ffff20faffff5ec3000084c30000a4ef0000
+      m_ExpandedIDs: 4a1df6ff9c51f6ff9c52f6fffe57f6ffd070f6ff303ef7ff4040f7ff1872f8ff48f2f8ffb6acfafffcd9faff0cf8fafff2f9faff1edffbff32dffbff56e0fbffb6ebfcffcaebfcffeaecfcffd228fdfffa28fdff1a2afdffb264fdffc664fdffda64fdff4667fdff4a7efdffaaa5fdffca1affffea1bfffff81cffff522efffff44dfffff44effff504fffff8a50ffff1873ffff1674ffff4c79ffffd886ffff3287fffffc88ffff2289ffff3489ffff6c89ffff8489ffff8c89ffff9a89ffffcaf7ffff20faffffbe5f0000de920000de9c000012a00000b6a1000038b500006cb8000016ba000072ca000098ca0000a6cd0000f4dc000028e0000014e6000048e9000062ef000096f20000aa010100de040100d20a0100060e01000214010036170100321d010066200100942f0100c8320100fa6101002e650100f89801002c9c010016cc0100ecd00100aadf0100d8e80100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -644,13 +644,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.33678496, y: -0.0000000017758781, z: -0.0000000060809535, w: 0.941582}
+    m_Target: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     speed: 2
-    m_Value: {x: 0.33678484, y: -0.0000000017758774, z: -0.0000000060809513, w: 0.94158167}
+    m_Value: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_Size:
-    m_Target: 6.3897123
+    m_Target: 1.4793136
     speed: 2
-    m_Value: 6.3897123
+    m_Value: 1.4793136
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -746,22 +746,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Materials
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\krnme\project\Original-Roguelike\Original-Roguelike
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 8c5a0000
-    m_LastClickedID: 23180
-    m_ExpandedIDs: 000000008c5a00009e5a0000a25a0000be5a0000ca5a0000cc5a0000406a0000446a00004a6a0000506a000000ca9a3bffffff7f
+    m_SelectedIDs: a25a0000
+    m_LastClickedID: 23202
+    m_ExpandedIDs: 00000000965a0000a65a0000a85a0000ac5a0000f05a0000f45a0000025b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -789,7 +789,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008c5a0000
+    m_ExpandedIDs: 00000000965a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -841,7 +841,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 123.600006}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 208

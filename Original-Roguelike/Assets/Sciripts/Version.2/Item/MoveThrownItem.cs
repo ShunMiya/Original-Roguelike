@@ -82,6 +82,5 @@ public class MoveThrownItem : MonoBehaviour
         }
         
         Destroy(gameObject);
-        yield break;
     }
 }
