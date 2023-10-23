@@ -12,5 +12,6 @@ namespace EnemySystem
         public int Speed { get; set; }
         public int Range { get; set; }
         public int EnemyExp { get; set; }
+        public int DropProbability { get; set; }
     }
 }

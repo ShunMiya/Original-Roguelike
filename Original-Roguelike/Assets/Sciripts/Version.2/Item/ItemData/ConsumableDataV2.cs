@@ -8,7 +8,6 @@ namespace ItemSystemV2
         public int ItemType { get; set; }
         public string Description { get; set; }
         public int ConsumableType { get; set; }
-        public int MaxStock { get; set; }
         public int HealValue { get; set; }
     }
 }

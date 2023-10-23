@@ -436,6 +436,7 @@ MonoBehaviour:
   informationText: {fileID: 1388124747}
   returnButton: {fileID: 778582035}
   subMenu: {fileID: 99179306}
+  itemArea: {fileID: 0}
   EquipArea: {fileID: 460178498}
 --- !u!114 &78932489
 MonoBehaviour:
@@ -555,6 +556,7 @@ MonoBehaviour:
   buttonPrefab: {fileID: 6672061056710448878, guid: 206ecb4661aa24f4fb91321dac831bf9, type: 3}
   buttonContainer: {fileID: 88469357}
   informationText: {fileID: 968981542}
+  itemCountText: {fileID: 0}
   returnButton: {fileID: 1374133626}
   subMenu: {fileID: 99179306}
   totalTextLength: 40
@@ -10162,6 +10164,7 @@ MonoBehaviour:
   informationText: {fileID: 1388124747}
   returnButton: {fileID: 778582035}
   subMenu: {fileID: 99179306}
+  itemArea: {fileID: 0}
   EquipArea: {fileID: 460178498}
 --- !u!114 &1658421925
 MonoBehaviour:
@@ -10443,7 +10446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1791308641}
   - component: {fileID: 1791308640}
-  - component: {fileID: 1791308639}
+  - component: {fileID: 1791308642}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -10451,26 +10454,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1791308639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1791308638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1791308640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10501,6 +10484,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1791308642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1791308638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e30f48b2dfab5743af3bfc6126c6403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
 --- !u!1 &1801831871
 GameObject:
   m_ObjectHideFlags: 0

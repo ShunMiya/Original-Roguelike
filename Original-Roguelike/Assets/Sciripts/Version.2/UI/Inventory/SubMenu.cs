@@ -46,6 +46,9 @@ namespace UISystemV2
                     }
                     UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("‘•”õ‚·‚é");
                     break;
+                case 2:
+                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Žg‚¤");
+                    break;
             }
             informationText.text = itemData.Description;
         }
@@ -54,18 +57,9 @@ namespace UISystemV2
         {
             int itemId = Convert.ToInt32(row["Id"]);
             IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
+            
+            playerUseItemV2.SetData(row, itemData.ItemType);
 
-            switch (itemData.ItemType)
-            {
-                case 0:
-                    playerUseItemV2.SetData(row, 0);
-
-                    break;
-                case 1:
-                    playerUseItemV2.SetData(row, 1);
-
-                    break;
-            }
             ButtonArea.GetComponent<CanvasGroup>().interactable = true;
             MenuArea.GetComponent<CanvasGroup>().interactable = true;
             if(EquipArea != null)
@@ -73,6 +67,8 @@ namespace UISystemV2
                 EquipArea.GetComponent<CanvasGroup>().interactable = true;
                 EquipArea = null;
             }
+            ChangeSelectColor();
+            Input.ResetInputAxes();
             gameObject.SetActive(false);
         }
 
@@ -87,6 +83,8 @@ namespace UISystemV2
                 EquipArea.GetComponent<CanvasGroup>().interactable = true;
                 EquipArea = null;
             }
+            ChangeSelectColor();
+            Input.ResetInputAxes();
             gameObject.SetActive(false);
         }
 
@@ -101,6 +99,9 @@ namespace UISystemV2
                 EquipArea.GetComponent<CanvasGroup>().interactable = true;
                 EquipArea = null;
             }
+
+            ChangeSelectColor();
+            Input.ResetInputAxes();
             gameObject.SetActive(false);
         }
 
@@ -114,6 +115,14 @@ namespace UISystemV2
                 EquipArea = null;
             }
 
+            ChangeSelectColor();
+
+            EventSystem.current.SetSelectedGameObject(ItemButton);
+            gameObject.SetActive(false);
+        }
+
+        public void ChangeSelectColor()
+        {
             Button button = ItemButton.GetComponent<Button>();
             if (button != null)
             {
@@ -121,9 +130,6 @@ namespace UISystemV2
                 colors.disabledColor = new Color(0, 0, 0, 128 / 255f);
                 button.colors = colors;
             }
-
-            EventSystem.current.SetSelectedGameObject(ItemButton);
-            gameObject.SetActive(false);
         }
 
         public void DisableWindow()

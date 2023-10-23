@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static UnityEditor.Progress;
 
 namespace ItemSystemV2
 {
@@ -22,6 +23,18 @@ namespace ItemSystemV2
             IItemDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
             IItemDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
             IItemDataV2 offensiveItem = ItemDataCacheV2.GetOffensive(itemId);
+
+            if (consumableItem != null) return consumableItem;
+            else if (equipmentItem != null) return equipmentItem;
+            else if (offensiveItem != null) return offensiveItem;
+            else return null;
+        }
+
+        public static IItemDataV2 GetIItemDataByName(string name)
+        {
+            IItemDataV2 consumableItem = ItemDataCacheV2.GetConsumableByName(name);
+            IItemDataV2 equipmentItem = ItemDataCacheV2.GetEquipmentByName(name);
+            IItemDataV2 offensiveItem = ItemDataCacheV2.GetOffensiveByName(name);
 
             if (consumableItem != null) return consumableItem;
             else if (equipmentItem != null) return equipmentItem;
@@ -53,6 +66,19 @@ namespace ItemSystemV2
             return equipmentCache.TryGetValue(itemId, out IItemDataV2 equipmentData) ? equipmentData as EquipmentDataV2 : null;
         }
 
+        public static EquipmentDataV2 GetEquipmentByName(string name)
+        {
+            foreach (EquipmentDataV2 equipmentData in equipmentCache.Values)
+            {
+                if (equipmentData.ItemName == name)
+                {
+                    return equipmentData;
+                }
+            }
+
+            return null; 
+        }
+
         public static void CacheConsumable(DataTable consumableTable)
         {
             foreach (DataRow row in consumableTable.Rows)
@@ -64,7 +90,6 @@ namespace ItemSystemV2
                 consumableData.ItemType = Convert.ToInt32(row["ItemType"]);
                 consumableData.Description = row["Description"].ToString();
                 consumableData.ConsumableType = Convert.ToInt32(row["ConsumableType"]);
-                consumableData.MaxStock = Convert.ToInt32(row["MaxStock"]);
                 consumableData.HealValue = Convert.ToInt32(row["HealValue"]);
 
                 consumableCache[consumableData.Id] = consumableData;
@@ -74,6 +99,56 @@ namespace ItemSystemV2
         public static ConsumableDataV2 GetConsumable(int itemId)
         {
             return consumableCache.TryGetValue(itemId, out IItemDataV2 consumableData) ? consumableData as ConsumableDataV2 : null;
+        }
+
+        public static ConsumableDataV2 GetConsumableByName(string name)
+        {
+            foreach (ConsumableDataV2 consumableData in consumableCache.Values)
+            {
+                if (consumableData.ItemName == name)
+                {
+                    return consumableData;
+                }
+            }
+
+            return null;
+        }
+
+        public static void CacheOffensive(DataTable offensiveTable)
+        {
+            foreach (DataRow row in offensiveTable.Rows)
+            {
+                OffensiveDataV2 offensiveData = new OffensiveDataV2();
+                offensiveData.Id = Convert.ToInt32(row["Id"]);
+                offensiveData.PrefabName = row["PrefabName"].ToString();
+                offensiveData.ItemName = row["ItemName"].ToString();
+                offensiveData.ItemType = Convert.ToInt32(row["ItemType"]);
+                offensiveData.Description = row["Description"].ToString();
+                offensiveData.OffensiveType = Convert.ToInt32(row["OffensiveType"]);
+                offensiveData.MaxStock = Convert.ToInt32(row["MaxStock"]);
+                offensiveData.DamageNum = Convert.ToInt32(row["DamageNum"]);
+                offensiveData.Range = Convert.ToInt32(row["Range"]);
+
+                offensiveCache[offensiveData.Id] = offensiveData;
+            }
+        }
+
+        public static OffensiveDataV2 GetOffensive(int itemId)
+        {
+            return offensiveCache.TryGetValue(itemId, out IItemDataV2 offensiveData) ? offensiveData as OffensiveDataV2 : null;
+        }
+
+        public static OffensiveDataV2 GetOffensiveByName(string name)
+        {
+            foreach (OffensiveDataV2 offensiveData in offensiveCache.Values)
+            {
+                if (offensiveData.ItemName == name)
+                {
+                    return offensiveData;
+                }
+            }
+
+            return null;
         }
 
         public static IItemDataV2 GetRandomItem(bool isEquipment)

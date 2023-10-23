@@ -41,42 +41,54 @@ namespace UISystemV2
             foreach (DataRow row in InventoryData.Rows)
             {
                 int itemId = Convert.ToInt32(row["Id"]);
-                ConsumableDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
-                EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
+                IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
 
-                if (consumableItem != null)
+                switch(itemData.ItemType)
                 {
-                    //int itemStock = Convert.ToInt32(row["Num"]);
-                    ItemButtonV2 button = Instantiate(buttonPrefab, buttonContainer);
-                    ItemButtonV2 itemButton = button.GetComponent<ItemButtonV2>();
-                    itemButton.row = row;
-                    itemButton.informationText = informationText;
-                    itemButton.returnButton = returnButton;
-                    itemButton.subMenu = subMenu;
-                    TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+                    case 0:
+                        ConsumableDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
 
-                    buttonText.text = consumableItem.ItemName;
+                        ItemButtonV2 button = Instantiate(buttonPrefab, buttonContainer);
+                        ItemButtonV2 itemButton = button.GetComponent<ItemButtonV2>();
+                        itemButton.row = row;
+                        itemButton.informationText = informationText;
+                        itemButton.returnButton = returnButton;
+                        itemButton.subMenu = subMenu;
+                        TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
-                    //buttonText.text = FormatItemText(consumableItem.ItemName, itemStock);
+                        buttonText.text = consumableItem.ItemName;
+                        break;
+                    case 1:
+                        EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
 
-                }
-                if (equipmentItem != null)
-                {
-                    ItemButtonV2 button = Instantiate(buttonPrefab, buttonContainer);
-                    ItemButtonV2 itemButton = button.GetComponent<ItemButtonV2>();
-                    itemButton.row = row;
-                    itemButton.informationText = informationText;
-                    itemButton.returnButton = returnButton;
-                    itemButton.subMenu = subMenu;
- 
-                    TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-                    if (Convert.ToInt32(row["Equipped"])  != 0)
-                    {
-                        buttonText.text = FormatEquippedItemText(equipmentItem.ItemName);
-                        continue;
-                    }
-                    buttonText.text = equipmentItem.ItemName;
+                        button = Instantiate(buttonPrefab, buttonContainer);
+                        itemButton = button.GetComponent<ItemButtonV2>();
+                        itemButton.row = row;
+                        itemButton.informationText = informationText;
+                        itemButton.returnButton = returnButton;
+                        itemButton.subMenu = subMenu;
 
+                        buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+                        if (Convert.ToInt32(row["Equipped"]) != 0)
+                        {
+                            buttonText.text = FormatEquippedItemText(equipmentItem.ItemName);
+                            continue;
+                        }
+                        buttonText.text = equipmentItem.ItemName;
+                        break;
+                    case 2:
+                        OffensiveDataV2 offensiveItem = ItemDataCacheV2.GetOffensive(itemId);
+
+                        button = Instantiate(buttonPrefab, buttonContainer);
+                        itemButton = button.GetComponent<ItemButtonV2>();
+                        itemButton.row = row;
+                        itemButton.informationText = informationText;
+                        itemButton.returnButton = returnButton;
+                        itemButton.subMenu = subMenu;
+                        buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+
+                        buttonText.text = offensiveItem.ItemName + "(" + Convert.ToInt32(row["Num"]) + ")";
+                        break;
                 }
             }
             ItemCountText();
@@ -91,20 +103,6 @@ namespace UISystemV2
             {
                 Destroy(button.gameObject);
             }
-        }
-
-        private string FormatItemText(string itemName, int itemStack)
-        {
-            string itemText = $"{itemName}Å~{itemStack}";
-            int spacesToAdd = totalTextLength - itemText.Length;
-
-            if (spacesToAdd > 0)
-            {
-                string spaceText = new string(' ', spacesToAdd);
-                itemText = $"{itemName}{spaceText}Å~{itemStack}";
-            }
-
-            return itemText;
         }
 
         private string FormatEquippedItemText(string itemName)

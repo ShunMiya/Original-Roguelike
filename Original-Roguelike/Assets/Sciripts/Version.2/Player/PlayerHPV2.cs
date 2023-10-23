@@ -56,6 +56,8 @@ namespace PlayerStatusSystemV2
             int reducedDamage = Mathf.CeilToInt(ModifierDamage * Mathf.Pow(GameRule.DamageIndexValue, Defense));
             #endregion
 
+            if (reducedDamage == 0) reducedDamage++;
+
             int newHP = CurrentHP - reducedDamage;
 
             string updateStatusQuery = "UPDATE PlayerStatus SET CurrentHP = " + newHP + " WHERE PlayerID = 1;";
@@ -63,7 +65,6 @@ namespace PlayerStatusSystemV2
 
             if (newHP <= 0)
             {
-                //systemText.TextSet("Player Dead!");
                 gameEnd.GameOverPerformance();
                 Time.timeScale = 0;
 

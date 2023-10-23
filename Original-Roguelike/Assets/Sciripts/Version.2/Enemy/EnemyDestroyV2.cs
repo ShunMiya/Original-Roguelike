@@ -17,9 +17,16 @@ namespace EnemySystem
 
         public void DropItem()
         {
-            Pos2D dropPosition = GetComponent<MoveAction>().grid;
+            int EnemyId = GetComponent<EnemyStatusV2>().EnemyID;
+            EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(EnemyId);
+            int DropProbability = enemy.DropProbability;
 
-            itemFactory.RandomItemCreate(dropPosition);
+            if(Random.Range(1,101) <= DropProbability)
+            {
+                Pos2D dropPosition = GetComponent<MoveAction>().grid;
+
+                itemFactory.RandomItemCreate(dropPosition);
+            }
         }
 
         public void Destroy()

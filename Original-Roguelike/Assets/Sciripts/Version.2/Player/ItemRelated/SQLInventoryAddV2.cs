@@ -28,54 +28,39 @@ namespace ItemSystemV2.Inventory
         {
             itemCount = InventoryCount();
 
-            ConsumableDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
-            EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
+            IItemDataV2 ItemData = ItemDataCacheV2.GetIItemData(itemId);
 
             bool GetItem = false;
-            if (consumableItem != null)
+
+            switch (ItemData.ItemType)
             {
-                GetItem = AddConsumable(itemId, 1, consumableItem);
-                return GetItem;
-            }
-            else if (equipmentItem != null)
-            {
-                GetItem = AddEquipment(itemId, num, equipmentItem);
-                return GetItem;
+                case 0:
+                    ConsumableDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
+                    GetItem = AddConsumable(itemId, consumableItem);
+                    break;
+                case 1:
+                    EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
+                    GetItem = AddEquipment(itemId, num, equipmentItem);
+                    break; 
+                case 2:
+                    OffensiveDataV2 offensiveItem = ItemDataCacheV2.GetOffensive(itemId);
+                    GetItem = AddOffensive(itemId, num, offensiveItem);
+                    break;
+                default:
+                    break;
             }
             return GetItem;
         }
 
-
-        public bool AddConsumable(int itemId, int num, ConsumableDataV2 consumableItem)
+        public bool AddConsumable(int itemId, ConsumableDataV2 consumableItem)
         {
-            string query = "SELECT * FROM Inventory WHERE Id = " + itemId;
-            DataTable itemsData = sqlDB.ExecuteQuery(query);
-
-            foreach (DataRow row in itemsData.Rows)
-            {
-                int currentNum = Convert.ToInt32(row["Num"]);
-                int totalStock = currentNum + num;
-                if (totalStock <= consumableItem.MaxStock)
-                {
-                    string updateQuery = "UPDATE Inventory SET Num = " + totalStock + " WHERE IID = " + row["IID"];
-                    sqlDB.ExecuteNonQuery(updateQuery);
-
-                    systemText.TextSet(consumableItem.ItemName + "を手に入れた");
-                    //systemText.TextSet(consumableItem.ItemName + " (" + num + ") を手に入れた");
-                    
-                    return true;
-                }
-            }
             if (itemCount == inventorySize)
             {
                 systemText.TextSet("バッグが一杯だ！");
                 return false;
             }
-            string insertQuery = "INSERT INTO Inventory (Id, Num) VALUES ('" + consumableItem.Id + "', " + num + ")";
-
-            systemText.TextSet(consumableItem.ItemName + "を手に入れた");
-            //systemText.TextSet(consumableItem.ItemName + " (" + num + ") を手に入れた");
-            
+            string insertQuery = "INSERT INTO Inventory (Id, Num) VALUES ('" + consumableItem.Id + "', 1)";
+            systemText.TextSet(consumableItem.ItemName + "を手に入れた");            
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }
@@ -92,6 +77,39 @@ namespace ItemSystemV2.Inventory
             sqlDB.ExecuteNonQuery(insertQuery);
             return true;
         }
+
+        public bool AddOffensive(int itemId, int num, OffensiveDataV2 offensiveItem)
+        {
+            string query = "SELECT * FROM Inventory WHERE Id = " + itemId;
+            DataTable itemsData = sqlDB.ExecuteQuery(query);
+
+            foreach (DataRow row in itemsData.Rows)
+            {
+                int currentNum = Convert.ToInt32(row["Num"]);
+                int totalStock = currentNum + num;
+                if (totalStock <= offensiveItem.MaxStock)
+                {
+                    string updateQuery = "UPDATE Inventory SET Num = " + totalStock + " WHERE IID = " + row["IID"];
+                    sqlDB.ExecuteNonQuery(updateQuery);
+
+                    systemText.TextSet(offensiveItem.ItemName + " (" + num + ") を手に入れた");
+
+                    return true;
+                }
+            }
+            if (itemCount == inventorySize)
+            {
+                systemText.TextSet("バッグが一杯だ！");
+                return false;
+            }
+            string insertQuery = "INSERT INTO Inventory (Id, Num) VALUES ('" + offensiveItem.Id + "', " + num + ")";
+
+            systemText.TextSet(offensiveItem.ItemName + " (" + num + ") を手に入れた");
+
+            sqlDB.ExecuteNonQuery(insertQuery);
+            return true;
+        }
+
 
         public int InventoryCount()
         {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="42">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="44">
  <tileset firstgid="1" source="../../../../../../Downloads/Test-Tile.tsx"/>
  <group id="5" name="1F">
   <layer id="1" name="TileLayer" width="30" height="30">
@@ -67,42 +67,42 @@
      <property name="Type" value="Enemy"/>
     </properties>
    </object>
-   <object id="8" name="Item1" x="225" y="193" width="31" height="31">
+   <object id="8" name="回復薬" x="225" y="193" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="10" name="Item1" x="225" y="225" width="31" height="31">
+   <object id="10" name="回復薬" x="225" y="225" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="11" name="Item1" x="225" y="97" width="31" height="31">
+   <object id="11" name="回復薬" x="225" y="97" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="12" name="Item1" x="225" y="129" width="31" height="31">
+   <object id="12" name="回復薬" x="225" y="129" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="13" name="Item2" x="225" y="161" width="31" height="31">
+   <object id="13" name="木の実" x="225" y="161" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="14" name="Item101" x="97" y="65" width="31" height="31">
+   <object id="14" name="剣" x="97" y="65" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="15" name="Item102" x="97" y="161" width="31" height="31">
+   <object id="15" name="槍" x="97" y="161" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="16" name="Item103" x="161" y="225" width="31" height="31">
+   <object id="16" name="盾" x="161" y="225" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
@@ -112,37 +112,47 @@
      <property name="Type" value="Stairs"/>
     </properties>
    </object>
-   <object id="34" name="Item101" x="97" y="97" width="31" height="31">
+   <object id="34" name="剣" x="97" y="97" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="36" name="Item101" x="97" y="129" width="31" height="31">
+   <object id="36" name="剣" x="97" y="129" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="37" name="Item102" x="97" y="193" width="31" height="31">
+   <object id="37" name="槍" x="97" y="193" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="38" name="Item102" x="97" y="225" width="31" height="31">
+   <object id="38" name="槍" x="97" y="225" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="39" name="Item103" x="129" y="225" width="31" height="31">
+   <object id="39" name="盾" x="129" y="225" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="40" name="Item103" x="193" y="225" width="31" height="31">
+   <object id="40" name="盾" x="193" y="225" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="41" name="Item2" x="225" y="65" width="31" height="31">
+   <object id="41" name="木の実" x="225" y="65" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="42" name="痛撃ナイフ" x="161" y="257" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="43" name="位置替えナイフ" x="193" y="257" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
@@ -213,46 +223,6 @@
    <object id="23" name="Enemy2" x="609" y="289" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
-    </properties>
-   </object>
-   <object id="24" name="Item1" x="161" y="161" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="25" name="Item1" x="193" y="161" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="26" name="Item1" x="129" y="161" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="27" name="Item1" x="97" y="161" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="28" name="Item2" x="225" y="161" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="29" name="Item101" x="97" y="225" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="30" name="Item102" x="129" y="225" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="31" name="Item103" x="161" y="225" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
     </properties>
    </object>
    <object id="32" name="Stairs" x="609" y="65" width="31" height="31">

@@ -7,8 +7,9 @@ namespace ItemSystemV2
         public string ItemName { get; set; }
         public int ItemType { get; set; }
         public string Description { get; set; }
-        public int ConsumableType { get; set; }
+        public int OffensiveType { get; set; }
         public int MaxStock { get; set; }
-        public int AttackValue { get; set; }
+        public int DamageNum { get; set; }
+        public int Range { get; set; }
     }
 }

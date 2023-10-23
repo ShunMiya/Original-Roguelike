@@ -19,26 +19,27 @@ namespace PlayerV2
                 Coroutine coroutine = StartCoroutine(PlayerToAttack.AttackPreparationPlayer());
                 yield return coroutine;
             }
-            if(playerUseItemV2 != null)
+            PlayerToAttack = null;
+
+            if (playerUseItemV2 != null)
             {
                 Coroutine coroutine = StartCoroutine(playerUseItemV2.UseItem());
                 yield return coroutine;
             }
+            playerUseItemV2 = null;
+
             if (playerPutItem != null)
             {
                 Coroutine coroutine = StartCoroutine(playerPutItem.PutItem());
                 yield return coroutine;
             }
-            if(playerThrowItem  != null)
+            playerPutItem = null;
+
+            if (playerThrowItem  != null)
             {
                 Coroutine coroutine = StartCoroutine(playerThrowItem.ThrowItem());
                 yield return coroutine;
             }
-
-            // çsìÆÇ™äÆóπÇµÇΩå„ÇÃèàóù
-            PlayerToAttack = null;
-            playerUseItemV2 = null;
-            playerPutItem = null;
             playerThrowItem = null;
         }
     }

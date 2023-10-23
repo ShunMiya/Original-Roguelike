@@ -119,8 +119,6 @@ MonoBehaviour:
   newGrid:
     x: 0
     z: 0
-  ThrowMoveFrame: 0.06
-  complementFrame: 0
 --- !u!114 &-3680758029597106049
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,8 +45,6 @@ namespace ItemSystemV2
 
         private IEnumerator Trap()
         {
-            gameObject.transform.GetChild(0).gameObject.SetActive(true);
-
             GimmickEvent GE = GetComponent<GimmickEvent>();
 
             yield return StartCoroutine(GE.Event(Id));

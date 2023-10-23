@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 772.8
   m_ShowMode: 4
-  m_Title: Inspector
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 100
+  controlID: 16
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 74
+  controlID: 17
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 75
+  controlID: 18
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -312,7 +312,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 64e9eeffb4e9eeff76ebeeff98ebeeffa6ebeeffd6ebeeffeaebeeffeeebeefff8ebeeff98edeeffe6edeeffa8efeeffcaefeeffd8efeeff08f0eeff1cf0eeff20f0eeff2af0eeffc806efff2634efff2435efffd03cefffdef3efff149af0ffc6e3f1ff8ae4f1ff5e6ef2ff346ff2ff6893f2ff6ed3f2ff1c3cf3ff1c3df3ff7a3df3ffc63df3ff7a43f3ffce5af3ffcc77f3ff729bf3ff78bcf3ff80bdf3ff7ad0f3ff6ae7f3ff66e8f3ff16f0f3ff180cf4ff6e13f4ff66cbf4ff8acdf4ffeccdf4ffeacff4ff46d0f4ff92ebf4ffbaecf4ff3606f5ff3407f5ffd407f5ff2a41f5ffb46df5ff2872f5ff64ccf5ff30cef5ffa80af6ff2c39f6ff2a3af6ff303df6ffb665f7ffbc66f7ff1067f7ff7475f7ff4cd7f7ff265af8ff2a73f8ffb8c5f9ff44c8f9ffee39faffee60faff8878faff64d0faff64d1fafff6d7faff44d9faffacdbfaff065efbffa259fcff3a1efdffb220feff5201ffffe25bffff666cffff0c89ffffb0e1fffff2e1ffffb6e2ffff20faffffc265000052870000bc8700009c880000ce890000e8890000548a0000ae8a00008e8c0000f88c0000d88d0000888e00000a8f0000248f0000ea8f00000890000030910000b4be00001ebf0000febf0000aec0000032c100004ec10000bac1000014c2000032c200005ac300003aeb0000a4eb000084ec0000b8ed0000d4ed000040ee00009aee0000ea4c0100544d0100344e0100684f0100844f0100f04f01004a50010006830100708301005084010084850100a08501000c860100668601003e880100a888010088890100bc8a0100d88a01009e8b0100348e01009e8e01007e8f0100b2900100ce90010094910100d49d01003e9e01001e9f010052a001006ea00100daa0010034a101004caf0100b6af010096b00100cab10100e6b10100acb2010084b40100eeb40100ceb5010002b701001eb70100e4b701006cea0100d6ea0100b6eb0100eaec010006ed0100cced01009a410200fa44020058750200c2750200a2760200cc770200e8770200ae7802007a7a0200e47a0200c47b02006a7c0200ee7c02000a7d0200d07d0200ee7d0200127f02007c850200bc88020000cd02006acd02003cce0200e2ce020066cf02007acf020040d002005ed0020082d1020024e10200c2e1020018e50200b6e90200f2ea020052eb02001cec020030ec02009cec0200f6ec0200c6ee020002f00200a8f002002cf1020040f1020006f2020024f20200cefd02008a1003000c150300961f0300e42d03003a3103005232030034340300cc34030092350300b0350300d43603005e3c0300c83c03009a3d0300403e0300c43e0300d83e03009e3f0300bc3f0300e04003006a410300388f0300b291030078920300289f03005ab303006eb803000cb90300cccc030034d6030094df030004e9030022ee030034fe030096070400f610040014160400b6330400ba890400408b04007c8b0400228c0400d88c0400649b0400ea9c0400269d0400cc9d0400829e04004ea00400d4a1040010a20400b6a204006ca3040096af0400c0af0400f4b80400
+      m_ExpandedIDs: 4a1df6ff9c51f6ff9c52f6fffe57f6ffd070f6ff303ef7ff4040f7ff1872f8ff48f2f8ffb6acfafffcd9faff0cf8fafff2f9faff1edffbff32dffbff56e0fbffb6ebfcffcaebfcffeaecfcffd228fdfffa28fdff1a2afdffb264fdffc664fdffda64fdff4667fdff4a7efdffaaa5fdffca1affffea1bfffff81cffff522efffff44dfffff44effff504fffff8a50ffff1873ffff1674ffff4c79ffffd886ffff3287fffffc88ffff2289ffff3489ffff6c89ffff8489ffff8c89ffff9a89ffffcaf7ffff20faffffbe5f0000de920000de9c000012a00000b6a1000038b500006cb8000016ba000072ca000098ca0000a6cd0000f4dc000028e0000014e6000048e9000062ef000096f20000aa010100de040100d20a0100060e01000214010036170100321d010066200100942f0100c8320100fa6101002e650100f89801002c9c010016cc0100ecd00100aadf0100d8e80100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -595,9 +595,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 639.9265, y: 338.29184, z: -12.27969}
+    m_Target: {x: 0, y: 0, z: 0}
     speed: 2
-    m_Value: {x: 639.9265, y: 338.29184, z: -12.27969}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -644,13 +644,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.25456443, y: 0.0029011713, z: -0.000763698, w: 0.9670526}
+    m_Target: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
     speed: 2
-    m_Value: {x: 0.2545641, y: 0.0029011676, z: -0.000763697, w: 0.9670513}
+    m_Value: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_Size:
-    m_Target: 341.88458
+    m_Target: 1.4793136
     speed: 2
-    m_Value: 341.88458
+    m_Value: 1.4793136
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -746,22 +746,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Materials
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Materials
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\krnme\project\Original-Roguelike\Original-Roguelike
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: 945a0000
-    m_LastClickedID: 23188
-    m_ExpandedIDs: 00000000805a0000905a0000925a0000965a0000789100007e91000086910000889100008a91000000ca9a3bffffff7f
+    m_SelectedIDs: a25a0000
+    m_LastClickedID: 23202
+    m_ExpandedIDs: 00000000965a0000a65a0000a85a0000ac5a0000f05a0000f45a0000025b000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -789,7 +789,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000805a0000
+    m_ExpandedIDs: 00000000965a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -841,7 +841,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 0}
+    m_ScrollPosition: {x: 0, y: 123.600006}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 208
