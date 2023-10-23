@@ -9,6 +9,7 @@ namespace Field
     public class RandomDungeon : MonoBehaviour
     {
         private const int minArea = 7;
+        private const int maxArea = 10;
         private const int minRoom = 3;
         private const int margin = 2;
         private Array2D data;
@@ -53,6 +54,9 @@ namespace Field
                     return;
                 }
                 int p = Random.Range(baseArea.outLine.left + minArea, baseArea.outLine.right - minArea);
+
+                p = Mathf.Clamp(p, baseArea.outLine.left + minArea, baseArea.outLine.right - maxArea);
+
                 rect1 = new Rect2D(baseArea.outLine.left, baseArea.outLine.top, p, baseArea.outLine.bottom);
                 rect2 = new Rect2D(p + 1, baseArea.outLine.top, baseArea.outLine.right, baseArea.outLine.bottom);
                 if ((rect1.width < rect2.width) ||
@@ -71,6 +75,9 @@ namespace Field
                     return;
                 }
                 int p = Random.Range(baseArea.outLine.top + minArea, baseArea.outLine.bottom - minArea);
+
+                p = Mathf.Clamp(p, baseArea.outLine.top + minArea, baseArea.outLine.bottom - maxArea);
+
                 rect1 = new Rect2D(baseArea.outLine.left, baseArea.outLine.top, baseArea.outLine.right, p);
                 rect2 = new Rect2D(baseArea.outLine.left, p + 1, baseArea.outLine.right, baseArea.outLine.bottom);
                 if ((rect1.height < rect2.height) ||
