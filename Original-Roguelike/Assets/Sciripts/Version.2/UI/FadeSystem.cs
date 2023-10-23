@@ -50,6 +50,8 @@ namespace Fade
         public IEnumerator GameClearFade()
         {
             yield return StartCoroutine (FadeOut());
+
+            StairsMenu.SetActive(false);
             gameEndV2.GameClearPerformance();
             StartCoroutine(FadeIn());
 

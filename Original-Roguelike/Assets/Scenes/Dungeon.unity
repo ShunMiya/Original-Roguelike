@@ -2893,6 +2893,7 @@ GameObject:
   - component: {fileID: 436213519}
   - component: {fileID: 436213521}
   - component: {fileID: 436213522}
+  - component: {fileID: 436213523}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3089,6 +3090,7 @@ MonoBehaviour:
   playerHP: {fileID: 436213511}
   playerHungry: {fileID: 436213510}
   playerThrowItem: {fileID: 436213520}
+  systemText: {fileID: 1238523509}
 --- !u!114 &436213515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3194,6 +3196,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelupText: {fileID: 1898756068}
+--- !u!114 &436213523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09985f444a9fd5d4cbee5d0bcac712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &441075518
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,8 +1,6 @@
 using Field;
-using ItemSystemV2;
 using MoveSystem;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveThrownItem : MonoBehaviour

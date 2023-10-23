@@ -59,6 +59,8 @@ namespace ItemSystemV2
             item.GetComponent<MoveAction>().SetcomplementFrame();
             item.GetComponent<MoveAction>().SetPosition(pos.x, pos.z);
             item.GetComponent<SteppedOnEvent>().ObjType = 0;
+            item.GetComponent<ThrowObjData>().Id = Id;
+            item.GetComponent<ThrowObjData>().Num = num;
             item.GetComponent<SteppedOnEvent>().Id = Id;
             item.GetComponent<SteppedOnEvent>().num = num;
 

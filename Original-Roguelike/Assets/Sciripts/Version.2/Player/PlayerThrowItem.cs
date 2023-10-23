@@ -57,8 +57,9 @@ namespace ItemSystemV2
             Obj.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/ThrowingKnife");
             Obj.GetComponent<MoveAction>().SetcomplementFrame();
             Obj.GetComponent<MoveAction>().SetPosition(move.grid.x, move.grid.z);
-            Obj.GetComponent<ThrowHitEvent>().Id = itemData.OffensiveType;
-            Obj.GetComponent<ThrowHitEvent>().Num = itemData.DamageNum;
+            Obj.GetComponent<ThrowObjData>().Id = Id;
+            Obj.GetComponent<ThrowObjData>().Num = 1;
+            Obj.GetComponent<ThrowObjData>().DamageNum = itemData.DamageNum;
 
             yield return new WaitForEndOfFrame();
 

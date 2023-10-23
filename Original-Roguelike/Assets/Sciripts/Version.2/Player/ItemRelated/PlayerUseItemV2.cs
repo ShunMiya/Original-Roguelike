@@ -4,6 +4,7 @@ using ItemSystemV2.Inventory;
 using System;
 using System.Collections;
 using PlayerV2;
+using UISystemV2;
 
 namespace ItemSystemV2
 {
@@ -17,6 +18,7 @@ namespace ItemSystemV2
         bool ItemUse;
         private DataRow row;
         private int ItemType;
+        [SerializeField] private SystemTextV2 systemText;
 
         public void SetData(DataRow date, int type)
         {
@@ -61,6 +63,8 @@ namespace ItemSystemV2
         {
             int Id = Convert.ToInt32(row["Id"]);
             ConsumableDataV2 itemData = ItemDataCacheV2.GetConsumable(Id);
+            systemText.TextSet("<color=blue>Player</color>は" + itemData.ItemName + "を使った！");
+
             switch (itemData.ConsumableType)
             {
                 case 1:
@@ -75,6 +79,10 @@ namespace ItemSystemV2
 
         public IEnumerator OffensiveUse(DataRow row)
         {
+            int Id = Convert.ToInt32(row["Id"]);
+            OffensiveDataV2 itemData = ItemDataCacheV2.GetOffensive(Id);
+            systemText.TextSet("<color=blue>Player</color>は" + itemData.ItemName + "を使った！");
+
             yield return StartCoroutine(playerThrowItem.ThrowOffensiveItem(row));
 
             inventoryremove.RemoveItem(row, 0);

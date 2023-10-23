@@ -4,6 +4,7 @@ using Field;
 using EnemySystem;
 using PlayerStatusSystemV2;
 using AttackSystem;
+using ItemSystemV2;
 
 namespace MoveSystem
 {
@@ -118,7 +119,9 @@ namespace MoveSystem
             GameObject Char = field.IsCollideReturnCharObj(movex, movez);
             if (Char != null)
             {
-                Char.GetComponent<EnemyStatusV2>().TakeDamage(1, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject);
+                int Id =gameObject.GetComponent<ThrowObjData>().Id;
+                int Num = gameObject.GetComponent<ThrowObjData>().Num;
+                yield return StartCoroutine(Char.GetComponent<ThrowHitEvent>().Event(Id, Num));
                 bool Throw = false;
                 yield return Throw;
                 Destroy(gameObject);

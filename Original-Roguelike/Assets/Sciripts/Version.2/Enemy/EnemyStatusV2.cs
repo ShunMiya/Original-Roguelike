@@ -51,8 +51,10 @@ namespace EnemySystem
             int reducedDamage = Mathf.CeilToInt(ModifierDamage * Mathf.Pow(GameRule.DamageIndexValue, Defense));
             #endregion
 
+            if (reducedDamage == 0) reducedDamage++;
+
             currentHP -= reducedDamage;
-            systemText.TextSet("<color=red>" +name + "</color>は" + damage + "ダメージを受けた！");
+            systemText.TextSet("<color=red>" +name + "</color>は" + reducedDamage + "ダメージを受けた！");
             if(R != 1)
             {
                 int Rota = DirUtil.ReverseDirection(R);
@@ -68,6 +70,46 @@ namespace EnemySystem
                 }
                 EnemyDeath();
             }
+        }
+
+        public void DirectDamage(float damage, int R, float HitRate, GameObject attacker)
+        {
+            #region 命中率処理
+            int HitCheck = Random.Range(1, 101);
+            if (HitCheck > HitRate)
+            {
+                systemText.TextSet("NoHit!");
+                return;
+            }
+            #endregion
+
+            #region 回避率処理
+            int EvasionCheck = Random.Range(1, 101);
+            if (EvasionCheck < GameRule.EvasionRate)
+            {
+                systemText.TextSet("NoHit!");
+                return;
+            }
+            #endregion
+
+            currentHP -= damage;
+            systemText.TextSet("<color=red>" + name + "</color>は" + damage + "ダメージを受けた！");
+            if (R != 1)
+            {
+                int Rota = DirUtil.ReverseDirection(R);
+                transform.rotation = Quaternion.Euler(0, Rota, 0);
+            }
+
+            if (currentHP <= 0 && EnemyDeath != null)
+            {
+                systemText.TextSet("<color=red>" + name + "</color>は倒れた！");
+                if (attacker.CompareTag("Player"))
+                {
+                    FindFirstObjectByType<PlayerLevel>().PlayerGetExp(Exp);
+                }
+                EnemyDeath();
+            }
+
         }
     }
 }
