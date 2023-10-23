@@ -4,7 +4,6 @@ using ItemSystemV2.Inventory;
 using System;
 using System.Collections;
 using PlayerV2;
-using AttackSystem;
 
 namespace ItemSystemV2
 {

@@ -5,9 +5,6 @@ using System.Collections.Generic;
 using System;
 using UISystemV2;
 using UnityEngine;
-using ItemSystemSQL;
-using static UnityEditor.Progress;
-using UnityEditor;
 
 namespace ItemSystemV2
 {
