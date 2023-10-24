@@ -111,7 +111,7 @@ namespace TurnSystem
 
                 if (PCondition.StunTurn != 0)
                 {
-                    PCondition.StunEvent();
+                    yield return StartCoroutine(PCondition.StunEvent());
                     break;
                 }
                 if (PA.playerUseItemV2 != null) break;

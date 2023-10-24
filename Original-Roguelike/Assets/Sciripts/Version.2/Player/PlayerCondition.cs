@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace PlayerStatusSystemV2
@@ -10,6 +11,7 @@ namespace PlayerStatusSystemV2
         public int BlindTurn = 0;
 
         private PlayerHPV2 playerHP;
+        [SerializeField] private new ParticleSystem particleSystem;
 
         private void Start()
         {
@@ -47,9 +49,14 @@ namespace PlayerStatusSystemV2
             return DirUtil.SetNewPosRotation(DirUtil.RandomDirection());
         }
 
-        public void StunEvent()
+        public IEnumerator StunEvent()
         {
-            //演出とか
+            particleSystem.Play();
+
+            while (particleSystem.isPlaying)
+            {
+                yield return null; // パーティクルが再生中の間、待機
+            }
         }
 
         public void BlindEvent()
