@@ -28,6 +28,15 @@ namespace MoveSystem
             newGrid = grid;
         }
 
+        public void ChangeDirectionOnTheSpot(float movex, float movez)
+        {
+            targetPos = transform.position;
+            InputPos = new Vector3(movex * gridSize, 0, movez * gridSize);
+
+            targetPos += InputPos;
+            transform.LookAt(targetPos);
+        }
+
         public bool MoveStance(float movex, float movez)
         {
             targetPos = transform.position;

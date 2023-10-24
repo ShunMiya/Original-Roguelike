@@ -53,6 +53,22 @@ namespace PlayerV2
                 return true;
             }
 
+            if(Input.GetKey(KeyCode.C))
+            {
+                movex = Input.GetAxis("Horizontal");
+                movez = Input.GetAxis("Vertical");
+
+                if (Mathf.Abs(movex) > 0.2f) movex = Mathf.Sign(movex);
+                else movex = 0;
+
+                if (Mathf.Abs(movez) > 0.2f) movez = Mathf.Sign(movez);
+                else movez = 0;
+
+                moveAction.ChangeDirectionOnTheSpot(movex, movez);
+
+                return false;
+            }
+
             if (!firstInputProcessed)
             {
                 if (WaitInputTimer > 0)
