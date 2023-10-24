@@ -78,7 +78,6 @@ public class MoveThrownItem : MonoBehaviour
             xgrid += Pos.x;
             zgrid += Pos.z;
         }
-        
         Destroy(gameObject);
     }
 }

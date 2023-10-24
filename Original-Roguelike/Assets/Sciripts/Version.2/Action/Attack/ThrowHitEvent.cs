@@ -11,12 +11,16 @@ namespace AttackSystem
     public class ThrowHitEvent : MonoBehaviour
     {
 
-        public IEnumerator Event(int Id, int Num)
+        public IEnumerator Event(int Id, int Num, int R)
         {
             if (Id == 0) yield return null;
 
-            switch(Id)
+            switch (Id)
             {
+                case 201:
+                    OffensiveDataV2 itemData = ItemDataCacheV2.GetOffensive(Id);
+                    yield return StartCoroutine(GetComponent<MoveAction>().ThrowStance(R, itemData.DamageNum, FindObjectOfType<PlayerStatusV2>().gameObject));
+                    break;
                 case 202:
                     int HitObjx = GetComponent<MoveAction>().grid.x;
                     int HitObjz = GetComponent<MoveAction>().grid.z;
@@ -27,7 +31,7 @@ namespace AttackSystem
                     GetComponent<MoveAction>().SetPosition(Playerx, Playerz);
                     break;
                 case 203:
-                    OffensiveDataV2 itemData = ItemDataCacheV2.GetOffensive(Id);
+                    itemData = ItemDataCacheV2.GetOffensive(Id);
 
                     gameObject.GetComponent<EnemyStatusV2>().DirectDamage(itemData.DamageNum * Num, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject);
                     break;
@@ -36,8 +40,6 @@ namespace AttackSystem
 
                     break;
             }
-            yield return new WaitForEndOfFrame();
-
         }
     }
 }

@@ -30,7 +30,6 @@ namespace Field
 
             if(gameObject.transform.GetChild(0).gameObject.activeSelf)
             {
-                Debug.Log("HitCheck");
                 if(UnityEngine.Random.Range(1, 11) >= 4)
                 {
                     HitCheck = false;

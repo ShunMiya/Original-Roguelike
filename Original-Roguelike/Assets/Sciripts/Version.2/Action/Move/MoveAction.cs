@@ -119,12 +119,74 @@ namespace MoveSystem
             GameObject Char = field.IsCollideReturnCharObj(movex, movez);
             if (Char != null)
             {
+                int R = (int)transform.rotation.eulerAngles.y;
+                if (R > 180) R -= 360;
                 int Id =gameObject.GetComponent<ThrowObjData>().Id;
                 int Num = gameObject.GetComponent<ThrowObjData>().Num;
-                yield return StartCoroutine(Char.GetComponent<ThrowHitEvent>().Event(Id, Num));
+                yield return StartCoroutine(Char.GetComponent<ThrowHitEvent>().Event(Id, Num, R));
                 bool Throw = false;
                 yield return Throw;
                 Destroy(gameObject);
+                yield break;
+            }
+
+            newGrid = new Pos2D { x = movex, z = movez };
+
+            yield return StartCoroutine(MoveObjectCoroutine(transform));
+            yield return true;
+        }
+
+        public IEnumerator ThrowStance(int R, int range, GameObject attacker)
+        {
+            SetcomplementFrame();
+            Pos2D Pos = DirUtil.SetAttackPoint(R);
+            int xgrid = grid.x;
+            int zgrid = grid.z;
+            xgrid += Pos.x;
+            zgrid += Pos.z;
+
+            for (int i = 1; i <= range; i++)
+            {
+                IEnumerator Coroutine = ThrowMoveChar(xgrid, zgrid, attacker);
+                yield return StartCoroutine(Coroutine);
+
+                bool Throw = (bool)Coroutine.Current;
+                if (!Throw)
+                {
+                    yield break;
+                }
+
+                xgrid += Pos.x;
+                zgrid += Pos.z;
+            }
+
+            SetPosition(grid.x, grid.z);
+        }
+
+        public IEnumerator ThrowMoveChar(int movex, int movez, GameObject attacker)
+        {
+            if (field.IsCollidediagonal(movex, movez))
+            {
+                bool Throw = false;
+                yield return Throw;
+
+                if (gameObject.CompareTag("Player")) GetComponent<PlayerHPV2>().DirectDamage(10);
+                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(10, 1, 100, attacker);
+
+                yield break;
+            }
+            GameObject Char = field.IsCollideReturnCharObj(movex, movez);
+            if (Char != null)
+            {
+                bool Throw = false;
+                yield return Throw;
+
+                if (gameObject.CompareTag("Player")) GetComponent<PlayerHPV2>().DirectDamage(10);
+                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(10, 1, 100, attacker);
+
+                if (Char.CompareTag("Player")) Char.GetComponent<PlayerHPV2>().DirectDamage(10);
+                else if (Char.CompareTag("Enemy")) Char.GetComponent<EnemyStatusV2>().DirectDamage(10, 1, 100, attacker);
+
                 yield break;
             }
 
