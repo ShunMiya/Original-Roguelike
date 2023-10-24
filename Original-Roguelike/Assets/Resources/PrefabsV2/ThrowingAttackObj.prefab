@@ -132,8 +132,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {fileID: 957537437122576385}
-  Id: 0
-  Num: 0
 --- !u!114 &7260483650938771679
 MonoBehaviour:
   m_ObjectHideFlags: 0

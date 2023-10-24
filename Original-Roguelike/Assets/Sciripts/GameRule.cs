@@ -5,6 +5,7 @@ public static class GameRule
     private static float hitRate = 95;
     private static float evasionRate = 0;
     private static float damageIndexValue = 0.9375f;
+    private static int charaThrowHitDamage = 10;
 
     public static float GridSize
     {
@@ -36,5 +37,10 @@ public static class GameRule
     public static void WalkMove()
     {
         moveSpeed = 0.2f;
+    }
+
+    public static int CharaThrowHitDamage
+    {
+        get { return charaThrowHitDamage; }
     }
 }
