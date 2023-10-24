@@ -5,6 +5,7 @@ using EnemySystem;
 using PlayerStatusSystemV2;
 using AttackSystem;
 using ItemSystemV2;
+using UnityEditor;
 
 namespace MoveSystem
 {
@@ -110,7 +111,7 @@ namespace MoveSystem
 
         public IEnumerator ThrowMove(int movex, int movez)
         {
-            if (field.IsCollidediagonal(movex, movez))
+            if (field.IsCollidediagonal(movex, movez) || (field.IsCollidediagonal(grid.x, movez) && field.IsCollidediagonal(movex, grid.z)))
             {
                 bool Throw = false;
                 yield return Throw;
@@ -123,6 +124,7 @@ namespace MoveSystem
                 if (R > 180) R -= 360;
                 int Id =gameObject.GetComponent<ThrowObjData>().Id;
                 int Num = gameObject.GetComponent<ThrowObjData>().Num;
+                GetComponent<Renderer>().enabled = false;
                 yield return StartCoroutine(Char.GetComponent<ThrowHitEvent>().Event(Id, Num, R));
                 bool Throw = false;
                 yield return Throw;
@@ -165,13 +167,14 @@ namespace MoveSystem
 
         public IEnumerator ThrowMoveChar(int movex, int movez, GameObject attacker)
         {
-            if (field.IsCollidediagonal(movex, movez))
+
+            if (field.IsCollidediagonal(movex, movez) || field.IsCollidediagonal(grid.x, movez) || field.IsCollidediagonal(movex, grid.z))
             {
                 bool Throw = false;
                 yield return Throw;
 
-                if (gameObject.CompareTag("Player")) GetComponent<PlayerHPV2>().DirectDamage(10);
-                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(10, 1, 100, attacker);
+                if (gameObject.CompareTag("Player")) GetComponent<PlayerHPV2>().DirectDamage(GameRule.CharaThrowHitDamage);
+                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker);
 
                 yield break;
             }
@@ -181,11 +184,11 @@ namespace MoveSystem
                 bool Throw = false;
                 yield return Throw;
 
-                if (gameObject.CompareTag("Player")) GetComponent<PlayerHPV2>().DirectDamage(10);
-                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(10, 1, 100, attacker);
+                if (gameObject.CompareTag("Player")) GetComponent<PlayerHPV2>().DirectDamage(GameRule.CharaThrowHitDamage);
+                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker);
 
-                if (Char.CompareTag("Player")) Char.GetComponent<PlayerHPV2>().DirectDamage(10);
-                else if (Char.CompareTag("Enemy")) Char.GetComponent<EnemyStatusV2>().DirectDamage(10, 1, 100, attacker);
+                if (Char.CompareTag("Player")) Char.GetComponent<PlayerHPV2>().DirectDamage(GameRule.CharaThrowHitDamage);
+                else if (Char.CompareTag("Enemy")) Char.GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker);
 
                 yield break;
             }
