@@ -11,7 +11,11 @@ namespace PlayerStatusSystemV2
         public int BlindTurn = 0;
 
         private PlayerHPV2 playerHP;
-        [SerializeField] private new ParticleSystem particleSystem;
+        [SerializeField] private ParticleSystem Poisonparticle;
+        [SerializeField] private ParticleSystem Confuparticle;
+        [SerializeField] private ParticleSystem Stunparticle;
+        [SerializeField] private ParticleSystem Blindparticle;
+
 
         private void Start()
         {
@@ -23,7 +27,8 @@ namespace PlayerStatusSystemV2
             switch(ConditionNum)
             {
                 case 1:
-                    PoisonTurn = TurnNum; 
+                    PoisonTurn = TurnNum;
+                    Poisonparticle.Play();
                     break;
                 case 2:
                     ConfusionTurn = TurnNum;
@@ -46,14 +51,15 @@ namespace PlayerStatusSystemV2
 
         public Vector3 ConfusionEvent()
         {
+            Confuparticle.Play();
             return DirUtil.SetNewPosRotation(DirUtil.RandomDirection());
         }
 
         public IEnumerator StunEvent()
         {
-            particleSystem.Play();
+            Stunparticle.Play();
 
-            while (particleSystem.isPlaying)
+            while (Stunparticle.isPlaying)
             {
                 yield return null; // パーティクルが再生中の間、待機
             }
@@ -61,12 +67,14 @@ namespace PlayerStatusSystemV2
 
         public void BlindEvent()
         {
+            Blindparticle.Play();
             //演出とか
         }
 
         public void ConditionTurn()
         {
             PoisonTurn = (PoisonTurn > 0) ? PoisonTurn - 1 : 0;
+            if(PoisonTurn == 0) Poisonparticle.Stop();
             ConfusionTurn = (ConfusionTurn > 0) ? ConfusionTurn - 1 : 0;
             StunTurn = (StunTurn > 0) ? StunTurn - 1 : 0;
             BlindTurn = (BlindTurn > 0) ? BlindTurn - 1 : 0;
@@ -75,6 +83,7 @@ namespace PlayerStatusSystemV2
         public void ConditionClear()
         {
             PoisonTurn = 0;
+            Poisonparticle.Stop();
             ConfusionTurn = 0;
             StunTurn = 0;
             BlindTurn = 0;
