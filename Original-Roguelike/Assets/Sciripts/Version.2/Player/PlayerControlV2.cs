@@ -21,8 +21,10 @@ namespace PlayerV2
 
         float movex;
         float movez;
-        float oldx;
-        float oldz;
+        [SerializeField]float aimx;
+        [SerializeField]float aimz;
+        [SerializeField] float oldx;
+        [SerializeField] float oldz;
 
         void Start()
         {
@@ -67,21 +69,22 @@ namespace PlayerV2
             {
                 DirectionSprite.SetActive(true);
 
-                movex = Input.GetAxis("Horizontal");
-                movez = Input.GetAxis("Vertical");
+                aimx = Input.GetAxis("Horizontal");
+                aimz = Input.GetAxis("Vertical");
 
-                if (Mathf.Abs(movex) > 0.2f) movex = Mathf.Sign(movex);
-                else movex = 0;
+                if (Mathf.Abs(aimx) > 0.3f) aimx = Mathf.Sign(aimx);
+                else aimx = 0;
 
-                if (Mathf.Abs(movez) > 0.2f) movez = Mathf.Sign(movez);
-                else movez = 0;
+                if (Mathf.Abs(aimz) > 0.3f) aimz = Mathf.Sign(aimz);
+                else aimz = 0;
 
-                if(oldx == 1 && movex == 0) movez = 0;
-                if(oldz == 1 && movez == 0) movex = 0;
+                if ((oldx == 0 && Mathf.Abs(aimx) == 1) || (oldz == 0 && Mathf.Abs(aimz) == 1))
+                {
+                    moveAction.ChangeDirectionOnTheSpot(aimx, aimz);
+                }
 
-                moveAction.ChangeDirectionOnTheSpot(movex, movez);
-                oldx = movex;
-                oldz = movez;
+                oldx = aimx;
+                oldz = aimz;
 
                 return false;
             }

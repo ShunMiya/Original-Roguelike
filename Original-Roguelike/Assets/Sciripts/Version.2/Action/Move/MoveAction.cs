@@ -29,7 +29,6 @@ namespace MoveSystem
 
         public void ChangeDirectionOnTheSpot(float movex, float movez)
         {
-            if (movex == 0 && movez == 0) return;
             targetPos = transform.position;
             InputPos = new Vector3(movex * gridSize, 0, movez * gridSize);
 
