@@ -5,7 +5,6 @@ using EnemySystem;
 using PlayerStatusSystemV2;
 using AttackSystem;
 using ItemSystemV2;
-using UnityEditor;
 
 namespace MoveSystem
 {
@@ -30,6 +29,7 @@ namespace MoveSystem
 
         public void ChangeDirectionOnTheSpot(float movex, float movez)
         {
+            if (movex == 0 && movez == 0) return;
             targetPos = transform.position;
             InputPos = new Vector3(movex * gridSize, 0, movez * gridSize);
 
@@ -118,7 +118,15 @@ namespace MoveSystem
             newGrid = grid;
         }
 
-        public IEnumerator ThrowMove(int movex, int movez)
+        public void SetPositionItem(int xgrid, int zgrid)
+        {
+            grid.x = xgrid;
+            grid.z = zgrid;
+            transform.position = new Vector3(CoordinateTransformation.ToWorldX(xgrid), (float)-0.45, CoordinateTransformation.ToWorldZ(zgrid));
+            newGrid = grid;
+        }
+
+        public IEnumerator ThrowMove(int R, int movex, int movez)
         {
             if (field.IsCollidediagonal(movex, movez) || (field.IsCollidediagonal(grid.x, movez) && field.IsCollidediagonal(movex, grid.z)))
             {
@@ -129,8 +137,6 @@ namespace MoveSystem
             GameObject Char = field.IsCollideReturnCharObj(movex, movez);
             if (Char != null)
             {
-                int R = (int)transform.rotation.eulerAngles.y;
-                if (R > 180) R -= 360;
                 int Id =gameObject.GetComponent<ThrowObjData>().Id;
                 int Num = gameObject.GetComponent<ThrowObjData>().Num;
                 GetComponent<Renderer>().enabled = false;
