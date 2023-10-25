@@ -34,8 +34,8 @@ namespace ItemSystemV2
             if (setPos != null)
             {
                 GameObject item = Instantiate(itemObj, parent.transform);
-                item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
-                item.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
+                item.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
+                item.GetComponent<MoveAction>().SetPositionItem(setPos.x, setPos.z);
 
                 //switch(randomItem.ItemType)
 
@@ -54,7 +54,7 @@ namespace ItemSystemV2
             if (parent == null) parent = GameObject.Find("Items");
 
             GameObject item = Instantiate(itemObj, parent.transform);
-            item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
+            item.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
 
             item.GetComponent<MoveAction>().SetcomplementFrame();
             item.GetComponent<MoveAction>().SetPosition(pos.x, pos.z);
@@ -104,8 +104,8 @@ namespace ItemSystemV2
             if (setPos != null)
             {
                 GameObject item = Instantiate(itemObj, parent.transform);
-                item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + randomItem.PrefabName);
-                item.GetComponent<MoveAction>().SetPosition(setPos.x, setPos.z);
+                item.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + randomItem.PrefabName);
+                item.GetComponent<MoveAction>().SetPositionItem(setPos.x, setPos.z);
 
                 //switch(randomItem.ItemType)
 

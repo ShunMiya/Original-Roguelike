@@ -28,7 +28,7 @@ public class MoveThrownItem : MonoBehaviour
             NextPointAreaObj = field.IsCollideReturnAreaObj(xgrid, zgrid);
 
 
-            IEnumerator Coroutine = move.ThrowMove(xgrid, zgrid);
+            IEnumerator Coroutine = move.ThrowMove(R, xgrid, zgrid);
             yield return StartCoroutine(Coroutine);
 
             bool Throw = (bool)Coroutine.Current;
@@ -53,7 +53,7 @@ public class MoveThrownItem : MonoBehaviour
             Destroy(gameObject);
             yield break;
         }
-        move.SetPosition(setPos.x, setPos.z);
+        move.SetPositionItem(setPos.x, setPos.z);
     }
 
     public IEnumerator ThrowAttackObj(int R, int range)
@@ -66,7 +66,7 @@ public class MoveThrownItem : MonoBehaviour
 
         for (int i = 1; i <= range; i++)
         {
-            IEnumerator Coroutine = move.ThrowMove(xgrid, zgrid);
+            IEnumerator Coroutine = move.ThrowMove(R, xgrid, zgrid);
             yield return StartCoroutine(Coroutine);
 
             bool Throw = (bool)Coroutine.Current;

@@ -5,9 +5,7 @@ using Minimap;
 using MoveSystem;
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace Field
 {
@@ -174,8 +172,8 @@ namespace Field
                 IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
                 GameObject itemObj = (GameObject)Resources.Load("PrefabsV2/Item");
                 GameObject item = Instantiate(itemObj, items.transform);
-                item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
-                item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+                item.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + itemData.PrefabName);
+                item.GetComponent<MoveAction>().SetPositionItem(xgrid, zgrid);
                 int randomnum = RandomNum.NumSetStock();
                 item.GetComponent<SteppedOnEvent>().ObjType = 0;
                 item.GetComponent<SteppedOnEvent>().Id = itemId;
@@ -186,8 +184,8 @@ namespace Field
             IItemDataV2 ItemData = ItemDataCacheV2.GetIItemDataByName(name);
             GameObject ItemObj = (GameObject)Resources.Load("PrefabsV2/Item");
             GameObject Item = Instantiate(ItemObj, items.transform);
-            Item.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + ItemData.PrefabName);
-            Item.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
+            Item.GetComponent<MeshRenderer>().material = (Material)Resources.Load("Materials/" + ItemData.PrefabName);
+            Item.GetComponent<MoveAction>().SetPositionItem(xgrid, zgrid);
             int Randomnum = RandomNum.NumSetStock();
             Item.GetComponent<SteppedOnEvent>().ObjType = 0;
             Item.GetComponent<SteppedOnEvent>().Id = ItemData.Id;

@@ -3,6 +3,7 @@ using MoveSystem;
 using AttackSystem;
 using UISystemV2;
 using PlayerStatusSystemV2;
+using System.Collections;
 
 namespace PlayerV2
 {
@@ -12,6 +13,7 @@ namespace PlayerV2
         private AttackAction attackAction;
         private PlayerCondition PCondition;
         private PauseSystemV2 pauseSystem;
+        [SerializeField] private GameObject DirectionSprite;
 
         private float WaitInput = 0.05f;
         private float WaitInputTimer = 0f;
@@ -19,6 +21,10 @@ namespace PlayerV2
 
         float movex;
         float movez;
+        [SerializeField]float aimx;
+        [SerializeField]float aimz;
+        [SerializeField] float oldx;
+        [SerializeField] float oldz;
 
         void Start()
         {
@@ -30,7 +36,11 @@ namespace PlayerV2
 
         public bool PlayerInput()
         {
-            if (Input.GetKeyDown("a")) pauseSystem.PauseSwitching();
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                DirectionSprite.SetActive(false);
+                pauseSystem.PauseSwitching();
+            }
 
             if (Input.GetKey(KeyCode.X)) GameRule.DashMove();
             else GameRule.WalkMove();
@@ -41,6 +51,8 @@ namespace PlayerV2
 
             if (Input.GetKey(KeyCode.Z)/*||Input.GetButtonDown("Circle")*/)
             {
+                DirectionSprite.SetActive(false);
+
                 PlayerAction PA = GetComponent<PlayerAction>();
                 PA.PlayerToAttack =attackAction;
 
@@ -52,6 +64,32 @@ namespace PlayerV2
 
                 return true;
             }
+
+            if(Input.GetKey(KeyCode.C))
+            {
+                DirectionSprite.SetActive(true);
+
+                aimx = Input.GetAxis("Horizontal");
+                aimz = Input.GetAxis("Vertical");
+
+                if (Mathf.Abs(aimx) > 0.3f) aimx = Mathf.Sign(aimx);
+                else aimx = 0;
+
+                if (Mathf.Abs(aimz) > 0.3f) aimz = Mathf.Sign(aimz);
+                else aimz = 0;
+
+                if ((oldx != aimx && Mathf.Abs(aimx) == 1) || (oldz != aimz && Mathf.Abs(aimz) == 1))
+                {
+                    moveAction.ChangeDirectionOnTheSpot(aimx, aimz);
+                }
+
+                oldx = aimx;
+                oldz = aimz;
+
+                return false;
+            }
+            
+            DirectionSprite.SetActive(false);
 
             if (!firstInputProcessed)
             {
@@ -92,6 +130,9 @@ namespace PlayerV2
                     return false;
                 }
 
+                if (oldx == 1 && movex == 0) movez = 0;
+                if (oldz == 1 && movez == 0) movex = 0;
+
                 if (PCondition.ConfusionTurn != 0)
                 {
                     Vector3 PosRota = PCondition.ConfusionEvent();
@@ -99,6 +140,8 @@ namespace PlayerV2
                 }
 
                 TurnNext = moveAction.MoveStance(movex, movez);
+                oldx = movex;
+                oldz = movez;
             }
             return TurnNext;
         }
