@@ -78,7 +78,7 @@ namespace PlayerV2
                 if (Mathf.Abs(aimz) > 0.3f) aimz = Mathf.Sign(aimz);
                 else aimz = 0;
 
-                if ((oldx == 0 && Mathf.Abs(aimx) == 1) || (oldz == 0 && Mathf.Abs(aimz) == 1))
+                if ((oldx != aimx && Mathf.Abs(aimx) == 1) || (oldz != aimz && Mathf.Abs(aimz) == 1))
                 {
                     moveAction.ChangeDirectionOnTheSpot(aimx, aimz);
                 }
