@@ -194,4 +194,54 @@ public static class DirUtil
         }
         return Dir.Pause;
     }
+
+    //Œü‚«‚ðŒ³‚ÉŠp“x‚ð•Ô‚·
+    public static int GetRotation(Dir D)
+    {
+        switch (D)
+        {
+            case Dir.LeftUp:
+                return -45;
+            case Dir.Up:
+                return 0;
+            case Dir.RightUp:
+                return 45;
+            case Dir.Left:
+                return -90;
+            case Dir.Right:
+                return 90;
+            case Dir.LeftDown:
+                return -135;
+            case Dir.Down:
+                return 180;
+            case Dir.RightDown:
+                return 135;
+        }
+        return 0;
+    }
+
+    //Œü‚«‚ðŒ³‚É‹t‚ÌŒü‚«‚ð•Ô‚·
+    public static Dir ReverseDir(Dir D)
+    {
+        switch (D)
+        {
+            case Dir.LeftUp:
+                return Dir.RightDown;
+            case Dir.Up:
+                return Dir.Down;
+            case Dir.RightUp:
+                return Dir.LeftDown;
+            case Dir.Left:
+                return Dir.Right;
+            case Dir.Right:
+                return Dir.Left;
+            case Dir.LeftDown:
+                return Dir.RightUp;
+            case Dir.Down:
+                return Dir.Up;
+            case Dir.RightDown:
+                return Dir.LeftUp;
+        }
+        return Dir.Pause;
+    }
 }

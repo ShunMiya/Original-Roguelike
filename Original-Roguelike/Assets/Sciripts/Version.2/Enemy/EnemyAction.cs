@@ -19,6 +19,8 @@ namespace EnemySystem
         public Pos2D nextConnectionPos;
         public int detectDistance = 4;
         private bool OldDetectTarget = false;
+        private int EscapeCount = 0;
+        private bool OldEscapeStart = false;
 
         public void Start()
         {
@@ -127,6 +129,32 @@ namespace EnemySystem
             }
         }
 
+        private bool EscapeAroundAI()
+        {
+            Pos2D grid = moveAction.grid;
+            int R = (int)transform.rotation.eulerAngles.y;
+            if (R > 180) R -= 360;
+            Dir dir = DirUtil.GetDirection(R);
+            if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
+            {
+                SetNextConnection(grid.x, grid.z, dir);
+                if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
+                {
+                    return false;
+                }
+            }
+
+            Vector3 PosRota = DirUtil.SetNewPosRotation(DirUtil.GetNewPosRotation(grid, nextConnectionPos));
+            transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
+            bool move = moveAction.MoveStance(PosRota.x, PosRota.z);
+            if (!move)
+            {
+                return false;
+            }
+            return true;
+        }
+
+
         public void SetNextConnection(int xgrid, int zgrid, Dir dir)
         {
             Areamap field = GetComponentInParent<Areamap>();
@@ -195,10 +223,44 @@ namespace EnemySystem
 
         private void Escape()
         {
-            Dir d = AstarEscapeMovementAI();
-            Vector3 PosRota = DirUtil.SetNewPosRotation(d);
-            transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
-            moveAction.MoveStance(PosRota.x, PosRota.z);
+            bool EscapeStart;
+            if (DetectTarget()) { if (EscapeCount < 15) EscapeCount++; }
+            else                { if (EscapeCount > 0) EscapeCount--; }
+
+            if(EscapeCount <= 5)
+            {
+                EscapeStart = false;
+                OldEscapeStart = EscapeStart;
+
+                GoAroundAI();
+                return;
+            }
+            EscapeStart = true;
+
+            if (!OldEscapeStart && EscapeStart)
+            {
+                nextConnectionPos = moveAction.grid;
+                Dir dir = AstarMovementAI();
+                int R = DirUtil.GetRotation(DirUtil.ReverseDir(dir));
+                transform.rotation = Quaternion.Euler(0, R, 0);
+            }
+            OldEscapeStart = EscapeStart;
+
+            bool move = EscapeAroundAI();
+            if(!move)
+            {
+                Debug.Log("„‰ñ‚Å‚«‚¸");
+                Dir d = AstarEscapeMovementAI();
+                Vector3 PosRota = DirUtil.SetNewPosRotation(d);
+                transform.rotation = Quaternion.Euler(0, PosRota.y, 0);
+                moveAction.MoveStance(PosRota.x, PosRota.z);
+                OldEscapeStart = false;
+            }
+        }
+
+        public void EscapeCountPlus()
+        {
+            EscapeCount = 15;
         }
 
         private void NoMove()

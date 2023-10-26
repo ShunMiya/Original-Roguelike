@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="61">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="12" nextobjectid="87">
  <tileset firstgid="1" source="../../../../../../Downloads/Test-Tile.tsx"/>
  <group id="5" name="1F" visible="0">
   <layer id="1" name="TileLayer" width="30" height="30">
@@ -199,29 +199,29 @@
 2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,
 2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,
 2,2,1,2,1,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,2,
-2,2,2,2,2,2,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,
-2,2,2,2,2,2,1,2,1,2,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,1,2,
-2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+2,2,2,2,1,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,
+2,2,2,2,1,2,2,2,1,2,1,1,2,1,1,2,1,1,2,1,1,1,1,1,1,1,1,1,1,2,
+2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,
+2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,2,1,2,2,2,2,2,2,1,2,2,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,2,1,2,2,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,2,1,2,2,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,2,1,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,2,1,2,2,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,2,2,2,2,2,2,1,1,1,1,1,2,2,1,1,1,1,1,2,2,1,1,1,1,1,1,1,
+2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,1,1
 </data>
   </layer>
   <objectgroup id="11" name="ObjectLayer">
@@ -245,7 +245,7 @@
      <property name="Type" value="Trap"/>
     </properties>
    </object>
-   <object id="22" name="空腹の罠" x="129" y="193" width="31" height="31">
+   <object id="22" name="空腹の罠" x="193" y="193" width="31" height="31">
     <properties>
      <property name="Type" value="Trap"/>
     </properties>
@@ -296,6 +296,136 @@
     </properties>
    </object>
    <object id="60" name="Enemy4" x="641" y="33" width="31" height="31">
+    <properties>
+     <property name="Type" value="Enemy"/>
+    </properties>
+   </object>
+   <object id="61" name="Connection" x="193" y="353" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="62" name="Connection" x="289" y="353" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="63" name="Connection" x="417" y="385" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="64" name="Connection" x="513" y="385" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="65" name="Connection" x="97" y="449" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="66" name="Connection" x="97" y="545" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="67" name="Connection" x="129" y="673" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="68" name="Connection" x="129" y="865" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="69" name="Connection" x="193" y="577" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="70" name="Connection" x="289" y="577" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="71" name="Connection" x="321" y="449" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="72" name="Connection" x="321" y="545" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="73" name="Connection" x="353" y="673" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="74" name="Connection" x="353" y="769" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="75" name="Connection" x="417" y="609" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="76" name="Connection" x="513" y="609" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="77" name="Connection" x="513" y="833" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="78" name="Connection" x="417" y="833" width="31" height="31">
+    <properties>
+     <property name="Type" value="Connection"/>
+    </properties>
+   </object>
+   <object id="79" name="Room" x="65" y="321" width="159" height="159">
+    <properties>
+     <property name="Type" value="Room"/>
+    </properties>
+   </object>
+   <object id="80" name="Room" x="65" y="545" width="159" height="159">
+    <properties>
+     <property name="Type" value="Room"/>
+    </properties>
+   </object>
+   <object id="81" name="Room" x="289" y="321" width="159" height="159">
+    <properties>
+     <property name="Type" value="Room"/>
+    </properties>
+   </object>
+   <object id="82" name="Room" x="513" y="321" width="159" height="159">
+    <properties>
+     <property name="Type" value="Room"/>
+    </properties>
+   </object>
+   <object id="83" name="Room" x="289" y="545" width="159" height="159">
+    <properties>
+     <property name="Type" value="Room"/>
+    </properties>
+   </object>
+   <object id="84" name="Room" x="289" y="769" width="159" height="159">
+    <properties>
+     <property name="Type" value="Room"/>
+    </properties>
+   </object>
+   <object id="85" name="Room" x="513" y="545" width="159" height="383">
+    <properties>
+     <property name="Type" value="Room"/>
+    </properties>
+   </object>
+   <object id="86" name="Enemy3" x="353" y="385" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
     </properties>
