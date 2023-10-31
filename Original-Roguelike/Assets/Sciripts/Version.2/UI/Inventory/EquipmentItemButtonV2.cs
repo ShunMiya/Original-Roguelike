@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using ItemSystemV2;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 namespace UISystemV2
 {
@@ -41,7 +42,10 @@ namespace UISystemV2
             int itemId = Convert.ToInt32(row["Id"]);
             EquipmentDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
 
-            informationText.text = equipmentItem.Description;
+            string textFromDatabase = Regex.Unescape(equipmentItem.Description);
+
+            informationText.text = textFromDatabase;
+
         }
         public void OnDeselected()
         {

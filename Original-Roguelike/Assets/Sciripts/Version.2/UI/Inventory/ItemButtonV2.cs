@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using System.Text.RegularExpressions;
 
 namespace UISystemV2
 {
@@ -34,7 +35,10 @@ namespace UISystemV2
             }
             int itemId = Convert.ToInt32(row["Id"]);
             IItemDataV2 itemData = ItemDataCacheV2.GetIItemData(itemId);
-            informationText.text = itemData.Description;
+
+            string textFromDatabase = Regex.Unescape(itemData.Description);
+
+            informationText.text = textFromDatabase;
             RectTransform buttonRect = GetComponent<RectTransform>();
             scrollView.GetComponent<ScrollViewController>().ScrollToItem(buttonRect);
         }
