@@ -38,6 +38,7 @@ namespace PlayerStatusSystemV2
                     break;
                 case 4:
                     BlindTurn = TurnNum;
+                    Blindparticle.Play();
                     break;
                 default:
                     break;
@@ -67,7 +68,6 @@ namespace PlayerStatusSystemV2
 
         public void BlindEvent()
         {
-            Blindparticle.Play();
             //‰‰o‚Æ‚©
         }
 
@@ -78,6 +78,7 @@ namespace PlayerStatusSystemV2
             ConfusionTurn = (ConfusionTurn > 0) ? ConfusionTurn - 1 : 0;
             StunTurn = (StunTurn > 0) ? StunTurn - 1 : 0;
             BlindTurn = (BlindTurn > 0) ? BlindTurn - 1 : 0;
+            if(BlindTurn == 0) Blindparticle.Stop();
         }
 
         public void ConditionClear()
@@ -87,6 +88,7 @@ namespace PlayerStatusSystemV2
             ConfusionTurn = 0;
             StunTurn = 0;
             BlindTurn = 0;
+            Blindparticle.Stop();
         }
 
         public int GetConditionTurn(int ConditionNum)

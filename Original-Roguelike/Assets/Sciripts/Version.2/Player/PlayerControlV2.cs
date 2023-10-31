@@ -21,10 +21,10 @@ namespace PlayerV2
 
         float movex;
         float movez;
-        [SerializeField]float aimx;
-        [SerializeField]float aimz;
-        [SerializeField] float oldx;
-        [SerializeField] float oldz;
+        float aimx;
+        float aimz;
+        float oldx;
+        float oldz;
 
         void Start()
         {

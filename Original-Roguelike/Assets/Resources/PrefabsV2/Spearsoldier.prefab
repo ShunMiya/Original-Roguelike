@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 9194174416509656323}
   - component: {fileID: 2167782074266732732}
   m_Layer: 0
-  m_Name: Enemy2
+  m_Name: Spearsoldier
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

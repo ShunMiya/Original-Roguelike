@@ -60,7 +60,11 @@ namespace EnemySystem
                 int Rota = DirUtil.ReverseDirection(R);
                 transform.rotation = Quaternion.Euler(0, Rota, 0);
             }
-
+            if (attacker.CompareTag("Player"))
+            {
+                GetComponent<EnemyAction>().EscapeCountPlus();
+            }
+            
             if (currentHP <= 0 && EnemyDeath != null)
             {
                 systemText.TextSet("<color=red>" + name + "</color>ÇÕì|ÇÍÇΩÅI");
