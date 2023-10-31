@@ -37,27 +37,27 @@
      <property name="Type" value="Player"/>
     </properties>
    </object>
-   <object id="3" name="Enemy5" x="449" y="65" width="31" height="31">
+   <object id="3" name="Fairy" x="449" y="65" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
     </properties>
    </object>
-   <object id="4" name="Enemy3" x="289" y="513" width="31" height="31">
+   <object id="4" name="Coin" x="289" y="513" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
     </properties>
    </object>
-   <object id="5" name="Enemy1" x="193" y="737" width="31" height="31">
+   <object id="5" name="Slime" x="193" y="737" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
     </properties>
    </object>
-   <object id="6" name="Enemy4" x="545" y="225" width="31" height="31">
+   <object id="6" name="Cannon" x="545" y="225" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
     </properties>
    </object>
-   <object id="7" name="Enemy2" x="609" y="289" width="31" height="31">
+   <object id="7" name="Spearsoldier" x="609" y="289" width="31" height="31">
     <properties>
      <property name="Type" value="Enemy"/>
     </properties>
