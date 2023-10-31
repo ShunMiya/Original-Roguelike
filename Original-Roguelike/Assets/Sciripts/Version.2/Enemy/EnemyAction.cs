@@ -19,7 +19,7 @@ namespace EnemySystem
         public Pos2D nextConnectionPos;
         public int detectDistance = 4;
         private bool OldDetectTarget = false;
-        private int EscapeCount = 0;
+        [SerializeField]private int EscapeCount = 0;
         private bool OldEscapeStart = false;
 
         public void Start()
@@ -132,11 +132,12 @@ namespace EnemySystem
         private bool EscapeAroundAI()
         {
             Pos2D grid = moveAction.grid;
-            int R = (int)transform.rotation.eulerAngles.y;
-            if (R > 180) R -= 360;
-            Dir dir = DirUtil.GetDirection(R);
+
+            Dir D = AstarMovementAI();
+            Dir dir = DirUtil.ReverseDir(D);
             if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
             {
+                Debug.Log("“¦‘–•ûŒü:"+dir.ToString());
                 SetNextConnection(grid.x, grid.z, dir);
                 if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
                 {
@@ -169,10 +170,10 @@ namespace EnemySystem
                 if (dir == Dir.Right && p.grid.x < xgrid) continue;
                 if (dir == Dir.Up && p.grid.z < zgrid) continue;
                 if (dir == Dir.Down && p.grid.z > zgrid) continue;
-                if (dir == Dir.LeftUp && p.grid.x > xgrid && p.grid.z < zgrid) continue;
-                if (dir == Dir.RightUp && p.grid.x < xgrid && p.grid.z < zgrid) continue;
-                if (dir == Dir.LeftDown &&  p.grid.x > xgrid &&p.grid.z > zgrid) continue;
-                if (dir == Dir.RightDown && p.grid.x < xgrid && p.grid.z > zgrid) continue;
+                if (dir == Dir.LeftUp && (p.grid.x > xgrid || p.grid.z < zgrid)) continue;
+                if (dir == Dir.RightUp && (p.grid.x < xgrid || p.grid.z < zgrid)) continue;
+                if (dir == Dir.LeftDown &&  (p.grid.x > xgrid || p.grid.z > zgrid)) continue;
+                if (dir == Dir.RightDown && (p.grid.x < xgrid || p.grid.z > zgrid)) continue;
                 int minX = Mathf.Min(p.grid.x, xgrid);
                 int maxX = Mathf.Max(p.grid.x, xgrid);
                 int minZ = Mathf.Min(p.grid.z, zgrid);
@@ -191,6 +192,7 @@ namespace EnemySystem
                     if (isEnd) break;
                 }
                 if (isEnd) continue;
+                Debug.Log("p.x:" + p.grid.x + " x:" + xgrid + " p.z:" + p.grid.z + " z:" + zgrid);
                 cGrids.Add(p.grid);
             }
             if (cGrids.Count < 1)
@@ -240,9 +242,6 @@ namespace EnemySystem
             if (!OldEscapeStart && EscapeStart)
             {
                 nextConnectionPos = moveAction.grid;
-                Dir dir = AstarMovementAI();
-                int R = DirUtil.GetRotation(DirUtil.ReverseDir(dir));
-                transform.rotation = Quaternion.Euler(0, R, 0);
             }
             OldEscapeStart = EscapeStart;
 
