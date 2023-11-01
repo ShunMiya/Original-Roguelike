@@ -6,6 +6,8 @@ using MoveSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Field
 {
@@ -216,15 +218,18 @@ namespace Field
                         break;
                     }
                 }
-                EnemyDataV2 enemyData = EnemyDataCacheV2.GetEnemyData(enemyId);
-                GameObject EnemyObj = (GameObject)Resources.Load("PrefabsV2/" + enemyData.PrefabName);
+                EnemyDataV2 EnemyData = EnemyDataCacheV2.GetEnemyData(enemyId);
+                GameObject EnemyObj = (GameObject)Resources.Load("PrefabsV2/" + EnemyData.PrefabName);
                 GameObject Enemy = Instantiate(EnemyObj, enemies.transform);
+                ChangeMaterial.ChangeMaterials(Enemy, EnemyData.MaterialName);
                 Enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
                 Enemy.GetComponent<EnemyAction>().target = playerMovement;
                 return;
             }
+            EnemyDataV2 enemyData = EnemyDataCacheV2.GetEnemyDataByName(name);
             GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
             GameObject enemy = Instantiate(enemyObj, enemies.transform);
+            ChangeMaterial.ChangeMaterials(enemy, enemyData.MaterialName);
             enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
             enemy.GetComponent<EnemyAction>().target = playerMovement;
 
