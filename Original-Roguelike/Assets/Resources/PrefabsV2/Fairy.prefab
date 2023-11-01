@@ -124,7 +124,6 @@ MonoBehaviour:
     x: 0
     z: 0
   detectDistance: 4
-  EscapeCount: 0
 --- !u!114 &4115386183401413753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,7 +221,7 @@ GameObject:
   - component: {fileID: 8913590816570150413}
   m_Layer: 0
   m_Name: Sphere (1)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -319,7 +318,7 @@ GameObject:
   - component: {fileID: 3980832206482247407}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

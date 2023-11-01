@@ -222,6 +222,8 @@ namespace Field
                 GameObject EnemyObj = (GameObject)Resources.Load("PrefabsV2/" + EnemyData.PrefabName);
                 GameObject Enemy = Instantiate(EnemyObj, enemies.transform);
                 ChangeMaterial.ChangeMaterials(Enemy, EnemyData.MaterialName);
+                Enemy.GetComponent<EnemyStatusV2>().EnemyID = EnemyData.EnemyID;
+                //Enemy.GetComponent<EnemyStatusV2>().currentHP = EnemyData.MaxHP;
                 Enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
                 Enemy.GetComponent<EnemyAction>().target = playerMovement;
                 return;
@@ -230,6 +232,8 @@ namespace Field
             GameObject enemyObj = (GameObject)Resources.Load("PrefabsV2/" + name);
             GameObject enemy = Instantiate(enemyObj, enemies.transform);
             ChangeMaterial.ChangeMaterials(enemy, enemyData.MaterialName);
+            enemy.GetComponent<EnemyStatusV2>().EnemyID = enemyData.EnemyID;
+            //enemy.GetComponent<EnemyStatusV2>().currentHP = enemyData.MaxHP;
             enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
             enemy.GetComponent<EnemyAction>().target = playerMovement;
 

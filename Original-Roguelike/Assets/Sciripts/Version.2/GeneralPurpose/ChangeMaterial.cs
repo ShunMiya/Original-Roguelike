@@ -4,7 +4,7 @@ public class ChangeMaterial : MonoBehaviour
 {
     public static void ChangeMaterials(GameObject Obj, string MaterialName)
     {
-
+        if(Obj.GetComponentsInChildren<Renderer>() != null)
         Obj.GetComponent<Renderer>().material = (Material)Resources.Load("Materials/" + MaterialName);
 
         ChangeMaterialsInChildren(Obj.transform, MaterialName);
@@ -13,9 +13,10 @@ public class ChangeMaterial : MonoBehaviour
     public static void ChangeMaterialsInChildren(Transform parent, string MaterialName)
     {
         if (parent.GetComponentsInChildren<Renderer>() == null) return;
-        foreach (Renderer childRenderer in parent.GetComponentsInChildren<Renderer>())
+        foreach (Transform child in parent)
         {
-            childRenderer.material = (Material)Resources.Load("Materials/" + MaterialName);
+            if(child.CompareTag("Enemy"))
+            child.GetComponent<Renderer>().material = (Material)Resources.Load("Materials/" + MaterialName);
         }
     }
 }
