@@ -6,8 +6,6 @@ using MoveSystem;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
-using static UnityEngine.EventSystems.EventTrigger;
 
 namespace Field
 {

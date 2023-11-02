@@ -246,7 +246,6 @@ namespace EnemySystem
             bool move = EscapeAroundAI();
             if(!move)
             {
-                Debug.Log("èÑâÒÇ≈Ç´Ç∏");
                 Dir d = AstarEscapeMovementAI();
                 Vector3 PosRota = DirUtil.SetNewPosRotation(d);
                 transform.rotation = Quaternion.Euler(0, PosRota.y, 0);

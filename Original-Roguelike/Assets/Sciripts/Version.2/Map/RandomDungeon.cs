@@ -252,9 +252,20 @@ namespace Field
 
         private void SetObject(string name, string type, Areamap field, Array2D data)
         {
+            int PCount = 0;
             while (true)
             {
                 int areaIdx = Random.Range(0, areas.Count);
+
+                if(type == "Enemy")
+                {
+                    if (areaIdx == Proom)
+                    {
+                        if (PCount >= 3) continue;
+                        PCount++;
+                    }
+                }
+
                 Rect2D room = areas[areaIdx].room;
                 int x = Random.Range(room.left, room.right + 1);
                 int y = Random.Range(room.top, room.bottom + 1);
