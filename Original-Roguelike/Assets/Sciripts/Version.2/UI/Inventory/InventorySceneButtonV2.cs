@@ -35,8 +35,8 @@ namespace UISystemV2
         public void DisableWindow()
         {
             Time.timeScale = 1f;
-            backgroundObject.SetActive(false);
             Input.ResetInputAxes();
+            backgroundObject.SetActive(false);
         }
 
         public void WindowOnOffSQL(GameObject window)
