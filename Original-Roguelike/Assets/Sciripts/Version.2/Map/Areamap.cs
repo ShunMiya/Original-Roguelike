@@ -221,7 +221,6 @@ namespace Field
                 GameObject Enemy = Instantiate(EnemyObj, enemies.transform);
                 ChangeMaterial.ChangeMaterials(Enemy, EnemyData.MaterialName);
                 Enemy.GetComponent<EnemyStatusV2>().EnemyID = EnemyData.EnemyID;
-                //Enemy.GetComponent<EnemyStatusV2>().currentHP = EnemyData.MaxHP;
                 Enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
                 Enemy.GetComponent<EnemyAction>().target = playerMovement;
                 return;
@@ -231,7 +230,6 @@ namespace Field
             GameObject enemy = Instantiate(enemyObj, enemies.transform);
             ChangeMaterial.ChangeMaterials(enemy, enemyData.MaterialName);
             enemy.GetComponent<EnemyStatusV2>().EnemyID = enemyData.EnemyID;
-            //enemy.GetComponent<EnemyStatusV2>().currentHP = enemyData.MaxHP;
             enemy.GetComponent<MoveAction>().SetPosition(xgrid, zgrid);
             enemy.GetComponent<EnemyAction>().target = playerMovement;
 
@@ -259,7 +257,7 @@ namespace Field
                 GameObject TrapObj = (GameObject)Resources.Load("PrefabsV2/" + TrapData.PrefabName);
                 GameObject Trap = Instantiate(TrapObj, traps.transform);
                 Trap.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-                Trap.GetComponent<SteppedOnEvent>().Id = TrapData.GimmickId; //同一Objのマテリアルを変えて見た目を変えるなら、ここでIdを変える必要がある。別Objなら必要なし。
+                Trap.GetComponent<SteppedOnEvent>().Id = TrapData.GimmickId;
                 Trap.transform.GetChild(0).gameObject.SetActive(false);
 
                 return;
@@ -268,7 +266,7 @@ namespace Field
             GameObject trapObj = (GameObject)Resources.Load("PrefabsV2/" + trapData.PrefabName);
             GameObject trap = Instantiate(trapObj, traps.transform);
             trap.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-            trap.GetComponent<SteppedOnEvent>().Id = trapData.GimmickId; //同上
+            trap.GetComponent<SteppedOnEvent>().Id = trapData.GimmickId;
             trap.transform.GetChild(0).gameObject.SetActive(false);
         }
 
@@ -308,16 +306,18 @@ namespace Field
         public void PopEnemy()
         {
             int RoomCount = rooms.transform.childCount;
-            while(true)
+            if (RoomCount == 0) return;
+            while (true)
             {
                 int RandomRoom = UnityEngine.Random.Range(0, RoomCount);
-                if (RandomRoom == 0) break;
                 Transform selectedRoom = rooms.transform.GetChild(RandomRoom);
                 ObjectPosition room = selectedRoom.GetComponent<ObjectPosition>();
                 if (IsInRoom(room, playerMovement.grid.x, playerMovement.grid.z)) continue;
                 int x = UnityEngine.Random.Range(room.grid.x, room.grid.x + room.range.right + 1);
                 int y = UnityEngine.Random.Range(room.grid.z, room.grid.z + room.range.bottom + 1);
                 if (IsCollide(x, y)) continue;
+                int distance = Mathf.Abs(x - playerMovement.grid.x) + Mathf.Abs(y - playerMovement.grid.z);
+                if (distance < 5) continue;
                 SetEnemy("Random", x, y);
                 break;
             }
