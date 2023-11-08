@@ -3,6 +3,8 @@ using UnityEngine;
 using System;
 using ItemSystemV2;
 using ItemSystemV2.Inventory;
+using UnityEngine.EventSystems;
+using System.Collections;
 
 namespace UISystemV2
 {
@@ -17,7 +19,7 @@ namespace UISystemV2
 
         private SqliteDatabase sqlDB;
         string query;
-
+        [SerializeField] private ButtonNavigation buttonNavi;
         [SerializeField] private int totalTextLength;
 
         public void Start()
@@ -33,8 +35,6 @@ namespace UISystemV2
                 string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
-            ClearButtons();
-
             query = "SELECT * FROM Inventory ORDER BY Id ASC";
             DataTable InventoryData = sqlDB.ExecuteQuery(query);
 
@@ -94,6 +94,15 @@ namespace UISystemV2
             ItemCountText();
 
             GetComponent<RectTransform>().anchoredPosition = new Vector2 (0, 0);
+
+            if (gameObject.transform.childCount > 0) buttonNavi.SetItemMenuButtonNavigation();
+        }
+
+        public void OnDisable()
+        {
+            buttonNavi.ResetNavigation();
+
+            ClearButtons();
         }
 
         private void ClearButtons()
