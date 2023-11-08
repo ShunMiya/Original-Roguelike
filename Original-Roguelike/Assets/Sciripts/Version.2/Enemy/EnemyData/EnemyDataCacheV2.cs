@@ -1,3 +1,4 @@
+using ItemSystemV2;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,7 @@ namespace EnemySystem
                 enemyData.EnemyID = Convert.ToInt32(row["EnemyID"]);
                 enemyData.EnemyName = row["EnemyName"].ToString();
                 enemyData.PrefabName = row["PrefabName"].ToString();
+                enemyData.MaterialName = row["MaterialName"].ToString();
                 enemyData.AIType = Convert.ToInt32(row["AIType"]);
                 enemyData.MaxHP = Convert.ToInt32(row["MaxHP"]);
                 enemyData.Attack = Convert.ToInt32(row["Attack"]);
@@ -39,11 +41,16 @@ namespace EnemySystem
             return enemyCache.TryGetValue(EnemyID, out EnemyDataV2 enemyData) ? enemyData : null;
         }
 
-        public static EnemyDataV2 GetRandomEnemy()
+        public static EnemyDataV2 GetEnemyDataByName(string name)
         {
-            int randomIndex = UnityEngine.Random.Range(0, enemyCache.Count - 1);
-            EnemyDataV2 randomEnemy = enemyCache.ElementAt(randomIndex).Value;
-            return randomEnemy;
+            foreach (EnemyDataV2 enemyData in enemyCache.Values)
+            {
+                if (enemyData.PrefabName == name)
+                {
+                    return enemyData;
+                }
+            }
+            return null;
         }
     }
 }

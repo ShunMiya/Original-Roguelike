@@ -134,6 +134,7 @@ namespace UISystemV2
 
         public void DisableWindow()
         {
+            Input.ResetInputAxes();
             backgroundObject.SetActive(false);
             Time.timeScale = 1f;
         }

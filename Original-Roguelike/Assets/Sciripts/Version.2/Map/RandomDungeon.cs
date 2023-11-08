@@ -15,6 +15,8 @@ namespace Field
         private Array2D data;
         private List<Area2D> areas;
         private int Proom;
+        private int PRCount = 0;
+
 
 
         /**
@@ -22,6 +24,8 @@ namespace Field
         */
         public Array2D Create(int w, int h, Areamap field)
         {
+            PRCount = 0;
+
             data = new Array2D(w + 4, h + 4); //äOògÇQÉ}ÉXÇ≈ï«Çê∂ê¨Ç∑ÇÈ
             for (int x = 0; x < data.width; x++)
             {
@@ -255,6 +259,13 @@ namespace Field
             while (true)
             {
                 int areaIdx = Random.Range(0, areas.Count);
+
+                if(type == "Enemy" && areaIdx == Proom)
+                {
+                    if (PRCount >= 3) continue;
+                    PRCount++;
+                }
+
                 Rect2D room = areas[areaIdx].room;
                 int x = Random.Range(room.left, room.right + 1);
                 int y = Random.Range(room.top, room.bottom + 1);
