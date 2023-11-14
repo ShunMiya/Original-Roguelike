@@ -16,7 +16,6 @@ namespace MoveSystem
         public Pos2D grid = new Pos2D();
         public Pos2D newGrid = null;
 
-        private float ThrowMoveFrame = 0.06f;
         private float complementFrame;
         private Areamap field;
 
@@ -138,8 +137,9 @@ namespace MoveSystem
             {
                 int Id =gameObject.GetComponent<ThrowObjData>().Id;
                 int Num = gameObject.GetComponent<ThrowObjData>().Num;
+                int DamageNum = gameObject.GetComponent<ThrowObjData>().DamageNum;
                 GetComponent<Renderer>().enabled = false;
-                yield return StartCoroutine(Char.GetComponent<ThrowHitEvent>().Event(Id, Num, R));
+                yield return StartCoroutine(Char.GetComponent<ThrowHitEvent>().Event(Id, Num, R, DamageNum));
                 bool Throw = false;
                 yield return Throw;
                 Destroy(gameObject);
@@ -215,7 +215,8 @@ namespace MoveSystem
 
         public void SetcomplementFrame()
         {
-            complementFrame = ThrowMoveFrame;
+            GameRule.ThrowMove();
+            complementFrame = GameRule.MoveSpeed;
         }
     }
 }

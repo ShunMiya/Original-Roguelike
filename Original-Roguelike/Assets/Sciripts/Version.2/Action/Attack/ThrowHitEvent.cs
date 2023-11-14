@@ -11,12 +11,13 @@ namespace AttackSystem
     public class ThrowHitEvent : MonoBehaviour
     {
 
-        public IEnumerator Event(int Id, int Num, int R)
+        public IEnumerator Event(int Id, int Num, int R, int DamageNum)
         {
-            if (Id == 0) yield return null;
-
             switch (Id)
             {
+                case 0:
+                    EnemyThrowHit(DamageNum);
+                    break;
                 case 201:
                     OffensiveDataV2 itemData = ItemDataCacheV2.GetOffensive(Id);
                     yield return StartCoroutine(GetComponent<MoveAction>().ThrowStance(R, itemData.DamageNum, FindObjectOfType<PlayerStatusV2>().gameObject));
@@ -38,6 +39,19 @@ namespace AttackSystem
                 default:
                     gameObject.GetComponent<EnemyStatusV2>().TakeDamage(1, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject);
 
+                    break;
+            }
+        }
+
+        public void EnemyThrowHit(int DamageNum)
+        {
+            switch(gameObject.tag)
+            {
+                case "Player":
+                    gameObject.GetComponent<PlayerHPV2>().TakeDamage(DamageNum, 1, GameRule.HitRate);
+                    break;
+                case "Enemy":
+                    gameObject.GetComponent<EnemyStatusV2>().TakeDamage(DamageNum, 1, GameRule.HitRate, gameObject);
                     break;
             }
         }
