@@ -24,6 +24,7 @@ namespace EnemySystem
                 enemyData.PrefabName = row["PrefabName"].ToString();
                 enemyData.MaterialName = row["MaterialName"].ToString();
                 enemyData.AIType = Convert.ToInt32(row["AIType"]);
+                enemyData.ThrowAttack = Convert.ToInt32(row["ThrowAttack"]);
                 enemyData.MaxHP = Convert.ToInt32(row["MaxHP"]);
                 enemyData.Attack = Convert.ToInt32(row["Attack"]);
                 enemyData.Defense = Convert.ToInt32(row["Defense"]);

@@ -82,7 +82,14 @@ namespace EnemySystem
             {
                 if (field.IsInRoom(room, tgrid.x, tgrid.z)) return true;
             }
-            
+
+            if (Mathf.Abs(agrid.x - tgrid.x) <= 1 && Mathf.Abs(agrid.z - tgrid.z) <= 1)
+            {
+                if (field.IsCollidediagonal(agrid.x, tgrid.z) && field.IsCollidediagonal(tgrid.x, agrid.z)) return false;
+
+                return true;
+            }   
+
             if (agrid.x == tgrid.x && Mathf.Abs(agrid.z - tgrid.z) <= detectDistance)
             {
                 for (int z = Mathf.Min(agrid.z, tgrid.z), ez = Mathf.Max(agrid.z, tgrid.z); z < ez; z++)
@@ -108,7 +115,7 @@ namespace EnemySystem
             int R = (int)transform.rotation.eulerAngles.y;
             if (R > 180) R -= 360;
             Dir dir = DirUtil.GetDirection(R);
-            if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
+            if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z || Mathf.Abs(R) % 90 != 0)
             {
                 SetNextConnection(grid.x, grid.z, dir);
                 if (grid.x == nextConnectionPos.x && grid.z == nextConnectionPos.z)
@@ -204,16 +211,13 @@ namespace EnemySystem
 
         private void Tracking()
         {
-            if(DetectTarget())
+            int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range, enemy.ThrowAttack);
+            if (Rota != 1)
             {
-                int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range);
-                if (Rota != 1)
-                {
-                    attackAction.EnemyY = Rota;
-                    AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
-                    attackObjects.objectsToAttack.Add(attackAction);
-                    return;
-                }
+                attackAction.EnemyY = Rota;
+                AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
+                attackObjects.objectsToAttack.Add(attackAction);
+                return;
             }
             Dir d = AstarMovementAI();
             Vector3 PosRota = DirUtil.SetNewPosRotation(d);
@@ -263,7 +267,7 @@ namespace EnemySystem
         {
             if(DetectTarget())
             {
-                int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range);
+                int Rota = areamap.IsPlayerHitCheckBeforeMoving(moveAction.grid, enemy.Range, enemy.ThrowAttack);
                 if (Rota == 1) return;
                 attackAction.EnemyY = Rota;
                 AttackObjects attackObjects = FindObjectOfType<AttackObjects>();

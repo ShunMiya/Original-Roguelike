@@ -7,6 +7,7 @@ namespace EnemySystem
         public string PrefabName { get; set; }
         public string MaterialName { get; set; }
         public int AIType { get; set; }
+        public int ThrowAttack { get; set; }
         public int MaxHP { get; set; }
         public int Attack { get; set; }
         public int Defense { get; set; }
