@@ -316,8 +316,8 @@ namespace Field
                 int x = UnityEngine.Random.Range(room.grid.x, room.grid.x + room.range.right + 1);
                 int y = UnityEngine.Random.Range(room.grid.z, room.grid.z + room.range.bottom + 1);
                 if (IsCollide(x, y)) continue;
-                int distance = Mathf.Abs(x - playerMovement.grid.x) + Mathf.Abs(y - playerMovement.grid.z);
-                if (distance < 5) continue;
+
+                if (Mathf.Abs(x - playerMovement.grid.x) < 6 || Mathf.Abs(y - playerMovement.grid.z) < 6) continue;
                 SetEnemy("Random", x, y);
                 break;
             }

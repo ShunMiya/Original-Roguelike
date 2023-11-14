@@ -22,18 +22,25 @@ namespace UISystemV2
             {
                 Vector3 itemPosition = scrollRect.transform.InverseTransformPoint(item.position);
 
-                if (itemPosition.y > scrollRect.GetComponent<RectTransform>().rect.yMax)
+                while (itemPosition.y > scrollRect.GetComponent<RectTransform>().rect.yMax || itemPosition.y < scrollRect.GetComponent<RectTransform>().rect.yMin)
                 {
-                    Vector2 contentPosition = content.GetComponent<RectTransform>().anchoredPosition;
-                    contentPosition.y -= movey;
-                    content.GetComponent<RectTransform>().anchoredPosition = contentPosition;
+                    if (itemPosition.y > scrollRect.GetComponent<RectTransform>().rect.yMax)
+                    {
+                        Vector2 contentPosition = content.GetComponent<RectTransform>().anchoredPosition;
+                        contentPosition.y -= movey;
+                        content.GetComponent<RectTransform>().anchoredPosition = contentPosition;
+                    }
+                    else if (itemPosition.y < scrollRect.GetComponent<RectTransform>().rect.yMin)
+                    {
+                        Vector2 contentPosition = content.GetComponent<RectTransform>().anchoredPosition;
+                        contentPosition.y += movey;
+                        content.GetComponent<RectTransform>().anchoredPosition = contentPosition;
+                    }
+
+                    // itemPosition ÇçƒåvéZ
+                    itemPosition = scrollRect.transform.InverseTransformPoint(item.position);
                 }
-                else if (itemPosition.y < scrollRect.GetComponent<RectTransform>().rect.yMin)
-                {
-                    Vector2 contentPosition = content.GetComponent<RectTransform>().anchoredPosition;
-                    contentPosition.y += movey;
-                    content.GetComponent<RectTransform>().anchoredPosition = contentPosition;
-                }
+
             }
         }
     }

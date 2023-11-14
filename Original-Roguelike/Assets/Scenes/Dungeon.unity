@@ -1700,7 +1700,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 774454534}
     m_SelectOnLeft: {fileID: 1084384297}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
@@ -7885,7 +7885,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &433957062
 MonoBehaviour:
@@ -9930,7 +9930,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 370392923}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 1084384297}
   m_Transition: 1
@@ -11110,12 +11110,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 1649540131}
+    m_SelectOnRight: {fileID: 1531956634}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -12006,10 +12006,10 @@ MonoBehaviour:
   m_Navigation:
     m_Mode: 3
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
+    m_SelectOnUp: {fileID: 1084384297}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnLeft: {fileID: 370392923}
+    m_SelectOnRight: {fileID: 270770726}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -12574,6 +12574,7 @@ GameObject:
   - component: {fileID: 870220469}
   - component: {fileID: 870220468}
   - component: {fileID: 870220471}
+  - component: {fileID: 870220472}
   m_Layer: 5
   m_Name: ScrollView
   m_TagString: Untagged
@@ -12684,6 +12685,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 870220468}
   content: {fileID: 1412205172}
+--- !u!114 &870220472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870220466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b487e9d1216494899e390b3fa0c6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Content: {fileID: 1412205172}
+  MenuButton0: {fileID: 774454534}
+  MenuButton1: {fileID: 1084384297}
+  MenuButton2: {fileID: 270770726}
 --- !u!1 &896277606
 GameObject:
   m_ObjectHideFlags: 0
@@ -13935,7 +13952,7 @@ MonoBehaviour:
     m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnDown: {fileID: 774454534}
     m_SelectOnLeft: {fileID: 562725432}
     m_SelectOnRight: {fileID: 270770726}
   m_Transition: 1
@@ -14204,6 +14221,7 @@ GameObject:
   - component: {fileID: 1123688012}
   - component: {fileID: 1123688011}
   - component: {fileID: 1123688014}
+  - component: {fileID: 1123688015}
   m_Layer: 5
   m_Name: ScrollView
   m_TagString: Untagged
@@ -14314,6 +14332,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1123688011}
   content: {fileID: 1377624402}
+--- !u!114 &1123688015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123688009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07b487e9d1216494899e390b3fa0c6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Content: {fileID: 1377624402}
+  MenuButton0: {fileID: 1649540131}
+  MenuButton1: {fileID: 694783301}
+  MenuButton2: {fileID: 1531956634}
 --- !u!1 &1136537660
 GameObject:
   m_ObjectHideFlags: 0
@@ -25385,6 +25419,7 @@ MonoBehaviour:
   itemCountText: {fileID: 226878652}
   returnButton: {fileID: 1531956630}
   subMenu: {fileID: 1863318252}
+  buttonNavi: {fileID: 1123688015}
   totalTextLength: 40
 --- !u!114 &1377624406
 MonoBehaviour:
@@ -25815,6 +25850,7 @@ MonoBehaviour:
   subMenu: {fileID: 1863318252}
   EquipArea: {fileID: 67180458}
   totalTextLength: 40
+  buttonNavi: {fileID: 870220472}
 --- !u!114 &1412205177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31640,11 +31676,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnLeft: {fileID: 694783301}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
@@ -31741,7 +31777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1533594895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32945,12 +32981,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
+    m_SelectOnRight: {fileID: 694783301}
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
@@ -35406,7 +35442,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -17, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2096068545
 MonoBehaviour:
