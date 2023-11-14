@@ -13,12 +13,12 @@ namespace AttackSystem
         {
             foreach (AttackAction AttackEnemy in objectsToAttack)
             {
-                Coroutine coroutine = StartCoroutine(AttackEnemy.AttackPreparationEnemy(AttackEnemy.gameObject));
+                Coroutine coroutine = StartCoroutine(AttackEnemy.AttackPreparationEnemy());
                 yield return coroutine;
             }
 
             // ‘S‚Ä‚Ìs“®‚ªŠ®—¹‚µ‚½Œã‚Ìˆ—
-            objectsToAttack.Clear();
+            DeleteList();
         }
 
         public void DeleteList()

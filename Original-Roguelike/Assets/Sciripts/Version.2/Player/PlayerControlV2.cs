@@ -40,6 +40,7 @@ namespace PlayerV2
             {
                 DirectionSprite.SetActive(false);
                 pauseSystem.PauseSwitching();
+                return false;
             }
 
             if (Input.GetKey(KeyCode.X)) GameRule.DashMove();
