@@ -39,6 +39,11 @@ public static class GameRule
         moveSpeed = 0.2f;
     }
 
+    public static void ThrowMove()
+    {
+        moveSpeed = 0.08f;
+    }
+
     public static int CharaThrowHitDamage
     {
         get { return charaThrowHitDamage; }

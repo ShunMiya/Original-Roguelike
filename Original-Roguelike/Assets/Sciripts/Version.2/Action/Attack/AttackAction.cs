@@ -63,7 +63,15 @@ namespace AttackSystem
 
             float CurrentHitRate = GameRule.HitRate;
 
-            yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range, CurrentHitRate));
+            switch(enemy.ThrowAttack)
+            {
+                case 1:
+                    yield return StartCoroutine(GetComponent<EnemyThrowAttack>().ThrowAttack(enemy));
+                    break;
+                default:
+                    yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range, CurrentHitRate));
+                    break;
+            }
         }
 
         public IEnumerator AttackObjectCoroutine(int damage, int range, float HitRate)

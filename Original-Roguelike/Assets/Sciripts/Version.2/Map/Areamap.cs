@@ -478,21 +478,42 @@ namespace Field
         }
 
         //エネミーの行動決定処理。プレイヤーがエネミーの攻撃範囲に移動してこないかチェック
-        public int IsPlayerHitCheckBeforeMoving(Pos2D CurrentPos, int range)
+        public int IsPlayerHitCheckBeforeMoving(Pos2D CurrentPos, int range, int Throw)
         {
-            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
+            foreach (Dir d in Enum.GetValues(typeof(Dir)))
             {
                 Vector3 Rota =DirUtil.SetNewPosRotation(d);
                 Pos2D Pos = DirUtil.SetAttackPoint((int)Rota.y);
                 int xgrid = CurrentPos.x;
                 int zgrid = CurrentPos.z;
 
-                for (int i = 1; i <= range; i++)
+                switch(Throw)
                 {
-                    xgrid += Pos.x;
-                    zgrid += Pos.z;
-                    if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
-                        return (int)Rota.y;
+                    case 0:
+                        for (int i = 1; i <= range; i++)
+                        {
+                            xgrid += Pos.x;
+                            zgrid += Pos.z;
+                            
+                            if (Mathf.Abs(Pos.x) + Mathf.Abs(Pos.z) == 2)
+                            {
+                                if (Pos.x != 0 && Pos.z != 0)
+                                {
+                                    if (IsCollidediagonal(xgrid - Pos.x, zgrid) || IsCollidediagonal(xgrid, zgrid - Pos.z)) continue;
+                                }
+                            }
+                            if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z) return (int)Rota.y;
+                        }
+                        break;
+                    case 1:
+                        for (int i = 1; i <= range; i++)
+                        {
+                            xgrid += Pos.x;
+                            zgrid += Pos.z;
+                            if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z)
+                                return (int)Rota.y;
+                        }
+                        break;
                 }
             }
             return 1;
@@ -518,7 +539,7 @@ namespace Field
         public Pos2D ItemDropPointCheck(Pos2D pos)
         {
             Pos2D setPos = null;
-            foreach (Dir d in System.Enum.GetValues(typeof(Dir)))
+            foreach (Dir d in Enum.GetValues(typeof(Dir)))
             {
                 Pos2D newPos = DirUtil.GetNewGrid(pos, d);
                 bool PutItem = IsCollidePutItem(newPos.x, newPos.z);

@@ -72,8 +72,11 @@ namespace PlayerStatusSystemV2
             else if (newHP > 0)
             {
                 systemText.TextSet("<color=blue>Player</color>ÇÕ" + reducedDamage + "É_ÉÅÅ[ÉWÇéÛÇØÇΩ!");
-                int Rota = DirUtil.ReverseDirection(R);
-                transform.rotation = Quaternion.Euler(0, Rota, 0);
+                if (R != 1)
+                {
+                    int Rota = DirUtil.ReverseDirection(R);
+                    transform.rotation = Quaternion.Euler(0, Rota, 0);
+                }
             }
         }
 
