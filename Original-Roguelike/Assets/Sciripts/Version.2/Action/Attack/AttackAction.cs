@@ -45,12 +45,12 @@ namespace AttackSystem
             if (PCondition.BlindTurn != 0)
             {
                 PCondition.BlindEvent();
-                CurrentHitRate = CurrentHitRate - 50;
+                CurrentHitRate -= 50;
             }
             yield return StartCoroutine(AttackObjectCoroutine(attack, range, CurrentHitRate));
         }
 
-        public IEnumerator AttackPreparationEnemy(GameObject Enemy)
+        public IEnumerator AttackPreparationEnemy()
         {
             EnemyStatusV2 enemyStatus = GetComponent<EnemyStatusV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(enemyStatus.EnemyID);
@@ -84,17 +84,15 @@ namespace AttackSystem
             GameObject HitObj = GetComponentInParent<Areamap>().IsCollideHit(MA.grid, R, range);
             if (HitObj != null) //当たってたので当たった対象のダメージ処理＋演出
             {
-                if (HitObj.CompareTag("Player"))
+                switch(HitObj.tag)
                 {
-                    // プレイヤーにダメージを与える処理
-                    HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage,R, HitRate);
-                    //プレイヤーのダメージ演出
-                }
-                else if (HitObj.CompareTag("Enemy"))
-                {
-                    // 敵にダメージを与える処理
-                    HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage,R, HitRate, gameObject);
-                    // エネミーのダメージ演出
+                    case "Player":
+                        HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage, R, HitRate);
+                        break;
+
+                    case "Enemy":
+                        HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage, R, HitRate, gameObject);
+                        break;
                 }
             }
 
