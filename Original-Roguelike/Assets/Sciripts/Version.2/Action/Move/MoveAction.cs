@@ -64,7 +64,7 @@ namespace MoveSystem
             float px2 = CoordinateTransformation.ToWorldX(newGrid.x);
             float pz2 = CoordinateTransformation.ToWorldZ(newGrid.z);
 
-            int numFrames = Mathf.CeilToInt(complementFrame / Time.deltaTime);
+            int numFrames = Mathf.CeilToInt(complementFrame / Time.fixedDeltaTime);
 
             for (int currentFrame = 0; currentFrame <= numFrames; currentFrame++)
             {
@@ -73,7 +73,7 @@ namespace MoveSystem
                 float newZ = pz1 + (pz2 - pz1) * t;
                 transform.position = new Vector3(newX, 0, newZ);
 
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForFixedUpdate();
             }
             transform.position = new Vector3(px2, 0, pz2);
             grid = newGrid;
