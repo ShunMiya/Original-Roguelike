@@ -25,7 +25,7 @@ namespace EnemySystem
             Exp = enemy.EnemyExp;
 
         }
-        public void TakeDamage(float damage,int R, float HitRate, GameObject attacker)
+        public void TakeDamage(float damage,int R, float HitRate, GameObject attacker, int AttackType)
         {
             #region 命中率処理
             int HitCheck = Random.Range(1,101);
@@ -54,12 +54,16 @@ namespace EnemySystem
             if (reducedDamage == 0) reducedDamage++;
 
             currentHP -= reducedDamage;
+
             systemText.TextSet("<color=red>" +name + "</color>は" + reducedDamage + "ダメージを受けた！");
             if(R != 1)
             {
                 int Rota = DirUtil.ReverseDirection(R);
                 transform.rotation = Quaternion.Euler(0, Rota, 0);
             }
+
+            //ダメージ演出
+
             if (attacker.CompareTag("Player"))
             {
                 GetComponent<EnemyAction>().EscapeCountPlus();

@@ -52,6 +52,7 @@ namespace ItemSystemV2
                 equipmentData.ItemType = Convert.ToInt32(row["ItemType"]);
                 equipmentData.Description = row["Description"].ToString();
                 equipmentData.EquipType = Convert.ToInt32(row["EquipType"]);
+                equipmentData.AttackType = Convert.ToInt32(row["AttackType"]);
                 equipmentData.AttackBonus = Convert.ToInt32(row["AttackBonus"]);
                 equipmentData.DefenseBonus = Convert.ToInt32(row["DefenseBonus"]);
                 equipmentData.WeaponRange = Convert.ToInt32(row["WeaponRange"]);

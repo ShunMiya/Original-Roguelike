@@ -20,7 +20,7 @@ namespace PlayerStatusSystemV2
             gameEnd = FindObjectOfType<GameEndV2>();
             PCondition = GetComponent<PlayerCondition>();
         }
-        public void TakeDamage(int damage, int R, float HitRate)
+        public void TakeDamage(int damage, int R, float HitRate, int AttackType)
         {
             #region 命中率処理
             int HitCheck = UnityEngine.Random.Range(1, 101);
@@ -77,6 +77,9 @@ namespace PlayerStatusSystemV2
                     int Rota = DirUtil.ReverseDirection(R);
                     transform.rotation = Quaternion.Euler(0, Rota, 0);
                 }
+
+                //ダメージ演出
+
             }
         }
 
