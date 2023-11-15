@@ -41,6 +41,9 @@ namespace AttackSystem
 
                     break;
             }
+
+            yield return new WaitForSeconds(0.3f);
+
         }
 
         public void EnemyThrowHit(int DamageNum)

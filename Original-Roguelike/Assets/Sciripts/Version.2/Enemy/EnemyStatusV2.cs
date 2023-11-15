@@ -1,4 +1,6 @@
+using MoveSystem;
 using PlayerStatusSystemV2;
+using Presentation;
 using UISystemV2;
 using UnityEngine;
 
@@ -9,6 +11,7 @@ namespace EnemySystem
         public delegate void EnemyDeathEvent();
         public event EnemyDeathEvent EnemyDeath;
         private SystemTextV2 systemText;
+        private DamagePresentation damagePresen;
 
         public float currentHP;
         public int EnemyID;
@@ -17,6 +20,7 @@ namespace EnemySystem
 
         private void Start()
         {
+            damagePresen = FindObjectOfType<DamagePresentation>();
             systemText = FindObjectOfType<SystemTextV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(EnemyID);
             name = enemy.EnemyName;
@@ -63,6 +67,9 @@ namespace EnemySystem
             }
 
             //ダメージ演出
+            Pos2D grid = GetComponent<MoveAction>().grid;
+            StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
+
 
             if (attacker.CompareTag("Player"))
             {
@@ -71,6 +78,7 @@ namespace EnemySystem
             
             if (currentHP <= 0 && EnemyDeath != null)
             {
+                
                 systemText.TextSet("<color=red>" + name + "</color>は倒れた！");
                 if (attacker.CompareTag("Player"))
                 {
