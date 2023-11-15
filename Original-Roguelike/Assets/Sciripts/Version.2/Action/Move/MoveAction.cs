@@ -130,6 +130,7 @@ namespace MoveSystem
             {
                 bool Throw = false;
                 yield return Throw;
+                GameRule.WalkMove();
                 yield break;
             }
             GameObject Char = field.IsCollideReturnCharObj(movex, movez);
@@ -142,6 +143,7 @@ namespace MoveSystem
                 yield return StartCoroutine(Char.GetComponent<ThrowHitEvent>().Event(Id, Num, R, DamageNum));
                 bool Throw = false;
                 yield return Throw;
+                GameRule.WalkMove();
                 Destroy(gameObject);
                 yield break;
             }
