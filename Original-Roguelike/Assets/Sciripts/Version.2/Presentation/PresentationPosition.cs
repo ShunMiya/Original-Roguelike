@@ -8,7 +8,6 @@ namespace Field
 
         public void SetPosition(int xgrid, int zgrid)
         {
-            Debug.Log(xgrid + " " + zgrid);
 
             Vector3 DamageCharPos = new (CoordinateTransformation.ToWorldX(xgrid), 0, CoordinateTransformation.ToWorldZ(zgrid));
 
