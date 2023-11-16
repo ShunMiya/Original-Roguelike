@@ -292,7 +292,7 @@ namespace Field
                 GameObject GimmickObj = (GameObject)Resources.Load("PrefabsV2/" + GimmickData.PrefabName);
                 GameObject Gimmick = Instantiate(GimmickObj, traps.transform);
                 Gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-                Gimmick.GetComponent<SteppedOnEvent>().Id = GimmickData.GimmickId; //同一Objのマテリアルを変えて見た目を変えるなら、ここでIdを変える必要がある。別Objなら必要なし。
+                Gimmick.GetComponent<SteppedOnEvent>().Id = GimmickData.GimmickId;
 
                 return;
             }
@@ -300,7 +300,7 @@ namespace Field
             GameObject gimmickObj = (GameObject)Resources.Load("PrefabsV2/" + gimmickData.PrefabName);
             GameObject gimmick = Instantiate(gimmickObj, traps.transform);
             gimmick.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
-            gimmick.GetComponent<SteppedOnEvent>().Id = gimmickData.GimmickId; //同上
+            gimmick.GetComponent<SteppedOnEvent>().Id = gimmickData.GimmickId;
         }
 
         public void PopEnemy()

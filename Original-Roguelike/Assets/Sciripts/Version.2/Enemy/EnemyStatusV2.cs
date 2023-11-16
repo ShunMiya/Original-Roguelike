@@ -66,7 +66,6 @@ namespace EnemySystem
                 transform.rotation = Quaternion.Euler(0, Rota, 0);
             }
 
-            //ダメージ演出
             Pos2D grid = GetComponent<MoveAction>().grid;
             StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
 

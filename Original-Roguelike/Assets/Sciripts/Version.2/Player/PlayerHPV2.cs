@@ -69,6 +69,7 @@ namespace PlayerStatusSystemV2
 
             if (newHP <= 0)
             {
+                systemText.TextSet("<color=blue>Player</color>は" + reducedDamage + "ダメージを受けた!");
                 gameEnd.GameOverPerformance();
                 Time.timeScale = 0;
 
@@ -82,7 +83,6 @@ namespace PlayerStatusSystemV2
                     transform.rotation = Quaternion.Euler(0, Rota, 0);
                 }
 
-                //ダメージ演出
                 Pos2D grid = GetComponent<MoveAction>().grid;
                 StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
             }
