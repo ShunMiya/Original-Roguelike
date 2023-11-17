@@ -1,19 +1,20 @@
+using DeathSystem;
 using UnityEngine;
 
 namespace EnemySystem
 {
     public class EnemyDeathEvent : MonoBehaviour
     {
-        private EnemyStatusV2 enemyStatus;
+        private DeathAction deathAction;
         private EnemyDestroyV2 enemyDestroy;
 
         void Start()
         {
-            enemyStatus = GetComponent<EnemyStatusV2>();
+            deathAction = GetComponent<DeathAction>();
             enemyDestroy = GetComponent<EnemyDestroyV2>();
 
-            enemyStatus.EnemyDeath += enemyDestroy.DropItem;
-            enemyStatus.EnemyDeath += enemyDestroy.Destroy;
+            deathAction.EnemyDeath += enemyDestroy.DropItem;
+            deathAction.EnemyDeath += enemyDestroy.Destroy;
         }
     }
 }

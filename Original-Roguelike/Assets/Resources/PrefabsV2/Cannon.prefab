@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 9194174416509656323}
   - component: {fileID: -7780690654023129549}
   - component: {fileID: -4655577073557117449}
+  - component: {fileID: -9115544633316284380}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Enemy
@@ -319,6 +320,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   move: {fileID: 4115386183401413753}
+--- !u!114 &-9115544633316284380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4115386183401413734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7b8537bdea7b6409d5ff45ed4b72e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8807369817813577441
 GameObject:
   m_ObjectHideFlags: 0

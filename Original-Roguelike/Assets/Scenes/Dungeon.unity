@@ -8198,6 +8198,7 @@ MonoBehaviour:
   playerUseItemV2: {fileID: 0}
   playerPutItem: {fileID: 0}
   playerThrowItem: {fileID: 0}
+  deathObjects: {fileID: 441075527}
 --- !u!114 &436213517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8304,6 +8305,7 @@ GameObject:
   - component: {fileID: 441075520}
   - component: {fileID: 441075523}
   - component: {fileID: 441075524}
+  - component: {fileID: 441075527}
   - component: {fileID: 441075522}
   - component: {fileID: 441075525}
   - component: {fileID: 441075526}
@@ -8426,6 +8428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToAttack: []
+  deathObjects: {fileID: 441075527}
 --- !u!114 &441075525
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8450,6 +8453,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f0919aea735964198170b2d81ae1a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &441075527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441075518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ca48cf16ded7d4ab8c5a4c3c6c29f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToDeath: []
+  systemText: {fileID: 1238523509}
 --- !u!1 &442808764
 GameObject:
   m_ObjectHideFlags: 0

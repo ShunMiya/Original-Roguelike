@@ -34,7 +34,7 @@ namespace AttackSystem
                 case 203:
                     itemData = ItemDataCacheV2.GetOffensive(Id);
 
-                    gameObject.GetComponent<EnemyStatusV2>().DirectDamage(itemData.DamageNum * Num, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject);
+                    gameObject.GetComponent<EnemyStatusV2>().DirectDamage(itemData.DamageNum * Num, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject, 1);
                     break;
                 default:
                     gameObject.GetComponent<EnemyStatusV2>().TakeDamage(1, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject, 0);

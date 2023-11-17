@@ -1,5 +1,5 @@
+using DeathSystem;
 using MoveSystem;
-using PlayerStatusSystemV2;
 using Presentation;
 using UISystemV2;
 using UnityEngine;
@@ -8,8 +8,6 @@ namespace EnemySystem
 {
     public class EnemyStatusV2 : MonoBehaviour
     {
-        public delegate void EnemyDeathEvent();
-        public event EnemyDeathEvent EnemyDeath;
         private SystemTextV2 systemText;
         private DamagePresentation damagePresen;
 
@@ -75,19 +73,10 @@ namespace EnemySystem
                 GetComponent<EnemyAction>().EscapeCountPlus();
             }
             
-            if (currentHP <= 0 && EnemyDeath != null)
-            {
-                
-                systemText.TextSet("<color=red>" + name + "</color>ÇÕì|ÇÍÇΩÅI");
-                if (attacker.CompareTag("Player"))
-                {
-                    FindFirstObjectByType<PlayerLevel>().PlayerGetExp(Exp);
-                }
-                EnemyDeath();
-            }
+            if (currentHP <= 0) GetComponent<DeathAction>().DeathSet(attacker, Exp);
         }
 
-        public void DirectDamage(float damage, int R, float HitRate, GameObject attacker)
+        public void DirectDamage(float damage, int R, float HitRate, GameObject attacker, int AttackType)
         {
             #region ñΩíÜó¶èàóù
             int HitCheck = Random.Range(1, 101);
@@ -115,16 +104,10 @@ namespace EnemySystem
                 transform.rotation = Quaternion.Euler(0, Rota, 0);
             }
 
-            if (currentHP <= 0 && EnemyDeath != null)
-            {
-                systemText.TextSet("<color=red>" + name + "</color>ÇÕì|ÇÍÇΩÅI");
-                if (attacker.CompareTag("Player"))
-                {
-                    FindFirstObjectByType<PlayerLevel>().PlayerGetExp(Exp);
-                }
-                EnemyDeath();
-            }
+            Pos2D grid = GetComponent<MoveAction>().grid;
+            StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
 
+            if (currentHP <= 0) GetComponent<DeathAction>().DeathSet(attacker, Exp);
         }
     }
 }

@@ -34,13 +34,5 @@ namespace Presentation
             NowEffect.Play();
             yield return new WaitForEndOfFrame();
         }
-
-        public IEnumerator WaitDamagePresen()
-        {
-            while(NowEffect.isPlaying)
-            {
-                yield return null;
-            }
-        }
     }
 }
