@@ -6,32 +6,31 @@ namespace Presentation
 {
     public class DamagePresentation : MonoBehaviour
     {
-        [SerializeField]private ParticleSystem BlowEffect;
-        [SerializeField]private ParticleSystem SlashEffect;
-        [SerializeField]private ParticleSystem ThrustEffect;
-
-        private ParticleSystem NowEffect;
-
-        [SerializeField] private PresentationPosition presenPosition;
+        [SerializeField] private GameObject BlowEffectObj;
+        [SerializeField]private GameObject SlashEffectObj;
+        [SerializeField]private GameObject ThrustEffectObj;
 
         public IEnumerator DamagePresen(int AttackType, int gridx, int gridz)
         {
-            presenPosition.SetPosition(gridx, gridz);
 
             switch(AttackType)
             {
                 case 0:
-                    NowEffect =BlowEffect;
+                    GameObject effect = Instantiate(BlowEffectObj, gameObject.transform);
+                    effect.GetComponent<PresentationPosition>().SetPosition(gridx, gridz);
+                    effect.GetComponent<ParticleSystem>().Play();
+
                     break;
                 case 1:
-                    NowEffect = SlashEffect;
-                    break;
+                    effect = Instantiate(SlashEffectObj, gameObject.transform);
+                    effect.GetComponent<PresentationPosition>().SetPosition(gridx, gridz);
+                    effect.GetComponent<ParticleSystem>().Play(); break;
                 case 2:
-                    NowEffect = ThrustEffect;
-                    break;
+                    effect = Instantiate(ThrustEffectObj, gameObject.transform);
+                    effect.GetComponent<PresentationPosition>().SetPosition(gridx, gridz);
+                    effect.GetComponent<ParticleSystem>().Play(); break;
             }
 
-            NowEffect.Play();
             yield return new WaitForEndOfFrame();
         }
     }
