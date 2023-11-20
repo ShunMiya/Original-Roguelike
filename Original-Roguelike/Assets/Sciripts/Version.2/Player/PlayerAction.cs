@@ -1,4 +1,5 @@
 using AttackSystem;
+using DeathSystem;
 using ItemSystemV2;
 using System.Collections;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace PlayerV2
         public PlayerUseItemV2 playerUseItemV2;
         public PlayerPutItem playerPutItem;
         public PlayerThrowItem playerThrowItem;
+        public DeathObjects deathObjects;
 
         public IEnumerator ActionStart()
         {
@@ -41,6 +43,8 @@ namespace PlayerV2
                 yield return coroutine;
             }
             playerThrowItem = null;
+
+            yield return StartCoroutine(deathObjects.DeathAllObjects());
         }
     }
 }

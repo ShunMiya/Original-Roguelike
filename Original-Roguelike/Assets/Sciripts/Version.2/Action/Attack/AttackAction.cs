@@ -32,12 +32,11 @@ namespace AttackSystem
                 string databasePath = SQLDBInitializationV2.GetDatabasePath();
                 sqlDB = new SqliteDatabase(databasePath);
             }
-            string query = "SELECT Attack FROM PlayerStatus WHERE PlayerID = 1;";
+            string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
             DataTable Data = sqlDB.ExecuteQuery(query);
             int attack = Convert.ToInt32(Data[0]["Attack"]);
-            query = "SELECT AttackRange FROM PlayerStatus WHERE PlayerID = 1;";
-            Data = sqlDB.ExecuteQuery(query);
             int range = Convert.ToInt32(Data[0]["AttackRange"]);
+            int AttackType = Convert.ToInt32(Data[0]["AttackType"]);
 
             float CurrentHitRate = GameRule.HitRate;
 
@@ -47,7 +46,7 @@ namespace AttackSystem
                 PCondition.BlindEvent();
                 CurrentHitRate -= 50;
             }
-            yield return StartCoroutine(AttackObjectCoroutine(attack, range, CurrentHitRate));
+            yield return StartCoroutine(AttackObjectCoroutine(attack, range, CurrentHitRate, AttackType));
         }
 
         public IEnumerator AttackPreparationEnemy()
@@ -69,12 +68,12 @@ namespace AttackSystem
                     yield return StartCoroutine(GetComponent<EnemyThrowAttack>().ThrowAttack(enemy));
                     break;
                 default:
-                    yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range, CurrentHitRate));
+                    yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range, CurrentHitRate, enemy.AttackType));
                     break;
             }
         }
 
-        public IEnumerator AttackObjectCoroutine(int damage, int range, float HitRate)
+        public IEnumerator AttackObjectCoroutine(int damage, int range, float HitRate, int AttackType)
         {
             yield return StartCoroutine(BeginAttack());  //攻撃開始演出
 
@@ -87,15 +86,14 @@ namespace AttackSystem
                 switch(HitObj.tag)
                 {
                     case "Player":
-                        HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage, R, HitRate);
+                        HitObj.GetComponent<PlayerHPV2>().TakeDamage(damage, R, HitRate, AttackType);
                         break;
 
                     case "Enemy":
-                        HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage, R, HitRate, gameObject);
+                        HitObj.GetComponent<EnemyStatusV2>().TakeDamage(damage, R, HitRate, gameObject, AttackType);
                         break;
                 }
             }
-
             yield return StartCoroutine(EndAttack()); //仮置き.アニメーション等の処理終了まで待機させる。
         }
 

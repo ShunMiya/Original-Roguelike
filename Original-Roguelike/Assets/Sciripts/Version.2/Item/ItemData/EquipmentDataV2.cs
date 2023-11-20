@@ -17,6 +17,7 @@ namespace ItemSystemV2
         public int ItemType { get; set; }
         public string Description { get; set; }
         public int EquipType { get; set; }
+        public int AttackType { get; set; }
         public int AttackBonus { get; set; }
         public int DefenseBonus { get; set; }
         public int WeaponRange { get; set; }

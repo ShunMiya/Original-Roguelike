@@ -34,13 +34,16 @@ namespace AttackSystem
                 case 203:
                     itemData = ItemDataCacheV2.GetOffensive(Id);
 
-                    gameObject.GetComponent<EnemyStatusV2>().DirectDamage(itemData.DamageNum * Num, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject);
+                    gameObject.GetComponent<EnemyStatusV2>().DirectDamage(itemData.DamageNum * Num, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject, 1);
                     break;
                 default:
-                    gameObject.GetComponent<EnemyStatusV2>().TakeDamage(1, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject);
+                    gameObject.GetComponent<EnemyStatusV2>().TakeDamage(1, 1, GameRule.HitRate, FindObjectOfType<PlayerStatusV2>().gameObject, 0);
 
                     break;
             }
+
+            yield return new WaitForSeconds(0.2f);
+
         }
 
         public void EnemyThrowHit(int DamageNum)
@@ -48,10 +51,10 @@ namespace AttackSystem
             switch(gameObject.tag)
             {
                 case "Player":
-                    gameObject.GetComponent<PlayerHPV2>().TakeDamage(DamageNum, 1, GameRule.HitRate);
+                    gameObject.GetComponent<PlayerHPV2>().TakeDamage(DamageNum, 1, GameRule.HitRate, 0);
                     break;
                 case "Enemy":
-                    gameObject.GetComponent<EnemyStatusV2>().TakeDamage(DamageNum, 1, GameRule.HitRate, gameObject);
+                    gameObject.GetComponent<EnemyStatusV2>().TakeDamage(DamageNum, 1, GameRule.HitRate, gameObject, 0);
                     break;
             }
         }

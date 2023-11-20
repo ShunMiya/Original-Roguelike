@@ -1,5 +1,7 @@
 using GameEndSystemV2;
 using ItemSystemV2.Inventory;
+using MoveSystem;
+using Presentation;
 using System;
 using UISystemV2;
 using UnityEngine;
@@ -8,6 +10,8 @@ namespace PlayerStatusSystemV2
 {
     public class PlayerHPV2 : MonoBehaviour
     {
+        [SerializeField]private DamagePresentation damagePresen;
+
         private SqliteDatabase sqlDB;
         private SystemTextV2 systemText;
         private GameEndV2 gameEnd;
@@ -20,7 +24,7 @@ namespace PlayerStatusSystemV2
             gameEnd = FindObjectOfType<GameEndV2>();
             PCondition = GetComponent<PlayerCondition>();
         }
-        public void TakeDamage(int damage, int R, float HitRate)
+        public void TakeDamage(int damage, int R, float HitRate, int AttackType)
         {
             #region ñΩíÜó¶èàóù
             int HitCheck = UnityEngine.Random.Range(1, 101);
@@ -65,6 +69,7 @@ namespace PlayerStatusSystemV2
 
             if (newHP <= 0)
             {
+                systemText.TextSet("<color=blue>Player</color>ÇÕ" + reducedDamage + "É_ÉÅÅ[ÉWÇéÛÇØÇΩ!");
                 gameEnd.GameOverPerformance();
                 Time.timeScale = 0;
 
@@ -77,6 +82,9 @@ namespace PlayerStatusSystemV2
                     int Rota = DirUtil.ReverseDirection(R);
                     transform.rotation = Quaternion.Euler(0, Rota, 0);
                 }
+
+                Pos2D grid = GetComponent<MoveAction>().grid;
+                StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
             }
         }
 

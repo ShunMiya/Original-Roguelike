@@ -38,6 +38,7 @@ namespace PlayerStatusSystemV2
                 sqlDB = new SqliteDatabase(databasePath);
             }
 
+            int AttackType = 0;
             float addAttack = 0;
             float addDefense = 0;
             float RangeBonus = 0;
@@ -48,11 +49,14 @@ namespace PlayerStatusSystemV2
                 int equippedItemId = Convert.ToInt32(row["Id"]);
                 EquipmentDataV2 equippedItem = ItemDataCacheV2.GetEquipment(equippedItemId);
 
+                AttackType += equippedItem.AttackType;
                 addAttack += equippedItem.AttackBonus;
                 addDefense += equippedItem.DefenseBonus;
                 RangeBonus += equippedItem.WeaponRange;
             }
-            string updateStatusQuery = "UPDATE PlayerStatus SET Attack = (SELECT Strength FROM PlayerStatus WHERE PlayerID = 1) + " + addAttack + " WHERE PlayerID = 1;";
+            string updateStatusQuery = "UPDATE PlayerStatus SET AttackType = " + AttackType + " WHERE PlayerID = 1;";
+            sqlDB.ExecuteNonQuery(updateStatusQuery);
+            updateStatusQuery = "UPDATE PlayerStatus SET Attack = (SELECT Strength FROM PlayerStatus WHERE PlayerID = 1) + " + addAttack + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);
             updateStatusQuery = "UPDATE PlayerStatus SET Defense = " + addDefense + " WHERE PlayerID = 1;";
             sqlDB.ExecuteNonQuery(updateStatusQuery);

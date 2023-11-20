@@ -1,3 +1,4 @@
+using DeathSystem;
 using MoveSystem;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ namespace AttackSystem
 {
     public class AttackObjects : MonoBehaviour
     {
+        public DeathObjects deathObjects;
         public List<AttackAction> objectsToAttack = new List<AttackAction>();
 
         public IEnumerator AttackAllObject()
@@ -15,6 +17,8 @@ namespace AttackSystem
             {
                 Coroutine coroutine = StartCoroutine(AttackEnemy.AttackPreparationEnemy());
                 yield return coroutine;
+                yield return StartCoroutine(deathObjects.DeathAllObjects());
+
             }
 
             // ‘S‚Ä‚Ìs“®‚ªŠ®—¹‚µ‚½Œã‚Ìˆ—

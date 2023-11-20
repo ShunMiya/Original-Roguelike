@@ -12,7 +12,7 @@ namespace Field
         {
             if (grid.x != CoordinateTransformation.ToGridX(transform.position.x) || grid.z != CoordinateTransformation.ToGridZ(transform.position.z))
             {
-                transform.position = new Vector3(CoordinateTransformation.ToWorldX(grid.x), 0, CoordinateTransformation.ToWorldZ(grid.z));
+                transform.position = new Vector3(CoordinateTransformation.ToWorldX(grid.x), (float)-0.5, CoordinateTransformation.ToWorldZ(grid.z));
             }
         }
 

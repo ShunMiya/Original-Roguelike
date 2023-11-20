@@ -1,4 +1,6 @@
-using PlayerStatusSystemV2;
+using DeathSystem;
+using MoveSystem;
+using Presentation;
 using UISystemV2;
 using UnityEngine;
 
@@ -6,9 +8,8 @@ namespace EnemySystem
 {
     public class EnemyStatusV2 : MonoBehaviour
     {
-        public delegate void EnemyDeathEvent();
-        public event EnemyDeathEvent EnemyDeath;
         private SystemTextV2 systemText;
+        private DamagePresentation damagePresen;
 
         public float currentHP;
         public int EnemyID;
@@ -17,6 +18,7 @@ namespace EnemySystem
 
         private void Start()
         {
+            damagePresen = FindObjectOfType<DamagePresentation>();
             systemText = FindObjectOfType<SystemTextV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(EnemyID);
             name = enemy.EnemyName;
@@ -25,7 +27,7 @@ namespace EnemySystem
             Exp = enemy.EnemyExp;
 
         }
-        public void TakeDamage(float damage,int R, float HitRate, GameObject attacker)
+        public void TakeDamage(float damage,int R, float HitRate, GameObject attacker, int AttackType)
         {
             #region 命中率処理
             int HitCheck = Random.Range(1,101);
@@ -54,29 +56,27 @@ namespace EnemySystem
             if (reducedDamage == 0) reducedDamage++;
 
             currentHP -= reducedDamage;
+
             systemText.TextSet("<color=red>" +name + "</color>は" + reducedDamage + "ダメージを受けた！");
             if(R != 1)
             {
                 int Rota = DirUtil.ReverseDirection(R);
                 transform.rotation = Quaternion.Euler(0, Rota, 0);
             }
+
+            Pos2D grid = GetComponent<MoveAction>().grid;
+            StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
+
+
             if (attacker.CompareTag("Player"))
             {
                 GetComponent<EnemyAction>().EscapeCountPlus();
             }
             
-            if (currentHP <= 0 && EnemyDeath != null)
-            {
-                systemText.TextSet("<color=red>" + name + "</color>は倒れた！");
-                if (attacker.CompareTag("Player"))
-                {
-                    FindFirstObjectByType<PlayerLevel>().PlayerGetExp(Exp);
-                }
-                EnemyDeath();
-            }
+            if (currentHP <= 0) GetComponent<DeathAction>().DeathSet(attacker, Exp);
         }
 
-        public void DirectDamage(float damage, int R, float HitRate, GameObject attacker)
+        public void DirectDamage(float damage, int R, float HitRate, GameObject attacker, int AttackType)
         {
             #region 命中率処理
             int HitCheck = Random.Range(1, 101);
@@ -104,16 +104,10 @@ namespace EnemySystem
                 transform.rotation = Quaternion.Euler(0, Rota, 0);
             }
 
-            if (currentHP <= 0 && EnemyDeath != null)
-            {
-                systemText.TextSet("<color=red>" + name + "</color>は倒れた！");
-                if (attacker.CompareTag("Player"))
-                {
-                    FindFirstObjectByType<PlayerLevel>().PlayerGetExp(Exp);
-                }
-                EnemyDeath();
-            }
+            Pos2D grid = GetComponent<MoveAction>().grid;
+            StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
 
+            if (currentHP <= 0) GetComponent<DeathAction>().DeathSet(attacker, Exp);
         }
     }
 }

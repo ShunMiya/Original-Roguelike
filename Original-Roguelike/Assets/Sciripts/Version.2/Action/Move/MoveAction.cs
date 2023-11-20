@@ -130,6 +130,7 @@ namespace MoveSystem
             {
                 bool Throw = false;
                 yield return Throw;
+                GameRule.WalkMove();
                 yield break;
             }
             GameObject Char = field.IsCollideReturnCharObj(movex, movez);
@@ -142,6 +143,7 @@ namespace MoveSystem
                 yield return StartCoroutine(Char.GetComponent<ThrowHitEvent>().Event(Id, Num, R, DamageNum));
                 bool Throw = false;
                 yield return Throw;
+                GameRule.WalkMove();
                 Destroy(gameObject);
                 yield break;
             }
@@ -188,7 +190,7 @@ namespace MoveSystem
                 yield return Throw;
 
                 if (gameObject.CompareTag("Player")) GetComponent<PlayerHPV2>().DirectDamage(GameRule.CharaThrowHitDamage);
-                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker);
+                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker, 0);
 
                 yield break;
             }
@@ -199,10 +201,10 @@ namespace MoveSystem
                 yield return Throw;
 
                 if (gameObject.CompareTag("Player")) GetComponent<PlayerHPV2>().DirectDamage(GameRule.CharaThrowHitDamage);
-                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker);
+                else if (gameObject.CompareTag("Enemy")) GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker, 0);
 
                 if (Char.CompareTag("Player")) Char.GetComponent<PlayerHPV2>().DirectDamage(GameRule.CharaThrowHitDamage);
-                else if (Char.CompareTag("Enemy")) Char.GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker);
+                else if (Char.CompareTag("Enemy")) Char.GetComponent<EnemyStatusV2>().DirectDamage(GameRule.CharaThrowHitDamage, 1, 100, attacker, 0);
 
                 yield break;
             }
