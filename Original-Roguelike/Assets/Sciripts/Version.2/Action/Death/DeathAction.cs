@@ -50,7 +50,6 @@ namespace DeathSystem
 
                     deathObjects.GetExp(Attacker.CompareTag("Player") ? Exp : 0);
 
-                    Debug.Log("€–Sˆ—I—¹");
                     EnemyDeath();
 
                     break;
@@ -64,7 +63,6 @@ namespace DeathSystem
             float timer = 0.0f;
             while (timer < duration)
             {
-                Debug.Log(timer);
                 float alpha = Mathf.Lerp(1.0f, 0.0f, timer / duration);
 
                 foreach (Renderer renderer in renderers)
@@ -80,7 +78,6 @@ namespace DeathSystem
                 timer += Time.deltaTime;
                 yield return null;
             }
-            Debug.Log("“§–¾‰»Š®—¹");
             yield return null;
         }
     }
