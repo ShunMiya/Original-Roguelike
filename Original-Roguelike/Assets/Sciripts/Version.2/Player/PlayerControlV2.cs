@@ -126,7 +126,7 @@ namespace PlayerV2
 
                 if (movex == 0 && movez == 0)
                 {
-                    WaitInputTimer = 0f;
+                    WaitInputTimer = WaitInput;
                     firstInputProcessed = false;
                     return false;
                 }

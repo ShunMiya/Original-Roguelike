@@ -15,7 +15,7 @@ namespace DeathSystem
         private GameObject Attacker;
         private int Exp;
 
-        public float duration = 0.5f;  // フェードにかかる時間（秒）
+        public float duration = 0.5f;
 
         private void Start()
         {

@@ -37,7 +37,7 @@ namespace DeathSystem
 
             objectsToDeath.Clear();
 
-            yield return new WaitForSeconds(0.2f);
+            yield return null;
         }
 
         public void GetExp(int exp)
