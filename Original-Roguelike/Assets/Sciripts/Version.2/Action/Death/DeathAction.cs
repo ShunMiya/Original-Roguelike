@@ -10,34 +10,30 @@ namespace DeathSystem
         public delegate void EnemyDeathEvent();
         public event EnemyDeathEvent EnemyDeath;
         private SystemTextV2 systemText;
+        private DeathObjects deathObjects;
 
         private GameObject Attacker;
         private int Exp;
 
-        public float duration = 1f;  // フェードにかかる時間（秒）
+        public float duration = 0.5f;  // フェードにかかる時間（秒）
 
         private void Start()
         {
             systemText = FindObjectOfType<SystemTextV2>();
+            deathObjects = FindObjectOfType<DeathObjects>();
         }
 
         public void DeathSet(GameObject attacker, int exp)
         {
             Attacker = attacker;
             Exp = exp;
-
-            DeathObjects deathObjects = FindObjectOfType<DeathObjects>();
-            if (deathObjects != null)
-            {
-                deathObjects.objectsToDeath.Add(this);
-            }
+            
+            deathObjects.objectsToDeath.Add(this);
         }
 
 
         public IEnumerator DeathEvent()
         {
-            int exp = 0;
-
             switch(gameObject.tag)
             {
                 case "Player":
@@ -46,15 +42,13 @@ namespace DeathSystem
 
                 case "Enemy":
 
+                    yield return new WaitForSeconds(0.2f);
+
                     systemText.TextSet("<color=red>" + name + "</color>は倒れた！");
 
-                    //yield return StartCoroutine(FadeOutCoroutine());　死亡演出
+                    yield return StartCoroutine(FadeOutCoroutine()); //死亡演出
 
-                    if (Attacker.CompareTag("Player"))
-                    {
-                        exp = Exp;
-                    }
-                    yield return exp;
+                    deathObjects.GetExp(Attacker.CompareTag("Player") ? Exp : 0);
 
                     Debug.Log("死亡処理終了");
                     EnemyDeath();
@@ -68,9 +62,9 @@ namespace DeathSystem
             Renderer[] renderers = GetComponentsInChildren<Renderer>();
 
             float timer = 0.0f;
-
             while (timer < duration)
             {
+                Debug.Log(timer);
                 float alpha = Mathf.Lerp(1.0f, 0.0f, timer / duration);
 
                 foreach (Renderer renderer in renderers)
@@ -87,6 +81,7 @@ namespace DeathSystem
                 yield return null;
             }
             Debug.Log("透明化完了");
+            yield return null;
         }
     }
 }

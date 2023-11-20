@@ -41,14 +41,21 @@ namespace ItemSystemV2
                     }
                     inventoryremove.RemoveItem(row, 1);
 
+                    yield return new WaitForSeconds(0.2f);
+
                     break;
                 case 1:
                     if (Convert.ToInt32(row["Equipped"]) == 1 || Convert.ToInt32(row["Equipped"]) == 2)
                     {
                         equipmentchange.UnequipItem(row);
+
+                        yield return new WaitForSeconds(0.2f);
+
                         break;
                     }
                     equipmentchange.EquipItem(row);
+
+                    yield return new WaitForSeconds(0.2f);
 
                     break;
                 case 2:
@@ -56,7 +63,6 @@ namespace ItemSystemV2
 
                     break;
             }
-            yield return new WaitForSeconds(0.2f);
         }
 
         public bool ConsumableUse(DataRow row)

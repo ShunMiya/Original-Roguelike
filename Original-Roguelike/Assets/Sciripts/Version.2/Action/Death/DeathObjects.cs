@@ -10,27 +10,26 @@ namespace DeathSystem
     {
         public List<DeathAction> objectsToDeath = new List<DeathAction>();
         [SerializeField]private SystemTextV2 systemText;
+        private int Exp;
 
         public IEnumerator DeathAllObjects()
         {
             if (objectsToDeath.Count == 0) yield break;
 
-            int Exp = 0;
+            Exp = 0;
 
-            List<IEnumerator> DeathCoroutines = new List<IEnumerator>();
+            List<Coroutine> DeathCoroutines = new List<Coroutine>();
 
             foreach (DeathAction DeathChar in objectsToDeath)
             {
-                IEnumerator Coroutine = DeathChar.DeathEvent();
-                StartCoroutine(Coroutine);
+                Coroutine coroutine = StartCoroutine(DeathChar.DeathEvent());
 
-                DeathCoroutines.Add(Coroutine);
+                DeathCoroutines.Add(coroutine);
             }
 
-            foreach (IEnumerator Coroutine in DeathCoroutines)
+            foreach (Coroutine coroutine in DeathCoroutines)
             {
-                yield return Coroutine;
-                Exp += (int)Coroutine.Current;
+                yield return coroutine;
             }
 
             // ëSÇƒÇÃçsìÆÇ™äÆóπÇµÇΩå„ÇÃèàóù
@@ -39,6 +38,11 @@ namespace DeathSystem
             objectsToDeath.Clear();
 
             yield return new WaitForSeconds(0.2f);
+        }
+
+        public void GetExp(int exp)
+        {
+            Exp += exp;
         }
     }
 }
