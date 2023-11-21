@@ -24,9 +24,7 @@ namespace PlayerV2
             if (move.grid != oldgrid)
             {
                 GameObject AreaObj = field.IsCollideReturnAreaObj(move.grid.x, move.grid.z);
-                if (AreaObj == null) yield return null;
-
-                else
+                if (AreaObj != null)
                 {
                     SteppedOnEvent ObjEvent = AreaObj.GetComponent<SteppedOnEvent>();
                     yield return StartCoroutine(ObjEvent.Event());

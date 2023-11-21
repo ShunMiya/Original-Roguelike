@@ -47,11 +47,11 @@ namespace TurnSystem
             {
                 field.MappingUpdate();
 
-                yield return StartCoroutine(PlayerInputSet());　//プレイヤーの行動入力
+                yield return StartCoroutine(PlayerInputSet()); //プレイヤーの行動入力
 
-                yield return StartCoroutine(PA.ActionStart());　//プレイヤーのアクション実施(攻撃、アイテム関連)
+                yield return StartCoroutine(PA.ActionStart()); //プレイヤーのアクション実施(攻撃、アイテム関連)
 
-                EO.EnemiesActionSets();　//エネミーの行動決定
+                EO.EnemiesActionSets(); //エネミーの行動決定
 
                 yield return StartCoroutine(MO.MoveAllObjects()); //全オブジェクトの同時移動
 
@@ -61,9 +61,9 @@ namespace TurnSystem
 
                 field.MappingUpdate();
 
-                yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
+                yield return StartCoroutine(AO.AttackAllObject()); //エネミーのアクション実施(攻撃、特殊行動)
 
-                if(FadeImage.activeSelf)
+                if (FadeImage.activeSelf)
                 {
                     AreaTurn = 0; DungeonTurn+=AreaTurn;
                     PCondition.ConditionClear();
@@ -98,9 +98,7 @@ namespace TurnSystem
         }
 
         private IEnumerator PlayerInputSet()
-        {
-            bool TurnNext = false;
-            
+        {            
             while (true)
             {
                 if (Time.timeScale != 1f)
@@ -118,12 +116,9 @@ namespace TurnSystem
                 if(PA.playerPutItem != null) break;
                 if (PA.playerThrowItem != null) break;
 
-                TurnNext = PC.PlayerInput();
+                bool TurnNext = PC.PlayerInput();
 
-                if (TurnNext)
-                {
-                    break;
-                }
+                if (TurnNext) break;
 
                 yield return null;
             }
