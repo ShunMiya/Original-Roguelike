@@ -14,7 +14,7 @@ namespace MoveSystem
 
             foreach (MoveAction moveAction in objectsToMove)
             {
-                Coroutine coroutine = StartCoroutine(moveAction.MoveObjectCoroutine(transform));
+                Coroutine coroutine = StartCoroutine(moveAction.MoveObjectCoroutine());
                 moveCoroutines.Add(coroutine);
             }
 

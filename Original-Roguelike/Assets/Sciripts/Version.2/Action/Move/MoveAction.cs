@@ -54,17 +54,24 @@ namespace MoveSystem
             return true;
         }
 
-        /**
-        * * •âŠ®‚ÅŒvŽZ‚µ‚Äi‚Þ
-        */
-        public IEnumerator MoveObjectCoroutine(Transform objTransform)
+        public IEnumerator MoveObjectCoroutine()
         {
-            float px1 = CoordinateTransformation.ToWorldX(grid.x);
-            float pz1 = CoordinateTransformation.ToWorldZ(grid.z);
+            /*float px1 = CoordinateTransformation.ToWorldX(grid.x);
+            float pz1 = CoordinateTransformation.ToWorldZ(grid.z);*/
             float px2 = CoordinateTransformation.ToWorldX(newGrid.x);
             float pz2 = CoordinateTransformation.ToWorldZ(newGrid.z);
 
-            int numFrames = Mathf.CeilToInt(complementFrame / Time.fixedDeltaTime);
+            Vector3 targetPosition = new Vector3(px2, 0, pz2);
+            float distance = Vector3.Distance(transform.position, targetPosition);
+            float speed = distance / complementFrame;
+
+            while (Vector3.Distance(transform.position, targetPosition) > 0.001f)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+                yield return null;
+            }
+
+            /*int numFrames = Mathf.CeilToInt(complementFrame / Time.fixedDeltaTime);
 
             for (int currentFrame = 0; currentFrame <= numFrames; currentFrame++)
             {
@@ -74,7 +81,7 @@ namespace MoveSystem
                 transform.position = new Vector3(newX, 0, newZ);
 
                 yield return new WaitForFixedUpdate();
-            }
+            }*/
             transform.position = new Vector3(px2, 0, pz2);
             grid = newGrid;
         }
@@ -150,7 +157,7 @@ namespace MoveSystem
 
             newGrid = new Pos2D { x = movex, z = movez };
 
-            yield return StartCoroutine(MoveObjectCoroutine(transform));
+            yield return StartCoroutine(MoveObjectCoroutine());
             yield return true;
         }
 
@@ -211,7 +218,7 @@ namespace MoveSystem
 
             newGrid = new Pos2D { x = movex, z = movez };
 
-            yield return StartCoroutine(MoveObjectCoroutine(transform));
+            yield return StartCoroutine(MoveObjectCoroutine());
             yield return true;
         }
 
