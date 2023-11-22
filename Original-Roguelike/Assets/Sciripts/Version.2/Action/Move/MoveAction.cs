@@ -13,8 +13,10 @@ namespace MoveSystem
         private float gridSize = GameRule.GridSize;
         private Vector3 InputPos;
         private Vector3 targetPos;
+        private Vector3 LookPos;
         public Pos2D grid = new Pos2D();
         public Pos2D newGrid = null;
+        public Pos2D ReservationGrid = null;
 
         private float complementFrame;
         private Areamap field;
@@ -28,11 +30,39 @@ namespace MoveSystem
 
         public void ChangeDirectionOnTheSpot(float movex, float movez)
         {
-            targetPos = transform.position;
+            LookPos = transform.position;
             InputPos = new Vector3(movex * gridSize, 0, movez * gridSize);
 
+            LookPos += InputPos;
+            transform.LookAt(LookPos);
+        }
+
+        public bool MoveReservation(float movex, float movez)
+        {
+            float px2 = CoordinateTransformation.ToWorldX(newGrid.x);
+            float pz2 = CoordinateTransformation.ToWorldZ(newGrid.z);
+
+            targetPos = new Vector3(px2, 0, pz2);
+            InputPos = new Vector3(movex * gridSize, 0, movez * gridSize);
+            if (InputPos == new Vector3(0, 0, 0)) return false;
+
             targetPos += InputPos;
+            ReservationGrid = MovePointCheck(field, newGrid, targetPos);
+            if (ReservationGrid == newGrid) return false;
+
+            return true;
+        }
+
+        public void MoveReservationStance()
+        {
             transform.LookAt(targetPos);
+            newGrid = ReservationGrid;
+            MoveObjects moveObjects = FindObjectOfType<MoveObjects>();
+            if (moveObjects != null)
+            {
+                complementFrame = GameRule.MoveSpeed;
+                moveObjects.objectsToMove.Add(this);
+            }
         }
 
         public bool MoveStance(float movex, float movez)
