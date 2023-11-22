@@ -294,6 +294,8 @@ namespace EnemySystem
                 moveAction.MoveStance(PosRota.x, PosRota.z);
                 return;
             }
+            bool attack = areamap.IsCharHitCheckBeforeMoving(moveAction.grid, enemy.Range, enemy.ThrowAttack, (int)PosRota.y);
+            if (!attack) return;
             attackAction.EnemyY = (int)PosRota.y;
             AttackObjects attackObjects = FindObjectOfType<AttackObjects>();
             attackObjects.objectsToAttack.Add(attackAction);

@@ -45,25 +45,23 @@ namespace TurnSystem
         {
             while (true) // ゲームループを無限に続ける
             {
-                field.MappingUpdate();
+                StartCoroutine(field.MappingUpdate());
 
-                yield return StartCoroutine(PlayerInputSet());　//プレイヤーの行動入力
+                yield return StartCoroutine(PlayerInputSet()); //プレイヤーの行動入力　１フレーム経過
 
-                yield return StartCoroutine(PA.ActionStart());　//プレイヤーのアクション実施(攻撃、アイテム関連)
+                if(PA.ActionCheck()) yield return StartCoroutine(PA.ActionStart()); //プレイヤーのアクション実施(攻撃、アイテム関連)
 
-                EO.EnemiesActionSets();　//エネミーの行動決定
+                EO.EnemiesActionSets(); //エネミーの行動決定
 
                 yield return StartCoroutine(MO.MoveAllObjects()); //全オブジェクトの同時移動
 
-                field.MappingUpdate();
+                StartCoroutine(field.MappingUpdate());
 
-                yield return StartCoroutine(PEAM.EventCheck()); //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
+                if(PEAM.EventCheck()) yield return StartCoroutine(PEAM.EventStart()); //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
 
-                field.MappingUpdate();
+                if(AO.AttackObjCheck()) yield return StartCoroutine(AO.AttackAllObject()); //エネミーのアクション実施(攻撃、特殊行動)
 
-                yield return StartCoroutine(AO.AttackAllObject());　//エネミーのアクション実施(攻撃、特殊行動)
-
-                if(FadeImage.activeSelf)
+                if (FadeImage.activeSelf)
                 {
                     AreaTurn = 0; DungeonTurn+=AreaTurn;
                     PCondition.ConditionClear();
@@ -73,10 +71,7 @@ namespace TurnSystem
                 }
 
                 //ターン回し(毒ダメージ、空腹値減少、HP回復、状態異常ターン経過、ターン数記憶等)
-                if (PCondition.PoisonTurn != 0) PCondition.PoisonEvent();
-                PH.HungryDecrease();
-                HP.TurnRecoveryHp();
-                PCondition.ConditionTurn();
+                StartCoroutine(TurnProgression());
                 AreaTurn++;
 
                 if (AreaTurn == 500)
@@ -90,17 +85,12 @@ namespace TurnSystem
                     continue;
                 }
 
-                if (AreaTurn % 40 == 0)
-                {
-                    field.PopEnemy();
-                }
+                if(AreaTurn % 40 == 0) field.PopEnemy();
             }
         }
 
         private IEnumerator PlayerInputSet()
-        {
-            bool TurnNext = false;
-            
+        {            
             while (true)
             {
                 if (Time.timeScale != 1f)
@@ -114,19 +104,24 @@ namespace TurnSystem
                     yield return StartCoroutine(PCondition.StunEvent());
                     break;
                 }
-                if (PA.playerUseItemV2 != null) break;
-                if(PA.playerPutItem != null) break;
-                if (PA.playerThrowItem != null) break;
+                if (PA.playerUseItemV2 != null) yield break;
+                if(PA.playerPutItem != null) yield break;
+                if (PA.playerThrowItem != null) yield break;
 
-                TurnNext = PC.PlayerInput();
-
-                if (TurnNext)
-                {
-                    break;
-                }
+                bool TurnNext = PC.PlayerInput();
+                if (TurnNext) yield break;
 
                 yield return null;
             }
+        }
+
+        private IEnumerator TurnProgression()
+        {
+            if (PCondition.PoisonTurn != 0) PCondition.PoisonEvent();
+            PH.HungryDecrease();
+            HP.TurnRecoveryHp();
+            PCondition.ConditionTurn();
+            yield return null;
         }
     }
 }

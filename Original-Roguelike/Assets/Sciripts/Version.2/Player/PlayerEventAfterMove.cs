@@ -11,6 +11,7 @@ namespace PlayerV2
         private Areamap field;
         private MoveAction move;
         private Pos2D oldgrid;
+        private GameObject AreaObj;
 
         private void Start()
         {
@@ -19,20 +20,25 @@ namespace PlayerV2
             oldgrid = move.grid;
         }
 
-        public IEnumerator EventCheck()
+        public bool EventCheck()
         {
+            AreaObj = null;
             if (move.grid != oldgrid)
             {
-                GameObject AreaObj = field.IsCollideReturnAreaObj(move.grid.x, move.grid.z);
-                if (AreaObj == null) yield return null;
-
-                else
-                {
-                    SteppedOnEvent ObjEvent = AreaObj.GetComponent<SteppedOnEvent>();
-                    yield return StartCoroutine(ObjEvent.Event());
-                }
+                AreaObj = field.IsCollideReturnAreaObj(move.grid.x, move.grid.z);
             }
             oldgrid = move.grid;
+
+            return (AreaObj != null);
+        }
+
+        public IEnumerator EventStart()
+        {
+            if (AreaObj != null)
+            {
+                SteppedOnEvent ObjEvent = AreaObj.GetComponent<SteppedOnEvent>();
+                yield return StartCoroutine(ObjEvent.Event());
+            }
         }
     }
 }

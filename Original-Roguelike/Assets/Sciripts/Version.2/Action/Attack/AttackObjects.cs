@@ -11,6 +11,11 @@ namespace AttackSystem
         public DeathObjects deathObjects;
         public List<AttackAction> objectsToAttack = new List<AttackAction>();
 
+        public bool AttackObjCheck()
+        {
+            return objectsToAttack.Count > 0;
+        }
+
         public IEnumerator AttackAllObject()
         {
             foreach (AttackAction AttackEnemy in objectsToAttack)
