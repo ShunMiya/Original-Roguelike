@@ -22,6 +22,7 @@ namespace PlayerV2
 
         public bool EventCheck()
         {
+            AreaObj = null;
             if (move.grid != oldgrid)
             {
                 AreaObj = field.IsCollideReturnAreaObj(move.grid.x, move.grid.z);
