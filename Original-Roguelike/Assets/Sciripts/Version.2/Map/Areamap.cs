@@ -4,6 +4,7 @@ using ItemSystemV2.Inventory;
 using Minimap;
 using MoveSystem;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ namespace Field
         private static float onetile = GameRule.GridSize;
         private static float floorSize = 10.0f / onetile;
 
-        public void MappingUpdate()
+        public IEnumerator MappingUpdate()
         {
             Pos2D p = playerMovement.newGrid;
             ObjectPosition room = GetInRoom(p.x, p.z);
@@ -42,6 +43,8 @@ namespace Field
                 autoMapping.MappingRoads(p.x, p.z);
             }
             autoMapping.ObjMapping();
+
+            yield break;
         }
 
         /**
@@ -497,10 +500,7 @@ namespace Field
                             
                             if (Mathf.Abs(Pos.x) + Mathf.Abs(Pos.z) == 2)
                             {
-                                if (Pos.x != 0 && Pos.z != 0)
-                                {
-                                    if (IsCollidediagonal(xgrid - Pos.x, zgrid) || IsCollidediagonal(xgrid, zgrid - Pos.z)) continue;
-                                }
+                                if (IsCollidediagonal(xgrid - Pos.x, zgrid) || IsCollidediagonal(xgrid, zgrid - Pos.z)) continue;
                             }
                             if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z) return (int)Rota.y;
                         }
@@ -517,6 +517,48 @@ namespace Field
                 }
             }
             return 1;
+        }
+
+        //現在位置から特定方向の攻撃範囲にキャラが移動してくるかどうか判定
+        public bool IsCharHitCheckBeforeMoving(Pos2D CurrentPos, int range, int Throw, int R)
+        {
+            Pos2D Pos = DirUtil.SetAttackPoint(R);
+            int xgrid = CurrentPos.x;
+            int zgrid = CurrentPos.z;
+            
+            switch (Throw)
+            {
+                case 0:
+                    for (int i = 1; i <= range; i++)
+                    {
+                        xgrid += Pos.x;
+                        zgrid += Pos.z;
+                        
+                        if (Mathf.Abs(Pos.x) + Mathf.Abs(Pos.z) == 2)
+                        {
+                            if (IsCollidediagonal(xgrid - Pos.x, zgrid) || IsCollidediagonal(xgrid, zgrid - Pos.z)) continue;
+                        }
+                        if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z) return true;
+                        foreach (var enemyMovement in enemies.GetComponentsInChildren<MoveAction>())
+                        {
+                            if (xgrid == enemyMovement.grid.x && zgrid == enemyMovement.grid.z) return true;
+                        }
+                    }
+                    break;
+                case 1:
+                    for (int i = 1; i <= range; i++)
+                    {
+                        xgrid += Pos.x;
+                        zgrid += Pos.z;
+                        if (xgrid == playerMovement.newGrid.x && zgrid == playerMovement.newGrid.z) return true;
+                        foreach (var enemyMovement in enemies.GetComponentsInChildren<MoveAction>())
+                        {
+                            if (xgrid == enemyMovement.grid.x && zgrid == enemyMovement.grid.z) return true;
+                        }
+                    }
+                    break;
+            }
+            return false;
         }
 
         //全体移動後プレイヤーに本当に攻撃が当たるか確認処理。当たらないなら攻撃しない

@@ -14,6 +14,11 @@ namespace PlayerV2
         public PlayerThrowItem playerThrowItem;
         public DeathObjects deathObjects;
 
+        public bool ActionCheck()
+        {
+            return PlayerToAttack != null || playerUseItemV2 != null || playerPutItem != null || playerThrowItem != null;
+        }
+
         public IEnumerator ActionStart()
         {
             if (PlayerToAttack != null)
