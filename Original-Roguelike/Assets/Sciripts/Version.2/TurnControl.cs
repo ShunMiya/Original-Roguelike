@@ -47,21 +47,14 @@ namespace TurnSystem
             {
                 StartCoroutine(field.MappingUpdate());
 
-                //Debug.Log("入力待機：" + Time.frameCount);
-
                 yield return StartCoroutine(PlayerInputSet()); //プレイヤーの行動入力　１フレーム経過
-
-                //Debug.Log("入力完了したからアクションに移る："+ Time.frameCount);
 
                 if(PA.ActionCheck()) yield return StartCoroutine(PA.ActionStart()); //プレイヤーのアクション実施(攻撃、アイテム関連)
 
                 EO.EnemiesActionSets(); //エネミーの行動決定
 
-                Debug.Log("移動開始！：" + Time.frameCount);
-
                 yield return StartCoroutine(MO.MoveAllObjects()); //全オブジェクトの同時移動
 
-                Debug.Log("移動完了！：" + Time.frameCount);
                 StartCoroutine(field.MappingUpdate());
 
                 if(PEAM.EventCheck()) yield return StartCoroutine(PEAM.EventStart()); //移動先での各種処理(アイテムゲット、罠発動、階層移動選択)
