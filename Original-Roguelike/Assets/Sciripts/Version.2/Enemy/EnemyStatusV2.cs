@@ -1,15 +1,17 @@
 using DeathSystem;
 using MoveSystem;
-using Presentation;
 using UISystemV2;
 using UnityEngine;
+using Performances;
 
 namespace EnemySystem
 {
     public class EnemyStatusV2 : MonoBehaviour
     {
         private SystemTextV2 systemText;
-        private DamagePresentation damagePresen;
+        private Performance performance;
+        private PlaySoundEffects playSoundEffects;
+        private AudioSource audioSource;
 
         public float currentHP;
         public int EnemyID;
@@ -18,14 +20,15 @@ namespace EnemySystem
 
         private void Start()
         {
-            damagePresen = FindObjectOfType<DamagePresentation>();
+            performance = FindObjectOfType<Performance>();
             systemText = FindObjectOfType<SystemTextV2>();
             EnemyDataV2 enemy = EnemyDataCacheV2.GetEnemyData(EnemyID);
             name = enemy.EnemyName;
             currentHP = enemy.MaxHP;
             Defense = enemy.Defense;
             Exp = enemy.EnemyExp;
-
+            playSoundEffects = FindObjectOfType<PlaySoundEffects>();
+            audioSource = GetComponent<AudioSource>();
         }
         public void TakeDamage(float damage,int R, float HitRate, GameObject attacker, int AttackType)
         {
@@ -33,7 +36,7 @@ namespace EnemySystem
             int HitCheck = Random.Range(1,101);
             if(HitCheck > HitRate)
             {
-                systemText.TextSet("NoHit!");
+                playSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -42,7 +45,7 @@ namespace EnemySystem
             int EvasionCheck = Random.Range(1, 101);
             if (EvasionCheck < GameRule.EvasionRate)
             {
-                systemText.TextSet("NoHit!");
+                playSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -65,7 +68,8 @@ namespace EnemySystem
             }
 
             Pos2D grid = GetComponent<MoveAction>().grid;
-            StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
+            AudioSource AS = GetComponent<AudioSource>();
+            StartCoroutine(performance.DamagePerformance(AttackType, grid.x, grid.z, AS));
 
 
             if (attacker.CompareTag("Player"))
@@ -82,7 +86,7 @@ namespace EnemySystem
             int HitCheck = Random.Range(1, 101);
             if (HitCheck > HitRate)
             {
-                systemText.TextSet("NoHit!");
+                playSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -91,7 +95,7 @@ namespace EnemySystem
             int EvasionCheck = Random.Range(1, 101);
             if (EvasionCheck < GameRule.EvasionRate)
             {
-                systemText.TextSet("NoHit!");
+                playSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -105,7 +109,8 @@ namespace EnemySystem
             }
 
             Pos2D grid = GetComponent<MoveAction>().grid;
-            StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
+            AudioSource AS = GetComponent<AudioSource>();
+            StartCoroutine(performance.DamagePerformance(AttackType, grid.x, grid.z, AS));
 
             if (currentHP <= 0) GetComponent<DeathAction>().DeathSet(attacker, Exp);
         }
