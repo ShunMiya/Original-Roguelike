@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Presentation
+namespace Performances
 {
-    public class PresentationDestroy : MonoBehaviour
+    public class ParticleDestroy : MonoBehaviour
     {
         private new ParticleSystem particleSystem;
 
