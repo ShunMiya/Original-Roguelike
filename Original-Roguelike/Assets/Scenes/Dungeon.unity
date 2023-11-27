@@ -10219,6 +10219,7 @@ GameObject:
   - component: {fileID: 555931375}
   - component: {fileID: 555931378}
   - component: {fileID: 555931377}
+  - component: {fileID: 555931379}
   m_Layer: 0
   m_Name: Performance
   m_TagString: Untagged
@@ -10304,6 +10305,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageEffects: {fileID: 555931375}
   playeSoundEffects: {fileID: 555931377}
+--- !u!114 &555931379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555931372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f494484a348130f47ae17cc3346c0b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGM: {fileID: 479720360}
+  TutorialDungeonBGM: {fileID: 8300000, guid: f4065abcb4dbbf347aa8d5cde94f85af, type: 3}
+  ForestBGM: {fileID: 8300000, guid: 4ca65ae1b48d87c44a7360ce0e2e1400, type: 3}
+  MountainBGM: {fileID: 0}
 --- !u!1 &562725429
 GameObject:
   m_ObjectHideFlags: 0
