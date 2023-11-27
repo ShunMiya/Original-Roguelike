@@ -15,8 +15,11 @@ namespace Performances
         [SerializeField] private AudioClip AttackMiss;
         [SerializeField] private AudioClip UseComsumableItem;
 
+        [SerializeField] private float AttackVolume;
+        [SerializeField] private float HitVolume;
         public IEnumerator AttackSE(int AttackType, AudioSource AS)
         {
+            AS.volume = AttackVolume;
             switch (AttackType)
             {
                 case 0:
@@ -38,6 +41,8 @@ namespace Performances
 
         public void DamageSE(int AttackType, AudioSource AS)
         {
+            AS.volume = HitVolume;
+
             switch (AttackType)
             {
                 case 0:

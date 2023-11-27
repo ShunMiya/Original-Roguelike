@@ -10291,6 +10291,8 @@ MonoBehaviour:
   ThrowAciton: {fileID: 8300000, guid: a19d6ed85393d874aaedf85b8a18ecbe, type: 3}
   AttackMiss: {fileID: 8300000, guid: 1bfd7172275722a44bca8a7910dc82a3, type: 3}
   UseComsumableItem: {fileID: 8300000, guid: 1a6ff52d3b448f94f8c4bd68c544fd03, type: 3}
+  AttackVolume: 0.5
+  HitVolume: 0.5
 --- !u!114 &555931378
 MonoBehaviour:
   m_ObjectHideFlags: 0
