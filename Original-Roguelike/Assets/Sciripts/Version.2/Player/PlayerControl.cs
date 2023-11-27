@@ -119,7 +119,7 @@ namespace PlayerV2
                     movex = PosRota.x; movez = PosRota.z;
                 }
 
-                //TurnNext = moveAction.MoveReservation(movex, movez);
+                TurnNext = moveAction.MoveReservation(movex, movez);
                 oldx = movex;
                 oldz = movez;
             }
@@ -162,8 +162,9 @@ namespace PlayerV2
                     DirectionSprite.SetActive(false);
 
                     if (!TurnNext) moveAction.ChangeDirectionOnTheSpot(movex, movez);
-                    //else  moveAction.MoveReservationStance();
+                    else  moveAction.MoveReservationStance();
                     return TurnNext;
+
                 default:
                     DirectionSprite.SetActive(false);
                     return false;
