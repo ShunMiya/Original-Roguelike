@@ -8101,6 +8101,7 @@ GameObject:
   - component: {fileID: 436213504}
   - component: {fileID: 436213503}
   - component: {fileID: 436213508}
+  - component: {fileID: 436213524}
   - component: {fileID: 436213507}
   - component: {fileID: 436213516}
   - component: {fileID: 436213509}
@@ -8226,6 +8227,9 @@ MonoBehaviour:
   newGrid:
     x: 0
     z: 0
+  ReservationGrid:
+    x: 0
+    z: 0
 --- !u!114 &436213508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8233,7 +8237,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 436213502}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c65a1ba4df7366e42b888494fb411e2d, type: 3}
   m_Name: 
@@ -8442,6 +8446,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09985f444a9fd5d4cbee5d0bcac712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &436213524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cefb8c45dbeab374b81f4d32c7e2118f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAction: {fileID: 436213507}
+  attackAction: {fileID: 436213509}
+  PCondition: {fileID: 436213521}
+  pauseSystem: {fileID: 1526274411}
+  DirectionSprite: {fileID: 291062344}
+  TurnNext: 0
+  Action: 
 --- !u!1 &441075518
 GameObject:
   m_ObjectHideFlags: 0
@@ -8538,7 +8561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb4fdc9f843c062429888862a38090fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PC: {fileID: 436213508}
+  PC: {fileID: 436213524}
   MO: {fileID: 441075523}
   EO: {fileID: 1377348069}
   AO: {fileID: 441075524}

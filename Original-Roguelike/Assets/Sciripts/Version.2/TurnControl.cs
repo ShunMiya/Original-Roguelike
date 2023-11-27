@@ -15,7 +15,7 @@ namespace TurnSystem
     {
         private int DungeonTurn = 0;
         private int AreaTurn = 0;
-        [SerializeField] private PlayerControlV2 PC;
+        [SerializeField] private PlayerControl PC;
         [SerializeField] private MoveObjects MO;
         [SerializeField] private EnemyObjects EO;
         [SerializeField] private AttackObjects AO;
