@@ -11,7 +11,7 @@ namespace PlayerStatusSystemV2
     public class PlayerHPV2 : MonoBehaviour
     {
         [SerializeField]private Performance performance;
-        private PlaySoundEffects playSoundEffects;
+        private ActionSoundEffects actionSoundEffects;
         private AudioSource audioSource;
 
         private SqliteDatabase sqlDB;
@@ -25,7 +25,7 @@ namespace PlayerStatusSystemV2
             systemText = FindObjectOfType<SystemTextV2>();
             gameEnd = FindObjectOfType<GameEndV2>();
             PCondition = GetComponent<PlayerCondition>();
-            playSoundEffects = FindObjectOfType<PlaySoundEffects>();
+            actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
             audioSource = GetComponent<AudioSource>();
         }
         public void TakeDamage(int damage, int R, float HitRate, int AttackType)
@@ -34,7 +34,7 @@ namespace PlayerStatusSystemV2
             int HitCheck = UnityEngine.Random.Range(1, 101);
             if(HitCheck > HitRate)
             {
-                playSoundEffects.DamageSE(3, audioSource);
+                actionSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -53,7 +53,7 @@ namespace PlayerStatusSystemV2
             int EvasionCheck = UnityEngine.Random.Range(1, 101);
             if (EvasionCheck < GameRule.EvasionRate)
             {
-                playSoundEffects.DamageSE(3, audioSource);
+                actionSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion

@@ -14,7 +14,7 @@ namespace AttackSystem
     public class AttackAction : MonoBehaviour
     {
         private MoveAction MA;
-        private PlaySoundEffects playSoundEffects;
+        private ActionSoundEffects actionSoundEffects;
         private AudioSource audioSource;
         private SqliteDatabase sqlDB;
         private Vector3 originalPosition;
@@ -27,7 +27,7 @@ namespace AttackSystem
         private void Start()
         {
             MA = GetComponent<MoveAction>();
-            playSoundEffects = FindObjectOfType<PlaySoundEffects>();
+            actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
             audioSource = GetComponent<AudioSource>();
         }
 
@@ -52,7 +52,7 @@ namespace AttackSystem
                 PCondition.BlindEvent();
                 CurrentHitRate -= 50;
             }
-            yield return StartCoroutine(playSoundEffects.AttackSE(AttackType, audioSource));
+            yield return StartCoroutine(actionSoundEffects.AttackSE(AttackType, audioSource));
 
             yield return StartCoroutine(AttackObjectCoroutine(attack, range, CurrentHitRate, AttackType));
         }
@@ -73,12 +73,12 @@ namespace AttackSystem
             switch(enemy.ThrowAttack)
             {
                 case 1:
-                    yield return StartCoroutine(playSoundEffects.AttackSE(enemy.AttackType, audioSource));
+                    yield return StartCoroutine(actionSoundEffects.AttackSE(3, audioSource));
 
                     yield return StartCoroutine(GetComponent<EnemyThrowAttack>().ThrowAttack(enemy));
                     break;
                 default:
-                    yield return StartCoroutine(playSoundEffects.AttackSE(enemy.AttackType, audioSource));
+                    yield return StartCoroutine(actionSoundEffects.AttackSE(enemy.AttackType, audioSource));
 
                     yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range, CurrentHitRate, enemy.AttackType));
                     break;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Performances
 {
-    public class PlaySoundEffects : MonoBehaviour
+    public class ActionSoundEffects : MonoBehaviour
     {
         [SerializeField] private AudioClip BlowAttack;
         [SerializeField] private AudioClip BlowHit;

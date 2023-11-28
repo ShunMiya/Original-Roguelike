@@ -10,7 +10,7 @@ namespace EnemySystem
     {
         private SystemTextV2 systemText;
         private Performance performance;
-        private PlaySoundEffects playSoundEffects;
+        private ActionSoundEffects actionSoundEffects;
         private AudioSource audioSource;
 
         public float currentHP;
@@ -27,7 +27,7 @@ namespace EnemySystem
             currentHP = enemy.MaxHP;
             Defense = enemy.Defense;
             Exp = enemy.EnemyExp;
-            playSoundEffects = FindObjectOfType<PlaySoundEffects>();
+            actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
             audioSource = GetComponent<AudioSource>();
         }
         public void TakeDamage(float damage,int R, float HitRate, GameObject attacker, int AttackType)
@@ -36,7 +36,7 @@ namespace EnemySystem
             int HitCheck = Random.Range(1,101);
             if(HitCheck > HitRate)
             {
-                playSoundEffects.DamageSE(3, audioSource);
+                actionSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -45,7 +45,7 @@ namespace EnemySystem
             int EvasionCheck = Random.Range(1, 101);
             if (EvasionCheck < GameRule.EvasionRate)
             {
-                playSoundEffects.DamageSE(3, audioSource);
+                actionSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -86,7 +86,7 @@ namespace EnemySystem
             int HitCheck = Random.Range(1, 101);
             if (HitCheck > HitRate)
             {
-                playSoundEffects.DamageSE(3, audioSource);
+                actionSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -95,7 +95,7 @@ namespace EnemySystem
             int EvasionCheck = Random.Range(1, 101);
             if (EvasionCheck < GameRule.EvasionRate)
             {
-                playSoundEffects.DamageSE(3, audioSource);
+                actionSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion

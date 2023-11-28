@@ -10306,7 +10306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageEffects: {fileID: 555931375}
-  playeSoundEffects: {fileID: 555931377}
+  actionSoundEffects: {fileID: 555931377}
 --- !u!114 &555931379
 MonoBehaviour:
   m_ObjectHideFlags: 0
