@@ -1,5 +1,6 @@
 using Fade;
 using ItemSystemV2.Inventory;
+using Performances;
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,8 @@ namespace GameEndSystemV2
         private SqliteDatabase sqlDB;
         [SerializeField]private FadeSystem fadeSystem;
 
+        [SerializeField] private FieldSoundEffect fieldSoundEffect;
+
         public void GameOverPerformance()
         {
             GameOverUI.SetActive(true);
@@ -23,6 +26,7 @@ namespace GameEndSystemV2
 
         public void GameClearPerformance()
         {
+            Time.timeScale = 0f;
             GameClearUI.SetActive(true);
 
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
@@ -51,6 +55,8 @@ namespace GameEndSystemV2
             query = "SELECT TopFloor FROM DungeonChallengeStatus WHERE DungeonId = '" + dungeonId + "';";
             DataTable DungeonDB = sqlDB.ExecuteQuery(query);
             int topFloor = Convert.ToInt32(DungeonDB[0]["TopFloor"]);
+
+            fieldSoundEffect.GimmickSE(0);
             if (floorLevel > topFloor)
             {
                 StartCoroutine(fadeSystem.GameClearFade());

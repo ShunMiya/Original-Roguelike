@@ -932,6 +932,7 @@ MonoBehaviour:
   GameOverUI: {fileID: 1469801075}
   GameClearUI: {fileID: 1625498292}
   fadeSystem: {fileID: 910648573}
+  fieldSoundEffect: {fileID: 555931380}
 --- !u!1 &144706582
 GameObject:
   m_ObjectHideFlags: 0
@@ -10343,6 +10344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6055176fb29dd43a153d8333348584, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AS: {fileID: 436213525}
   Warp: {fileID: 8300000, guid: d10268f436594904197584c817511016, type: 3}
   FallingRock: {fileID: 8300000, guid: 6a6fff76516336b4c95cf018172bcc29, type: 3}
   Hungry: {fileID: 8300000, guid: 5a6815af55da07c4ca8178a78361333d, type: 3}
