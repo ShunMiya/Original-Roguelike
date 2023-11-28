@@ -23,8 +23,7 @@ namespace Performances
             switch (SEType)
             {
                 case 0:
-                    if (AS.isPlaying) break;
-                    AS.PlayOneShot(Selection);
+                    if (!AS.isPlaying)  AS.PlayOneShot(Selection);
                     break;
                 case 1:
                     AS.PlayOneShot(Confirm);
