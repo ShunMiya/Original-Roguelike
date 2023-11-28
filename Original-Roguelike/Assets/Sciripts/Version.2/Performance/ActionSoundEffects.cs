@@ -67,9 +67,11 @@ namespace Performances
             switch (SEType)
             {
                 case 0:
+                    AS.volume = 0.3f;
                     AS.PlayOneShot(EnemyDeath);
                     break;
                 case 1:
+                    AS.volume = 1f;
                     AS.PlayOneShot(LevelUp);
                     break;
             }
