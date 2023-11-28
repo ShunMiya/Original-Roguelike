@@ -5,6 +5,8 @@ using TMPro;
 using System;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using Performances;
+using UnityEditor;
 
 namespace UISystemV2
 {
@@ -18,13 +20,14 @@ namespace UISystemV2
         private Transform itemArea;
         private Transform scrollView;
         public Transform EquipArea;
-
+        private MenuSoundEffect menuSE;
 
         void Start()
         {
             menuArea = transform.parent.parent.parent.parent.Find("MenuArea");
             itemArea = transform.parent.parent.Find("Content");
             scrollView = transform.parent.parent.parent.parent.Find("ScrollView");
+            menuSE = FindObjectOfType<MenuSoundEffect>();
         }
 
         public void OnSelected()
@@ -41,6 +44,8 @@ namespace UISystemV2
             informationText.text = textFromDatabase;
             RectTransform buttonRect = GetComponent<RectTransform>();
             scrollView.GetComponent<ScrollViewController>().ScrollToItem(buttonRect);
+
+            menuSE.MenuOperationSE(0);
         }
         public void OnDeselected()
         {
@@ -49,6 +54,8 @@ namespace UISystemV2
 
         public void Use()
         {
+            menuSE.MenuOperationSE(1);
+
             subMenu.gameObject.SetActive(true);
             subMenu.row = row;
             subMenu.informationText = informationText;
@@ -79,6 +86,8 @@ namespace UISystemV2
 
         public void SelectReturnButton()
         {
+            menuSE.MenuOperationSE(2);
+
             EventSystem.current.SetSelectedGameObject(returnButton);
         }
     }

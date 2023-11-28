@@ -1,3 +1,4 @@
+using Performances;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,8 +16,11 @@ namespace UISystemV2
 
         [SerializeField] private SystemTextV2 systemText;
 
+        [SerializeField] private MenuSoundEffect menuSoundEffect;
+
         public void PauseSwitching()
         {
+            menuSoundEffect.MenuOperationSE(9);
             subMenu.SetActive(false);
             pauseUI.SetActive(true);
             systemText.NonActive();

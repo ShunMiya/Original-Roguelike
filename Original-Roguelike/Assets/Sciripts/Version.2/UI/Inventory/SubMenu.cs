@@ -1,6 +1,8 @@
 using ItemSystemV2;
+using Performances;
 using System;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -20,13 +22,14 @@ namespace UISystemV2
         public Transform ButtonArea;
         public Transform EquipArea;
         [SerializeField]private GameObject backgroundObject;
+        private MenuSoundEffect menuSE;
 
-
-        private void Start()
+        private void Awake()
         {
             playerUseItemV2 = FindObjectOfType<PlayerUseItemV2>();
             playerPutItem = FindObjectOfType<PlayerPutItem>();
             playerThrowItem = FindObjectOfType<PlayerThrowItem>();
+            menuSE = FindObjectOfType<MenuSoundEffect>();
         }
 
         public void OnSelected()
@@ -51,6 +54,7 @@ namespace UISystemV2
                     break;
             }
             informationText.text = itemData.Description;
+            menuSE.MenuOperationSE(0);
         }
 
         public void UseItem()
@@ -107,6 +111,8 @@ namespace UISystemV2
 
         public void CancelUse()
         {
+            menuSE.MenuOperationSE(2);
+
             ButtonArea.GetComponent<CanvasGroup>().interactable = true;
             MenuArea.GetComponent<CanvasGroup>().interactable = true;
             if (EquipArea != null)
