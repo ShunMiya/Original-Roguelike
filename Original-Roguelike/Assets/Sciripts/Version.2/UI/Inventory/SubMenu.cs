@@ -1,6 +1,7 @@
 using ItemSystemV2;
 using Performances;
 using System;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
@@ -53,7 +54,9 @@ namespace UISystemV2
                     UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Žg‚¤");
                     break;
             }
-            informationText.text = itemData.Description;
+            string textFromDatabase = Regex.Unescape(itemData.Description);
+
+            informationText.text = textFromDatabase;
             menuSE.MenuOperationSE(0);
         }
 
