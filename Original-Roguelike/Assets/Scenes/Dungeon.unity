@@ -10313,6 +10313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9f80213e34262499cc9c5f51a6dc20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerAS: {fileID: 436213525}
   damageEffects: {fileID: 555931375}
   actionSoundEffects: {fileID: 555931377}
   fieldSoundEffects: {fileID: 555931380}
@@ -10353,6 +10354,7 @@ MonoBehaviour:
   Stun: {fileID: 8300000, guid: d92ca9c04851be24a8ce9e2a3ce5d0ab, type: 3}
   Blind: {fileID: 8300000, guid: a637a94c502b8954db6a69e2f56c298d, type: 3}
   GimmickVolume: 0.5
+  SESpeed: 1.5
 --- !u!114 &555931381
 MonoBehaviour:
   m_ObjectHideFlags: 0

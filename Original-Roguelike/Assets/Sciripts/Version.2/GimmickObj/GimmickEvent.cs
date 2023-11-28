@@ -1,4 +1,5 @@
 using ItemSystemV2.Inventory;
+using Performances;
 using PlayerStatusSystemV2;
 using System;
 using System.Collections;
@@ -12,11 +13,14 @@ namespace Field
         private SystemTextV2 systemText;
         private SqliteDatabase sqlDB;
         private PlayerCondition playerCondition;
+        private Performance performance;
+        [SerializeField] private ObjectPosition objectPosition;
 
         private void Start()
         {
             systemText = FindObjectOfType<SystemTextV2>();
             playerCondition = FindObjectOfType<PlayerCondition>();
+            performance = FindObjectOfType<Performance>();
         }
 
         public IEnumerator Event(int num)
@@ -37,7 +41,7 @@ namespace Field
             }
 
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
-
+            Pos2D grid = objectPosition.grid;
 
             switch (num)
             {
@@ -48,6 +52,8 @@ namespace Field
                         systemText.TextSet("しかし何も起きなかった");
                         break;
                     }
+                    yield return StartCoroutine(performance.GimmickPerformance(1, grid.x, grid.z));
+
                     string query = "SELECT CurrentHP FROM PlayerStatus WHERE PlayerID = 1;";
                     DataTable Data = sqlDB.ExecuteQuery(query);
                     int CurrentHP = Convert.ToInt32(Data[0]["CurrentHP"]);
@@ -63,6 +69,8 @@ namespace Field
                         systemText.TextSet("しかし何も起きなかった");
                         break;
                     }
+                    yield return StartCoroutine(performance.GimmickPerformance(2, grid.x, grid.z));
+
                     query = "SELECT CurrentHungry FROM PlayerStatus WHERE PlayerID = 1;";
                     Data = sqlDB.ExecuteQuery(query);
                     int CurrentHungry = Convert.ToInt32(Data[0]["CurrentHungry"]);
@@ -80,6 +88,8 @@ namespace Field
                         systemText.TextSet("しかし何も起きなかった");
                         break;
                     }
+                    yield return StartCoroutine(performance.GimmickPerformance(3, grid.x, grid.z));
+
                     systemText.TextSet("<color=blue>Player</color>は毒状態になった");
                     playerCondition.SetCondition(1, 5);
                     break;
@@ -90,6 +100,8 @@ namespace Field
                         systemText.TextSet("しかし何も起きなかった");
                         break;
                     }
+                    yield return StartCoroutine(performance.GimmickPerformance(4, grid.x, grid.z));
+
                     systemText.TextSet("<color=blue>Player</color>は混乱状態になった");
                     playerCondition.SetCondition(2, 5);
                     break;
@@ -100,6 +112,8 @@ namespace Field
                         systemText.TextSet("しかし何も起きなかった");
                         break;
                     }
+                    yield return StartCoroutine(performance.GimmickPerformance(5, grid.x, grid.z));
+
                     systemText.TextSet("<color=blue>Player</color>は気絶状態になった");
                     playerCondition.SetCondition(3, 3);
                     break;
@@ -110,6 +124,8 @@ namespace Field
                         systemText.TextSet("しかし何も起きなかった");
                         break;
                     }
+                    yield return StartCoroutine(performance.GimmickPerformance(6, grid.x, grid.z));
+
                     systemText.TextSet("<color=blue>Player</color>は盲目状態になった");
                     playerCondition.SetCondition(4, 10);
                     break;
@@ -117,8 +133,6 @@ namespace Field
                 default:
                     break;
             }
-
-            yield return new WaitForSeconds(0.5f);
         }
     }
 }

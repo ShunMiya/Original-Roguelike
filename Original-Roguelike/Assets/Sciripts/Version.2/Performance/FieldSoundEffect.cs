@@ -17,14 +17,17 @@ namespace Performances
         [SerializeField] private AudioClip Blind;
 
         [SerializeField] private float GimmickVolume;
+        [SerializeField] private float SESpeed;
 
         public void GimmickSE(int SEType)
         {
             AS.volume = GimmickVolume;
+            AS.pitch = SESpeed;
 
             switch (SEType)
             {
                 case 0:
+                    AS.pitch = 1f;
                     AS.PlayOneShot(Warp);
                     break;
                 case 1:
