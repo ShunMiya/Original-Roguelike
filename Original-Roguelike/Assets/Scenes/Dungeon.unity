@@ -10353,6 +10353,7 @@ MonoBehaviour:
   Confu: {fileID: 8300000, guid: ae210d755bae06041aed6c2942af9112, type: 3}
   Stun: {fileID: 8300000, guid: d92ca9c04851be24a8ce9e2a3ce5d0ab, type: 3}
   Blind: {fileID: 8300000, guid: a637a94c502b8954db6a69e2f56c298d, type: 3}
+  Item: {fileID: 8300000, guid: 8d258d1a1e9d3eb4dbaf67fc45355dc1, type: 3}
   GimmickVolume: 0.5
   SESpeed: 1.5
 --- !u!114 &555931381

@@ -15,6 +15,7 @@ namespace Performances
         [SerializeField] private AudioClip Confu;
         [SerializeField] private AudioClip Stun;
         [SerializeField] private AudioClip Blind;
+        [SerializeField] private AudioClip Item;
 
         [SerializeField] private float GimmickVolume;
         [SerializeField] private float SESpeed;
@@ -48,6 +49,11 @@ namespace Performances
                 case 6:
                     AS.PlayOneShot(Blind);
                     break;
+                case 7:
+                    AS.pitch = 1f;
+                    AS.PlayOneShot(Item);
+                    break;
+
             }
         }
     }

@@ -1,5 +1,6 @@
 using ItemSystemV2.Inventory;
 using MoveSystem;
+using Performances;
 using PlayerV2;
 using System;
 using System.Collections;
@@ -13,6 +14,7 @@ namespace ItemSystemV2
         private SQLInventoryRemoveV2 inventoryremove;
         private ItemFactoryV2 itemfactory;
         private MoveAction move;
+        private FieldSoundEffect fieldSoundEffect;
 
         private DataRow row;
 
@@ -21,6 +23,7 @@ namespace ItemSystemV2
             inventoryremove = GetComponent<SQLInventoryRemoveV2>();
             move = GetComponent<MoveAction>();
             itemfactory = FindObjectOfType<ItemFactoryV2>();
+            fieldSoundEffect = FindObjectOfType<FieldSoundEffect>();
         }
 
         public void SetData(DataRow date)
@@ -32,6 +35,8 @@ namespace ItemSystemV2
 
         public IEnumerator PutItem()
         {
+            fieldSoundEffect.GimmickSE(7);
+
             itemfactory.SpecifiedItemCreate(move.grid, Convert.ToInt32(row["Id"]), Convert.ToInt32(row["Num"]));
 
             inventoryremove.RemoveItem(row, 1);
