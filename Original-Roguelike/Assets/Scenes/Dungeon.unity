@@ -10364,7 +10364,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AS: {fileID: 436213525}
-  OpenMenu: {fileID: 8300000, guid: 77c2537b0c3ee1d448cbf2ef8e3ac53c, type: 3}
+  OpenMenu: {fileID: 8300000, guid: 5d737a79235984f49ae936e26ad860d0, type: 3}
   ComsumableItem: {fileID: 8300000, guid: 1a6ff52d3b448f94f8c4bd68c544fd03, type: 3}
   EquipItem: {fileID: 8300000, guid: 8d258d1a1e9d3eb4dbaf67fc45355dc1, type: 3}
   Confirm: {fileID: 8300000, guid: b3288fa79a63d5044a5615b0c5a0506d, type: 3}
