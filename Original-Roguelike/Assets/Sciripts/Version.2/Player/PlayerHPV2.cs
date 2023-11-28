@@ -1,16 +1,18 @@
 using GameEndSystemV2;
 using ItemSystemV2.Inventory;
 using MoveSystem;
-using Presentation;
 using System;
 using UISystemV2;
 using UnityEngine;
+using Performances;
 
 namespace PlayerStatusSystemV2
 {
     public class PlayerHPV2 : MonoBehaviour
     {
-        [SerializeField]private DamagePresentation damagePresen;
+        [SerializeField]private Performance performance;
+        private ActionSoundEffects actionSoundEffects;
+        private AudioSource audioSource;
 
         private SqliteDatabase sqlDB;
         private SystemTextV2 systemText;
@@ -23,6 +25,8 @@ namespace PlayerStatusSystemV2
             systemText = FindObjectOfType<SystemTextV2>();
             gameEnd = FindObjectOfType<GameEndV2>();
             PCondition = GetComponent<PlayerCondition>();
+            actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
+            audioSource = GetComponent<AudioSource>();
         }
         public void TakeDamage(int damage, int R, float HitRate, int AttackType)
         {
@@ -30,7 +34,7 @@ namespace PlayerStatusSystemV2
             int HitCheck = UnityEngine.Random.Range(1, 101);
             if(HitCheck > HitRate)
             {
-                systemText.TextSet("NoHit!");
+                actionSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -49,7 +53,7 @@ namespace PlayerStatusSystemV2
             int EvasionCheck = UnityEngine.Random.Range(1, 101);
             if (EvasionCheck < GameRule.EvasionRate)
             {
-                systemText.TextSet("NoHit!");
+                actionSoundEffects.DamageSE(3, audioSource);
                 return;
             }
             #endregion
@@ -84,7 +88,8 @@ namespace PlayerStatusSystemV2
                 }
 
                 Pos2D grid = GetComponent<MoveAction>().grid;
-                StartCoroutine(damagePresen.DamagePresen(AttackType, grid.x, grid.z));
+                AudioSource AS = GetComponent<AudioSource>();
+                StartCoroutine(performance.DamagePerformance(AttackType, grid.x, grid.z, AS));
             }
         }
 

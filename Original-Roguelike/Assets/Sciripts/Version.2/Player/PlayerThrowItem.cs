@@ -1,6 +1,7 @@
 using Field;
 using ItemSystemV2.Inventory;
 using MoveSystem;
+using Performances;
 using PlayerV2;
 using System;
 using System.Collections;
@@ -15,6 +16,9 @@ namespace ItemSystemV2
         private MoveAction move;
         private Areamap field;
 
+        private ActionSoundEffects actionSoundEffects;
+        private AudioSource audioSource;
+
         private DataRow row;
 
         private void Start()
@@ -23,6 +27,9 @@ namespace ItemSystemV2
             move = GetComponent<MoveAction>();
             itemfactory = FindObjectOfType<ItemFactoryV2>();
             field = FindObjectOfType<Areamap>();
+            actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
+            audioSource = GetComponent<AudioSource>();
+
         }
 
         public void SetData(DataRow date)
@@ -40,6 +47,8 @@ namespace ItemSystemV2
 
             int R = (int)transform.rotation.eulerAngles.y;
             if (R > 180) R -= 360;
+
+            yield return StartCoroutine(actionSoundEffects.AttackSE(3, audioSource));
             yield return StartCoroutine(ItemObj.GetComponent<MoveThrownItem>().Throw(R, AreaObj));
 
             inventoryremove.RemoveItem(row, 1);
@@ -64,6 +73,8 @@ namespace ItemSystemV2
 
             int R = (int)transform.rotation.eulerAngles.y;
             if (R > 180) R -= 360;
+
+            yield return StartCoroutine(actionSoundEffects.AttackSE(3, audioSource));
             yield return StartCoroutine(Obj.GetComponent<MoveThrownItem>().ThrowAttackObj(R, itemData.Range));
         }
     }

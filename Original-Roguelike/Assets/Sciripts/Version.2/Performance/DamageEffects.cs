@@ -2,15 +2,15 @@ using Field;
 using System.Collections;
 using UnityEngine;
 
-namespace Presentation
+namespace Performances
 {
-    public class DamagePresentation : MonoBehaviour
+    public class DamageEffects : MonoBehaviour
     {
         [SerializeField] private GameObject BlowEffectObj;
         [SerializeField]private GameObject SlashEffectObj;
         [SerializeField]private GameObject ThrustEffectObj;
 
-        public IEnumerator DamagePresen(int AttackType, int gridx, int gridz)
+        public void DamageEffect(int AttackType, int gridx, int gridz)
         {
 
             switch(AttackType)
@@ -30,8 +30,6 @@ namespace Presentation
                     effect.GetComponent<PresentationPosition>().SetPosition(gridx, gridz);
                     effect.GetComponent<ParticleSystem>().Play(); break;
             }
-
-            yield return new WaitForEndOfFrame();
         }
     }
 }

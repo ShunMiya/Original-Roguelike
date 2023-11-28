@@ -1,4 +1,5 @@
 using ItemSystemV2.Inventory;
+using Performances;
 using System;
 using UISystemV2;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace PlayerStatusSystemV2
         private SqliteDatabase sqlDB;
         private PlayerLevelData playerlevelData;
         [SerializeField] private GameObject levelupText;
+        private ActionSoundEffects actionSoundEffects;
 
         private int playerLevel;
 
@@ -19,6 +21,7 @@ namespace PlayerStatusSystemV2
         {
             playerStatus = GetComponent<PlayerStatusV2>();
             systemText = FindObjectOfType<SystemTextV2>();
+            actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
 
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
@@ -48,7 +51,10 @@ namespace PlayerStatusSystemV2
 
         public void PlayerLevelUp(int PlayerExp)
         {
+            AudioSource AS = GetComponent<AudioSource>();
+
             levelupText.SetActive(true);
+            actionSoundEffects.EndBattleSE(1, AS);
 
             while (PlayerExp >= playerlevelData.NextLevelExp)
             {

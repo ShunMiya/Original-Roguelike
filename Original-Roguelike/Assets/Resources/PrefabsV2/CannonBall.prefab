@@ -118,6 +118,9 @@ MonoBehaviour:
   newGrid:
     x: 3
     z: 13
+  ReservationGrid:
+    x: 0
+    z: 0
 --- !u!114 &-8578455259992773165
 MonoBehaviour:
   m_ObjectHideFlags: 0

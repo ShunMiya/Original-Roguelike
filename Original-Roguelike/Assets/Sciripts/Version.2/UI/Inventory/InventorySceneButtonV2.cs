@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using Performances;
 
 namespace UISystemV2
 {
@@ -11,11 +12,13 @@ namespace UISystemV2
         private GameObject returnButton;
         [SerializeField] private GameObject InventoryUI;
         private GameObject backgroundObject;
+        [SerializeField] private MenuSoundEffect menuSE;
 
-        void Start()
+        void Awake()
         {
             returnButton = transform.parent.Find("BackGameButton").gameObject;
             backgroundObject = InventoryUI.transform.Find("BackGround").gameObject;
+            menuSE = FindObjectOfType<MenuSoundEffect>();
         }
 
         public void OnSelected()
@@ -25,6 +28,8 @@ namespace UISystemV2
                 EventSystem.current.SetSelectedGameObject(gameObject);
             }
             informationText.text = informationString;
+
+            menuSE.MenuOperationSE(0);
         }
 
         public void OnDeselected()
@@ -34,6 +39,8 @@ namespace UISystemV2
 
         public void DisableWindow()
         {
+            menuSE.MenuOperationSE(2);
+
             Time.timeScale = 1f;
             Input.ResetInputAxes();
             backgroundObject.SetActive(false);
@@ -41,11 +48,15 @@ namespace UISystemV2
 
         public void WindowOnOffSQL(GameObject window)
         {
+            menuSE.MenuOperationSE(1);
+
             InventoryUI.GetComponent<PauseSystemV2>().ChangeWindow(window);
         }
 
         public void SelectReturnButton()
         {
+            menuSE.MenuOperationSE(2);
+
             EventSystem.current.SetSelectedGameObject(returnButton);
         }
     }

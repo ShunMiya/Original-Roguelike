@@ -6,12 +6,16 @@ using PlayerStatusSystemV2;
 using System;
 using ItemSystemV2.Inventory;
 using EnemySystem;
+using Performances;
+using static UnityEngine.EventSystems.EventTrigger;
 
 namespace AttackSystem
 {
     public class AttackAction : MonoBehaviour
     {
         private MoveAction MA;
+        private ActionSoundEffects actionSoundEffects;
+        private AudioSource audioSource;
         private SqliteDatabase sqlDB;
         private Vector3 originalPosition;
         private Vector3 targetPosition;
@@ -23,6 +27,8 @@ namespace AttackSystem
         private void Start()
         {
             MA = GetComponent<MoveAction>();
+            actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
+            audioSource = GetComponent<AudioSource>();
         }
 
         public IEnumerator AttackPreparationPlayer()
@@ -46,6 +52,8 @@ namespace AttackSystem
                 PCondition.BlindEvent();
                 CurrentHitRate -= 50;
             }
+            yield return StartCoroutine(actionSoundEffects.AttackSE(AttackType, audioSource));
+
             yield return StartCoroutine(AttackObjectCoroutine(attack, range, CurrentHitRate, AttackType));
         }
 
@@ -65,9 +73,13 @@ namespace AttackSystem
             switch(enemy.ThrowAttack)
             {
                 case 1:
+                    yield return StartCoroutine(actionSoundEffects.AttackSE(3, audioSource));
+
                     yield return StartCoroutine(GetComponent<EnemyThrowAttack>().ThrowAttack(enemy));
                     break;
                 default:
+                    yield return StartCoroutine(actionSoundEffects.AttackSE(enemy.AttackType, audioSource));
+
                     yield return StartCoroutine(AttackObjectCoroutine(enemy.Attack, enemy.Range, CurrentHitRate, enemy.AttackType));
                     break;
             }
@@ -75,7 +87,7 @@ namespace AttackSystem
 
         public IEnumerator AttackObjectCoroutine(int damage, int range, float HitRate, int AttackType)
         {
-            yield return StartCoroutine(BeginAttack());  //攻撃開始演出
+            yield return StartCoroutine(BeginAttack(AttackType));  //攻撃開始演出
 
             //攻撃が当たっていたかチェック
             int R = (int)transform.rotation.eulerAngles.y;
@@ -97,7 +109,7 @@ namespace AttackSystem
             yield return StartCoroutine(EndAttack()); //仮置き.アニメーション等の処理終了まで待機させる。
         }
 
-        public IEnumerator BeginAttack()
+        public IEnumerator BeginAttack(int AttackType)
         {
             originalPosition = transform.position;
             targetPosition = transform.position + transform.forward * 0.3f; // フロント方向に0.3移動

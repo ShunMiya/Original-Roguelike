@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using PlayerV2;
 using UISystemV2;
+using Performances;
 
 namespace ItemSystemV2
 {
@@ -19,6 +20,7 @@ namespace ItemSystemV2
         private DataRow row;
         private int ItemType;
         [SerializeField] private SystemTextV2 systemText;
+        [SerializeField] private MenuSoundEffect menuSoundEffect;
 
         public void SetData(DataRow date, int type)
         {
@@ -45,6 +47,7 @@ namespace ItemSystemV2
 
                     break;
                 case 1:
+                    menuSoundEffect.MenuActionSE(1);
                     if (Convert.ToInt32(row["Equipped"]) == 1 || Convert.ToInt32(row["Equipped"]) == 2)
                     {
                         equipmentchange.UnequipItem(row);
@@ -74,9 +77,13 @@ namespace ItemSystemV2
             switch (itemData.ConsumableType)
             {
                 case 1:
+                    menuSoundEffect.MenuActionSE(0);
+
                     ItemUse = playerHP.HealHP(itemData.HealValue);
                     break;
                 case 2:
+                    menuSoundEffect.MenuActionSE(0);
+
                     ItemUse = playerHungry.HealHungry(itemData.HealValue);
                     break;
             }
