@@ -28,6 +28,7 @@ namespace Performances
             {
                 yield return null;
             }
+            PlayerAS.pitch = 1f;
         }
     }
 
