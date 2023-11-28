@@ -13,10 +13,12 @@ namespace Performances
         [SerializeField] private AudioClip ThrustHit;
         [SerializeField] private AudioClip ThrowAciton;
         [SerializeField] private AudioClip AttackMiss;
-        [SerializeField] private AudioClip UseComsumableItem;
+        [SerializeField] private AudioClip EnemyDeath;
+        [SerializeField] private AudioClip LevelUp;
 
         [SerializeField] private float AttackVolume;
         [SerializeField] private float HitVolume;
+
         public IEnumerator AttackSE(int AttackType, AudioSource AS)
         {
             AS.volume = AttackVolume;
@@ -39,11 +41,11 @@ namespace Performances
             yield return new WaitForSeconds(0.1f);
         }
 
-        public void DamageSE(int AttackType, AudioSource AS)
+        public void DamageSE(int SEType, AudioSource AS)
         {
             AS.volume = HitVolume;
 
-            switch (AttackType)
+            switch (SEType)
             {
                 case 0:
                     AS.PlayOneShot(BlowHit);
@@ -56,6 +58,19 @@ namespace Performances
                     break;
                 case 3:
                     AS.PlayOneShot(AttackMiss);
+                    break;
+            }
+        }
+
+        public void EndBattleSE(int SEType, AudioSource AS)
+        {
+            switch (SEType)
+            {
+                case 0:
+                    AS.PlayOneShot(EnemyDeath);
+                    break;
+                case 1:
+                    AS.PlayOneShot(LevelUp);
                     break;
             }
         }

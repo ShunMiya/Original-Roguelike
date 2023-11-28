@@ -1,5 +1,5 @@
+using Performances;
 using System.Collections;
-using System.Linq;
 using UISystemV2;
 using UnityEngine;
 
@@ -11,6 +11,7 @@ namespace DeathSystem
         public event EnemyDeathEvent EnemyDeath;
         private SystemTextV2 systemText;
         private DeathObjects deathObjects;
+        private ActionSoundEffects actionSoundEffects; 
 
         private GameObject Attacker;
         private int Exp;
@@ -21,6 +22,7 @@ namespace DeathSystem
         {
             systemText = FindObjectOfType<SystemTextV2>();
             deathObjects = FindObjectOfType<DeathObjects>();
+            actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
         }
 
         public void DeathSet(GameObject attacker, int exp)
@@ -46,6 +48,8 @@ namespace DeathSystem
 
                     systemText.TextSet("<color=red>" + name + "</color>ÇÕì|ÇÍÇΩÅI");
 
+                    AudioSource AS = GetComponent<AudioSource>();
+                    actionSoundEffects.EndBattleSE(0, AS);
                     yield return StartCoroutine(FadeOutCoroutine()); //éÄñSââèo
 
                     deathObjects.GetExp(Attacker.CompareTag("Player") ? Exp : 0);
