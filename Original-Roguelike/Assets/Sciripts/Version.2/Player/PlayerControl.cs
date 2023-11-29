@@ -32,14 +32,14 @@ namespace PlayerV2
         {
             TurnNext = false;
 
-            if (Input.GetKey(KeyCode.Z))
+            if (Input.GetButton("Submit"))
             {
                 Action = "Attack";
                 TurnNext = true;
                 return;
             }
 
-            if (Input.GetKey(KeyCode.C))
+            if (Input.GetButton("ChangeDirection"))
             {
                 Action = "ChangeDirection";
 
@@ -55,13 +55,13 @@ namespace PlayerV2
                 return;
             }
 
-            if (Input.GetKey(KeyCode.A))
+            if (Input.GetButton("OpenMenu"))
             {
                 Action = "Inventory";
                 return;
             }
 
-            if (Input.GetKey(KeyCode.X)) GameRule.DashMove();
+            if (Input.GetButton("Cancel"))  GameRule.DashMove();
             else GameRule.WalkMove();
 
             movex = 0;
