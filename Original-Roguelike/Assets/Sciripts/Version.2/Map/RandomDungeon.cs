@@ -9,10 +9,11 @@ namespace Field
     public class RandomDungeon : MonoBehaviour
     {
         private const int minArea = 7;
-        private const int maxArea = 10;
+        private const int cutArea = 20;
         private const int minRoom = 3;
         private const int margin = 2;
         private Array2D data;
+        private Array2D connectdata;
         private List<Area2D> areas;
         private int Proom;
         private int PRCount = 0;
@@ -34,9 +35,10 @@ namespace Field
                     data.Set(x, y, 1);
                 }
             }
+            connectdata = new Array2D(data.width, data.height);
             areas = new List<Area2D>();
             Area2D area = new Area2D();
-            area.outLine = new Rect2D(2, 2, w + 2, h + 2); //内側に30*30で初期エリア作成
+            area.outLine = new Rect2D(2, 2, w + 2, h + 2); //内側にw*hで初期エリア作成
             Split(area, Random.Range(0, 2) == 0);
             CreateRooms(field);
             CreateRoads(field);
@@ -49,7 +51,7 @@ namespace Field
         */
         private void Split(Area2D baseArea, bool isVertical)
         {
-            Rect2D rect1, rect2;
+            Rect2D rect1, rect2, rect3, rect4;
             if (isVertical)
             {
                 if (baseArea.outLine.left + minArea >= baseArea.outLine.right - minArea)
@@ -67,6 +69,27 @@ namespace Field
                     Rect2D tmp = rect1;
                     rect1 = rect2;
                     rect2 = tmp;
+                }
+
+                if((rect2.height > cutArea) && Random.Range(0, 3) != 2)
+                {
+                    int p2 = Random.Range(rect2.top + minArea, rect2.bottom - minArea);
+
+                    rect3 = new Rect2D(rect2.left, rect2.top, rect2.right, p2);
+                    rect4 = new Rect2D(rect2.left, p2 + 1, rect2.right, rect2.bottom);
+
+                    Area2D area1 = new Area2D();
+                    area1.outLine = rect3;
+                    areas.Add(area1);
+                    Area2D area2 = new Area2D();
+                    area2.outLine = rect4;
+                    areas.Add(area2);
+                }
+                else
+                {
+                    Area2D area = new Area2D();
+                    area.outLine = rect2;
+                    areas.Add(area);
                 }
             }
             else
@@ -87,13 +110,31 @@ namespace Field
                     rect1 = rect2;
                     rect2 = tmp;
                 }
+
+                if ((rect2.width > cutArea) && Random.Range(0, 3) != 2)
+                {
+                    int p2 = Random.Range(rect2.left + minArea, rect2.right - minArea);
+
+                    rect3 = new Rect2D(rect2.left, rect2.top, p2, rect2.bottom);
+                    rect4 = new Rect2D(p2 + 1, rect2.top, rect2.right, rect2.bottom);
+
+                    Area2D area1 = new Area2D();
+                    area1.outLine = rect3;
+                    areas.Add(area1);
+                    Area2D area2 = new Area2D();
+                    area2.outLine = rect4;
+                    areas.Add(area2);
+                }
+                else
+                {
+                    Area2D area = new Area2D();
+                    area.outLine = rect2;
+                    areas.Add(area);
+                }
             }
-            Area2D area1 = new Area2D();
-            area1.outLine = rect1;
-            Area2D area2 = new Area2D();
-            area2.outLine = rect2;
-            areas.Add(area2);
-            Split(area1, !isVertical);
+            Area2D nextarea = new Area2D();
+            nextarea.outLine = rect1;
+            Split(nextarea, !isVertical);
         }
 
         /**
@@ -158,9 +199,15 @@ namespace Field
             for (int y = Mathf.Min(y1, y2), end = Mathf.Max(y1, y2); y <= end; y++)
             {
                 int outLinex = area1.outLine.right;
-                if (y == Mathf.Min(y1, y2) || y == Mathf.Max(y1, y2))
+
+                if (y == y1)
                 {
-                    data.Set(outLinex, y, 0);
+                    data.Set(area1.outLine.right, y, 0);
+                    continue;
+                }
+                if (y == y2)
+                {
+                    data.Set(area2.outLine.left - 1, y, 0);
                     continue;
                 }
                 if (data.Get(area1.outLine.right - 1, y) == 0) outLinex--;
@@ -168,10 +215,10 @@ namespace Field
 
                 data.Set(outLinex, y, 0);
             }
-            field.SetObject("Connection", "Connection", area1.room.right, y1, 1, 1);
-            field.SetObject("Connection", "Connection", area1.outLine.right, y1, 1, 1);
-            field.SetObject("Connection", "Connection", area2.room.left, y2, 1, 1);
-            field.SetObject("Connection", "Connection", area2.outLine.left - 1, y2, 1, 1);
+            SetConnection(area1.room.right, y1, field);
+            SetConnection(area1.outLine.right, y1, field);
+            SetConnection(area2.outLine.left - 1, y2, field);
+            SetConnection(area2.room.left, y2, field);
         }
 
         /**
@@ -196,9 +243,14 @@ namespace Field
             for (int x = Mathf.Min(x1, x2), end = Mathf.Max(x1, x2); x <= end; x++)
             {
                 int outLiney = area1.outLine.bottom;
-                if(x == Mathf.Min(x1, x2) || x == Mathf.Max(x1, x2))
+                if(x == x1)
                 {
-                    data.Set(x, outLiney, 0);
+                    data.Set(x, area1.outLine.bottom, 0);
+                    continue;
+                }
+                if(x == x2)
+                {
+                    data.Set(x, area2.outLine.top - 1, 0);
                     continue;
                 }
                 if (data.Get(x, area1.outLine.bottom - 1) == 0) outLiney--;
@@ -206,10 +258,10 @@ namespace Field
 
                 data.Set(x, outLiney, 0);
             }
-            field.SetObject("Connection", "Connection", x1, area1.room.bottom, 1, 1);
-            field.SetObject("Connection", "Connection", x1, area1.outLine.bottom, 1, 1);
-            field.SetObject("Connection", "Connection", x2, area2.room.top, 1, 1);
-            field.SetObject("Connection", "Connection", x2, area2.outLine.top - 1, 1, 1);
+            SetConnection(x1, area1.room.bottom, field);
+            SetConnection(x1, area1.outLine.bottom, field);
+            SetConnection(x2, area2.outLine.top - 1, field);
+            SetConnection(x2, area2.room.top, field);
         }
 
         /**
@@ -219,39 +271,56 @@ namespace Field
         {
             for (int i = 0; i < areas.Count - 1; i++)
             {
-                if (areas[i].outLine.right < areas[i + 1].outLine.left)
-                    CreateHorizontalRoad(areas[i], areas[i + 1], field);
-                if (areas[i + 1].outLine.right < areas[i].outLine.left)
-                    CreateHorizontalRoad(areas[i + 1], areas[i], field);
-                if (areas[i].outLine.bottom < areas[i + 1].outLine.top)
-                    CreateVerticalRoad(areas[i], areas[i + 1], field);
-                if (areas[i + 1].outLine.bottom < areas[i].outLine.top)
-                    CreateVerticalRoad(areas[i + 1], areas[i], field);
+                if (TryCreateHorizontalRoad(areas[i], areas[i + 1], field)) continue;
+                if (TryCreateHorizontalRoad(areas[i + 1], areas[i], field)) continue;
+                TryCreateVerticalRoad(areas[i], areas[i + 1], field);
+                TryCreateVerticalRoad(areas[i + 1], areas[i], field);
             }
             for (int i = 0; i < areas.Count - 2; i++)
             {
-                if (areas[i].outLine.right < areas[i + 2].outLine.left)
-                    CreateHorizontalRoad(areas[i], areas[i + 2], field);
-                if (areas[i + 2].outLine.right < areas[i].outLine.left)
-                    CreateHorizontalRoad(areas[i + 2], areas[i], field);
-                if (areas[i].outLine.bottom < areas[i + 2].outLine.top)
-                    CreateVerticalRoad(areas[i], areas[i + 2], field);
-                if (areas[i + 2].outLine.bottom < areas[i].outLine.top)
-                    CreateVerticalRoad(areas[i + 2], areas[i], field);
+                if (TryCreateHorizontalRoad(areas[i], areas[i + 2], field)) continue;
+                if (TryCreateHorizontalRoad(areas[i + 2], areas[i], field)) continue;
+                TryCreateVerticalRoad(areas[i], areas[i + 2], field);
+                TryCreateVerticalRoad(areas[i + 2], areas[i], field);
             }
             for (int i = 0; i < areas.Count - 3; i++)
             {
                 if (Random.Range(0, 3) == 0) continue;
-                if (areas[i].outLine.right < areas[i + 3].outLine.left)
-                    CreateHorizontalRoad(areas[i], areas[i + 3], field);
-                if (areas[i + 3].outLine.right < areas[i].outLine.left)
-                    CreateHorizontalRoad(areas[i + 3], areas[i], field);
-                if (areas[i].outLine.bottom < areas[i + 3].outLine.top)
-                    CreateVerticalRoad(areas[i], areas[i + 3], field);
-                if (areas[i + 3].outLine.bottom < areas[i].outLine.top)
-                    CreateVerticalRoad(areas[i + 3], areas[i], field);
+                if (TryCreateHorizontalRoad(areas[i], areas[i + 3], field)) continue;
+                if (TryCreateHorizontalRoad(areas[i + 3], areas[i], field)) continue;
+                TryCreateVerticalRoad(areas[i], areas[i + 3], field);
+                TryCreateVerticalRoad(areas[i + 3], areas[i], field);
             }
+        }
 
+        private bool TryCreateHorizontalRoad(Area2D area1, Area2D area2, Areamap field)
+        {
+            if (area1.outLine.right < area2.outLine.left)
+            {
+                CreateHorizontalRoad(area1, area2, field);
+                return true;
+            }
+            return false;
+        }
+
+        private bool TryCreateVerticalRoad(Area2D area1, Area2D area2, Areamap field)
+        {
+            if (area1.outLine.bottom < area2.outLine.top)
+            {
+                CreateVerticalRoad(area1, area2, field);
+                return true;
+            }
+            return false;
+        }
+
+        private void SetConnection(int x, int y, Areamap field)
+        {
+            if (connectdata.Get(x, y) != 2)
+            {
+                connectdata.Set(x, y, 2);
+                field.SetObject("Connection", "Connection", x, y, 1, 1);
+                return;
+            }
         }
 
         private void SetObject(string name, string type, Areamap field, Array2D data)
