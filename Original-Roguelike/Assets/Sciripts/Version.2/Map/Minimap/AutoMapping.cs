@@ -2,7 +2,6 @@ using Field;
 using ItemSystemV2;
 using MoveSystem;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Minimap
 {
@@ -29,7 +28,6 @@ namespace Minimap
         public GameObject trapsObj;
         public GameObject trapIcon;
 
-        public GameObject player;
         public GameObject playerObj;
         public GameObject playerIcon;
 
@@ -57,8 +55,9 @@ namespace Minimap
 
         public void ShowPlayerObj()
         {
+            if(playerIcon.activeSelf == false) playerIcon.SetActive(true);
             Pos2D tgrid = playerObj.GetComponent<MoveAction>().grid;
-            player.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * tgrid.x, ph * tgrid.z);
+            playerIcon.GetComponent<RectTransform>().anchoredPosition = new Vector2(pw * tgrid.x, ph * tgrid.z);
         }
 
         public void ShowMoveObj(GameObject Icon, GameObject imgs, GameObject objs)
@@ -211,6 +210,8 @@ namespace Minimap
 
         public void ResetMinimap(int width, int height)
         {
+            playerIcon.SetActive(false);
+
             for (int i = 0; i < roads.transform.childCount; i++)
                 Destroy(roads.transform.GetChild(i).gameObject);
             for (int i = 0; i < enemies.transform.childCount; i++)
