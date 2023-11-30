@@ -52,8 +52,12 @@ namespace PlayerStatusSystemV2
 
         public Vector3 ConfusionEvent()
         {
-            Confuparticle.Play();
             return DirUtil.SetNewPosRotation(DirUtil.RandomDirection());
+        }
+
+        public void ConfuParticle()
+        {
+            Confuparticle.Play();
         }
 
         public IEnumerator StunEvent()
