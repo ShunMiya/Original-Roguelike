@@ -23,18 +23,27 @@ namespace Performances
             switch (SEType)
             {
                 case 0:
-                    if (!AS.isPlaying)  AS.PlayOneShot(Selection);
+                    if (!AS.isPlaying || AS.clip == Selection) AS.PlayOneShot(Selection);
                     break;
                 case 1:
                     AS.PlayOneShot(Confirm);
+                    AS.time = 0.1f;
                     break;
                 case 2:
                     AS.PlayOneShot(Cancel);
+                    AS.time = 0.1f;
                     break;
                 case 9:
                     AS.PlayOneShot(OpenMenu);
+                    AS.time = 0.1f;
                     break;
             }
+            Invoke("StopSound", 0.3f);
+        }
+
+        void StopSound()
+        {
+            AS.Stop();
         }
 
         public void MenuActionSE(int SEType)
