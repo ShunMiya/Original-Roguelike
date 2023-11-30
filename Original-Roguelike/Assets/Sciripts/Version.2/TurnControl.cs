@@ -81,6 +81,8 @@ namespace TurnSystem
 
                     gameEnd.NextStagePerformance();
                     AreaTurn = 0; DungeonTurn += AreaTurn;
+                    PCondition.ConditionClear();
+                    DFB.UpdateFloorBar();
                     yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
                     continue;
                 }
