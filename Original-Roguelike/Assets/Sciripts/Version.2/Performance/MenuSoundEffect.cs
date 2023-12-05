@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Performances
@@ -23,18 +24,31 @@ namespace Performances
             switch (SEType)
             {
                 case 0:
-                    if (!AS.isPlaying)  AS.PlayOneShot(Selection);
-                    break;
+                    if (!AS.isPlaying) AS.PlayOneShot(Selection);
+                    return;
                 case 1:
-                    AS.PlayOneShot(Confirm);
+                    AS.clip = Confirm;
+                    AS.Play();
+                    AS.time = 0.03f;
                     break;
                 case 2:
-                    AS.PlayOneShot(Cancel);
+                    AS.clip = Cancel;
+                    AS.Play();
+                    AS.time = 0.03f;
                     break;
                 case 9:
-                    AS.PlayOneShot(OpenMenu);
+                    AS.clip = OpenMenu;
+                    AS.Play();
+                    AS.time = 0.03f;
                     break;
             }
+            StartCoroutine(StopSE(0.15f));
+        }
+
+        public IEnumerator StopSE(float delay)
+        {
+            yield return new WaitForSecondsRealtime(delay);
+            AS.Stop();
         }
 
         public void MenuActionSE(int SEType)

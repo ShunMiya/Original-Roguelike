@@ -161,8 +161,13 @@ namespace PlayerV2
                 case "Move":
                     DirectionSprite.SetActive(false);
 
-                    if (!TurnNext) moveAction.ChangeDirectionOnTheSpot(movex, movez);
-                    else  moveAction.MoveReservationStance();
+                    if (!TurnNext)
+                    {
+                        moveAction.ChangeDirectionOnTheSpot(movex, movez);
+                        return TurnNext;
+                    }
+                    if (PCondition.ConfusionTurn != 0) PCondition.ConfuParticle();
+                    moveAction.MoveReservationStance();
                     return TurnNext;
 
                 default:

@@ -63,9 +63,7 @@ namespace TurnSystem
 
                 if (FadeImage.activeSelf)
                 {
-                    AreaTurn = 0; DungeonTurn+=AreaTurn;
-                    PCondition.ConditionClear();
-                    DFB.UpdateFloorBar();
+                    NextAreaProcess();
                     yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
                     continue;
                 }
@@ -80,7 +78,7 @@ namespace TurnSystem
                     yield return new WaitForSeconds(1.0f);
 
                     gameEnd.NextStagePerformance();
-                    AreaTurn = 0; DungeonTurn += AreaTurn;
+                    NextAreaProcess();
                     yield return StartCoroutine(StaticCoroutine.ObjectActiveFalse(FadeImage));
                     continue;
                 }
@@ -122,6 +120,13 @@ namespace TurnSystem
             HP.TurnRecoveryHp();
             PCondition.ConditionTurn();
             yield return null;
+        }
+
+        public void NextAreaProcess()
+        {
+            AreaTurn = 0; DungeonTurn += AreaTurn;
+            PCondition.ConditionClear();
+            DFB.UpdateFloorBar();
         }
     }
 }

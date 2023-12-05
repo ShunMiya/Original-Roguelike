@@ -559,6 +559,7 @@ MonoBehaviour:
   itemCountText: {fileID: 0}
   returnButton: {fileID: 1374133626}
   subMenu: {fileID: 99179306}
+  buttonNavi: {fileID: 0}
   totalTextLength: 40
 --- !u!224 &88469357
 RectTransform:
@@ -1249,7 +1250,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u707C\u71B1\u306E\u706B\u5C71"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1313,7 +1314,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &259286528
@@ -2185,6 +2186,7 @@ MonoBehaviour:
   informationString: GoEquipmentScreen
   informationText: {fileID: 968981542}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &389519481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,6 +2658,7 @@ MonoBehaviour:
   informationString: BackGame
   informationText: {fileID: 1368318828}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &440952547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4271,6 +4274,7 @@ MonoBehaviour:
   informationString: BackGame
   informationText: {fileID: 1388124747}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &778582038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4704,8 +4708,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u59CB\u307E\u308A\u306E\u6D1E\u7A9F"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5053,6 +5057,7 @@ MonoBehaviour:
   informationString: GoEquipmentScreen
   informationText: {fileID: 1368318828}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &873919841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6340,6 +6345,7 @@ MonoBehaviour:
   informationString: GoInventoryScreen
   informationText: {fileID: 1388124747}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &1026661676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7967,6 +7973,7 @@ MonoBehaviour:
   informationString: GoEquipmentScreen
   informationText: {fileID: 1388124747}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &1217071034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8251,6 +8258,7 @@ MonoBehaviour:
   informationString: GoInventoryScreen
   informationText: {fileID: 968981542}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &1262475916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8524,6 +8532,7 @@ MonoBehaviour:
   GameOverUI: {fileID: 939032408}
   GameClearUI: {fileID: 1478396938}
   fadeSystem: {fileID: 0}
+  fieldSoundEffect: {fileID: 0}
 --- !u!114 &1280990796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8877,6 +8886,7 @@ MonoBehaviour:
   informationString: BackGame
   informationText: {fileID: 968981542}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &1374133629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9792,6 +9802,7 @@ MonoBehaviour:
   - {fileID: 1501018848}
   - {fileID: 902496137}
   systemText: {fileID: 0}
+  menuSoundEffect: {fileID: 0}
 --- !u!114 &1544096064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10846,6 +10857,7 @@ MonoBehaviour:
   subMenu: {fileID: 99179306}
   EquipArea: {fileID: 460178498}
   totalTextLength: 40
+  buttonNavi: {fileID: 0}
 --- !u!114 &1804657999
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11790,6 +11802,7 @@ MonoBehaviour:
   informationString: GoInventoryScreen
   informationText: {fileID: 1368318828}
   InventoryUI: {fileID: 1544096061}
+  menuSE: {fileID: 0}
 --- !u!114 &1928701442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13410,7 +13423,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u8FF7\u3044\u306E\u68EE"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
