@@ -28,6 +28,7 @@ namespace TurnSystem
         [SerializeField] private PlayerCondition PCondition;
         [SerializeField] private SystemTextV2 systemtext;
         [SerializeField] private DungeonFloorBar DFB;
+        [SerializeField] private ADVTrigeerCheck ADVTC;
 
         [SerializeField] private GameObject FadeImage;
 
@@ -46,6 +47,8 @@ namespace TurnSystem
             while (true) // ゲームループを無限に続ける
             {
                 StartCoroutine(field.MappingUpdate());
+
+                if (ADVTC.TriggerCheck()) yield return StartCoroutine(ADVTC.EventStart());　//ADVパート処理
 
                 yield return StartCoroutine(PlayerInputSet()); //プレイヤーの行動入力　１フレーム経過
 

@@ -1974,7 +1974,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8119,6 +8119,7 @@ GameObject:
   - component: {fileID: 436213521}
   - component: {fileID: 436213522}
   - component: {fileID: 436213523}
+  - component: {fileID: 436213526}
   - component: {fileID: 436213525}
   m_Layer: 0
   m_Name: Player
@@ -8209,7 +8210,7 @@ Transform:
   - {fileID: 1470342643}
   - {fileID: 1187578346}
   m_Father: {fileID: 441075519}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &436213507
 MonoBehaviour:
@@ -8551,6 +8552,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &436213526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e950473daa6a8449b9d9f9dad6ddcf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &441075518
 GameObject:
   m_ObjectHideFlags: 0
@@ -8594,6 +8607,7 @@ Transform:
   - {fileID: 1754919023}
   - {fileID: 943967778}
   - {fileID: 463309274}
+  - {fileID: 759950468}
   - {fileID: 436213506}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -8620,6 +8634,7 @@ MonoBehaviour:
   traps: {fileID: 463309273}
   connections: {fileID: 1527902709}
   rooms: {fileID: 700491621}
+  ADVTriggers: {fileID: 759950467}
   autoMapping: {fileID: 1985504870}
 --- !u!114 &441075521
 MonoBehaviour:
@@ -8660,6 +8675,7 @@ MonoBehaviour:
   PCondition: {fileID: 436213521}
   systemtext: {fileID: 1238523509}
   DFB: {fileID: 1979034477}
+  ADVTC: {fileID: 436213526}
   FadeImage: {fileID: 403240040}
 --- !u!114 &441075523
 MonoBehaviour:
@@ -12315,6 +12331,37 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &759950467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 759950468}
+  m_Layer: 0
+  m_Name: ADVTriggers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &759950468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 759950467}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 441075519}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &772730743
 GameObject:
   m_ObjectHideFlags: 0
@@ -12647,6 +12694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerIcon
       objectReference: {fileID: 0}
+    - target: {fileID: 2955749755470531665, guid: ed4dc378344914641bc5aa79d969b0c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2955749755470531666, guid: ed4dc378344914641bc5aa79d969b0c3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12713,11 +12764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2955749755470531666, guid: ed4dc378344914641bc5aa79d969b0c3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 545
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2955749755470531666, guid: ed4dc378344914641bc5aa79d969b0c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 68
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 2955749755470531666, guid: ed4dc378344914641bc5aa79d969b0c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -13013,7 +13064,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13704,7 +13755,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
