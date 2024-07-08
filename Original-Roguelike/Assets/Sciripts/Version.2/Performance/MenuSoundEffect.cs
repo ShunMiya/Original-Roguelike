@@ -24,7 +24,11 @@ namespace Performances
             switch (SEType)
             {
                 case 0:
-                    if (!AS.isPlaying) AS.PlayOneShot(Selection);
+                    if (!AS.isPlaying || AS.clip == Selection)
+                    {
+                        AS.clip = Selection;
+                        AS.Play();
+                    }
                     return;
                 case 1:
                     AS.clip = Confirm;

@@ -1,27 +1,26 @@
 using System.Collections;
 using UnityEngine;
+using UISystemV2;
 
 namespace ADVSystem
 {
     public class ADVEvent : MonoBehaviour
     {
         public string Type;
+        private ADVText aDVText;
+
+        private void Start()
+        {
+            aDVText = FindFirstObjectByType<ADVText>();
+        }
+
 
         public IEnumerator Event()
         {
-            switch (Type)
-            {
-                case "ê‡ñæ0":
-                    Debug.Log("ÇO");
-                    break;
-                case "ê‡ñæ1":
-                    Debug.Log("ÇP");
-                    break;
-                case "ê‡ñæ2":
-                    Debug.Log("ÇQ");
-                    break;
-            }
-            yield return null;
+            aDVText.TypeSet(Type);
+            yield return StartCoroutine(aDVText.TextBoxSet());
+
+            Destroy(gameObject);
         }
     }
 }
