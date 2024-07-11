@@ -434,7 +434,7 @@
    </object>
   </objectgroup>
  </group>
- <group id="19" name="3F" visible="0" locked="1">
+ <group id="19" name="3F" locked="1">
   <layer id="20" name="TileLayer" width="30" height="30">
    <data encoding="csv">
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
@@ -510,12 +510,12 @@
      <property name="Type" value="Trap"/>
     </properties>
    </object>
-   <object id="137" name="説明13" x="577" y="417" width="31" height="31">
+   <object id="137" name="説明12" x="577" y="417" width="31" height="31">
     <properties>
      <property name="Type" value="ADVMode"/>
     </properties>
    </object>
-   <object id="138" name="説明14" x="673" y="417" width="31" height="31">
+   <object id="138" name="説明13" x="673" y="417" width="31" height="31">
     <properties>
      <property name="Type" value="ADVMode"/>
     </properties>
@@ -670,7 +670,7 @@
    </object>
   </objectgroup>
  </group>
- <group id="13" name="1F" locked="1">
+ <group id="13" name="1F" visible="0" locked="1">
   <layer id="14" name="TileLayer" width="30" height="30">
    <data encoding="csv">
 2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,

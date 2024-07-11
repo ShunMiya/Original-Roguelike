@@ -97,5 +97,21 @@ namespace ItemSystemV2.Inventory
                 Debug.LogError("削除エラー: " + e.Message);
             }
         }
+
+        public static void PlayerInventoryAllDelete()
+        {
+            SqliteDatabase copiedsqlDB = new SqliteDatabase(databasePath);
+
+            string deleteQuery = "DELETE FROM Inventory;";
+            try
+            {
+                copiedsqlDB.ExecuteNonQuery(deleteQuery);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("削除エラー: " + e.Message);
+            }
+
+        }
     }
 }
