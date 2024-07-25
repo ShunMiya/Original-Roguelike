@@ -32,8 +32,17 @@ namespace GameEndSystemV2
             string databasePath = SQLDBInitializationV2.GetDatabasePath();
             sqlDB = new SqliteDatabase(databasePath);
 
-            string query = "UPDATE DungeonChallengeStatus SET Cleared = 1 WHERE DungeonId = (SELECT DungeonId FROM PlayerStatus WHERE PlayerID = 1);";
+            string query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1;";
+            DataTable PlayerDB = sqlDB.ExecuteQuery(query);
+            int dungeonId = Convert.ToInt32(PlayerDB[0]["DungeonId"]);
+
+            query = "UPDATE DungeonChallengeStatus SET Cleared = 1 WHERE DungeonId = '" + dungeonId + "';";
             sqlDB.ExecuteNonQuery(query);
+
+            if(dungeonId == 1)
+            {
+                SQLDBInitializationV2.PlayerInventoryAllDelete();
+            }
 
             EventSystem.current.SetSelectedGameObject(GameClearUI.transform.GetChild(1).gameObject);
 

@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ADVSystem;
 
 namespace Field
 {
@@ -23,6 +24,7 @@ namespace Field
         public GameObject traps;
         public GameObject connections;
         public GameObject rooms;
+        public GameObject ADVTriggers;
         public AutoMapping autoMapping;
 
         private Array2D map;
@@ -115,6 +117,12 @@ namespace Field
 
             switch (type)
             {
+                case "ADVMode":
+                    GameObject ADVTriggerObj = (GameObject)Resources.Load("PrefabsV2/ADVTrigger");
+                    GameObject ADVTrigger = Instantiate(ADVTriggerObj, ADVTriggers.transform);
+                    ADVTrigger.GetComponent<ObjectPosition>().SetPosition(xgrid, zgrid);
+                    ADVTrigger.GetComponent<ADVEvent>().Type = name;
+                    break;
                 case "Connection":
                     GameObject connectObj = (GameObject)Resources.Load("PrefabsV2/Connection");
                     GameObject connect = Instantiate(connectObj, connections.transform);
@@ -420,7 +428,16 @@ namespace Field
                 if (xgrid == trapPosition.grid.x && zgrid == trapPosition.grid.z)
                     return trapPosition.gameObject;
             }
+            return null;
+        }
 
+        public GameObject IsCollideReturnADVTriggerObj(int xgrid, int zgrid)
+        {
+            foreach (var ADVTriggerPosition in ADVTriggers.GetComponentsInChildren<ObjectPosition>())
+            {
+                if (xgrid == ADVTriggerPosition.grid.x && zgrid == ADVTriggerPosition.grid.z)
+                    return ADVTriggerPosition.gameObject;
+            }
             return null;
         }
 
