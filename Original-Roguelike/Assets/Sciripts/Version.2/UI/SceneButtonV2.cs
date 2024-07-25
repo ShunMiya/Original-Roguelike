@@ -1,5 +1,4 @@
 using ItemSystemV2.Inventory;
-using System;
 using UnityEngine;
 using Fade;
 using UnityEngine.EventSystems;
@@ -9,7 +8,6 @@ namespace UISystemV2
 {
     public class SceneButtonV2 : MonoBehaviour
     {
-        private SqliteDatabase sqlDB;
         private FadeSystem fadeSystem;
         private GameEndV2 gameEnd;
         [SerializeField] private string SceneName;
@@ -54,20 +52,6 @@ namespace UISystemV2
             ButtonTargetReset();
 
             gameEnd.NextStagePerformance();
-        }
-
-        public void SelectDungeon(int Dungeon)
-        {
-            ButtonTargetReset();
-            string databasePath = SQLDBInitializationV2.GetDatabasePath();
-            sqlDB = new SqliteDatabase(databasePath);
-
-            string updateStatusQuery = "UPDATE PlayerStatus SET DungeonId = '"+Dungeon+"' WHERE PlayerID = 1;";
-            sqlDB.ExecuteNonQuery(updateStatusQuery);
-
-            updateStatusQuery = "UPDATE PlayerStatus SET FloorLevel = 1 WHERE PlayerID = 1;";
-            sqlDB.ExecuteNonQuery(updateStatusQuery);
-
         }
 
         public void DisableWindow()
