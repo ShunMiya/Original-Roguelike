@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using ADVSystem;
 
 namespace UISystemV2
 {
@@ -10,9 +11,9 @@ namespace UISystemV2
         public GameObject textBox;
         public TextMeshProUGUI textMeshPro;
         public SystemTextV2 systemTextV2;
+        [SerializeField] private GameObject ADVTriggers;
 
         private string Type;
-        int TextNum = 0;
         private Dictionary<string, List<string>> textDatabase;
 
         public void Start()
@@ -36,9 +37,15 @@ namespace UISystemV2
             {
                 "アイテムを入手しました",
                 "回復薬は「ＨＰ」\n木の実は「満腹度」を回復できます",
+                "ＨＰはターン経過で徐々に回復していきます"
+            };
+
+            textDatabase["説明1.1"] = new List<string>
+            {
                 "ＨＰはターン経過で徐々に回復していきます",
                 "しかし、満腹度が０になっていると\n逆に減るようになってしまいます",
-                "ＨＰがなくなるとゲームオーバーに\nなってしまうので注意しましょう"
+                "ＨＰがなくなるとゲームオーバーに\nなってしまうので注意しましょう",
+                "また、このダンジョンのアイテムは\n持ち帰れないので使ってみることを\nお勧めします"
             };
 
             textDatabase["説明2"] = new List<string>
@@ -143,7 +150,7 @@ namespace UISystemV2
             textBox.SetActive(true);
             if (!gameObject.activeSelf) yield return null;
 
-            TextNum = 0;
+            int TextNum = 0;
             while (textBox.gameObject.activeSelf)
             {
                 if (textDatabase.ContainsKey(Type))
@@ -160,6 +167,7 @@ namespace UISystemV2
                     }
 
                     NonActive();
+                    TextVerUp(Type);
                 }
 
                 yield return null;
@@ -170,6 +178,21 @@ namespace UISystemV2
         {
             textMeshPro.text = "";
             textBox.SetActive(false);
+        }
+
+        public void TextVerUp(string Type)
+        {
+            if(Type == "説明1")
+            {
+                foreach (Transform child in ADVTriggers.transform)
+                {
+                    var childScript = child.GetComponent<ADVEvent>();
+                    if (childScript != null && childScript.Type == "説明1")
+                    {
+                        childScript.Type = "説明1.1";
+                    }
+                }
+            }
         }
     }
 }
