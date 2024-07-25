@@ -36,8 +36,7 @@ namespace UISystemV2
             textDatabase["説明1"] = new List<string>
             {
                 "アイテムを入手しました",
-                "回復薬は「ＨＰ」\n木の実は「満腹度」を回復できます",
-                "ＨＰはターン経過で徐々に回復していきます"
+                "回復薬は「ＨＰ」\n木の実は「満腹度」を回復できます"
             };
 
             textDatabase["説明1.1"] = new List<string>
