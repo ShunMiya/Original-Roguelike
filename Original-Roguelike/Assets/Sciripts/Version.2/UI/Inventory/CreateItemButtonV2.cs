@@ -3,8 +3,6 @@ using UnityEngine;
 using System;
 using ItemSystemV2;
 using ItemSystemV2.Inventory;
-using UnityEngine.EventSystems;
-using System.Collections;
 
 namespace UISystemV2
 {
