@@ -5,6 +5,8 @@ using System;
 using UISystemV2;
 using UnityEngine;
 using Performances;
+using Anime;
+using System.Collections;
 
 namespace PlayerStatusSystemV2
 {
@@ -19,6 +21,7 @@ namespace PlayerStatusSystemV2
         private GameEndV2 gameEnd;
         private PlayerCondition PCondition;
         private float Recovery = 0;
+        private AnimationControl animationControl;
 
         private void Start()
         {
@@ -27,6 +30,7 @@ namespace PlayerStatusSystemV2
             PCondition = GetComponent<PlayerCondition>();
             actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
             audioSource = GetComponent<AudioSource>();
+            animationControl = GetComponent<AnimationControl>();
         }
         public void TakeDamage(int damage, int R, float HitRate, int AttackType)
         {
@@ -74,10 +78,9 @@ namespace PlayerStatusSystemV2
             if (newHP <= 0)
             {
                 systemText.TextSet("<color=blue>Player</color>は" + reducedDamage + "ダメージを受けた!");
-                gameEnd.GameOverPerformance();
-                Time.timeScale = 0;
-
+                StartCoroutine(DieEvent());
             }
+
             else if (newHP > 0)
             {
                 systemText.TextSet("<color=blue>Player</color>は" + reducedDamage + "ダメージを受けた!");
@@ -89,6 +92,7 @@ namespace PlayerStatusSystemV2
 
                 Pos2D grid = GetComponent<MoveAction>().grid;
                 AudioSource AS = GetComponent<AudioSource>();
+                animationControl.DamageAnime();
                 StartCoroutine(performance.DamagePerformance(AttackType, grid.x, grid.z, AS));
             }
         }
@@ -109,9 +113,16 @@ namespace PlayerStatusSystemV2
 
             if (CurrentHP <= 0)
             {
-                gameEnd.GameOverPerformance();
-                Time.timeScale = 0;
+                StartCoroutine(DieEvent());
             }
+        }
+
+        public IEnumerator DieEvent()
+        {
+            yield return StartCoroutine(animationControl.DieAnime());
+
+            gameEnd.GameOverPerformance();
+            Time.timeScale = 0;
         }
 
         public bool HealHP(int Heal)
