@@ -79,6 +79,7 @@ namespace PlayerStatusSystemV2
             {
                 systemText.TextSet("<color=blue>Player</color>‚Í" + reducedDamage + "ƒ_ƒ[ƒW‚ðŽó‚¯‚½!");
                 StartCoroutine(DieEvent());
+                Time.timeScale = 0;
             }
 
             else if (newHP > 0)
@@ -114,6 +115,7 @@ namespace PlayerStatusSystemV2
             if (CurrentHP <= 0)
             {
                 StartCoroutine(DieEvent());
+                Time.timeScale = 0;
             }
         }
 
@@ -122,7 +124,6 @@ namespace PlayerStatusSystemV2
             yield return StartCoroutine(animationControl.DieAnime());
 
             gameEnd.GameOverPerformance();
-            Time.timeScale = 0;
         }
 
         public bool HealHP(int Heal)

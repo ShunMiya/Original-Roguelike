@@ -45,6 +45,8 @@ namespace Anime
 
         public IEnumerator DieAnime()
         {
+            animator.updateMode = AnimatorUpdateMode.UnscaledTime;
+
             animator.SetTrigger("Die");
 
             AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
