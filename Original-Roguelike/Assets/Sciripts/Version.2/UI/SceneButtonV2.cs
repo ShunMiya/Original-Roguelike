@@ -32,6 +32,12 @@ namespace UISystemV2
             fadeSystem.SceneJump(SceneName);
         }
 
+        public void ChangeSceneButtonSceneSelect(string SName)
+        {
+            ButtonTargetReset();
+            fadeSystem.SceneJump(SName);
+        }
+
         public void GameEndButtonClick()
         {
             ButtonTargetReset();
