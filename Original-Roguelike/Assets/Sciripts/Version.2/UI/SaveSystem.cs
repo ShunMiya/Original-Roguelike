@@ -7,23 +7,21 @@ namespace SaveLoad
     public class SaveSystem : MonoBehaviour
     {
         private string databasePath;
+        private string saveDatabasePath;
         [SerializeField] private GameObject Text;
 
         // Start is called before the first frame update
         void Start()
         {
             databasePath = SQLDBInitializationV2.GetDatabasePath();
-
+            saveDatabasePath = Path.Combine(Application.persistentDataPath, "SaveDataBase01.db");
         }
 
         public void Save()
         {
-            string saveDatabasePath = Path.Combine(Application.persistentDataPath, "SaveDataBase01.db");
-
             try
             {
-                // PlayerDataBase.dbをSaveDataBase01.dbとして複製
-                File.Copy(databasePath, saveDatabasePath, true); // trueは、既存ファイルを上書きするオプション
+                File.Copy(databasePath, saveDatabasePath, true);
                 Debug.Log("データベースが正常に複製されました。");
             }
             catch (IOException ex)

@@ -28,11 +28,6 @@ namespace UISystemV2
             menuSE.MenuOperationSE(0);
         }
 
-        public void OnDeselected()
-        {
-
-        }
-
         public void SelectDungeon()
         {
             menuSE.MenuOperationSE(1);
