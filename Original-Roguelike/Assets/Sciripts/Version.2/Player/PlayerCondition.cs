@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using Anime;
 
 namespace PlayerStatusSystemV2
 {
@@ -16,13 +17,16 @@ namespace PlayerStatusSystemV2
         [SerializeField] private ParticleSystem Stunparticle;
         [SerializeField] private ParticleSystem Blindparticle;
 
+        private AnimationControl animationControl;
+
 
         private void Start()
         {
             playerHP = GetComponent<PlayerHPV2>();
+            animationControl = GetComponent<AnimationControl>();
         }
 
-            public void SetCondition(int ConditionNum, int TurnNum)
+        public void SetCondition(int ConditionNum, int TurnNum)
         {
             switch(ConditionNum)
             {
@@ -35,6 +39,7 @@ namespace PlayerStatusSystemV2
                     break;
                 case 3:
                     StunTurn = TurnNum;
+                    animationControl.ChangeStunAnime();
                     break;
                 case 4:
                     BlindTurn = TurnNum;
@@ -77,12 +82,14 @@ namespace PlayerStatusSystemV2
 
         public void ConditionTurn()
         {
+            if (PoisonTurn == 1) Poisonparticle.Stop();
+            if (BlindTurn == 1) Blindparticle.Stop();
+            if (StunTurn == 1) animationControl.ChangeStunAnime();
+
             PoisonTurn = (PoisonTurn > 0) ? PoisonTurn - 1 : 0;
-            if(PoisonTurn == 0) Poisonparticle.Stop();
             ConfusionTurn = (ConfusionTurn > 0) ? ConfusionTurn - 1 : 0;
             StunTurn = (StunTurn > 0) ? StunTurn - 1 : 0;
             BlindTurn = (BlindTurn > 0) ? BlindTurn - 1 : 0;
-            if(BlindTurn == 0) Blindparticle.Stop();
         }
 
         public void ConditionClear()

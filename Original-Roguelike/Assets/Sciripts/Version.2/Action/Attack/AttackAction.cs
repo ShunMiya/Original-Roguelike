@@ -7,6 +7,7 @@ using System;
 using ItemSystemV2.Inventory;
 using EnemySystem;
 using Performances;
+using Anime;
 using static UnityEngine.EventSystems.EventTrigger;
 
 namespace AttackSystem
@@ -22,6 +23,8 @@ namespace AttackSystem
         private float elapsedTime = 0f;
         [SerializeField]private float moveDuration = 0.2f; // ˆÚ“®‚É‚©‚¯‚éŠÔ
 
+        private AnimationControl animationControl;
+
         public int EnemyY;
 
         private void Start()
@@ -29,6 +32,7 @@ namespace AttackSystem
             MA = GetComponent<MoveAction>();
             actionSoundEffects = FindObjectOfType<ActionSoundEffects>();
             audioSource = GetComponent<AudioSource>();
+            animationControl = GetComponent<AnimationControl>();
         }
 
         public IEnumerator AttackPreparationPlayer()
@@ -111,6 +115,8 @@ namespace AttackSystem
 
         public IEnumerator BeginAttack(int AttackType)
         {
+            if(animationControl != null) animationControl.AttackAnime(AttackType);
+
             originalPosition = transform.position;
             targetPosition = transform.position + transform.forward * 0.3f; // ƒtƒƒ“ƒg•ûŒü‚É0.3ˆÚ“®
 

@@ -5,6 +5,7 @@ using EnemySystem;
 using PlayerStatusSystemV2;
 using AttackSystem;
 using ItemSystemV2;
+using Anime;
 
 namespace MoveSystem
 {
@@ -21,11 +22,14 @@ namespace MoveSystem
         private float complementFrame;
         private Areamap field;
 
+        private AnimationControl animationControl;
+
         private void Awake ()
         {
             field = GetComponentInParent<Areamap>();
             complementFrame = GameRule.MoveSpeed;
             newGrid = grid;
+            animationControl = GetComponent<AnimationControl>();
         }
 
         public void ChangeDirectionOnTheSpot(float movex, float movez)
@@ -97,6 +101,7 @@ namespace MoveSystem
 
             while (Vector3.Distance(transform.position, targetPosition) > 0.001f)
             {
+                if(animationControl != null) animationControl.StartMoveAnime();
                 transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
                 yield return null;
             }
@@ -114,6 +119,7 @@ namespace MoveSystem
             }*/
             transform.position = new Vector3(px2, 0, pz2);
             grid = newGrid;
+            if(animationControl != null) animationControl.EndMoveAnime();
         }
 
         private Pos2D MovePointCheck(Areamap field, Pos2D Currentgrid, Vector3 targetPos)
