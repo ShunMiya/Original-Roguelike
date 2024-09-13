@@ -363,7 +363,7 @@ MonoBehaviour:
   m_text: "\u30D0\u30C3\u30B0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -586,7 +586,7 @@ MonoBehaviour:
   m_text: test
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -691,7 +691,6 @@ GameObject:
   - component: {fileID: 70703959}
   - component: {fileID: 70703961}
   - component: {fileID: 70703960}
-  - component: {fileID: 70703962}
   m_Layer: 5
   m_Name: CheckMessage
   m_TagString: Untagged
@@ -712,8 +711,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 478446451}
-  - {fileID: 1903756278}
-  - {fileID: 1046792662}
+  - {fileID: 1028936209}
   m_Father: {fileID: 1526274410}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -760,21 +758,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 70703958}
   m_CullTransparentMesh: 1
---- !u!114 &70703962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70703958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cd28087d3c325d44bf782f75087de08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Text: {fileID: 0}
-  returnButton: {fileID: 621955909}
-  stairsMenuSystem: {fileID: 1590205002}
 --- !u!1 &91338578
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +987,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1469801078}
+  - {fileID: 1625498295}
   m_Father: {fileID: 213921879}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1595,6 +1579,8 @@ GameObject:
   - component: {fileID: 213921878}
   - component: {fileID: 213921877}
   - component: {fileID: 213921876}
+  - component: {fileID: 213921881}
+  - component: {fileID: 213921880}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1692,6 +1678,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &213921880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213921875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701741593062daf4b9983e27a479db2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &213921881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213921875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce000e55662ad0a4dbcf3a91cf1ab649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &226878650
 GameObject:
   m_ObjectHideFlags: 0
@@ -2027,7 +2037,7 @@ MonoBehaviour:
   informationString: "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B"
   informationText: {fileID: 67947616}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &279378074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2967,7 +2977,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 910648572}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3043,7 +3053,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436213506}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &411099290
 ParticleSystemRenderer:
@@ -8020,7 +8030,7 @@ MonoBehaviour:
   m_text: "\u9589\u3058\u308B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -8209,6 +8219,7 @@ GameObject:
   - component: {fileID: 436213510}
   - component: {fileID: 436213517}
   - component: {fileID: 436213518}
+  - component: {fileID: 436213528}
   - component: {fileID: 436213520}
   - component: {fileID: 436213519}
   - component: {fileID: 436213521}
@@ -8300,8 +8311,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1661933377}
-  - {fileID: 1682751984}
-  - {fileID: 1116415283}
   - {fileID: 411099289}
   - {fileID: 1373774496}
   - {fileID: 1470342643}
@@ -8674,6 +8683,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a258d11803e8d41983bdede93ea0dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &436213528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e34228185df374e9ac8b54e5334a08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 1718871230}
+  Shield: {fileID: 1718871229}
 --- !u!1 &441075518
 GameObject:
   m_ObjectHideFlags: 0
@@ -8910,8 +8933,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -8926,8 +8949,20 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: YesSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 213921881}
+          m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: NextStageButtonClick
           m_Mode: 1
           m_Arguments:
@@ -8942,8 +8977,20 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: NoSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1590205003}
+          m_TargetAssemblyTypeName: UISystemV2.ExpandTopMenu, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -9097,7 +9144,7 @@ MonoBehaviour:
   m_text: "\u30B9\u30C6\u30FC\u30BF\u30B9"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9414,7 +9461,7 @@ MonoBehaviour:
   informationString: "\u30D0\u30C3\u30B0\u753B\u9762\u3078\u79FB\u52D5"
   informationText: {fileID: 544026753}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &473917696
 GameObject:
   m_ObjectHideFlags: 0
@@ -10016,7 +10063,7 @@ MonoBehaviour:
   m_text: "\u9589\u3058\u308B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10338,7 +10385,7 @@ MonoBehaviour:
   informationString: "\u88C5\u5099\u753B\u9762\u3078\u79FB\u52D5"
   informationText: {fileID: 544026753}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &544026751
 GameObject:
   m_ObjectHideFlags: 0
@@ -10400,7 +10447,7 @@ MonoBehaviour:
   m_text: sample
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10852,7 +10899,7 @@ MonoBehaviour:
   informationString: "\u30D0\u30C3\u30B0\u753B\u9762\u3078\u79FB\u52D5"
   informationText: {fileID: 67947616}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &595832140
 GameObject:
   m_ObjectHideFlags: 0
@@ -11005,7 +11052,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &598833703
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11214,6 +11261,7 @@ GameObject:
   - component: {fileID: 621955914}
   - component: {fileID: 621955913}
   - component: {fileID: 621955912}
+  - component: {fileID: 621955915}
   - component: {fileID: 621955911}
   m_Layer: 5
   m_Name: GameInterruption
@@ -11260,8 +11308,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -11276,9 +11324,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
-          m_MethodName: WindowOnOff
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: YesSelected
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11288,9 +11336,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
-          m_MethodName: EventSystemSet
+        - m_Target: {fileID: 1590205003}
+          m_TargetAssemblyTypeName: UISystemV2.ExpandTopMenu, Assembly-CSharp
+          m_MethodName: OpenMenu
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11304,8 +11352,20 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: NoSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1590205003}
+          m_TargetAssemblyTypeName: UISystemV2.ExpandTopMenu, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -11398,6 +11458,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621955909}
   m_CullTransparentMesh: 1
+--- !u!114 &621955915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621955909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f430661c7b0424a827b4a0446436be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &627419826
 GameObject:
   m_ObjectHideFlags: 0
@@ -11942,7 +12014,7 @@ MonoBehaviour:
   informationString: "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B"
   informationText: {fileID: 544026753}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &694783297
 GameObject:
   m_ObjectHideFlags: 0
@@ -12191,7 +12263,7 @@ MonoBehaviour:
   informationString: "\u88C5\u5099\u753B\u9762\u3078\u79FB\u52D5"
   informationText: {fileID: 1973144932}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &700491621
 GameObject:
   m_ObjectHideFlags: 0
@@ -12572,7 +12644,7 @@ MonoBehaviour:
   m_text: "\u5DE6\u624B\u88C5\u5099"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -13368,7 +13440,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14171,7 +14243,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1625498295}
   - {fileID: 403240041}
   m_Father: {fileID: 213921879}
   m_RootOrder: 8
@@ -14528,7 +14599,7 @@ MonoBehaviour:
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14840,6 +14911,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009715434}
   m_CullTransparentMesh: 1
+--- !u!1 &1028936208
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1028936209}
+  m_Layer: 0
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1028936209
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028936208}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1903756278}
+  - {fileID: 1046792662}
+  m_Father: {fileID: 70703959}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1046792661
 GameObject:
   m_ObjectHideFlags: 0
@@ -14873,8 +14977,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1684090423}
-  m_Father: {fileID: 70703959}
-  m_RootOrder: 2
+  m_Father: {fileID: 1028936209}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -14898,8 +15002,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 70703962}
-          m_TargetAssemblyTypeName: SaveLoad.StairSaveSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -14914,9 +15018,21 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 70703962}
-          m_TargetAssemblyTypeName: SaveLoad.StairSaveSystem, Assembly-CSharp
-          m_MethodName: SelectReturnButton
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: NoSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1590205003}
+          m_TargetAssemblyTypeName: UISystemV2.ExpandTopMenu, Assembly-CSharp
+          m_MethodName: CloseMenu
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14930,9 +15046,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 70703962}
-          m_TargetAssemblyTypeName: SaveLoad.StairSaveSystem, Assembly-CSharp
-          m_MethodName: SelectReturnButton
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: NoSelected
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14942,9 +15058,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
-          m_MethodName: BackHomeMenu
+        - m_Target: {fileID: 1590205003}
+          m_TargetAssemblyTypeName: UISystemV2.ExpandTopMenu, Assembly-CSharp
+          m_MethodName: CloseMenu
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -15339,7 +15455,7 @@ MonoBehaviour:
   informationString: "\u30B9\u30C6\u30FC\u30BF\u30B9\u753B\u9762\u3078\u79FB\u52D5"
   informationText: {fileID: 67947616}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &1104920326
 GameObject:
   m_ObjectHideFlags: 0
@@ -15417,104 +15533,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104920326}
   m_CullTransparentMesh: 1
---- !u!1 &1116415282
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1116415283}
-  - component: {fileID: 1116415286}
-  - component: {fileID: 1116415285}
-  - component: {fileID: 1116415284}
-  m_Layer: 0
-  m_Name: Quad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1116415283
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116415282}
-  m_LocalRotation: {x: 0.65328145, y: -0.27059817, z: 0.27059817, w: 0.65328145}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.57}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 436213506}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 45}
---- !u!64 &1116415284
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116415282}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1116415285
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116415282}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1116415286
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1116415282}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1123688009
 GameObject:
   m_ObjectHideFlags: 0
@@ -15802,7 +15820,7 @@ GameObject:
   - component: {fileID: 1173021783}
   - component: {fileID: 1173021782}
   m_Layer: 5
-  m_Name: BackGround
+  m_Name: Inventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16170,7 +16188,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436213506}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1187578347
 ParticleSystemRenderer:
@@ -21087,7 +21105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce000e55662ad0a4dbcf3a91cf1ab649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Base
 --- !u!114 &1230204281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21101,15 +21118,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates:
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls: []
   - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1230204280}
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: YesSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 213921881}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: StatusReset
           m_Mode: 1
@@ -21121,16 +21146,16 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1230204280}
+        - m_Target: {fileID: 213921881}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: ChangeSceneButtonClick
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: Base
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1233837525
@@ -21627,7 +21652,6 @@ GameObject:
   - component: {fileID: 1362095708}
   - component: {fileID: 1362095707}
   - component: {fileID: 1362095706}
-  - component: {fileID: 1362095709}
   - component: {fileID: 1362095710}
   m_Layer: 5
   m_Name: RetryButton
@@ -21739,19 +21763,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362095703}
   m_CullTransparentMesh: 1
---- !u!114 &1362095709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362095703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce000e55662ad0a4dbcf3a91cf1ab649, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneName: Dungeon
 --- !u!114 &1362095710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21768,14 +21779,10 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
-  - eventID: 15
-    callback:
-      m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1362095709}
-          m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
-          m_MethodName: RetryButtonClick
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -21785,14 +21792,14 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 10
+  - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1362095706}
-          m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
-          m_MethodName: OnDeselect
-          m_Mode: 0
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: YesSelected
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -21801,11 +21808,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1362095709}
+        - m_Target: {fileID: 213921881}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: RetryButtonClick
           m_Mode: 1
@@ -21848,7 +21851,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436213506}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!199 &1373774497
 ParticleSystemRenderer:
@@ -27248,7 +27251,6 @@ GameObject:
   - component: {fileID: 1441296824}
   - component: {fileID: 1441296823}
   - component: {fileID: 1441296822}
-  - component: {fileID: 1441296825}
   - component: {fileID: 1441296826}
   m_Layer: 5
   m_Name: BackBaseButton
@@ -27360,19 +27362,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441296819}
   m_CullTransparentMesh: 1
---- !u!114 &1441296825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441296819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce000e55662ad0a4dbcf3a91cf1ab649, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneName: Base
 --- !u!114 &1441296826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27389,12 +27378,24 @@ MonoBehaviour:
   - eventID: 9
     callback:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: OnSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 15
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1441296825}
+        - m_Target: {fileID: 213921881}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: StatusReset
           m_Mode: 1
@@ -27406,16 +27407,16 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1441296825}
+        - m_Target: {fileID: 213921881}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: ChangeSceneButtonClick
-          m_Mode: 1
+          m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: 
+            m_StringArgument: Base
             m_BoolArgument: 0
           m_CallState: 2
 --- !u!1 &1462672294
@@ -27479,7 +27480,7 @@ MonoBehaviour:
   m_text: "\u62E0\u70B9\u306B\u623B\u308B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -27663,7 +27664,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 436213506}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!199 &1470342644
 ParticleSystemRenderer:
@@ -32878,7 +32879,7 @@ GameObject:
   - component: {fileID: 1526274407}
   - component: {fileID: 1526274411}
   m_Layer: 5
-  m_Name: InventoryUI-SQLDB
+  m_Name: MenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33222,7 +33223,7 @@ MonoBehaviour:
   informationString: "\u30E1\u30CB\u30E5\u30FC\u3092\u9589\u3058\u308B"
   informationText: {fileID: 1973144932}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &1533594894
 GameObject:
   m_ObjectHideFlags: 0
@@ -33240,7 +33241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1533594895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33626,7 +33627,7 @@ MonoBehaviour:
   m_text: "\u518D\u6311\u6226\u3059\u308B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -33713,7 +33714,7 @@ GameObject:
   - component: {fileID: 1590204999}
   - component: {fileID: 1590204998}
   - component: {fileID: 1590204997}
-  - component: {fileID: 1590205002}
+  - component: {fileID: 1590205003}
   m_Layer: 5
   m_Name: StairsMenu
   m_TagString: Untagged
@@ -33821,7 +33822,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590204994}
   m_CullTransparentMesh: 1
---- !u!114 &1590205002
+--- !u!114 &1590205003
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33830,11 +33831,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1590204994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7655fa4ecc896e4a8da6a48f4a6148f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2147f93be35aa6043ba3ff05a5a6bfdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DungeonInterruptionMenu: {fileID: 70703958}
-  DungeonInterruptionButton: {fileID: 1903756277}
+  TopMenu: {fileID: 70703958}
+  ButtonList: {fileID: 1028936208}
+  returnButton: {fileID: 621955909}
 --- !u!1 &1625498292
 GameObject:
   m_ObjectHideFlags: 0
@@ -33905,13 +33907,13 @@ RectTransform:
   m_Children:
   - {fileID: 91338579}
   - {fileID: 1230204275}
-  m_Father: {fileID: 910648572}
-  m_RootOrder: 0
+  m_Father: {fileID: 98720147}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1280, y: 720}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1626254595
 PrefabInstance:
@@ -34031,7 +34033,7 @@ MonoBehaviour:
   m_text: "\u88C5\u5099"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -34276,7 +34278,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -34550,7 +34552,7 @@ MonoBehaviour:
   informationString: "\u30B9\u30C6\u30FC\u30BF\u30B9\u753B\u9762\u3078\u79FB\u52D5"
   informationText: {fileID: 1973144932}
   InventoryUI: {fileID: 1526274405}
-  menuSE: {fileID: 0}
+  menuSE: {fileID: 555931381}
 --- !u!1 &1656011406
 GameObject:
   m_ObjectHideFlags: 0
@@ -34673,104 +34675,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!1 &1682751983
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1682751984}
-  - component: {fileID: 1682751987}
-  - component: {fileID: 1682751986}
-  - component: {fileID: 1682751985}
-  m_Layer: 0
-  m_Name: Quad
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1682751984
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682751983}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.25}
-  m_LocalScale: {x: 0.25, y: 0.5, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 436213506}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!64 &1682751985
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682751983}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1682751986
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682751983}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1682751987
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682751983}
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1684090422
 GameObject:
   m_ObjectHideFlags: 0
@@ -35016,9 +34920,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1661933377}
     m_Modifications:
+    - target: {fileID: 1433742828954284303, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8189980434977739222, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
       propertyPath: m_Name
       value: MaleCharacterPBR
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687993965716594507, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8855052669661678444, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
       propertyPath: m_RootOrder
@@ -35079,6 +34991,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8855052669661678444, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
   m_PrefabInstance: {fileID: 1718871227}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1718871229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1433742828954284303, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+  m_PrefabInstance: {fileID: 1718871227}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1718871230 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8687993965716594507, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+  m_PrefabInstance: {fileID: 1718871227}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1720537372
 GameObject:
   m_ObjectHideFlags: 0
@@ -35120,7 +35042,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -35272,8 +35194,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -35288,8 +35210,20 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: NoSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1590205003}
+          m_TargetAssemblyTypeName: UISystemV2.ExpandTopMenu, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -35304,8 +35238,20 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: NoSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1590205003}
+          m_TargetAssemblyTypeName: UISystemV2.ExpandTopMenu, Assembly-CSharp
           m_MethodName: DisableWindow
           m_Mode: 1
           m_Arguments:
@@ -35926,7 +35872,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -36212,7 +36158,7 @@ MonoBehaviour:
   m_text: "\u53F3\u624B\u88C5\u5099"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -36320,8 +36266,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 607162271}
-  m_Father: {fileID: 70703959}
-  m_RootOrder: 1
+  m_Father: {fileID: 1028936209}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -36345,8 +36291,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 70703962}
-          m_TargetAssemblyTypeName: SaveLoad.StairSaveSystem, Assembly-CSharp
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
           m_MethodName: OnSelected
           m_Mode: 1
           m_Arguments:
@@ -36361,9 +36307,21 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 70703962}
-          m_TargetAssemblyTypeName: SaveLoad.StairSaveSystem, Assembly-CSharp
-          m_MethodName: Save
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: YesSelected
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1903756283}
+          m_TargetAssemblyTypeName: SaveLoad.SaveSystem, Assembly-CSharp
+          m_MethodName: StairsSave
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -36373,9 +36331,9 @@ MonoBehaviour:
             m_StringArgument: Dungeon
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1903756283}
+        - m_Target: {fileID: 213921881}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
-          m_MethodName: ChangeSceneButtonSceneSelect
+          m_MethodName: ChangeSceneButtonClick
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -36389,9 +36347,9 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 70703962}
-          m_TargetAssemblyTypeName: SaveLoad.StairSaveSystem, Assembly-CSharp
-          m_MethodName: SelectReturnButton
+        - m_Target: {fileID: 213921880}
+          m_TargetAssemblyTypeName: UISystemV2.ButtonSESystem, Assembly-CSharp
+          m_MethodName: NoSelected
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -36401,9 +36359,9 @@ MonoBehaviour:
             m_StringArgument: Dungeon
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1590205002}
-          m_TargetAssemblyTypeName: StairsMenu.StairsMenuSystem, Assembly-CSharp
-          m_MethodName: BackHomeMenu
+        - m_Target: {fileID: 1590205003}
+          m_TargetAssemblyTypeName: UISystemV2.ExpandTopMenu, Assembly-CSharp
+          m_MethodName: CloseMenu
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -36504,10 +36462,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1903756277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce000e55662ad0a4dbcf3a91cf1ab649, type: 3}
+  m_Script: {fileID: 11500000, guid: d365a1dbd3cd8294281a645fa1cca3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: 
+  Text: {fileID: 0}
 --- !u!1 &1949512035
 GameObject:
   m_ObjectHideFlags: 0
@@ -37060,7 +37018,7 @@ MonoBehaviour:
   m_text: "\u30D0\u30C3\u30B0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -37366,7 +37324,7 @@ MonoBehaviour:
   m_text: "\u62E0\u70B9\u306B\u623B\u308B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
-  m_sharedMaterial: {fileID: 2417678158271935863, guid: cbc6b90e5925dc449bf020922fd8a7fa, type: 2}
+  m_sharedMaterial: {fileID: 5365012658710934117, guid: 7c16c54fcec2bec43aaa17c13ba3e2f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

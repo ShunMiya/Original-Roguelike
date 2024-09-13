@@ -17,7 +17,7 @@ namespace UISystemV2
         void Awake()
         {
             returnButton = transform.parent.Find("BackGameButton").gameObject;
-            backgroundObject = InventoryUI.transform.Find("BackGround").gameObject;
+            backgroundObject = InventoryUI.transform.Find("Inventory").gameObject;
             menuSE = FindObjectOfType<MenuSoundEffect>();
         }
 

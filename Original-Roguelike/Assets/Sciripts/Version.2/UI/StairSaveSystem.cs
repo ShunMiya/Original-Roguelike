@@ -1,62 +1,27 @@
-using UnityEngine;
 using ItemSystemV2.Inventory;
-using System.IO;
-using Performances;
-using UnityEngine.EventSystems;
-using StairsMenu;
+using System;
+using UnityEngine;
 
-namespace SaveLoad
+public class StairSaveSystem : MonoBehaviour
 {
-    public class StairSaveSystem : MonoBehaviour
+    private string databasePath;
+    private SqliteDatabase sqlDB;
+    string query;
+
+    // Start is called before the first frame update
+    void OnEnable()
     {
-        private string databasePath;
-        private string saveDatabasePath;
-        [SerializeField] private GameObject Text;
-        private MenuSoundEffect menuSE;
-        [SerializeField] private GameObject returnButton;
-        [SerializeField] private StairsMenuSystem stairsMenuSystem;
-        private SqliteDatabase sqlDB;
+        databasePath = SQLDBInitializationV2.GetDatabasePath();
+        sqlDB = new SqliteDatabase(databasePath);
+        query = "SELECT * FROM PlayerStatus WHERE PlayerID = 1";
+        DataTable Data = sqlDB.ExecuteQuery(query);
+        int CurrentDungeonId = Convert.ToInt32(Data[0]["DungeonId"]);
+        int CurrentFloorLevel = Convert.ToInt32(Data[0]["FloorLevel"]);
 
-        // Start is called before the first frame update
-        void Awake()
-        {
-            databasePath = SQLDBInitializationV2.GetDatabasePath();
-            saveDatabasePath = Path.Combine(Application.persistentDataPath, "SaveDataBase01.db");
-            menuSE = FindObjectOfType<MenuSoundEffect>();
-        }
+        query = "SELECT TopFloor FROM DungeonChallengeStatus WHERE DungeonId = '" + CurrentDungeonId + "'";
+        Data = sqlDB.ExecuteQuery(query);
+        int TopFloor = Convert.ToInt32(Data[0]["TopFloor"]);
 
-        public void OnSelected()
-        {
-            menuSE.MenuOperationSE(0);
-        }
-
-        public void Save()
-        {
-            menuSE.MenuOperationSE(1);
-
-            sqlDB = new SqliteDatabase(databasePath);
-            string updateStatusQuery = "UPDATE PlayerStatus SET FloorLevel = (SELECT FloorLevel FROM PlayerStatus WHERE PlayerID = 1) + 1 WHERE PlayerID = 1;";
-            sqlDB.ExecuteNonQuery(updateStatusQuery);
-
-            try
-            {
-                File.Copy(databasePath, saveDatabasePath, true);
-                Debug.Log("データベースが正常に複製されました。");
-
-
-            }
-            catch (IOException ex)
-            {
-                Debug.LogError("データベースの複製に失敗しました: " + ex.Message);
-            }
-        }
-
-        public void SelectReturnButton()
-        {
-            menuSE.MenuOperationSE(2);
-
-            EventSystem.current.SetSelectedGameObject(returnButton);
-            stairsMenuSystem.BackHomeMenu();
-        }
+        if(CurrentFloorLevel == TopFloor) gameObject.SetActive(false);
     }
 }
