@@ -42,7 +42,6 @@ namespace HomeSystem
             query = "SELECT MAX(DungeonId) AS MaxDungeonId FROM DungeonChallengeStatus";
             DataTable MaxDungeonIdTable = sqlDB.ExecuteQuery(query);
             int MaxDungeonId = Convert.ToInt32(MaxDungeonIdTable[0]["MaxDungeonId"]);
-            Debug.Log(MaxClearDungeonId + " : " + MaxDungeonId);
             if(MaxClearDungeonId < MaxDungeonId)  MaxClearDungeonId++;
 
             for (int DungeonId = MaxClearDungeonId; DungeonId > 0; DungeonId--)

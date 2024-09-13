@@ -11,6 +11,7 @@ namespace ItemSystemV2
         private SystemTextV2 systemText;
         private SqliteDatabase sqlDB;
         private PlayerStatusV2 playerStatusV2;
+        private EquipmentItemObj equipmentItemObj;
 
         public void Start()
         {
@@ -18,6 +19,7 @@ namespace ItemSystemV2
             sqlDB = new SqliteDatabase(databasePath);
             systemText = FindObjectOfType<SystemTextV2>();
             playerStatusV2 = GetComponent<PlayerStatusV2>();
+            equipmentItemObj = GetComponent<EquipmentItemObj>();
         }
 
         public void EquipItem(DataRow row)
@@ -88,6 +90,7 @@ namespace ItemSystemV2
             }
 
             playerStatusV2.WeaponStatusPlus();
+            equipmentItemObj.EquipmentObj();
         }
         public void UnequipItem(DataRow row)
         {
@@ -102,6 +105,7 @@ namespace ItemSystemV2
             systemText.TextSet(equipmentItem.ItemName + " ‚ðŠO‚µ‚½");
 
             playerStatusV2.WeaponStatusPlus();
+            equipmentItemObj.EquipmentObj();
         }
     }
 }
