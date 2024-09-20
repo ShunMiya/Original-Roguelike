@@ -46,6 +46,10 @@ namespace ItemSystemV2.Inventory
                     OffensiveDataV2 offensiveItem = ItemDataCacheV2.GetOffensive(itemId);
                     GetItem = AddOffensive(itemId, num, offensiveItem);
                     break;
+                case 4:
+                    ReinforceDataV2 reinforceItem = ItemDataCacheV2.GetReinforce(itemId);
+                    GetItem = AddReinforce(itemId, num, reinforceItem);
+                    break;
                 default:
                     break;
             }
@@ -110,6 +114,18 @@ namespace ItemSystemV2.Inventory
             return true;
         }
 
+        public bool AddReinforce(int itemId, int num, ReinforceDataV2 reinforceItem)
+        {
+            if (itemCount == inventorySize)
+            {
+                systemText.TextSet("バッグが一杯だ！");
+                return false;
+            }
+            string insertQuery = "INSERT INTO Inventory (Id, Num) VALUES ('" + reinforceItem.Id + "', " + num + ")";
+            systemText.TextSet(reinforceItem.ItemName + " を手に入れた");
+            sqlDB.ExecuteNonQuery(insertQuery);
+            return true;
+        }
 
         public int InventoryCount()
         {

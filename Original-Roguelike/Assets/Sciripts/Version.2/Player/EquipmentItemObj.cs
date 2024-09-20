@@ -40,6 +40,8 @@ namespace ItemSystemV2
                 sqlDB = new SqliteDatabase(databasePath);
             }
 
+            WeaponEquip = false; ShieldEquip = false;
+
             string checkEquippedQuery = "SELECT Equipped FROM Inventory WHERE Equipped IN (1, 2)";
             DataTable equippedItems = sqlDB.ExecuteQuery(checkEquippedQuery);
             foreach (DataRow row in equippedItems.Rows)

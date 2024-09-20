@@ -22,6 +22,10 @@ namespace ItemSystemV2
             query = "SELECT * FROM Offensive";
             DataTable offensiveData = sqlDB.ExecuteQuery(query);
             ItemDataCacheV2.CacheOffensive(offensiveData);
+
+            query = "SELECT * FROM Reinforcement";
+            DataTable reinforceData = sqlDB.ExecuteQuery(query);
+            ItemDataCacheV2.CacheReinforce(reinforceData);
         }
     }
 }

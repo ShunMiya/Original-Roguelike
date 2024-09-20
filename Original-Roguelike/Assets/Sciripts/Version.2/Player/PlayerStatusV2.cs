@@ -47,11 +47,15 @@ namespace PlayerStatusSystemV2
             foreach (DataRow row in equippedItems.Rows)
             {
                 int equippedItemId = Convert.ToInt32(row["Id"]);
+                int ReinNum = Convert.ToInt32(row["ReinforceNum"]);
+                int EquippedNum = Convert.ToInt32(row["Equipped"]);
                 EquipmentDataV2 equippedItem = ItemDataCacheV2.GetEquipment(equippedItemId);
 
                 AttackType += equippedItem.AttackType;
                 addAttack += equippedItem.AttackBonus;
+                if (EquippedNum == 1) addAttack += ReinNum;
                 addDefense += equippedItem.DefenseBonus;
+                if (EquippedNum == 2) addDefense += ReinNum;
                 RangeBonus += equippedItem.WeaponRange;
             }
             string updateStatusQuery = "UPDATE PlayerStatus SET AttackType = " + AttackType + " WHERE PlayerID = 1;";

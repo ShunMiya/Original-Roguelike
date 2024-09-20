@@ -67,12 +67,17 @@ namespace UISystemV2
                         itemButton.subMenu = subMenu;
 
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+                        int ReinNum = Convert.ToInt32(row["ReinforceNum"]);
+                        string buttonname;
+                        if (ReinNum > 0) buttonname = equipmentItem.ItemName + " +" + Convert.ToInt32(row["ReinforceNum"]);
+                        else buttonname = equipmentItem.ItemName;
+
                         if (Convert.ToInt32(row["Equipped"]) != 0)
                         {
-                            buttonText.text = FormatEquippedItemText(equipmentItem.ItemName);
+                            buttonText.text = FormatEquippedItemText(buttonname);
                             continue;
                         }
-                        buttonText.text = equipmentItem.ItemName;
+                        buttonText.text = buttonname;
                         break;
                     case 2:
                         OffensiveDataV2 offensiveItem = ItemDataCacheV2.GetOffensive(itemId);
@@ -86,6 +91,19 @@ namespace UISystemV2
                         buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
 
                         buttonText.text = offensiveItem.ItemName + "(" + Convert.ToInt32(row["Num"]) + ")";
+                        break;
+                    case 4:
+                        ReinforceDataV2 reinforceItem = ItemDataCacheV2.GetReinforce(itemId);
+
+                        button = Instantiate(buttonPrefab, buttonContainer);
+                        itemButton = button.GetComponent<ItemButtonV2>();
+                        itemButton.row = row;
+                        itemButton.informationText = informationText;
+                        itemButton.returnButton = returnButton;
+                        itemButton.subMenu = subMenu;
+                        buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+
+                        buttonText.text = reinforceItem.ItemName;
                         break;
                 }
             }

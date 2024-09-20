@@ -9,12 +9,14 @@ namespace ItemSystemV2
         private static Dictionary<int, IItemDataV2> equipmentCache;
         private static Dictionary<int, IItemDataV2> consumableCache;
         private static Dictionary<int, IItemDataV2> offensiveCache;
+        private static Dictionary<int, IItemDataV2> reinforceCache;
 
         static ItemDataCacheV2()
         {
             equipmentCache = new Dictionary<int, IItemDataV2>();
             consumableCache = new Dictionary<int, IItemDataV2>();
             offensiveCache = new Dictionary<int, IItemDataV2>();
+            reinforceCache = new Dictionary<int, IItemDataV2>();
         }
 
         public static IItemDataV2 GetIItemData(int itemId)
@@ -22,10 +24,12 @@ namespace ItemSystemV2
             IItemDataV2 consumableItem = ItemDataCacheV2.GetConsumable(itemId);
             IItemDataV2 equipmentItem = ItemDataCacheV2.GetEquipment(itemId);
             IItemDataV2 offensiveItem = ItemDataCacheV2.GetOffensive(itemId);
+            IItemDataV2 reinforceItem = ItemDataCacheV2.GetReinforce(itemId);
 
             if (consumableItem != null) return consumableItem;
             else if (equipmentItem != null) return equipmentItem;
             else if (offensiveItem != null) return offensiveItem;
+            else if (reinforceItem != null) return reinforceItem;
             else return null;
         }
 
@@ -34,10 +38,12 @@ namespace ItemSystemV2
             IItemDataV2 consumableItem = ItemDataCacheV2.GetConsumableByName(name);
             IItemDataV2 equipmentItem = ItemDataCacheV2.GetEquipmentByName(name);
             IItemDataV2 offensiveItem = ItemDataCacheV2.GetOffensiveByName(name);
+            IItemDataV2 reinforceItem = ItemDataCacheV2.GetReinforceByName(name);
 
             if (consumableItem != null) return consumableItem;
             else if (equipmentItem != null) return equipmentItem;
             else if (offensiveItem != null) return offensiveItem;
+            else if (reinforceItem != null) return reinforceItem;
             else return null;
         }
 
@@ -145,6 +151,41 @@ namespace ItemSystemV2
                 if (offensiveData.ItemName == name)
                 {
                     return offensiveData;
+                }
+            }
+
+            return null;
+        }
+
+        public static void CacheReinforce(DataTable reinforceTable)
+        {
+            foreach (DataRow row in reinforceTable.Rows)
+            {
+                ReinforceDataV2 reinforceData = new ReinforceDataV2();
+                reinforceData.Id = Convert.ToInt32(row["Id"]);
+                reinforceData.PrefabName = row["PrefabName"].ToString();
+                reinforceData.ItemName = row["ItemName"].ToString();
+                reinforceData.ItemType = Convert.ToInt32(row["ItemType"]);
+                reinforceData.Description = row["Description"].ToString();
+                reinforceData.ReinType = Convert.ToInt32(row["ReinType"]);
+                reinforceData.ReinNum = Convert.ToInt32(row["ReinNum"]);
+
+                reinforceCache[reinforceData.Id] = reinforceData;
+            }
+        }
+
+        public static ReinforceDataV2 GetReinforce(int itemId)
+        {
+            return reinforceCache.TryGetValue(itemId, out IItemDataV2 reinforceData) ? reinforceData as ReinforceDataV2 : null;
+        }
+
+        public static ReinforceDataV2 GetReinforceByName(string name)
+        {
+            foreach (ReinforceDataV2 reinforceData in reinforceCache.Values)
+            {
+                if (reinforceData.ItemName == name)
+                {
+                    return reinforceData;
                 }
             }
 

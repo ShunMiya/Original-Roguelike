@@ -8225,6 +8225,7 @@ GameObject:
   - component: {fileID: 436213521}
   - component: {fileID: 436213522}
   - component: {fileID: 436213523}
+  - component: {fileID: 436213529}
   - component: {fileID: 436213526}
   - component: {fileID: 436213527}
   - component: {fileID: 436213525}
@@ -8419,6 +8420,7 @@ MonoBehaviour:
   playerHP: {fileID: 436213511}
   playerHungry: {fileID: 436213510}
   playerThrowItem: {fileID: 436213520}
+  equipmentUpdate: {fileID: 436213529}
   systemText: {fileID: 1238523509}
   menuSoundEffect: {fileID: 555931381}
 --- !u!114 &436213515
@@ -8697,6 +8699,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon: {fileID: 1718871230}
   Shield: {fileID: 1718871229}
+--- !u!114 &436213529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10a6b07eca486143b752fb1523b77a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &441075518
 GameObject:
   m_ObjectHideFlags: 0
@@ -20982,6 +20996,7 @@ GameObject:
   - component: {fileID: 1230204278}
   - component: {fileID: 1230204277}
   - component: {fileID: 1230204280}
+  - component: {fileID: 1230204282}
   - component: {fileID: 1230204281}
   m_Layer: 5
   m_Name: BackBaseButton
@@ -21146,6 +21161,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1230204282}
+          m_TargetAssemblyTypeName: SaveLoad.SaveSystem, Assembly-CSharp
+          m_MethodName: DungeonClearSave
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 213921881}
           m_TargetAssemblyTypeName: UISystemV2.SceneButtonV2, Assembly-CSharp
           m_MethodName: ChangeSceneButtonClick
@@ -21158,6 +21185,19 @@ MonoBehaviour:
             m_StringArgument: Base
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1230204282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230204274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d365a1dbd3cd8294281a645fa1cca3d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: {fileID: 0}
 --- !u!1 &1233837525
 GameObject:
   m_ObjectHideFlags: 0

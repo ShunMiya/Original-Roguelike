@@ -40,6 +40,15 @@ namespace SaveLoad
             Save();
         }
 
+        public void DungeonClearSave()
+        {
+            sqlDB = new SqliteDatabase(databasePath);
+            string updateStatusQuery = "UPDATE PlayerStatus SET DungeonId = 0 WHERE PlayerID = 1;";
+            sqlDB.ExecuteNonQuery(updateStatusQuery);
+
+            Save();
+        }
+
         public void TextDisplay()
         {
             Text.SetActive(true);
