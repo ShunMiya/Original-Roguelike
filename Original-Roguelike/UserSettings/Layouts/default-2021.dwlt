@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Inspector
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 350}
   m_MaxSize: {x: 10000, y: 10000}
@@ -430,9 +430,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 2e100000
-      m_LastClickedID: 0
-      m_ExpandedIDs: 7cccffffdef4ffff02f7ffff20faffff4e59000088590000365d000094640000c06500004e6600004a6b00000c770000de790000
+      m_SelectedIDs: d69c0100
+      m_LastClickedID: 105686
+      m_ExpandedIDs: 70d0fbff26eefbfffeeffbffe23efcff406efeff2873feff2c8efeff7a8efeff5491feff8891feff9891feffdc91feff3293feff4093feff4e93feff9cb8feffe8b8feff40b9feffa4b9fefff2bafeff8cbcfeff2431ffff9c49ffffa049ffffa449ffffa849ffffac49ffffc849fffff449ffffc44affffee4fffffce9ffffff6a5ffff6ef6ffff20faffff387700006e97000030980000a4a0000034a1000066a1000052a40000e2a400003ea50000c21b0100d21b01000c1c0100901e0100b21f01000620010078830100b2830100ae870100009401003a94010036980100c09b0100e69b0100009e0100b09e01008e9f0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: 640, y: 360, z: 0}
     speed: 2
-    m_Value: {x: 640, y: 360, z: 0}
+    m_Value: {x: 0, y: 0, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -768,9 +768,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 419.1737
+    m_Target: 403.5699
     speed: 2
-    m_Value: 419.1737
+    m_Value: 174.80696
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -982,22 +982,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sciripts/Version.2/Player
+    - Assets/Sciripts/Version.2/UI/Inventory
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sciripts/Version.2/Player
+  - Assets/Sciripts/Version.2/UI/Inventory
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\program\project\Original-Roguelike\Original-Roguelike
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 130}
-    m_SelectedIDs: d6620000
-    m_LastClickedID: 25302
-    m_ExpandedIDs: 000000007c6200008e62000096620000be620000c062000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 290}
+    m_SelectedIDs: fca50000
+    m_LastClickedID: 42492
+    m_ExpandedIDs: 000000007c6200008e6200009062000096620000c0620000c4620000d862000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1053,7 +1053,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c62300002e5a000000000000706700001a670000fc6600004e670000f866000052670000
+    m_ExpandedInstanceIDs: c62300002e5a0000706700001a670000fc6600004e670000f86600005267000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 

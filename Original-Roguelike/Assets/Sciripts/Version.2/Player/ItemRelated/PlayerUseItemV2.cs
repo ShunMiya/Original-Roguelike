@@ -16,6 +16,7 @@ namespace ItemSystemV2
         [SerializeField] private PlayerHPV2 playerHP;
         [SerializeField] private PlayerHungryV2 playerHungry;
         [SerializeField] private PlayerThrowItem playerThrowItem;
+        [SerializeField] private EquipmentUpdate equipmentUpdate;
         bool ItemUse;
         private DataRow row;
         private int ItemType;
@@ -65,6 +66,14 @@ namespace ItemSystemV2
                     yield return StartCoroutine(OffensiveUse(row));
 
                     break;
+                case 4:
+                    ReinforceUse(row);
+
+                    inventoryremove.RemoveItem(row, 1);
+
+                    yield return new WaitForSeconds(0.2f);
+
+                    break;
             }
         }
 
@@ -99,6 +108,25 @@ namespace ItemSystemV2
             yield return StartCoroutine(playerThrowItem.ThrowOffensiveItem(row));
 
             inventoryremove.RemoveItem(row, 0);
+        }
+
+        public void ReinforceUse(DataRow row)
+        {
+            menuSoundEffect.MenuActionSE(1);
+
+            int Id = Convert.ToInt32(row["Id"]);
+            ReinforceDataV2 itemData = ItemDataCacheV2.GetReinforce(Id);
+            systemText.TextSet("<color=blue>Player</color>ÇÕ" + itemData.ItemName + "ÇégÇ¡ÇΩÅI");
+
+            switch (itemData.ReinType)
+            {
+                case 1:
+                    equipmentUpdate.WeaponUpdate(itemData.ReinNum);
+                    break;
+                case 2:
+                    equipmentUpdate.ShieldUpdate(itemData.ReinNum);
+                    break;
+            }
         }
     }
 }

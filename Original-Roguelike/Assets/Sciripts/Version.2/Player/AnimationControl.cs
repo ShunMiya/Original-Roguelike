@@ -37,7 +37,6 @@ namespace Anime
         public void AttackAnime(int Num)
         {
             animator.speed = GameRule.AnimeSpeed;
-            Debug.Log("AttackType:" + Num);
             animator.SetInteger("AttackType", Num);
             animator.SetTrigger("Attack");
         }

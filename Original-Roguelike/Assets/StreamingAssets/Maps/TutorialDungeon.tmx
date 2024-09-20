@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="22" nextobjectid="150">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="22" nextobjectid="152">
  <tileset firstgid="1" name="MapTile" tilewidth="32" tileheight="32" tilecount="2" columns="2">
   <image source="MapTile.png" width="66" height="34"/>
  </tileset>
@@ -312,12 +312,7 @@
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="10" name="位置替えナイフ" x="225" y="225" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="11" name="木の実" x="225" y="97" width="31" height="31">
+   <object id="13" name="回復薬" x="225" y="161" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
@@ -327,57 +322,7 @@
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="13" name="回復薬" x="225" y="161" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="14" name="剣" x="97" y="65" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="15" name="槍" x="97" y="161" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="16" name="吹飛びナイフ" x="161" y="225" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="17" name="Stairs" x="225" y="33" width="31" height="31">
-    <properties>
-     <property name="Type" value="Stairs"/>
-    </properties>
-   </object>
-   <object id="34" name="剣" x="97" y="97" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="36" name="槍" x="97" y="129" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="37" name="盾" x="97" y="193" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="38" name="盾" x="97" y="225" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="39" name="吹飛びナイフ" x="129" y="225" width="31" height="31">
-    <properties>
-     <property name="Type" value="Item"/>
-    </properties>
-   </object>
-   <object id="40" name="吹飛びナイフ" x="193" y="225" width="31" height="31">
+   <object id="11" name="木の実" x="225" y="97" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
@@ -387,22 +332,87 @@
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="42" name="痛撃ナイフ" x="225" y="353" width="31" height="31">
+   <object id="17" name="Stairs" x="225" y="33" width="31" height="31">
+    <properties>
+     <property name="Type" value="Stairs"/>
+    </properties>
+   </object>
+   <object id="42" name="硬質化" x="257" y="353" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="43" name="痛撃ナイフ" x="225" y="321" width="31" height="31">
+   <object id="151" name="硬質化" x="225" y="353" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="44" name="位置替えナイフ" x="225" y="257" width="31" height="31">
+   <object id="150" name="鋭刃化" x="257" y="321" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>
    </object>
-   <object id="45" name="吹飛びナイフ" x="225" y="289" width="31" height="31">
+   <object id="43" name="鋭刃化" x="225" y="321" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="45" name="痛撃ナイフ" x="225" y="289" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="44" name="痛撃ナイフ" x="225" y="257" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="10" name="位置替えナイフ" x="225" y="225" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="40" name="位置替えナイフ" x="193" y="225" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="16" name="吹飛びナイフ" x="161" y="225" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="39" name="吹飛びナイフ" x="129" y="225" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="38" name="盾" x="97" y="225" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="37" name="盾" x="97" y="193" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="15" name="槍" x="97" y="161" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="36" name="槍" x="97" y="129" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="34" name="剣" x="97" y="97" width="31" height="31">
+    <properties>
+     <property name="Type" value="Item"/>
+    </properties>
+   </object>
+   <object id="14" name="剣" x="97" y="65" width="31" height="31">
     <properties>
      <property name="Type" value="Item"/>
     </properties>

@@ -43,7 +43,9 @@ namespace UISystemV2
 
             }
             float addAttack = 0;
+            float addAttackPlus = 0;
             float addDefense = 0;
+            float addDefensePlus = 0;
             float RangeBonus = 0;
             string checkEquippedQuery = "SELECT * FROM Inventory WHERE Equipped IN (1, 2)";
             DataTable equippedItems = sqlDB.ExecuteQuery(checkEquippedQuery);
@@ -51,16 +53,20 @@ namespace UISystemV2
             foreach (DataRow row in equippedItems.Rows)
             {
                 int equippedItemId = Convert.ToInt32(row["Id"]);
+                int ReinNum = Convert.ToInt32(row["ReinforceNum"]);
+                int EquippedNum = Convert.ToInt32(row["Equipped"]);
                 EquipmentDataV2 equippedItem = ItemDataCacheV2.GetEquipment(equippedItemId);
 
                 addAttack += equippedItem.AttackBonus;
+                if (EquippedNum == 1) addAttackPlus += ReinNum;
                 addDefense += equippedItem.DefenseBonus;
+                if (EquippedNum == 2) addDefensePlus += ReinNum;
                 RangeBonus += equippedItem.WeaponRange;
             }
 
-            string output = "Attack Bonus\t" + addAttack + "\n" +
-                            "Defense Bonus\t" + addDefense + "\n" +
-                            "Range Bonus\t" + RangeBonus;
+            string output = "Attack Bonus\t\t" + addAttack + "+" + addAttackPlus + "\n" +
+                            "Defense Bonus\t" + addDefense + "+" + addDefensePlus + "\n" +
+                            "Range Bonus\t\t" + RangeBonus;
 
 
             BonusText.text = (output);

@@ -54,13 +54,17 @@ namespace UISystemV2
                     itemButton.EquipArea = EquipArea;
                     
                     TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+                    int ReinNum = Convert.ToInt32(row["ReinforceNum"]);
+                    string buttonname;
+                    if (ReinNum > 0) buttonname = equipmentItem.ItemName + " +" + Convert.ToInt32(row["ReinforceNum"]);
+                    else buttonname = equipmentItem.ItemName;
+
                     if (Convert.ToInt32(row["Equipped"]) != 0)
                     {
-                        buttonText.text = FormatEquippedItemText(equipmentItem.ItemName);
+                        buttonText.text = FormatEquippedItemText(buttonname);
                         continue;
                     }
-
-                    buttonText.text = equipmentItem.ItemName;
+                    buttonText.text = buttonname;
                 }
             }
             GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 0);

@@ -53,6 +53,9 @@ namespace UISystemV2
                 case 2:
                     UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Žg‚¤");
                     break;
+                case 4:
+                    UseButton.GetComponentInChildren<TextMeshProUGUI>().text = ("Žg‚¤");
+                    break;
             }
             string textFromDatabase = Regex.Unescape(itemData.Description);
 
